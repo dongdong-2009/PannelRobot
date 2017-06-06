@@ -686,7 +686,7 @@
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1637,6 +1637,10 @@
         <source>Encode Type5</source>
         <translation>旋转编码器</translation>
     </message>
+    <message>
+        <source>Origin point dir Change to</source>
+        <translation>原点开关方向变为</translation>
+    </message>
 </context>
 <context>
     <name>AxisMemposEditor</name>
@@ -1737,7 +1741,7 @@
     </message>
     <message>
         <source></source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2412,7 +2416,7 @@
     <message>
         <source>name must be word number or underline
  and underline begin is not allowed</source>
-        <translation type="unfinished">名称不符合要求</translation>
+        <translation>名称不符合要求</translation>
     </message>
 </context>
 <context>
@@ -3824,7 +3828,7 @@ please chose!</source>
     </message>
     <message>
         <source>Angle</source>
-        <translation type="unfinished">角度</translation>
+        <translation>角度</translation>
     </message>
 </context>
 <context>
@@ -4202,7 +4206,7 @@ please chose!</source>
     </message>
     <message>
         <source>Barn</source>
-        <translation type="unfinished">料仓</translation>
+        <translation>料仓</translation>
     </message>
     <message>
         <source>Up</source>
@@ -4281,14 +4285,6 @@ please chose!</source>
         <translation>取消</translation>
     </message>
     <message>
-        <source>func use in this mode</source>
-        <translation>功能在勾选模式下有效</translation>
-    </message>
-    <message>
-        <source>InMode</source>
-        <translation>在模式中</translation>
-    </message>
-    <message>
         <source>Running</source>
         <translation>自动运行中</translation>
     </message>
@@ -4299,6 +4295,10 @@ please chose!</source>
     <message>
         <source>OneCycle</source>
         <translation>单循环</translation>
+    </message>
+    <message>
+        <source>InMode</source>
+        <translation>在模式中</translation>
     </message>
 </context>
 <context>
@@ -4777,11 +4777,11 @@ please chose!</source>
     </message>
     <message>
         <source>read e2prom</source>
-        <translation>EEPROM读</translation>
+        <translation>读EEPROM</translation>
     </message>
     <message>
         <source>write e2prom</source>
-        <translation>EEPROM写</translation>
+        <translation>写EEPROM</translation>
     </message>
     <message>
         <source>common ctrl para</source>
@@ -4808,36 +4808,48 @@ please chose!</source>
         <translation>说明</translation>
     </message>
     <message>
-        <source>refresh en</source>
-        <translation>刷新使能</translation>
+        <source>PwmPeriod</source>
+        <translation type="obsolete">PWM周期</translation>
     </message>
     <message>
-        <source>clear alarm</source>
-        <translation type="unfinished">清除报警</translation>
+        <source>SampleStartDelay</source>
+        <translation type="obsolete">A/D采样延时</translation>
     </message>
     <message>
-        <source>alarm name</source>
-        <translation>故障名称</translation>
+        <source>SpdPosLpRate</source>
+        <translation type="obsolete">伺服采样分频比</translation>
     </message>
     <message>
-        <source>alarm val</source>
-        <translation>故障值</translation>
+        <source>ModScl</source>
+        <translation type="obsolete">SVPWM定标因子</translation>
     </message>
     <message>
-        <source>alarmName</source>
-        <translation>故障名称</translation>
+        <source>PwmDeadTm</source>
+        <translation type="obsolete">IGBT死区时间</translation>
     </message>
     <message>
-        <source>inStop</source>
-        <translation>停止</translation>
+        <source>SystemConfig</source>
+        <translation type="obsolete">系统配置</translation>
     </message>
     <message>
-        <source>inRunning</source>
-        <translation>运行</translation>
+        <source>LvAlmMonEnbl</source>
+        <translation type="obsolete">欠压报警使能</translation>
     </message>
     <message>
-        <source>inAlarm</source>
-        <translation>故障</translation>
+        <source>DcBusOffset</source>
+        <translation type="obsolete">直流母线电压偏移量</translation>
+    </message>
+    <message>
+        <source>BusConfig</source>
+        <translation type="obsolete">RS-485总线配置</translation>
+    </message>
+    <message>
+        <source>DriverCtrl</source>
+        <translation type="obsolete">驱动器配置</translation>
+    </message>
+    <message>
+        <source>PWM period</source>
+        <translation type="obsolete">PWM周期</translation>
     </message>
     <message>
         <source>axis</source>
@@ -4864,8 +4876,24 @@ please chose!</source>
         <translation>转子初始角</translation>
     </message>
     <message>
+        <source>refresh en</source>
+        <translation>刷新使能</translation>
+    </message>
+    <message>
+        <source>clear alarm</source>
+        <translation>清除报警</translation>
+    </message>
+    <message>
         <source>alarm para</source>
         <translation>故障</translation>
+    </message>
+    <message>
+        <source>alarm name</source>
+        <translation>故障名称</translation>
+    </message>
+    <message>
+        <source>alarm val</source>
+        <translation>故障值</translation>
     </message>
     <message>
         <source>0- no fault, 1- fault</source>
@@ -4921,7 +4949,7 @@ please chose!</source>
     </message>
     <message>
         <source>OvrFrqFlt</source>
-        <translation>位置命令脉冲频率过高</translation>
+        <translation>脉冲频率过高</translation>
     </message>
     <message>
         <source>PosErrOvrFlt</source>
@@ -4935,652 +4963,1208 @@ please chose!</source>
         <source>OvrCrntFlt</source>
         <translation>过流故障</translation>
     </message>
+    <message>
+        <source>inStop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>inRunning</source>
+        <translation>运行</translation>
+    </message>
+    <message>
+        <source>inAlarm</source>
+        <translation>故障</translation>
+    </message>
 </context>
 <context>
     <name>QKInfo</name>
     <message>
         <source>PwmPeriod</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>describe</source>
-        <translation type="unfinished">说明</translation>
-    </message>
-    <message>
-        <source>SampleStartDelay</source>
-        <translation type="unfinished"></translation>
+        <translation>PWM周期</translation>
     </message>
     <message>
         <source>default value:1990,instruction:IGBT switching frequency (Hz) clock frequency =0.5* system (PwmPeriod / 1). When PwmMode=0, the non symmetric mode, current loop sampling frequency =2* switching frequency: when pwmMode=1, symmetric mode, current loop sampling frequency = switching frequency.</source>
-        <translation type="unfinished"></translation>
+        <translation>IGBT开关频率（Hz）=0.5*系统主时钟频率/（PwmPeriod+1）。当PwmMode=0，即非对称模式下，电流环采样频率=2*开关频率：当pwmMode=1，即对称模式下，电流环采样频率=开关频率.</translation>
+    </message>
+    <message>
+        <source>SampleStartDelay</source>
+        <translation>A/D采样延时</translation>
     </message>
     <message>
         <source>default value:10,instruction:A/D sampling delay time (NS) = system master clock cycle *SampleStartDela</source>
-        <translation type="unfinished"></translation>
+        <translation>A/D采样延迟时间（ns）=系统主时钟周期*SampleStartDelay.</translation>
     </message>
     <message>
         <source>SpdPosLpRate</source>
-        <translation type="unfinished"></translation>
+        <translation>伺服采样分频比</translation>
     </message>
     <message>
         <source>default value:516,instruction:Speed loop sampling frequency (Hz) = current loop sampling frequency /SpdLpRate. position loop sampling frequency (Hz) = speed loop sampling frequency /PosLpRate</source>
-        <translation type="unfinished"></translation>
+        <translation>速度环采样频率(Hz)=电流环采样频率/SpdLpRate.位置环采样频率(Hz)=速度环采样频率/PosLpRate</translation>
     </message>
     <message>
         <source>ModScl</source>
-        <translation type="unfinished"></translation>
+        <translation>SVPWM定标因子</translation>
     </message>
     <message>
         <source>default value:3000,instruction:ModScl=3×(PwmPeriod+1)/2</source>
-        <translation type="unfinished"></translation>
+        <translation>ModScl=3×(PwmPeriod+1)/2</translation>
     </message>
     <message>
         <source>PwmDeadTm</source>
-        <translation type="unfinished"></translation>
+        <translation>IGBT死区时间</translation>
     </message>
     <message>
         <source>default value:119,instruction:IGBT Dead Time(ns)=System master clock cycle(ns)×(PwmDeadTm+1)</source>
-        <translation type="unfinished"></translation>
+        <translation>IGBT死区时间(ns)=系统主时钟周期(ns)×(PwmDeadTm+1)</translation>
     </message>
     <message>
         <source>SystemConfig</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:24,instruction:describe</source>
-        <translation type="unfinished"></translation>
+        <translation>系统配置</translation>
     </message>
     <message>
         <source>LvAlmMonEnbl</source>
-        <translation type="unfinished"></translation>
+        <translation>欠压报警使能</translation>
     </message>
     <message>
         <source>default value:0,instruction:0-Prohibit undervoltage alarm function，1-Allow undervoltage alarm function</source>
-        <translation type="unfinished"></translation>
+        <translation>0-禁止欠压报警功能，1-允许欠压报警功能</translation>
     </message>
     <message>
         <source>DcBusOffset</source>
-        <translation type="unfinished"></translation>
+        <translation>直流母线电压偏移量</translation>
     </message>
     <message>
         <source>default value:4864,instruction:DcBusOffset=The DC bus voltage is equal to zero, corresponding to the A/D conversion data</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">DcBusOffset=直流母线电压等于零时对应的A/D转换数据</translation>
     </message>
     <message>
         <source>BusConfig</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:0,instruction:describe</source>
-        <translation type="unfinished"></translation>
+        <translation>RS-485总线配置</translation>
     </message>
     <message>
         <source>DriverCtrl</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:7,instruction:describe</source>
-        <translation type="unfinished"></translation>
+        <translation>驱动器配置</translation>
     </message>
     <message>
         <source>DBCtrl</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:2916,instruction:describe</source>
-        <translation type="unfinished"></translation>
+        <translation>动态制动器配置</translation>
     </message>
     <message>
         <source>BrkCtrl</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:25700,instruction:describe</source>
-        <translation type="unfinished"></translation>
+        <translation>抱闸制动器配置</translation>
     </message>
     <message>
         <source>InPortCtrl</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:2194,instruction:describe</source>
-        <translation type="unfinished"></translation>
+        <translation>输入端口配置</translation>
     </message>
     <message>
         <source>OutPortConfig</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:512,instruction:describe</source>
-        <translation type="unfinished"></translation>
+        <translation>输出端口配置</translation>
     </message>
     <message>
         <source>SystemCtrl</source>
-        <translation type="unfinished"></translation>
+        <translation>系统控制</translation>
     </message>
     <message>
         <source>ModelControl</source>
-        <translation type="unfinished"></translation>
+        <translation>模式控制</translation>
     </message>
     <message>
         <source>CmdControl</source>
-        <translation type="unfinished"></translation>
+        <translation>命令控制</translation>
     </message>
     <message>
         <source>VCmdOffset</source>
-        <translation type="unfinished"></translation>
+        <translation>模拟命令控制</translation>
     </message>
     <message>
         <source>default value:0,instruction:VCmd_Offset= analog command voltage equal to zero, corresponding to the A/D conversion data</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">VCmd_Offset=模拟命令电压等于零时对应的A/D转换数据</translation>
     </message>
     <message>
         <source>RotEnControl</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:33,instruction:describe</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转编码器控制</translation>
     </message>
     <message>
         <source>RotEncMaxCnt</source>
-        <translation type="unfinished"></translation>
+        <translation>增量式编码器线数</translation>
     </message>
     <message>
         <source>default value:16383,instruction:RotEnc_MaxCnt=4 * PPR-1, where PPR is the number of pulses per turn per encoder for the encoder</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">RotEnc_MaxCnt=4×PPR-1，其中PPR为编码器每相每转发出的脉冲数</translation>
     </message>
     <message>
         <source>RotEncZCnt</source>
-        <translation type="unfinished"></translation>
+        <translation>增量式编码器Z脉冲电角度</translation>
     </message>
     <message>
         <source>default value:1250,instruction:An electrical angle of an Z pulse opposite the negative potential of U</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Z脉冲相对于U相反电势负向过零点的电角度</translation>
     </message>
     <message>
         <source>LnrEncCtrl</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:2,instruction:describe</source>
-        <translation type="unfinished"></translation>
+        <translation>线性编码器控制</translation>
     </message>
     <message>
         <source>EncDivCtrl</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:9,instruction:describe</source>
-        <translation type="unfinished"></translation>
+        <translation>编码器分频输出控制</translation>
     </message>
     <message>
         <source>EncDivNum</source>
-        <translation type="unfinished"></translation>
+        <translation>编码器输出脉冲分频比之分子</translation>
     </message>
     <message>
         <source>default value:1,instruction:EncDiv_Num/EncDiv_Den≥1；Otherwise, the output pulse is uncertain</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">EncDiv_Num/EncDiv_Den≥1；否则输出脉冲不确定</translation>
     </message>
     <message>
         <source>EncDivDen</source>
-        <translation type="unfinished"></translation>
+        <translation>编码器输出脉冲分频比之分子</translation>
     </message>
     <message>
         <source>IfbU_Offset</source>
-        <translation type="unfinished"></translation>
+        <translation>U相电流偏移量</translation>
     </message>
     <message>
         <source>default value:0,instruction:IfbU_Offset=U phase current equals zero, corresponding to the A/D conversion data</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">IfbU_Offset=U相电流等于零时对应的A/D转换数据</translation>
     </message>
     <message>
         <source>IfbW_Offset</source>
-        <translation type="unfinished"></translation>
+        <translation>W相电流偏移量</translation>
     </message>
     <message>
         <source>default value:0,instruction:IfbW_Offset=W phase current equals zero, corresponding to the A/D conversion data</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">IfbW_Offset=W相电流等于零时对应的A/D转换数据</translation>
     </message>
     <message>
         <source>IdScl</source>
-        <translation type="unfinished"></translation>
+        <translation>D轴电流定标因子</translation>
     </message>
     <message>
         <source>default value:5148,instruction:for PMSM，IdScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，Among them, MHC is the maximum ideal range of current sensor, and Irated is the rated current effective value</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">对于PMSM，IdScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，其中MHC为电流传感器的最大理想量程，Irated为额定电流有效值</translation>
     </message>
     <message>
         <source>Iqscl</source>
-        <translation type="unfinished"></translation>
+        <translation>Q轴电流定标因子</translation>
     </message>
     <message>
         <source>default value:5148,instruction:for PMSM，IqScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，Among them, MHC is the maximum ideal range of current sensor, and Irated is the rated current effective value</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">对于PMSM，IqScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，其中MHC为电流传感器的最大理想量程，Irated为额定电流有效值</translation>
     </message>
     <message>
         <source>ElecAngScl</source>
-        <translation type="unfinished"></translation>
+        <translation>电角度定标因子</translation>
     </message>
     <message>
         <source>default value:4096,instruction:ElecAngScl=P x 4096 x 2^12/ (4 * PPR), where P is the polar logarithm, and PPR is the number of pulses per phase per turn of the encoder</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">ElecAngScl=P×4096×2^12/(4×PPR)，其中P为极对数，PPR为编码器每相每转发出的脉冲数</translation>
     </message>
     <message>
         <source>SlipGain</source>
-        <translation type="unfinished"></translation>
+        <translation>感应电动机转差率增益</translation>
     </message>
     <message>
         <source>default value:0,instruction:For IM，SlipGain=RatedSlipSpeed/RatedIqRef=2^24×RatedSlipFreq(Hz)/CurrentLoopUpdateRate</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">对于IM，SlipGain=RatedSlipSpeed/RatedIqRef=2^24×RatedSlipFreq(Hz)/CurrentLoopUpdateRate</translation>
     </message>
     <message>
         <source>K1Notch</source>
-        <translation type="unfinished"></translation>
+        <translation>转矩命令陷波滤波常数1</translation>
     </message>
     <message>
         <source>default value:65535,instruction:K1_Notch=k1×2^15，k1=1+a，a=(1-tan(Bw/2))/(1+tan(Bw/2))，Bw=2π×fb/fs,Where FS is the current loop sampling frequency, FB -3dB notch width; 1 = k1&lt;2, K1, and when the 2 notch filter has no effect</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">K1_Notch=k1×2^15，k1=1+a，a=(1-tan(Bw/2))/(1+tan(Bw/2))，Bw=2π×fb/fs，其中fs为电流环采样频率，fb为-3dB陷波宽度；1≤k1&lt;2，且当k1→2时陷波滤波器不起作用</translation>
     </message>
     <message>
         <source>K2Notch</source>
-        <translation type="unfinished"></translation>
+        <translation>转矩命令陷波滤波常数2</translation>
     </message>
     <message>
         <source>default value:0,instruction:K2_Notch=k2×2^15，k2=b×(1+a)，a=(1-tan(Bw/2))/(1+tan(Bw/2))，b=cosω0，Bw=2π×fb/fs，ω0=2π×f0/fs,Where FS is the current loop sampling frequency, F0 notch center frequency, FB -3dB notch width; 0 = k2&lt;2</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">K2_Notch=k2×2^15，k2=b×(1+a)，a=(1-tan(Bw/2))/(1+tan(Bw/2))，b=cosω0，Bw=2π×fb/fs，ω0=2π×f0/fs，其中fs为电流环采样频率，f0为陷波中心频率，fb为-3dB陷波宽度；0≤k2&lt;2</translation>
     </message>
     <message>
         <source>Ktf</source>
-        <translation type="unfinished"></translation>
+        <translation>转矩命令低通滤波器常数</translation>
     </message>
     <message>
         <source>default value:0,instruction:Ktf=2^16 * (1-tan (omega c/2)) / (1 Tan (omega c/2)), Omega c=2 pi * fc/fs, where FS is the current loop sampling frequency, and FC is the -3dB clipping frequency</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">K2_Notch=k2×2^15，k2=b×(1+a)，a=(1-tan(Bw/2))/(1+tan(Bw/2))，b=cosω0，Bw=2π×fb/fs，ω0=2π×f0/fs，其中fs为电流环采样频率，f0为陷波中心频率，fb为-3dB陷波宽度；0≤k2&lt;2</translation>
     </message>
     <message>
         <source>OvrLdLim</source>
-        <translation type="unfinished"></translation>
+        <translation>过载保护门限</translation>
     </message>
     <message>
         <source>default value:21845,instruction:OvrLdLim=32768/coeff，Coeff for overload factor, e.g. is set to 1.5 times the rated value, OvrLdLim=21845</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">OvrLdLim=32768/coeff，coeff为过载系数，e.g.设为额定值1.5倍时，OvrLdLim=21845</translation>
     </message>
     <message>
         <source>TrqLimp</source>
-        <translation type="unfinished"></translation>
+        <translation>正向转矩限幅值</translation>
     </message>
     <message>
         <source>default value:12288,instruction:TrqLimP=4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of the current sensor, and Irated is the rated current effective value</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">TrqLimP=4096×MLC/(SQRT(2)×Irated)，其中MLC为电流传感器的最大线性范围，Irated为额定电流有效值</translation>
     </message>
     <message>
         <source>TrqLimN</source>
-        <translation type="unfinished"></translation>
+        <translation>反向转矩限幅值</translation>
     </message>
     <message>
         <source>default value:-12288,instruction:TrqLimN=-4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of the current sensor, and Irated is the rated current effective value</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">TrqLimN=-4096×MLC/(SQRT(2)×Irated)，其中MLC为电流传感器的最大线性范围，Irated为额定电流有效值</translation>
     </message>
     <message>
         <source>IErrLim</source>
-        <translation type="unfinished"></translation>
+        <translation>电流环控制器积分误差限幅值</translation>
     </message>
     <message>
         <source>default value:1024,instruction:It is used to achieve large deviation, small gain, small deviation and large gain</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">用于实现大偏差小增益、小偏差大增益</translation>
     </message>
     <message>
         <source>Kpid</source>
-        <translation type="unfinished"></translation>
+        <translation>D轴电流环控制器比例增益</translation>
     </message>
     <message>
         <source>default value:2000,instruction:11 decimal places</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">11个小数位</translation>
     </message>
     <message>
         <source>Kiid</source>
-        <translation type="unfinished"></translation>
+        <translation>D轴电流环控制器积分增益</translation>
     </message>
     <message>
         <source>default value:1500,instruction:16 decimal places</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">16个小数位</translation>
     </message>
     <message>
         <source>Kpiq</source>
-        <translation type="unfinished"></translation>
+        <translation>Q轴电流环控制器比例增益</translation>
     </message>
     <message>
         <source>Kiiq</source>
-        <translation type="unfinished"></translation>
+        <translation>Q轴电流环控制器积分增益</translation>
     </message>
     <message>
         <source>Ked</source>
-        <translation type="unfinished"></translation>
+        <translation>D轴反电动势常数</translation>
     </message>
     <message>
-        <source>default value:0,instruction:For PMSM, Ked=8192 * * * P * MaxRPM * Ls * SQRT (2) * Irated/ (15 * 1.64676 * 310), in which P is the extreme logarithm, MaxRPM is the highest speed, Ls is motor winding inductance, and Irated is the rated current effective value</source>
-        <translation type="unfinished"></translation>
+        <source>default value:0,instruction:For PMSM, Ked=8192 * P * MaxRPM * Ls * SQRT (2) * Irated/ (15 * 1.64676 * 310), in which P is the extreme logarithm, MaxRPM is the highest speed, Ls is motor winding inductance, and Irated is the rated current effective value</source>
+        <translation type="obsolete">对于PMSM，Ked=8192×π×P×MaxRPM×Ls×SQRT(2)×Irated/(15×1.64676×310)，其中P为极对数，MaxRPM为最高转速，Ls为电机绕组电感，Irated为额定电流有效值</translation>
     </message>
     <message>
         <source>Keq</source>
-        <translation type="unfinished"></translation>
+        <translation>Q轴反电动势常数</translation>
     </message>
     <message>
-        <source>default value:0,instruction:For PMSM, Ked=8192 * P * MaxRPM * * pi / psi (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed of permanent magnet motor rotor flux for PSI</source>
-        <translation type="unfinished"></translation>
+        <source>default value:0,instruction:For PMSM, Ked=8192 * P * MaxRPM  * pi / psi (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed of permanent magnet motor rotor flux for PSI</source>
+        <translation type="obsolete">对于PMSM，Ked=8192×π×P×MaxRPM×ψ/(15×1.64676×310)，其中P为极对数，MaxRPM为最高转速，ψ为电机永磁转子磁链</translation>
     </message>
     <message>
         <source>Ktg</source>
-        <translation type="unfinished"></translation>
+        <translation>转矩模拟命令加权因子</translation>
     </message>
     <message>
         <source>default value:0,instruction:Ktg=2^14×(0~400%)</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">tg=2^14×(0~400%)</translation>
     </message>
     <message>
         <source>Krt</source>
-        <translation type="unfinished"></translation>
+        <translation>感应电动机转子常数</translation>
     </message>
     <message>
         <source>default value:0,instruction:Krt=2^22/(tr*fs)，Among them, FS is the current loop sampling frequency (Hz), and TR is the rotor time constant (s) of induction motors</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Krt=2^22/(tr*fs)，其中fs为电流环采样频率(Hz)，tr为感应电机转子时间常数(s)</translation>
     </message>
     <message>
         <source>RatedFreq</source>
-        <translation type="unfinished"></translation>
+        <translation>感应电动机额定频率</translation>
     </message>
     <message>
         <source>default value:0,instruction:RatedFreq=2^15*RatedRPM/MaxRPM</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">RatedFreq=2^15*RatedRPM/MaxRPM</translation>
     </message>
     <message>
         <source>VdLim</source>
-        <translation type="unfinished"></translation>
+        <translation>D轴电压调制度限幅值</translation>
     </message>
     <message>
         <source>default value:6632,instruction:Maximum voltage regulation of VqLim=2^14 * D axis /1.64676</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">VdLim=2^14×D轴最大电压调制度/1.64676</translation>
     </message>
     <message>
         <source>VqLim</source>
-        <translation type="unfinished"></translation>
+        <translation>Q轴电压调制度限幅值</translation>
     </message>
     <message>
         <source>default value:6632,instruction:Maximum voltage regulation of VqLim=2^14 * Q axis /1.64676</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">VqLim=2^14×Q轴最大电压调制度/1.64676</translation>
     </message>
     <message>
         <source>BrkZeroSpd</source>
-        <translation type="unfinished"></translation>
+        <translation>抱闸零速</translation>
     </message>
     <message>
         <source>default value:16384,instruction:Maximum current setting, motor rated =4096</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">最大电流设定，电机额定=4096</translation>
     </message>
     <message>
         <source>SpdScl</source>
-        <translation type="unfinished"></translation>
+        <translation>速度定标因子</translation>
     </message>
     <message>
         <source>default value:3200,instruction:SpdScl=2^15 x 60 x fclk/ (4 * PPR * MaxRPM * 256), wherein fclk is the system master clock frequency, PPR is the encoder line number, and MaxRPM is the highest speed</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">SpdScl=2^15×60×fclk/(4×PPR×MaxRPM×256)，其中fclk为系统主时钟频率，PPR为编码器线数，MaxRPM为最高转速</translation>
     </message>
     <message>
         <source>NilMtrSpdDly</source>
-        <translation type="unfinished"></translation>
+        <translation>电机零速检测延时</translation>
     </message>
     <message>
         <source>default value:30,instruction:NilMtrSpdDly= speed ring sampling frequency * 60/ (4 * PPR * MinRPM), in which PPR is the encoder line, and MinRPM is the minimum speed</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">NilMtrSpdDly=速度环采样频率×60/(4×PPR×MinRPM)，其中PPR为编码器线数，MinRPM为最低转速</translation>
     </message>
     <message>
         <source>NilCmdSpdDly</source>
-        <translation type="unfinished"></translation>
+        <translation>直流脉冲零速检测延时</translation>
     </message>
     <message>
         <source>default value:30,instruction:NilCmdSpdDly=NilMtrSpdDly×(Electronic gear ratio)</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">NilCmdSpdDly=NilMtrSpdDly×电子齿轮比</translation>
     </message>
     <message>
         <source>SpdCmp</source>
-        <translation type="unfinished"></translation>
+        <translation>内部转速测量比较及切换门限</translation>
     </message>
     <message>
         <source>default value:300,instruction:SpdCmp=2^15 * 60 * speed ring sampling frequency / (PPR * MaxRPM), in which PPR is the encoder line, and MaxRPM is the highest speed</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">SpdCmp=2^15×60×速度环采样频率/(PPR×MaxRPM)，其中PPR为编码器线数，MaxRPM为最高转速</translation>
     </message>
     <message>
         <source>ZeroSpeed</source>
-        <translation type="unfinished"></translation>
+        <translation>零转速认可范围</translation>
     </message>
     <message>
         <source>default value:1,instruction:When the actual speed is less than MaxRPM * ZeroSpeed/2^15, the speed is considered to be zero</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">当实际转速小于MaxRPM×ZeroSpeed/2^15时，认为处于转速为零的状态</translation>
     </message>
     <message>
         <source>SpdAccRate</source>
-        <translation type="unfinished"></translation>
+        <translation>加速度</translation>
     </message>
     <message>
         <source>default value:256,instruction:8 decimal places</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">8个小数位</translation>
     </message>
     <message>
         <source>SpdDecRate</source>
-        <translation type="unfinished"></translation>
+        <translation>减速度</translation>
     </message>
     <message>
         <source>Kfg</source>
-        <translation type="unfinished"></translation>
+        <translation>速度前馈/模拟命令加权因子</translation>
     </message>
     <message>
         <source>default value:0,instruction:Kfg=2^14×(0~400%)</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Kfg=2^14×(0~400%)</translation>
     </message>
     <message>
         <source>Kff</source>
-        <translation type="unfinished"></translation>
+        <translation>速度前馈/模拟命令低通滤波器常数</translation>
     </message>
     <message>
         <source>default value:0,instruction:Kff=2^16×(1-tan(ωc/2))/(1+tan(ωc/2))，ωc=2π×fc/fs,Among them, FS is the speed ring sampling frequency, and FC is -3dB clipping frequency</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Kff=2^16×(1-tan(ωc/2))/(1+tan(ωc/2))，ωc=2π×fc/fs，其中fs为速度环采样频率，fc为-3dB剪切频率</translation>
     </message>
     <message>
         <source>SpdLimP</source>
-        <translation type="unfinished"></translation>
+        <translation>正向转速限幅值</translation>
     </message>
     <message>
         <source>default value:25000,instruction:SpdLimP=2^15×(0~100%)</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">SpdLimP=2^15×(0~100%)</translation>
     </message>
     <message>
         <source>SpdLimN</source>
-        <translation type="unfinished"></translation>
+        <translation>反向转速限幅值</translation>
     </message>
     <message>
         <source>default value:-25000,instruction:SpdLimN=-2^15×(0~100%)</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">SpdLimN=-2^15×(0~100%)</translation>
     </message>
     <message>
         <source>SpdErrLim</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:1990,instruction:It is used to achieve large deviation, small gain, small deviation and large gain</source>
-        <translation type="unfinished"></translation>
+        <translation>速度环控制器积分误差限幅值</translation>
     </message>
     <message>
         <source>KpV</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:100,instruction:5 decimal places</source>
-        <translation type="unfinished"></translation>
+        <translation>速度环控制器比例增益</translation>
     </message>
     <message>
         <source>KiV</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:200,instruction:13 decimal places</source>
-        <translation type="unfinished"></translation>
+        <translation>速度环控制器积分增益</translation>
     </message>
     <message>
         <source>KfV</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:65535,instruction:KfV=2^16×(0~100%)，Among them: 0-IP control, 100%-PI control, 0~100%-PDFF control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:100,instruction:When the actual speed is less than MaxRPM * ZeroSpeed/2^15, turn off the brake signal</source>
-        <translation type="unfinished"></translation>
+        <translation>速度环控制器PDFF增益</translation>
     </message>
     <message>
         <source>PulsSclNum</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:1,instruction:1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024</source>
-        <translation type="unfinished"></translation>
+        <translation>电子齿轮之分子</translation>
     </message>
     <message>
         <source>PulsSclDen</source>
-        <translation type="unfinished"></translation>
+        <translation>电子齿轮之分母</translation>
     </message>
     <message>
         <source>PosErrOvrLim</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:256,instruction:The actual limit is PosErrOvrLim * 256 pulse equivalent</source>
-        <translation type="unfinished"></translation>
+        <translation>位置偏差过大设置</translation>
     </message>
     <message>
         <source>CoinLim</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:10,instruction:When the actual position deviation is less than CoinLim pulse equivalent, the position is considered to be complete</source>
-        <translation type="unfinished"></translation>
+        <translation>定位完成范围</translation>
     </message>
     <message>
         <source>POvrTrvLimL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:65535,instruction:A positive overshoot occurs when the actual position exceeds [POvrTrvLimH and POvrTrvLimL] pulses are equivalent</source>
-        <translation type="unfinished"></translation>
+        <translation>正向行程限制（低16位）</translation>
     </message>
     <message>
         <source>POvrTrvLimH</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:32767,instruction:A positive overshoot occurs when the actual position exceeds [POvrTrvLimH and POvrTrvLimL] pulses are equivalent</source>
-        <translation type="unfinished"></translation>
+        <translation>正向行程限制（高16位）</translation>
     </message>
     <message>
         <source>NOvrTrvLimL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:1,instruction:A reverse overshoot occurs when the actual position exceeds [NOvrTrvLimH and NOvrTrvLimL] pulses are equivalent</source>
-        <translation type="unfinished"></translation>
+        <translation>反向行程限制（低16位）</translation>
     </message>
     <message>
         <source>NOvrTrvLimH</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:32768,instruction:A reverse overshoot occurs when the actual position exceeds [NOvrTrvLimH and NOvrTrvLimL] pulses are equivalent</source>
-        <translation type="unfinished"></translation>
+        <translation>反向行程限制（高16位）</translation>
     </message>
     <message>
         <source>Ksf</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:-32768,instruction:Ksf=2^16×T/(T+1),The T= /Ts, which is the filter time constant Ts for the position loop sampling period</source>
-        <translation type="unfinished"></translation>
+        <translation>平滑滤波器常数</translation>
     </message>
     <message>
         <source>KpP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:10,instruction:5 decimal places</source>
-        <translation type="unfinished"></translation>
+        <translation>位置环控制器比例增益</translation>
     </message>
     <message>
         <source>InitElecAng001</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:1.24,instruction:The motor encoders U, V, and W correspond to 001 rotor positions; are stored only in EEPROM</source>
-        <translation type="unfinished"></translation>
+        <translation>转子初始角1</translation>
     </message>
     <message>
         <source>InitElecAng010</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:208,instruction:The motor encoders U, V, and W correspond to 010 rotor positions; are stored only in EEPROM</source>
-        <translation type="unfinished"></translation>
+        <translation>转子初始角2</translation>
     </message>
     <message>
         <source>InitElecAng011</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:1625,instruction:The motor encoders U, V, and W correspond to 011 rotor positions; are stored only in EEPROM</source>
-        <translation type="unfinished"></translation>
+        <translation>转子初始角3</translation>
     </message>
     <message>
         <source>InitElecAng100</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:1875,instruction:The motor encoders U, V, and W correspond to 100 rotor positions; are stored only in EEPROM</source>
-        <translation type="unfinished"></translation>
+        <translation>转子初始角4</translation>
     </message>
     <message>
         <source>InitElecAng101</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:1458,instruction:The motor encoders U, V, and W correspond to 101 rotor positions; are stored only in EEPROM</source>
-        <translation type="unfinished"></translation>
+        <translation>转子初始角5</translation>
     </message>
     <message>
         <source>InitElecAng110</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>default value:2292,instruction:The motor encoders U, V, and W correspond to 110 rotor positions; are stored only in EEPROM</source>
-        <translation type="unfinished"></translation>
+        <translation>转子初始角6</translation>
     </message>
     <message>
         <source>SystemStatus</source>
-        <translation type="unfinished"></translation>
+        <translation>系统状态</translation>
+    </message>
+    <message>
+        <source>describe</source>
+        <translation type="unfinished">描述</translation>
     </message>
     <message>
         <source>FaultStatus</source>
-        <translation type="unfinished"></translation>
+        <translation>故障状态</translation>
     </message>
     <message>
-        <source>(0- no fault, 1- fault) bit0: power on initialization failure, bit1:EEPROM fault, bit2:A/D fault converter, operation engine bit3: system timeout, bit4: radiator overheated, bit5: main power supply overvoltage, undervoltage bit7 bit6: main power supply, the main power supply is off, bit8:IGBT flow, bit9: IGBT bit10: bit11: overheating, overload, overspeed, bit12: position command pulse frequency is too high, the bit13: position error is too large, bit14:DSP bit15: synchronous fault overcurrent fault.</source>
+        <source>(0 - no fault, 1 - fault) bit0: power on initialization failure, bit1:EEPROM fault, bit2:A/D converter fault, bit3:operation engine system timeout, bit4: radiator overheated, bit5: main power supply overvoltage, undervoltage  bit6: main power supply, bit7:the main power supply is off, bit8:IGBT overcurrent, bit9: IGBT overheating, bit10:overload, bit11:overspeed, bit12: position command pulse frequency is too high, bit13: the position error is too large, bit14:DSP synchronous fault,bit15:  overcurrent fault.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>WorkingStatus</source>
+        <translation>运行状态</translation>
+    </message>
+    <message>
+        <source>Bit3: servo control enable status(0 - servo off, 1 - servo on)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Bit3: servo control enable status: 0- invalid state, 1- valid state</source>
-        <translation type="unfinished"></translation>
+        <source>default value:0,instruction:DcBusOffset=The DC bus voltage is equal to zero, corresponding to the A/D conversion data</source>
+        <translation type="obsolete">DcBusOffset=直流母线电压等于零时对应的A/D转换数据 {0,?}</translation>
+    </message>
+    <message>
+        <source>OvrCrnt</source>
+        <translation type="unfinished">过流保护阀值</translation>
+    </message>
+    <message>
+        <source>addr:0,default value:1990,instruction:IGBT switching frequency (Hz) clock frequency =0.5* system (PwmPeriod / 1). When PwmMode=0, the non symmetric mode, current loop sampling frequency =2* switching frequency: when pwmMode=1, symmetric mode, current loop sampling frequency = switching frequency.</source>
+        <translation type="obsolete">默认值1999（此参数不用修改），说明：IGBT开关频率（Hz）=0.5*系统主时钟频率/（PwmPeriod+1）。当PwmMode=0，即非对称模式下，电流环采样频率=2*开关频率：当pwmMode=1，即对称模式下，电流环采样频率=开关频率.</translation>
+    </message>
+    <message>
+        <source>addr:1,default value:10,instruction:A/D sampling delay time (NS) = system master clock cycle *SampleStartDela</source>
+        <translation type="obsolete">默认值：10（此参数不用修改），说明：A/D采样延迟时间（ns）=系统主时钟周期*SampleStartDelay</translation>
+    </message>
+    <message>
+        <source>addr:2,default value:516,instruction:Speed loop sampling frequency (Hz) = current loop sampling frequency /SpdLpRate. position loop sampling frequency (Hz) = speed loop sampling frequency /PosLpRate</source>
+        <translation type="obsolete">默认值：516（此参数不用修改），说明：速度环采样频率(Hz)=电流环采样频率/SpdLpRate.位置环采样频率(Hz)=速度环采样频率/PosLpRate</translation>
+    </message>
+    <message>
+        <source>addr:3,default value:3000,instruction:ModScl=3×(PwmPeriod+1)/2</source>
+        <translation type="obsolete">默认值：3000（此参数不用修改），说明：ModScl=3×(PwmPeriod+1)/2</translation>
+    </message>
+    <message>
+        <source>addr:4,default value:119,instruction:IGBT Dead Time(ns)=System master clock cycle(ns)×(PwmDeadTm+1)</source>
+        <translation type="obsolete">默认值：119（此参数不用修改），说明：IGBT死区时间(ns)=系统主时钟周期(ns)×(PwmDeadTm+1)</translation>
+    </message>
+    <message>
+        <source>addr:5,default value:24,instruction:describe</source>
+        <translation type="obsolete">默认值：24（此参数不用修改），说明：[0]主电源关断监控使能，0-禁止该功能，1-允许该功能；[1]直流母线电压补偿使能，0-禁止该功能，1-允许该功能；[2]散热器过温保护有效电平，0-低电平有效，1-高电平有效；[3]再生制动有效电平，0-低电平有效，1-高电平有效；[4]PWM模式限制，0-非对称式，1-对称式；[15:5]未定义.MPwrOffMonEnbl,DcBusCompEnbl:0-禁止该功能，1-允许该功能；OvrTempSns,RegenBrkSns:0-低电平有效，1-高电平有效；PwmMode:0-非对称式，1-对称式</translation>
+    </message>
+    <message>
+        <source>addr:6,default value:0,instruction:0-Prohibit undervoltage alarm function，1-Allow undervoltage alarm function</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：0-禁止欠压报警功能，1-允许欠压报警功能</translation>
+    </message>
+    <message>
+        <source>addr:7,default value:0,instruction:DcBusOffset=The DC bus voltage is equal to zero, corresponding to the A/D conversion data</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：DcBusOffset=直流母线电压等于零时对应的A/D转换数据</translation>
+    </message>
+    <message>
+        <source>addr:8,default value:4864,instruction:describe</source>
+        <translation type="obsolete">默认值：4864（此参数不用修改），说明：[7:0]本地节点ID号；[10:8]通讯波特率选择，[12:11]奇偶校验方式选择，[15:13]未定义.LocalId:当前系统的节点标识号码；ParitySelect:0/3-无校验，1-奇校验；BuadSelect:0-9.6kHz，1-19.2kHz，2-57.6kHz，3-115.2kHz，4-250kHz，5-500kHz，6-800kHz，7-1MHz</translation>
+    </message>
+    <message>
+        <source>addr:16,default value:7,instruction:describe</source>
+        <translation type="obsolete">默认值：7（此参数不用修改），说明：[0]继电器驱动有效电平，[1]下臂IGBT门极驱动有效电平，[2]上臂IGBT门极驱动有效电平，[3]IGBT故障清除有效电平，[4]IGBT过流保护有效电平，[5]IGBT过温保护有效电平，[6]U相电流极性取反，[7]W相电流极性取反，[8]电流相序取反，[15:9]未定义。Sns：0-低电平有效，1-高电平有效；Inv：0-不取反，1-取反</translation>
+    </message>
+    <message>
+        <source>addr:17,default value:2916,instruction:describe</source>
+        <translation type="obsolete">默认值：2916（此参数不用修改），说明：[7:0]动态制动器延时，[8]主电源关断时禁止动态制动器，[9]伺服OFF时禁止动态制动器，[10]故障报警时禁止动态制动器，[11]超程时禁止动态制动器，[15:12]未定义</translation>
+    </message>
+    <message>
+        <source>addr:18,default value:25700,instruction:describe</source>
+        <translation type="obsolete">默认值：25700（此参数不用修改），说明：[7:0]抱闸打开延时，[15:8]抱闸动作延时</translation>
+    </message>
+    <message>
+        <source>addr:19,default value:2194,instruction:describe</source>
+        <translation type="obsolete">默认值：2194（此参数不用修改），说明：[0]伺服ON有效电平，[1]报警清除有效电平，[3:2]报警清除端复用，[4]正向超程有效电平，[6:5]正向超程端口复用，[7]反向超程有效电平，[9:8]反向超程端口复用，[10]行程方向，[11]命令清零有效电平，[13:12]命令清零端口复用，[15:14]未定义。Sns：0-低电平有效，1-高电平有效；TrvIDir:0-电机逆时针旋转时行程为正方向，1-电机顺时针旋转时行程为正方向；AlmRstFunc:0-报警清除，1~2-未定义，3-脉冲式位置命令禁止；POTFunc：0-正向超程，1~2未定义，3-脉冲式位置命令禁止；NOTFunc：0-反向超程，1~2未定义，3-脉冲式位置命令禁止；CmdRstFunc：0-位置偏差计数器清零，1-零速度钳位，2-未定义，3-脉冲式位置命令禁止</translation>
+    </message>
+    <message>
+        <source>addr:20,default value:512,instruction:describe</source>
+        <translation type="obsolete">默认值：512（此参数不用修改），说明：[0]伺服准备好有效电平，[2:1]伺服准备好端口复用，[3]抱闸打开有效电平，[5:4]抱闸打开端口复用，[6]报警输出有效电平，[8:7]报警输出端口复用，[9]定位完成有效电平，[11:10]定位完成端口复用，[15:12]未定义.Sns：0-低电平有效；RdyFunc：0-伺服准备好，1-转矩限制中，2-转速限制中，3-软件超程；HldBrkFunc：0-抱闸打开，1~3-未定义；AlmFunc：0-报警输出，1~3-未定义；CoinFunc：0-定义完成，1-零速度，2~3-未定义</translation>
+    </message>
+    <message>
+        <source>addr:21,default value:7,instruction:describe</source>
+        <translation type="obsolete">默认值：7（此参数不用修改），说明：[0]伺服ON控制源，[1]编码器使能控制，[2]轴使能控制，[3]电动机类型，[15:4]未定义.ExtCtrl：0-伺服ON由RS422控制，1-伺服ON由PLC控制；EncEnbl:0-编码器被禁止，1-编码器正常工作；AxisEnbl:0-当前轴被禁止，1-当前轴正常工作；MtrType:0-PMSM,1-IM</translation>
+    </message>
+    <message>
+        <source>addr:22,default value:0,instruction:describe</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：[1:0]转矩命令源，[3:2]速度命令源，[4]速度斜坡命令源，[5]位置命令源，[6]位置反馈源，[15:7]未定义.IqRefSel:0-速度环输出，1-数字式给定，2-模拟电压，3-0；SpdRefSel:0-位置环输出，1-斜坡式给定，2-数字式给定，3-模拟电压；RampRefSel:0-数字式给定，1-模拟电压；PosRefSel:0-脉冲式给定，1-数字式给定；PosFbkSel:0-旋转编码器，1-线性光栅尺</translation>
+    </message>
+    <message>
+        <source>addr:23,default value:7,instruction:describe</source>
+        <translation type="obsolete">默认值：7（此参数不用修改），说明：[1]位置命令使能，[1]命令脉冲模式，[2]命令脉冲边沿选择，[3]命令脉冲逻辑取反，[4]模拟命令极性取反，[15:5]未定义.PosCmdEnbl:0-位置指令脉冲无效，1-位置指令脉冲有效；PosCmdMode:0-Quadrature mode,and pulse is X4,1-Pulse/sign mode and pulse is X1；PosCmdEdge:下降沿有效，1-上升沿有效；PosCmdInv:0-位置指令脉冲不取反，1-位置指令脉冲取反；AnlgRefInv:0-不取反，1-取反</translation>
+    </message>
+    <message>
+        <source>addr:24,default value:0,instruction:VCmd_Offset= analog command voltage equal to zero, corresponding to the A/D conversion data</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：VCmd_Offset=模拟命令电压等于零时对应的A/D转换数据</translation>
+    </message>
+    <message>
+        <source>addr:25,default value:33,instruction:describe</source>
+        <translation type="obsolete">默认值：33（此参数不用修改），说明：[0]编码器Z脉冲使能，[1]测速脉冲选择，[3:2]测速脉冲边沿选择，[4]旋转反向，[5]旋转编码器Z脉冲的极性，[6]省线式增量型编码器，[15:7]未定义.ZPulsEnbl:0-禁止，1-允许；EncPhsMux：0-A相，1-B相；EncEdgeMux:0-正转或反转时下降沿有效，1-正转时上升沿有效或反转时下降沿有效，2-正转时下降沿有效或反转时上升沿有效，3-正转或反转时上升沿有效；RotEncInv:0-A相超前于B相，1-A相滞后于B相；RotEncZPol:0-负极性，1-正极性；WireSaving:0-非省线式，1-省线式</translation>
+    </message>
+    <message>
+        <source>addr:26,default value:16383,instruction:RotEnc_MaxCnt=4 * PPR-1, where PPR is the number of pulses per turn per encoder for the encoder</source>
+        <translation type="obsolete">默认值：16383（此参数不用修改），说明：RotEnc_MaxCnt=4×PPR-1，其中PPR为编码器每相每转发出的脉冲数</translation>
+    </message>
+    <message>
+        <source>addr:27,default value:1250,instruction:An electrical angle of an Z pulse opposite the negative potential of U</source>
+        <translation type="obsolete">默认值：1250（此参数不用修改），说明：Z脉冲相对于U相反电势负向过零点的电角度</translation>
+    </message>
+    <message>
+        <source>addr:28,default value:2,instruction:describe</source>
+        <translation type="obsolete">默认值：2（此参数不用修改），说明：[0]线性编码器反相，[1]线性编码器Z脉冲的极性，[15:2]未定义.LnrEncInv:0-不取反，1-取反；LnrEncZPol:0-负极性，1-正极性</translation>
+    </message>
+    <message>
+        <source>addr:29,default value:9,instruction:describe</source>
+        <translation type="obsolete">默认值：9（此参数不用修改），说明：[0]编码器分频输出使能，[1]输出脉冲来源，[2]输出脉冲反相，[3]输出Z脉冲的极性，[15:4]未定义.EncDivEnbl:0-禁止，1-允许；EncDivSrc:0-旋转编码器，1-直线光栅尺；EncDivInv:0-A相超前于B相，1-A相滞后于B相；EncDivZPol:0-负极性，1-正极性</translation>
+    </message>
+    <message>
+        <source>addr:30,default value:1,instruction:EncDiv_Num/EncDiv_Den≥1；Otherwise, the output pulse is uncertain</source>
+        <translation type="obsolete">默认值：1（此参数不用修改），说明：EncDiv_Num/EncDiv_Den≥1；否则输出脉冲不确定</translation>
+    </message>
+    <message>
+        <source>addr:31,default value:1,instruction:EncDiv_Num/EncDiv_Den≥1；Otherwise, the output pulse is uncertain</source>
+        <translation type="obsolete">默认值：1（此参数不用修改），说明：EncDiv_Num/EncDiv_Den≥1；否则输出脉冲不确定</translation>
+    </message>
+    <message>
+        <source>addr:48,default value:0,instruction:IfbU_Offset=U phase current equals zero, corresponding to the A/D conversion data</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：IfbU_Offset=U相电流等于零时对应的A/D转换数据</translation>
+    </message>
+    <message>
+        <source>addr:49,default value:0,instruction:IfbW_Offset=W phase current equals zero, corresponding to the A/D conversion data</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：IfbW_Offset=W相电流等于零时对应的A/D转换数据</translation>
+    </message>
+    <message>
+        <source>addr:50,default value:5148,instruction:for PMSM，IdScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，Among them, MHC is the maximum ideal range of current sensor, and Irated is the rated current effective value</source>
+        <translation type="obsolete">默认值：400W-7539,750W-5148（电机规格不同，计算出来的值不一样），说明：对于PMSM，IdScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，其中MHC为电流传感器的最大理想量程，电流传感器1圈时，MHC=24，电流传感器2圈时，MHC=12，电流传感器3圈时，MHC=8，Irated为额定电流有效值</translation>
+    </message>
+    <message>
+        <source>addr:51,default value:5148,instruction:for PMSM，IqScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，Among them, MHC is the maximum ideal range of current sensor, and Irated is the rated current effective value</source>
+        <translation type="obsolete">默认值：400W-7539,750W-5148（电机规格不同，计算出来的值不一样），说明：对于PMSM，IqScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，其中MHC为电流传感器的最大理想量程，电流传感器1圈时，MHC=24，电流传感器2圈时，MHC=12，电流传感器3圈时，MHC=8，Irated为额定电流有效值</translation>
+    </message>
+    <message>
+        <source>addr:52,default value:4096,instruction:ElecAngScl=P x 4096 x 2^12/ (4 * PPR), where P is the polar logarithm, and PPR is the number of pulses per phase per turn of the encoder</source>
+        <translation type="obsolete">泰格电机：4096，三协电机：5120（电机极对数不同，计算出来的值不一样），说明：ElecAngScl=P×4096×2^12/(4×PPR)，其中P为极对数，PPR为编码器每相每转发出的脉冲数（默认值：4096）</translation>
+    </message>
+    <message>
+        <source>addr:53,default value:0,instruction:For IM，SlipGain=RatedSlipSpeed/RatedIqRef=2^24×RatedSlipFreq(Hz)/CurrentLoopUpdateRate</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：对于IM，SlipGain=RatedSlipSpeed/RatedIqRef=2^24×RatedSlipFreq(Hz)/CurrentLoopUpdateRate</translation>
+    </message>
+    <message>
+        <source>addr:54,default value:65535,instruction:K1_Notch=k1×2^15，k1=1+a，a=(1-tan(Bw/2))/(1+tan(Bw/2))，Bw=2π×fb/fs,Where FS is the current loop sampling frequency, FB -3dB notch width; 1 = k1&lt;2, K1, and when the 2 notch filter has no effect</source>
+        <translation type="obsolete">默认值：65535（此参数不用修改），说明：K1_Notch=k1×2^15，k1=1+a，a=(1-tan(Bw/2))/(1+tan(Bw/2))，Bw=2π×fb/fs，其中fs为电流环采样频率，fb为-3dB陷波宽度；1≤k1&lt;2，且当k1→2时陷波滤波器不起作用</translation>
+    </message>
+    <message>
+        <source>addr:55,default value:0,instruction:K2_Notch=k2×2^15，k2=b×(1+a)，a=(1-tan(Bw/2))/(1+tan(Bw/2))，b=cosω0，Bw=2π×fb/fs，ω0=2π×f0/fs,Where FS is the current loop sampling frequency, F0 notch center frequency, FB -3dB notch width; 0 = k2&lt;2</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：K2_Notch=k2×2^15，k2=b×(1+a)，a=(1-tan(Bw/2))/(1+tan(Bw/2))，b=cosω0，Bw=2π×fb/fs，ω0=2π×f0/fs，其中fs为电流环采样频率，f0为陷波中心频率，fb为-3dB陷波宽度；0≤k2&lt;2</translation>
+    </message>
+    <message>
+        <source>addr:56,default value:0,instruction:Ktf=2^16 * (1-tan (omega c/2)) / (1 Tan (omega c/2)), Omega c=2 pi * fc/fs, where FS is the current loop sampling frequency, and FC is the -3dB clipping frequency</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：Ktf=2^16×(1-tan(ωc/2))/(1+tan(ωc/2))，ωc=2π×fc/fs，其中fs为电流环采样频率，fc为-3dB剪切频率</translation>
+    </message>
+    <message>
+        <source>addr:57,default value:21845,instruction:OvrLdLim=32768/coeff，Coeff for overload factor, e.g. is set to 1.5 times the rated value, OvrLdLim=21845</source>
+        <translation type="obsolete">默认值：21845（此参数不用修改），说明：OvrLdLim=32768/coeff，coeff为过载系数，e.g.设为额定值1.5倍时，OvrLdLim=21845</translation>
+    </message>
+    <message>
+        <source>addr:58,default value:12288,instruction:TrqLimP=4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of the current sensor, and Irated is the rated current effective value</source>
+        <translation type="obsolete">默认值：12288（此参数不用修改），说明：TrqLimP=4096×MLC/(SQRT(2)×Irated)，其中MLC为电流传感器的最大线性范围，Irated为额定电流有效值</translation>
+    </message>
+    <message>
+        <source>addr:59,default value:-12288,instruction:TrqLimN=-4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of the current sensor, and Irated is the rated current effective value</source>
+        <translation type="obsolete">默认值：-12288（此参数不用修改），说明：TrqLimN=-4096×MLC/(SQRT(2)×Irated)，其中MLC为电流传感器的最大线性范围，Irated为额定电流有效值</translation>
+    </message>
+    <message>
+        <source>addr:60,default value:1024,instruction:It is used to achieve large deviation, small gain, small deviation and large gain</source>
+        <translation type="obsolete">默认值：1024（此参数不用修改），说明：用于实现大偏差小增益、小偏差大增益</translation>
+    </message>
+    <message>
+        <source>addr:61,default value:2000,instruction:11 decimal places</source>
+        <translation type="obsolete">默认值：2000（可适当调节，不应过大（比如大于10000），也不应过小（比如小于100），不过建议使用默认值），说明：11个小数位</translation>
+    </message>
+    <message>
+        <source>addr:62,default value:1500,instruction:16 decimal places</source>
+        <translation type="obsolete">默认值：1500（可适当调节，不应过大（比如大于10000），也不应过小（比如小于100），不过建议使用默认值），说明：11个小数位</translation>
+    </message>
+    <message>
+        <source>addr:63,default value:2000,instruction:11 decimal places</source>
+        <translation type="obsolete">默认值：2000（可适当调节，不应过大（比如大于10000），也不应过小（比如小于100），不过建议使用默认值），说明：11个小数位</translation>
+    </message>
+    <message>
+        <source>addr:64,default value:1500,instruction:16 decimal places</source>
+        <translation type="obsolete">默认值：1500（可适当调节，不应过大（比如大于10000），也不应过小（比如小于100），不过建议使用默认值），说明：11个小数位</translation>
+    </message>
+    <message>
+        <source>addr:65,default value:0,instruction:For PMSM, Ked=8192 * P * MaxRPM * Ls * SQRT (2) * Irated/ (15 * 1.64676 * 310), in which P is the extreme logarithm, MaxRPM is the highest speed, Ls is motor winding inductance, and Irated is the rated current effective value</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：对于PMSM，Ked=8192×π×P×MaxRPM×Ls×SQRT(2)×Irated/(15×1.64676×310)，其中P为极对数，MaxRPM为最高转速，Ls为电机绕组电感，Irated为额定电流有效值</translation>
+    </message>
+    <message>
+        <source>addr:66,default value:0,instruction:For PMSM, Ked=8192 * P * MaxRPM  * pi / psi (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed of permanent magnet motor rotor flux for PSI</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：对于PMSM，Ked=8192×π×P×MaxRPM×ψ/(15×1.64676×310)，其中P为极对数，MaxRPM为最高转速，ψ为电机永磁转子磁链</translation>
+    </message>
+    <message>
+        <source>addr:67,default value:0,instruction:Ktg=2^14×(0~400%)</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：Ktg=2^14×(0~400%)</translation>
+    </message>
+    <message>
+        <source>addr:68,default value:0,instruction:Krt=2^22/(tr*fs)，Among them, FS is the current loop sampling frequency (Hz), and TR is the rotor time constant (s) of induction motors</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：Krt=2^22/(tr*fs)，其中fs为电流环采样频率(Hz)，tr为感应电机转子时间常数(s)</translation>
+    </message>
+    <message>
+        <source>addr:69,default value:0,instruction:RatedFreq=2^15*RatedRPM/MaxRPM</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：RatedFreq=2^15*RatedRPM/MaxRPM</translation>
+    </message>
+    <message>
+        <source>addr:70,default value:6632,instruction:Maximum voltage regulation of VqLim=2^14 * D axis /1.64676</source>
+        <translation type="obsolete">默认值：6632（此参数不用修改），说明：VdLim=2^14×D轴最大电压调制度/1.64676</translation>
+    </message>
+    <message>
+        <source>addr:71,default value:6632,instruction:Maximum voltage regulation of VqLim=2^14 * Q axis /1.64676</source>
+        <translation type="obsolete">默认值：6632（此参数不用修改），说明：VdLim=2^14×Q轴最大电压调制度/1.64676</translation>
+    </message>
+    <message>
+        <source>addr:72,default value:16384,instruction:Maximum current setting, motor rated =4096</source>
+        <translation type="obsolete">默认值：16384（此参数不用修改），说明：最大电流设定，电机额定=4096</translation>
+    </message>
+    <message>
+        <source>addr:80,default value:3200,instruction:SpdScl=2^15 x 60 x fclk/ (4 * PPR * MaxRPM * 256), wherein fclk is the system master clock frequency, PPR is the encoder line number, and MaxRPM is the highest speed</source>
+        <translation type="obsolete">默认值：3200（此参数不用修改），说明：SpdScl=2^15×60×fclk/(4×PPR×MaxRPM×256)，其中fclk为系统主时钟频率，PPR为编码器线数，MaxRPM为最高转速</translation>
+    </message>
+    <message>
+        <source>addr:81,default value:30,instruction:NilMtrSpdDly= speed ring sampling frequency * 60/ (4 * PPR * MinRPM), in which PPR is the encoder line, and MinRPM is the minimum speed</source>
+        <translation type="obsolete">默认值：30（此参数不用修改），说明：NilMtrSpdDly=速度环采样频率×60/(4×PPR×MinRPM)，其中PPR为编码器线数，MinRPM为最低转速</translation>
+    </message>
+    <message>
+        <source>addr:82,default value:30,instruction:NilCmdSpdDly=NilMtrSpdDly×(Electronic gear ratio)</source>
+        <translation type="obsolete">默认值：30（此参数不用修改），说明：NilCmdSpdDly=NilMtrSpdDly×电子齿轮比</translation>
+    </message>
+    <message>
+        <source>addr:83,default value:300,instruction:SpdCmp=2^15 * 60 * speed ring sampling frequency / (PPR * MaxRPM), in which PPR is the encoder line, and MaxRPM is the highest speed</source>
+        <translation type="obsolete">默认值：300（此参数不用修改），说明：SpdCmp=2^15×60×速度环采样频率/(PPR×MaxRPM)，其中PPR为编码器线数，MaxRPM为最高转速</translation>
+    </message>
+    <message>
+        <source>addr:84,default value:1,instruction:When the actual speed is less than MaxRPM * ZeroSpeed/2^15, the speed is considered to be zero</source>
+        <translation type="obsolete">默认值：1（此参数不用修改），说明：当实际转速小于MaxRPM×ZeroSpeed/2^15时，认为处于转速为零的状态</translation>
+    </message>
+    <message>
+        <source>addr:85,default value:256,instruction:8 decimal places</source>
+        <translation type="obsolete">默认值：256（此参数不用修改），说明：8个小数位</translation>
+    </message>
+    <message>
+        <source>addr:86,default value:256,instruction:8 decimal places</source>
+        <translation type="obsolete">默认值：256（此参数不用修改），说明：8个小数位</translation>
+    </message>
+    <message>
+        <source>addr:87,default value:0,instruction:Kfg=2^14×(0~400%)</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：Kfg=2^14×(0~400%)</translation>
+    </message>
+    <message>
+        <source>addr:88,default value:0,instruction:Kff=2^16×(1-tan(ωc/2))/(1+tan(ωc/2))，ωc=2π×fc/fs,Among them, FS is the speed ring sampling frequency, and FC is -3dB clipping frequency</source>
+        <translation type="obsolete">默认值：0（此参数不用修改），说明：Kff=2^16×(1-tan(ωc/2))/(1+tan(ωc/2))，ωc=2π×fc/fs，其中fs为速度环采样频率，fc为-3dB剪切频率</translation>
+    </message>
+    <message>
+        <source>addr:89,default value:25000,instruction:SpdLimP=2^15×(0~100%)</source>
+        <translation type="obsolete">默认值：25000（此参数不用修改），说明：SpdLimP=2^15×(0~100%)</translation>
+    </message>
+    <message>
+        <source>addr:90,default value:-25000,instruction:SpdLimN=-2^15×(0~100%)</source>
+        <translation type="obsolete">默认值：-25000（此参数不用修改），说明：SpdLimN=-2^15×(0~100%)</translation>
+    </message>
+    <message>
+        <source>addr:91,default value:25000,instruction:It is used to achieve large deviation, small gain, small deviation and large gain</source>
+        <translation type="obsolete">默认值：25000（此参数不用修改），说明：用于实现大偏差小增益、小偏差大增益</translation>
+    </message>
+    <message>
+        <source>addr:92,default value:100,instruction:5 decimal places</source>
+        <translation type="obsolete">默认值：100（可适当调节，不应过大（比如大于1000），也不应过小（比如小于10)），说明：5个小数位，</translation>
+    </message>
+    <message>
+        <source>addr:93,default value:200,instruction:13 decimal places</source>
+        <translation type="obsolete">默认值：200（可适当调节，不应过大（比如大于1000），也不应过小（比如小于10)），说明：5个小数位</translation>
+    </message>
+    <message>
+        <source>addr:94,default value:65535,instruction:KfV=2^16×(0~100%)，Among them: 0-IP control, 100%-PI control, 0~100%-PDFF control</source>
+        <translation type="obsolete">默认值：65535（此参数不用修改），说明：KfV=2^16×(0~100%)，其中：0-IP控制，100%-PI控制，0~100%-PDFF控制</translation>
+    </message>
+    <message>
+        <source>addr:95,default value:100,instruction:When the actual speed is less than MaxRPM * ZeroSpeed/2^15, turn off the brake signal</source>
+        <translation type="obsolete">默认值：100（此参数不用修改），说明：当实际转速小于MaxRPM×ZeroSpeed/2^15时，关断抱闸信号</translation>
+    </message>
+    <message>
+        <source>addr:112,default value:1,instruction:1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024</source>
+        <translation type="obsolete">默认值：1（此参数不用修改），说明：1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024</translation>
+    </message>
+    <message>
+        <source>addr:113,default value:1,instruction:1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024</source>
+        <translation type="obsolete">默认值：1（此参数不用修改），说明：1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024</translation>
+    </message>
+    <message>
+        <source>addr:114,default value:256,instruction:The actual limit is PosErrOvrLim * 256 pulse equivalent</source>
+        <translation type="obsolete">默认值：256（此参数不用修改），说明：实际限值为PosErrOvrLim×256个脉冲当量</translation>
+    </message>
+    <message>
+        <source>addr:115,default value:10,instruction:When the actual position deviation is less than CoinLim pulse equivalent, the position is considered to be complete</source>
+        <translation type="obsolete">默认值：10（此参数不用修改），说明：当实际位置偏差小于CoinLim个脉冲当量时，认为定位完成</translation>
+    </message>
+    <message>
+        <source>addr:116,default value:65535,instruction:A positive overshoot occurs when the actual position exceeds [POvrTrvLimH and POvrTrvLimL] pulses are equivalent</source>
+        <translation type="obsolete">默认值：65535（此参数不用修改），说明：当实际位置超过[POvrTrvLimH,POvrTrvLimL]个脉冲当量时，会发生正向超程</translation>
+    </message>
+    <message>
+        <source>addr:117,default value:32767,instruction:A positive overshoot occurs when the actual position exceeds [POvrTrvLimH and POvrTrvLimL] pulses are equivalent</source>
+        <translation type="obsolete">默认值：32767（此参数不用修改），说明：当实际位置超过[POvrTrvLimH,POvrTrvLimL]个脉冲当量时，会发生正向超程</translation>
+    </message>
+    <message>
+        <source>addr:118,default value:1,instruction:A reverse overshoot occurs when the actual position exceeds [NOvrTrvLimH and NOvrTrvLimL] pulses are equivalent</source>
+        <translation type="obsolete">默认值：1（此参数不用修改），说明：当实际位置超过[NOvrTrvLimH,NOvrTrvLimL]个脉冲当量时，会发生反向超程</translation>
+    </message>
+    <message>
+        <source>addr:119,default value:32768,instruction:A reverse overshoot occurs when the actual position exceeds [NOvrTrvLimH and NOvrTrvLimL] pulses are equivalent</source>
+        <translation type="obsolete">默认值：32768（此参数不用修改），说明：当实际位置超过[NOvrTrvLimH,NOvrTrvLimL]个脉冲当量时，会发生反向超程</translation>
+    </message>
+    <message>
+        <source>addr:120,default value:-32768,instruction:Ksf=2^16×T/(T+1),The T= /Ts, which is the filter time constant Ts for the position loop sampling period</source>
+        <translation type="obsolete">默认值：-32768（此参数不用修改），说明：Ksf=2^16×T/(T+1)，其中T=τ/Ts，τ为滤波时间常数，Ts为位置环采样周期</translation>
+    </message>
+    <message>
+        <source>addr:121,default value:10,instruction:5 decimal places</source>
+        <translation type="obsolete">默认值：10（可适当修改，不应过大（比如大于100），不应过小（比如小于2）），说明：5个小数位</translation>
+    </message>
+    <message>
+        <source>addr:178,default value:208,instruction:The motor encoders U, V, and W correspond to 010 rotor positions; are stored only in EEPROM</source>
+        <translation type="obsolete">默认值：208（此参数不用修改），说明：电机编码器U、V、W等于001时对应的转子位置；仅保存于EEPROM中</translation>
+    </message>
+    <message>
+        <source>addr:179,default value:1625,instruction:The motor encoders U, V, and W correspond to 011 rotor positions; are stored only in EEPROM</source>
+        <translation type="obsolete">默认值：1625（此参数不用修改），说明：电机编码器U、V、W等于010时对应的转子位置；仅保存于EEPROM中</translation>
+    </message>
+    <message>
+        <source>addr:180,default value:1875,instruction:The motor encoders U, V, and W correspond to 100 rotor positions; are stored only in EEPROM</source>
+        <translation type="obsolete">默认值：1875（此参数不用修改），说明：电机编码器U、V、W等于011时对应的转子位置；仅保存于EEPROM中</translation>
+    </message>
+    <message>
+        <source>addr:181,default value:1458,instruction:The motor encoders U, V, and W correspond to 101 rotor positions; are stored only in EEPROM</source>
+        <translation type="obsolete">默认值：1458（此参数不用修改），说明：电机编码器U、V、W等于100时对应的转子位置；仅保存于EEPROM中</translation>
+    </message>
+    <message>
+        <source>addr:182,default value:2292,instruction:The motor encoders U, V, and W correspond to 110 rotor positions; are stored only in EEPROM</source>
+        <translation type="obsolete">默认值：2292（此参数不用修改），说明：电机编码器U、V、W等于101时对应的转子位置；仅保存于EEPROM中</translation>
+    </message>
+    <message>
+        <source>addr:177,default value:1024,instruction:The motor encoders U, V, and W correspond to 001 rotor positions; are stored only in EEPROM</source>
+        <translation type="obsolete">默认值：1024（此参数不用修改），说明：电机编码器U、V、W等于110时对应的转子位置；仅保存于EEPROM中</translation>
+    </message>
+    <message>
+        <source>1.Parameter initial value: 1999, whether to modify: No.2.[15:0] PWM cycle, range: 1~4095.3. Description: IGBT switching frequency (Hz) and the system clock frequency of =0.5* / (PwmPeriod+1). When PwmMode=0, the non symmetric mode, current loop sampling frequency =2* switching frequency: when pwmMode=1, symmetric mode, current loop sampling frequency = switching frequency.</source>
+        <translation type="unfinished">1.参数初始值：1999，是否需要修改：否。2.[15:0]PWM周期，取值范围：1~4095。3.说明：IGBT开关频率（Hz）=0.5*系统主时钟频率/（PwmPeriod+1）。当PwmMode=0，即非对称模式下，电流环采样频率=2*开关频率：当pwmMode=1，即对称模式下，电流环采样频率=开关频率。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 10, whether to modify: No.2.[15:0] A/D sampling delay, value range: 0~255.3.: A/D sampling delay time (NS) = system master clock cycle *SampleStartDelay.</source>
+        <translation type="unfinished">1.参数初始值：10，是否需要修改：否。2.[15:0]A/D采样延时，取值范围：0~255。3.说明：A/D采样延迟时间（ns）=系统主时钟周期*SampleStartDelay。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 516, whether to modify: No.2.[7:0] no need to modify the speed loop sampling frequency ratio, range: 1~255, [15:8] position loop sampling frequency ratio, range: 1~255.3. Description: speed loop sampling frequency (Hz) = current loop position loop sampling frequency /SpdLpRate; sampling frequency (Hz) = speed loop sampling frequency /PosLpRate.</source>
+        <translation type="unfinished">1.参数初始值：516，是否需要修改：否。2.[7:0]速度环采样分频比，取值范围：1~255，[15:8]位置环采样分频比，取值范围：1~255。3.说明：速度环采样频率(Hz)=电流环采样频率/SpdLpRate；位置环采样频率(Hz)=速度环采样频率/PosLpRate。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 3000, whether to modify: No.2.[15:0] SVPWM calibration factor, value range: 0~4095.3.: ModScl=3 * (PwmPeriod+1) /2.</source>
+        <translation type="unfinished">1.参数初始值：3000，是否需要修改：否。2.[15:0]SVPWM定标因子，取值范围：0~4095。3.说明：ModScl=3×(PwmPeriod+1)/2。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 119, whether to modify: No,.2.[15:0] value range: 0~255.3.: IGBT dead time (NS) = system master clock cycle (NS) * (PwmDeadTm+1) cycle(ns)×(PwmDeadTm+1)</source>
+        <translation type="unfinished">1.参数初始值：119，是否需要修改：否。2.[15:0]，取值范围：0~255。3.说明：IGBT死区时间(ns)=系统主时钟周期(ns)×(PwmDeadTm+1)。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 24,whether to modify: No.2.[0]: the main power supply is off monitoring enable, range: 0~1 [1]; DC bus voltage compensation enable, range: 0~1; [2] radiator over temperature protection effective level, range: 0~1; [3] regenerative braking effective level, range: 0~1; [4]PWM mode limit range: 0~1; [15:5] is not defined, the range of.3.: any value: MPwrOffMonEnbl, DcBusCompEnbl:0- from this function, 1- allows the function; OvrTempSns, RegenBrkSns:0- active low 1-, high effective; asymmetric PwmMode:0- type, 1- type symmetry.</source>
+        <translation type="unfinished">1.参数初始值：24，是否需要修改：否。2.[0]主电源关断监控使能，取值范围：0~1；[1]直流母线电压补偿使能，取值范围：0~1；[2]散热器过温保护有效电平，取值范围：0~1；[3]再生制动有效电平，取值范围：0~1；[4]PWM模式限制，取值范围：0~1；[15:5]未定义，取值范围：任意值。3.说明：MPwrOffMonEnbl,DcBusCompEnbl:0-禁止该功能，1-允许该功能；OvrTempSns,RegenBrkSns:0-低电平有效，1-高电平有效；PwmMode:0-非对称式，1-对称式。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] undervoltage alarm enable, value range: 0~1.3. Description: 0- prohibit undervoltage alarm function, 1- allows undervoltage alarm function</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]欠压报警使能，取值范围：0~1。3.说明：0-禁止欠压报警功能，1-允许欠压报警功能。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] DcBusOffset, value range: 0~4095.3.: DcBusOffset= DC bus voltage is equal to zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]，取值范围：0~4095。3.说明：DcBusOffset=直流母线电压等于零时对应的A/D转换数据</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 4864,whether to modify: No.2.[7:0] the local node number ID, range: 0~255; [10:8] communication baud rate selection, range: 0~7, [12:11]; parity range: 0~3; [15:13] is not defined, range:.3. Description: any value node ID number of current LocalId: system; ParitySelect:0/3- no parity, parity BuadSelect:0-9.6kHz, 1-19.2kHz 1-; 2-57.6kHz, 3-115.2kHz, 4-250kHz, 5-500kHz, 6-800kHz, 7-1MHz..</source>
+        <translation type="unfinished">1.参数初始值：4864，是否需要修改：否。2.[7:0]本地节点ID号，取值范围：0~255；[10:8]通讯波特率选择，取值范围：0~7；[12:11]奇偶校验方式选择，取值范围：0~3；[15:13]未定义，取值范围：任意值。3.说明：LocalId:当前系统的节点标识号码；ParitySelect:0/3-无校验，1-奇校验；BuadSelect:0-9.6kHz，1-19.2kHz，2-57.6kHz，3-115.2kHz，4-250kHz，5-500kHz，6-800kHz，7-1MHz。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 7,whether to modify: No.2.[0] the relay driver effective level, range: 0~1; [1] arm IGBT gate drive effective level, range: 0~1; [2] arm IGBT gate drive effective level, range: 0~1; [3]IGBT fault clearing level, range: 0~1; [4]IGBT overcurrent protection effective level, range: 0~1; [5]IGBT over temperature protection effective level, range: 0~1; [6]U phase current polarity inversion, range: 0~1; [7]W phase current polarity inversion, range: 0~1 [8]; current phase inverted, range: 0~1; [15:9] is not defined range:.3., any value: Sns:0- active low 1- high effective; Inv:0- does not take anti 1-, anti.</source>
+        <translation type="unfinished">1.参数初始值：7，是否需要修改：否。2.[0]继电器驱动有效电平，取值范围：0~1；[1]下臂IGBT门极驱动有效电平，取值范围：0~1；[2]上臂IGBT门极驱动有效电平，取值范围：0~1；[3]IGBT故障清除有效电平，取值范围：0~1；[4]IGBT过流保护有效电平，取值范围：0~1；[5]IGBT过温保护有效电平，取值范围：0~1；[6]U相电流极性取反，取值范围：0~1；[7]W相电流极性取反，取值范围：0~1；[8]电流相序取反，取值范围：0~1；[15:9]未定义，取值范围：任意值。3.说明：Sns：0-低电平有效，1-高电平有效；Inv：0-不取反，1-取反。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 25700,whether to modify: No.2.[7:0] the brake open delay, range: 0~255; [15:8] brake delay, range: 0~255.3. Description: brake open delay brake delay =SOffToBOnDelayx1ms. =BrkRlyDelayx1ms;</source>
+        <translation type="unfinished">1.参数初始值：25700，是否需要修改：否。2.[7:0]抱闸打开延时，取值范围：0~255；[15:8]抱闸动作延时，取值范围：0~255。3.说明：抱闸打开延时=BrkRlyDelayx1ms；抱闸动作延时=SOffToBOnDelayx1ms。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 2194,whether to modify: No.2.[0] the servo ON effective level, range: 0~1; [1] alarm clearing level range: 0~1; [3:2] alarm clear reuse range: 0~3; [4] ultra positive effective level, range: 0~1; [6:5] positive super port reuse range: [7], 0~3; reverse overtravel effective level, range: 0~1; [9:8] reverse overtravel port multiplexing, range: 0~3; range of [10] travel direction: 0~1; the [11] command cleared effective level range: 0~1; [13:12] command cleared port multiplexing, range: 0~3; [15:14] is not defined that range: any value. Note: Sns:0- active low 1-, high effective; TrvIDir:0- motor counter clockwise when the stroke is the right direction, 1- motor rotates clockwise travel to a positive direction; AlmRstFunc:0- alarm Clear, 1~2- is not defined, 3- pulse position commands are prohibited; POTFunc:0- is super, 1~2 is not defined, 3- pulse position commands are prohibited; reverse NOTFunc:0- over range, 1~2 is not defined, 3- pulse position command prohibition; CmdRstFunc:0- position deviation counter reset, 1- zero speed clamp, 2- is not defined, 3- pulse the position command is prohibited.</source>
+        <translation type="unfinished">1.参数初始值：2194，是否需要修改：否。2.[0]伺服ON有效电平，取值范围：0~1；[1]报警清除有效电平，取值范围：0~1；[3:2]报警清除端复用，取值范围：0~3；[4]正向超程有效电平，取值范围：0~1；[6:5]正向超程端口复用，取值范围：0~3；[7]反向超程有效电平，取值范围：0~1；[9:8]反向超程端口复用，取值范围：0~3；[10]行程方向，取值范围：0~1；[11]命令清零有效电平，取值范围：0~1；[13:12]命令清零端口复用，取值范围：0~3；[15:14]未定义，取值范围：任意值。说明：Sns：0-低电平有效，1-高电平有效；TrvIDir:0-电机逆时针旋转时行程为正方向，1-电机顺时针旋转时行程为正方向；AlmRstFunc:0-报警清除，1~2-未定义，3-脉冲式位置命令禁止；POTFunc：0-正向超程，1~2未定义，3-脉冲式位置命令禁止；NOTFunc：0-反向超程，1~2未定义，3-脉冲式位置命令禁止；CmdRstFunc：0-位置偏差计数器清零，1-零速度钳位，2-未定义，3-脉冲式位置命令禁止。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 521,whether to modify: No.2.[0] the servo ready effective level, range: 0~1; [2:1] servo ready port multiplexing, range: 0~3; [3] brake open effective level, range: 0~1; [5:4] brake open port multiplexing, range: 0~3; [6] alarm output level range: [8:7], 0~1; alarm output port multiplexing, range: 0~3; [9] complete the effective level, range: 0~1; [11:10] completion port reuse, range: 0~3; [15:12] is not defined, the range of any value; note: Sns:0- low level; RdyFunc:0- servo ready, 1- torque limit in 2-, the speed limit in 3- software; HldBrkFunc:0- brake open, 1~3- is not defined; AlmFunc:0- alarm output, 1~3- is not defined; the CoinFunc:0- definition, 1- zero speed, 2~3- Definition.</source>
+        <translation type="unfinished">1.参数初始值：521，是否需要修改：否。2.[0]伺服准备好有效电平，取值范围：0~1；[2:1]伺服准备好端口复用，取值范围：0~3；[3]抱闸打开有效电平，取值范围：0~1；[5:4]抱闸打开端口复用，取值范围：0~3；[6]报警输出有效电平，取值范围：0~1；[8:7]报警输出端口复用，取值范围：0~3；[9]定位完成有效电平，取值范围：0~1；[11:10]定位完成端口复用，取值范围：0~3；[15:12]未定义，取值范围：任意值；说明：Sns：0-低电平有效；RdyFunc：0-伺服准备好，1-转矩限制中，2-转速限制中，3-软件超程；HldBrkFunc：0-抱闸打开，1~3-未定义；AlmFunc：0-报警输出，1~3-未定义；CoinFunc：0-定义完成，1-零速度，2~3-未定义。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 7,whether to modify: No.2.[0] the ON servo control source, range: 0~1; [1] encoder enable control range: 0~1; [2] axis enable control range: 0~1; [3] type motor, range: 0~1; [15:4] is not defined, the range of arbitrary values:.3. Description: ExtCtrl:0- ON RS422 1- by servo control, servo control by PLC ON; EncEnbl:0- 1- encoder encoder is prohibited, normal work; AxisEnbl:0- axis current is prohibited, the current 1- axis normal work; MtrType:0-PMSM, 1-IM.</source>
+        <translation type="unfinished">1.参数初始值：7，是否需要修改：否。2.[0]伺服ON控制源，取值范围：0~1；[1]编码器使能控制，取值范围：0~1；[2]轴使能控制，取值范围：0~1；[3]电动机类型，取值范围：0~1；[15:4]未定义，取值范围：任意值。3.说明：ExtCtrl：0-伺服ON由RS422控制，1-伺服ON由PLC控制；EncEnbl:0-编码器被禁止，1-编码器正常工作；AxisEnbl:0-当前轴被禁止，1-当前轴正常工作；MtrType:0-PMSM,1-IM。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0,whether to modify: No.2.[1:0] the torque command source, range: 0~3; [3:2] speed command source, range: 0~3; [4] speed ramp command source, range: 0~1; [5] position command source, range: 0~1; [6] position feedback source, the value range: 0~1; [15:7] is not defined, the range of values: any.3. Description: IqRefSel:0- speed loop output, 1- digital given, 2- analog voltage, 3-0; SpdRefSel:0- position loop output, 1- slope is given, 2- digital given, 3- analog voltage; RampRefSel:0- digital given, 1- analog voltage; PosRefSel:0- pulse is given, 1- digital given PosFbkSel:0- rotation; 1- linear encoder, grating.</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[1:0]转矩命令源，取值范围：0~3；[3:2]速度命令源，取值范围：0~3；[4]速度斜坡命令源，取值范围：0~1；[5]位置命令源，取值范围：0~1；[6]位置反馈源，取值范围：0~1；[15:7]未定义，取值范围：任意值。3.说明：IqRefSel:0-速度环输出，1-数字式给定，2-模拟电压，3-0；SpdRefSel:0-位置环输出，1-斜坡式给定，2-数字式给定，3-模拟电压；RampRefSel:0-数字式给定，1-模拟电压；PosRefSel:0-脉冲式给定，1-数字式给定；PosFbkSel:0-旋转编码器，1-线性光栅。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 7,whether to modify: No.2.[1] the position command enable, range: 0~1; [1] command pulse mode, range: 0~1; [2] command pulse edge selection, range: 0~1; [3] command pulse logic inversion, range: 0~1; [4] simulation command polarity inversion, range: 0~1; [15:5] is not defined, range:.3. Description: PosCmdEnbl:0- arbitrary value position command pulse is invalid, 1- position command pulse; PosCmdMode:0-Quadrature mode, and pulse is X4,1-Pulse/sign mode and pulse is X1; PosCmdEdge: the falling edge effectively, the rising edge of 1-; PosCmdInv:0- position command pulse not inverted, 1- position take the command pulse; AnlgRefInv:0- not inverted, 1- inverted</source>
+        <translation type="unfinished">1.参数初始值：7，是否需要修改：否。2.[1]位置命令使能，取值范围：0~1；[1]命令脉冲模式，取值范围：0~1；[2]命令脉冲边沿选择，取值范围：0~1；[3]命令脉冲逻辑取反，取值范围：0~1；[4]模拟命令极性取反，取值范围：0~1；[15:5]未定义，取值范围：任意值。3.说明：PosCmdEnbl:0-位置指令脉冲无效，1-位置指令脉冲有效；PosCmdMode:0-Quadrature mode,and pulse is X4,1-Pulse/sign mode and pulse is X1；PosCmdEdge:下降沿有效，1-上升沿有效；PosCmdInv:0-位置指令脉冲不取反，1-位置指令脉冲取反；AnlgRefInv:0-不取反，1-取。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] simulation command offset, value range: -32767~32767.3.: VCmd_Offset= analog command voltage equal to zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]模拟命令偏移量，取值范围：-32767~32767。3.说明：VCmd_Offset=模拟命令电压等于零时对应的A/D转换数据。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 33, whether to modify: No.2.[0] Z encoder pulse enable, range: 0~1; [1] velocity pulse selection, range: 0~1; [3:2] velocity pulse edge selection, range: 0~1; [4] reverse rotation, range: 0~3; polarity, Z pulse [5] rotary encoding device range: 0~1; [6] line type incremental encoder, range: 0~1; [15:7] is not defined, the range of.3. value: any description: ZPulsEnbl:0- ban, 1- allows the EncPhsMux:0-A phase, 1-B phase;</source>
+        <translation type="unfinished">1.参数初始值：33，是否需要修改：否。2.[0]编码器Z脉冲使能，取值范围：0~1；[1]测速脉冲选择，取值范围：0~1；[3:2]测速脉冲边沿选择，取值范围：0~1；[4]旋转反向，取值范围：0~3；[5]旋转编码器Z脉冲的极性，取值范围：0~1；[6]省线式增量型编码器，取值范围：0~1；[15:7]未定义，取值范围：任意值。3.说明：ZPulsEnbl:0-禁止，1-允许；EncPhsMux：0-A相，1-B相；EncEdgeMux:0-正转或反转时下降沿有效，1-正转时上升沿有效或反转时下降沿有效，2-正转时下降沿有效或反转时上升沿有效，3-正转或反转时上升沿有效；RotEncInv:0-A相超前于B相，1-A相滞后于B相；RotEncZPol:0-负极性，1-正极性；WireSaving:0-非省线式，1-省线式。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 16383, whether to modify: No.2.[15:0] incremental encoder line number, value range: 0~65535.3.: RotEnc_MaxCnt=4 * PPR-1, where PPR is the encoder, each phase of each turn of the pulse</source>
+        <translation type="unfinished">1.参数初始值：16383，是否需要修改：否。2.[15:0]增量式编码器线数，取值范围：0~65535。3.说明：RotEnc_MaxCnt=4×PPR-1，其中PPR为编码器每相每转发出的脉冲数。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1250, whether to modify: No,.2.[15:0] incremental encoder line number, value range: 0~65535.3.: Z pulse relative to U opposite potential, negative to zero point of electric angle</source>
+        <translation type="unfinished">1.参数初始值：1250，是否需要修改：否。2.[15:0]增量式编码器线数，取值范围：0~65535。3.说明：Z脉冲相对于U相反电势负向过零点的电角度。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 2, whether to modify: No.2.[0] the linear encoder RP, range: 0~1; polarity, Z pulse [1] linear encoder range: 0~1; [15:2] is not defined, range:.3. Description: LnrEncInv:0- is not an arbitrary value counter, 1- counter; LnrEncZPol:0- negative, 1- positive.</source>
+        <translation type="unfinished">1.参数初始值：2，是否需要修改：否。2.[0]线性编码器反相，取值范围：0~1；[1]线性编码器Z脉冲的极性，取值范围：0~1；[15:2]未定义，取值范围：任意值。3.说明：LnrEncInv:0-不取反，1-取反；LnrEncZPol:0-负极性，1-正极性。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 9, whether to modify: No.2.[0] encoder output enable frequency, range: 0~1; [1] output pulse source, range: 0~1; [2] output pulse inversion, range: 0~1; polarity [3] Z pulse output range: 0~1; [15:4] is not defined, the range: 0~1.3. Description: EncDivEnbl:0- ban, 1- allows EncDivSrc:0-; rotary encoder, 1- linear grating; EncDivInv:0-A phase advance in the B phase, 1-A phase lag in B phase; EncDivZPol:0- negative, 1- positive.</source>
+        <translation type="unfinished">1.参数初始值：9，是否需要修改：否。2.[0]编码器分频输出使能，取值范围：0~1；[1]输出脉冲来源，取值范围：0~1；[2]输出脉冲反相，取值范围：0~1；[3]输出Z脉冲的极性，取值范围：0~1；[15:4]未定义，取值范围：0~1。3.说明：EncDivEnbl:0-禁止，1-允许；EncDivSrc:0-旋转编码器，1-直线光栅尺；EncDivInv:0-A相超前于B相，1-A相滞后于B相；EncDivZPol:0-负极性，1-正极性。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] encoder output pulse frequency than the range of molecules: 1~65535.3. Description: EncDiv_Num/EncDiv_Den = 1; otherwise, the output pulse is uncertain.</source>
+        <translation type="unfinished">1.参数初始值：1，是否需要修改：否。2.[15:0]编码器输出脉冲分频比之分子，取值范围：1~65535。3.说明：EncDiv_Num/EncDiv_Den≥1；否则输出脉冲不确定。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] encoder output pulse frequency than the denominator, range: 1~65535.3. EncDiv_Num/EncDiv_Den = 1; otherwise, the output pulse is uncertain.</source>
+        <translation type="unfinished">1.参数初始值：1，是否需要修改：否。2.[15:0]编码器输出脉冲分频比之分母，取值范围：1~65535。3.说明：EncDiv_Num/EncDiv_Den≥1；否则输出脉冲不确定。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] U phase current offset, value range: -2047~2047.3.: IfbU_Offset=U phase current equal to zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]U相电流偏移量,取值范围：-2047~2047。3.说明：IfbU_Offset=U相电流等于零时对应的A/D转换数据。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] W phase current offset, value range: -2047~2047.3.: IfbW_Offset=W phase current equal to zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]W相电流偏移量,取值范围：-2047~2047。3.说明：IfbW_Offset=W相电流等于零时对应的A/D转换数据。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 5148, whether to modify: Yes, suggestion: calculated according to the description of the formula, where MHC is the maximum range of the current sensor, a circle, MHC=24, the two time round, MHC=12, the three time round, MHC=8.2.[15:0]D axis current calibration factor, range: 0~65535.3. Description: for PMSM, IdScl=MHC (2048 * 4096 * 2^10/ * SQRT * Irated * 1.64676 (2)), where MHC is the maximum range of ideal current sensor, Irated rated current value.</source>
+        <translation type="unfinished">1.参数初始值：5148，是否需要修改：是，修改建议：根据描述的公式计算，其中MHC为电流传感器的最大量程，绕一圈时，MHC=24,绕两圈时，MHC=12,绕三圈时，MHC=8。2.[15:0]D轴电流定标因子,取值范围：0~65535。3.说明：对于PMSM，IdScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，其中MHC为电流传感器的最大理想量程，Irated为额定电流有效值。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 5148, whether to modify: Yes, suggestion: calculated according to the description of the formula, where MHC is the maximum range of the current sensor, a circle, MHC=24, the two time round, MHC=12, the three time round, MHC=8.2.[15:0]Q axis current calibration factor, range: 0~65535.3. Description: for PMSM, IqScl=MHC (2048 * 4096 * 2^10/ * SQRT * Irated * 1.64676 (2)), where MHC is the maximum range of ideal current sensor, Irated rated current value.</source>
+        <translation type="unfinished">1.参数初始值：5148，是否需要修改：是，修改建议：根据描述的公式计算，其中MHC为电流传感器的最大量程，绕一圈时，MHC=24,绕两圈时，MHC=12,绕三圈时，MHC=8。2.[15:0]Q轴电流定标因子,取值范围：0~65535。3.说明：对于PMSM，IqScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，其中MHC为电流传感器的最大理想量程，Irated为额定电流有效值。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 4096, whether to modify: Yes, suggestion: PPR=4096.2.[15:0] electric angle calibration factor, range: 0~65535.3. Description: ElecAngScl=P * 4096 * 2^12/ (4 * PPR), where P is the pole number, PPR for each phase of each turn from the encoder pulse number.</source>
+        <translation type="unfinished">1.参数初始值：4096，是否需要修改：是，修改建议：其中PPR=4096。2.[15:0]电角度定标因子,取值范围：0~65535。3.说明：ElecAngScl=P×4096×2^12/(4×PPR)，其中P为极对数，PPR为编码器每相每转发出的脉冲数。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] the motor slip gain range: 0~65535.3. Description: for IM, SlipGain=RatedSlipSpeed/RatedIqRef=2^24 * RatedSlipFreq (Hz) /CurrentLoopUpdateRate.</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]感应电动机转差率增益,取值范围：0~65535。3.说明：对于IM，SlipGain=RatedSlipSpeed/RatedIqRef=2^24×RatedSlipFreq(Hz)/CurrentLoopUpdateRate。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 65535,whether to modify: No.2.[15:0] the torque command notch filter constant 1, range: 32768~65535.3. Description: K1_Notch=k1 * 2^15, k1=1+a, a= (1-tan (Bw/2) (1+tan) / (Bw/2) Bw=2), pi * fb/fs, where FS is the current loop frequency, FB -3dB notch width; 1 = k1&lt;2, K1, and when the 2 notch filter has no effect.</source>
+        <translation type="unfinished">1.参数初始值：65535，是否需要修改：否。2.[15:0]转矩命令陷波滤波常数1,取值范围：32768~65535。3.说明：K1_Notch=k1×2^15，k1=1+a，a=(1-tan(Bw/2))/(1+tan(Bw/2))，Bw=2π×fb/fs，其中fs为电流环采样频率，fb为-3dB陷波宽度；1≤k1&lt;2，且当k1→2时陷波滤波器不起作用。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] the torque command notch filter constant 2, range: 0~65535.3. Description: K2_Notch=k2 * 2^15, k2=b * (1+a), a= (1-tan (Bw/2) (1+tan) / (Bw/2) b=cos), Omega 0, Omega PI Bw=2 * fb/fs, 0=2 pi * f0/fs, where FS is the current loop sampling frequency, F0 notch center frequency, FB -3dB notch width; 0 = k2&lt;2.</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]转矩命令陷波滤波常数2,取值范围：0~65535。3.说明：K2_Notch=k2×2^15，k2=b×(1+a)，a=(1-tan(Bw/2))/(1+tan(Bw/2))，b=cosω0，Bw=2π×fb/fs，ω0=2π×f0/fs，其中fs为电流环采样频率，f0为陷波中心频率，fb为-3dB陷波宽度；0≤k2&lt;2。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] the torque command low-pass filter constant, range: 0~65535.3. Description: Ktf=2^16 * (1-tan (c/2) (1+tan) / (omega Omega PI, c/2)) c=2 * fc/fs, where FS is the current loop sampling frequency, FC -3dB shear frequency.</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]转矩命令低通滤波器常数,取值范围：0~65535。3.说明：Ktf=2^16×(1-tan(ωc/2))/(1+tan(ωc/2))，ωc=2π×fc/fs，其中fs为电流环采样频率，fc为-3dB剪切频率。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 21845, whether to modify: No.2.[15:0] overload protection threshold, value range: 0~65535.3.: OvrLdLim=32768/coeff, coeff is overload factor, e.g. is set to 1.5 times the rated value, OvrLdLim=21845.</source>
+        <translation type="unfinished">1.参数初始值：21845，是否需要修改：否。2.[15:0]过载保护门限,取值范围：0~65535。3.说明：OvrLdLim=32768/coeff，coeff为过载系数，e.g.设为额定值1.5倍时，OvrLdLim=21845。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 12288, whether to modify: No.2.[15:0] positive torque limit, range: 0~32767.3. Description: TrqLimP=4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of current sensor, Irated rated current value.</source>
+        <translation type="unfinished">1.参数初始值：12288，是否需要修改：否。2.[15:0]正向转矩限幅值,取值范围：0~32767。3.说明：TrqLimP=4096×MLC/(SQRT(2)×Irated)，其中MLC为电流传感器的最大线性范围，Irated为额定电流有效值。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: -12288, whether to modify: No.2.[15:0] reverse torque limit, range: -32767~-1.3. Description: TrqLimN=-4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of current sensor, Irated rated current value.</source>
+        <translation type="unfinished">1.参数初始值：-12288，是否需要修改：否。2.[15:0]反向转矩限幅值,取值范围：-32767~-1。3.说明：TrqLimN=-4096×MLC/(SQRT(2)×Irated)，其中MLC为电流传感器的最大线性范围，Irated为额定电流有效值。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1024, whether to modify: No.2.[15:0] current loop controller, integral error limit, value range: 0~16383.3.: big deviation, small gain, small deviation, big gain</source>
+        <translation type="unfinished">1.参数初始值：1024，是否需要修改：否。2.[15:0]电流环控制器积分误差限幅值,取值范围：0~16383。3.说明：大偏差小增益、小偏差大增益。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 2000, whether to modify: Yes, suggestion: according to the experience, the range of Kpid 100~1000, suggested the use of the initial value of.2.[15:0]D axis current loop controller proportional gain range: 0~65535.3. Description: 11 decimal places.</source>
+        <translation type="unfinished">1.参数初始值：2000，是否需要修改：是，修改建议：根据经验，Kpid的取值范围为100~1000,建议使用初始值。2.[15:0]D轴电流环控制器比例增益,取值范围：0~65535。3.说明：11个小数位。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1500, whether to modify: Yes, suggestion: according to the experience, the range of Kiid 100~1000, suggested the use of the initial value of integral gain,.2.[15:0]D axis current loop controller range: 0~65535.3. Description: 16 decimal places.</source>
+        <translation type="unfinished">1.参数初始值：1500，是否需要修改：是，修改建议：根据经验，Kiid的取值范围为100~1000,建议使用初始值。2.[15:0]D轴电流环控制器积分增益,取值范围：0~65535。3.说明：16个小数位。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 2000, whether to modify: Yes, suggestion: according to the experience, the range of Kpiq to 100~1000, and numerical Kpid, recommend the use of the initial value of.2.[15:0]Q axis current loop controller proportional gain range: 0~65535.3. Description: 11 decimal digits.</source>
+        <translation type="unfinished">1.参数初始值：2000，是否需要修改：是，修改建议：根据经验，Kpiq的取值范围为100~1000,数值需与Kpid一样，建议使用初始值。2.[15:0]Q轴电流环控制器比例增益,取值范围：0~65535。3.说明：11个小数位。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1500, whether to modify: Yes, suggestion: according to the experience, the range of Kpiq to 100~1000, and numerical Kiid, recommend the use of the initial value of integral gain,.2.[15:0]Q axis current loop controller range: 0~65535.3. Description: 16 decimal digits.</source>
+        <translation type="unfinished">1.参数初始值：1500，是否需要修改：是，修改建议：根据经验，Kpiq的取值范围为100~1000,数值需与Kiid一样，建议使用初始值。2.[15:0]Q轴电流环控制器积分增益,取值范围：0~65535。3.说明：16个小数位。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] D axis: whether the back EMF constant, range: 0~65535.3. Description: for PMSM, Ked=8192 * P * MaxRPM * pi * Ls * SQRT (2) * Irated/ (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed, Ls the motor winding inductance, Irated rated current value.</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]D轴反电动势常数,取值范围：0~65535。3.说明：对于PMSM，Ked=8192×π×P×MaxRPM×Ls×SQRT(2)×Irated/(15×1.64676×310)，其中P为极对数，MaxRPM为最高转速，Ls为电机绕组电感，Irated为额定电流有效值。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] Q axis: whether the back EMF constant, range: 0~65535.3. Description: for PMSM, Ked=8192 * P * MaxRPM * * pi / psi (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed, psi for permanent magnet motor rotor chain.</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]Q轴反电动势常数,取值范围：0~65535。3.说明：对于PMSM，Ked=8192×π×P×MaxRPM×ψ/(15×1.64676×310)，其中P为极对数，MaxRPM为最高转速，ψ为电机永磁转子磁链。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] torque simulation command weighting factor, value range: 0~65535.3. Description: Ktg=2^14 * (0~400%)</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0] 转矩模拟命令加权因子,取值范围：0~65535。3.说明：Ktg=2^14×(0~400%)。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] the induction motor rotor constant, range: 0~65535.3. Description: Krt=2^22/ (tr*fs), where FS is the current loop sampling frequency (Hz), TR for induction motor rotor time constant.</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]感应电动机转子常数,取值范围：0~65535。3.说明：Krt=2^22/(tr*fs)，其中fs为电流环采样频率(Hz)，tr为感应电机转子时间常数。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] induction motor rated frequency, value range: 0~65535.3.: RatedFreq=2^15*RatedRPM/MaxRPM.</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]感应电动机额定频率,取值范围：0~65535。3.说明：RatedFreq=2^15*RatedRPM/MaxRPM。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 6632, whether to modify: No.2.[15:0] D axis, voltage modulation, system limits, value range: 0~6632.3.: VdLim=2^14 * D axis, maximum voltage regulation system /1.64676</source>
+        <translation type="unfinished">1.参数初始值：6632，是否需要修改：否。2.[15:0]D轴电压调制度限幅值,取值范围：0~6632。3.说明：VdLim=2^14×D轴最大电压调制度/1.64676</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 6632, whether to modify: No.2.[15:0] Q axis, voltage modulation, system limits, value range: 0~6632.3.: VqLim=2^14 * Q axis, maximum voltage regulation system /1.64676</source>
+        <translation type="unfinished">1.参数初始值：6632，是否需要修改：否。2.[15:0]Q轴电压调制度限幅值,取值范围：0~6632。3.说明：VqLim=2^14×Q轴最大电压调制度/1.64676</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 16384, whether to modify: No.2.[15:0] over-current protection threshold, value range: 0~65535.3. Description: maximum current setting, motor rated =4096.</source>
+        <translation type="unfinished">1.参数初始值：16384，是否需要修改：否。2.[15:0]过流保护阀值,取值范围：0~65535。3.说明：最大电流设定，电机额定=4096。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 3200,whether to modify: No.2.[15:0] the speed of the scaling factor, range: 0~65535.3. Description: SpdScl=2^15 (4 x 60 x fclk/ x PPR x MaxRPM x 256), where fclk is the main system clock frequency, PPR encoder line number, MaxRPM is the highest speed.</source>
+        <translation type="unfinished">1.参数初始值：3200，是否需要修改：否。2.[15:0]速度定标因子,取值范围：0~65535。3.说明：SpdScl=2^15×60×fclk/(4×PPR×MaxRPM×256)，其中fclk为系统主时钟频率，PPR为编码器线数，MaxRPM为最高转速。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 30,whether to modify: No.2.[15:0] the motor zero velocity detection delay, range: 0~65535.3. Description: NilMtrSpdDly= speed loop sampling frequency (4 * 60/ * PPR * MinRPM), where PPR is the number of MinRPM encoder line, the minimum speed.</source>
+        <translation type="unfinished">1.参数初始值：30，是否需要修改：否。2.[15:0]电机零速检测延时,取值范围：0~65535。3.说明：NilMtrSpdDly=速度环采样频率×60/(4×PPR×MinRPM)，其中PPR为编码器线数，MinRPM为最低转速。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 30, whether to modify: No.2.[15:0] DC pulse zero speed detection delay, value range: 0~65535.3.: NilCmdSpdDly=NilMtrSpdDly * electronic gear ratio</source>
+        <translation type="unfinished">1.参数初始值：30，是否需要修改：否。2.[15:0]直流脉冲零速检测延时,取值范围：0~65535。3.说明：NilCmdSpdDly=NilMtrSpdDly×电子齿轮比。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 300, whether to modify: No.2.[15:0] speed measurement comparison of internal and the switching threshold value range: 0~32767.3. Description: SpdCmp=2^15 x 60 x speed loop sampling frequency / (PPR * MaxRPM), where PPR is the number of MaxRPM is the highest line encoder, speed.</source>
+        <translation type="unfinished">1.参数初始值：300，是否需要修改：否。2.[15:0]内部转速测量比较及切换门限,取值范围：0~32767。3.说明：SpdCmp=2^15×60×速度环采样频率/(PPR×MaxRPM)，其中PPR为编码器线数，MaxRPM为最高转速。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] zero speed approval range, value range: 0~65535.3. Description: when the actual speed is less than MaxRPM * ZeroSpeed/2^15, considered at the speed of zero state</source>
+        <translation type="unfinished">1.参数初始值：1，是否需要修改：否。2.[15:0]零转速认可范围,取值范围：0~65535。3.说明：当实际转速小于MaxRPM×ZeroSpeed/2^15时，认为处于转速为零的状态。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 256, whether to modify: No.2.[15:0] acceleration, value range: 0~65535.3. Description: 8 decimal places</source>
+        <translation type="unfinished">1.参数初始值：256，是否需要修改：否。2.[15:0]加速度,取值范围：0~65535。3.说明：8个小数位。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 256, whether to modify: No.2.[15:0] deceleration, value range: 0~65535.3. Description: 8 decimal places</source>
+        <translation type="unfinished">1.参数初始值：256，是否需要修改：否。2.[15:0]减速度,取值范围：0~65535。3.说明：8个小数位。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] speed feed-forward / analog command weighting factor, value range: 0~65535.3.: Kfg=2^14 * (0~400%)</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]速度前馈/模拟命令加权因子,取值范围：0~65535。3.说明：Kfg=2^14×(0~400%)。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] the speed feedforward / analog low-pass filter command constant, range: 0~65535.3. Description: Kff=2^16 * (1-tan (c/2) (1+tan) / (omega Omega PI, c/2)) c=2 * fc/fs, where FS is the speed loop sampling frequency, FC -3dB shear frequency.</source>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]速度前馈/模拟命令低通滤波器常数,取值范围：0~65535。3.说明：Kff=2^16×(1-tan(ωc/2))/(1+tan(ωc/2))，ωc=2π×fc/fs，其中fs为速度环采样频率，fc为-3dB剪切频率。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 25000, whether to modify: No.2.[15:0] forward rev limit amplitude, value range: 0~32767.3.: SpdLimP=2^15 * (0~100%)</source>
+        <translation type="unfinished">1.参数初始值：25000，是否需要修改：否。2.[15:0]正向转速限幅值,取值范围：0~32767。3.说明：SpdLimP=2^15×(0~100%)。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: -25000, whether to modify: No.2.[15:0] reverse rev limit amplitude, value range: -32767~-1.3.: SpdLimN=-2^15 * (0~100%)</source>
+        <translation type="unfinished">1.参数初始值：-25000，是否需要修改：否。2.[15:0]反向转速限幅值,取值范围：-32767~-1。3.说明：SpdLimN=-2^15×(0~100%)。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 25000, whether to modify: No.2.[15:0] speed loop controller, integral error limit, value range: 0~32767.3.: big deviation, small gain, small deviation, big gain</source>
+        <translation type="unfinished">1.参数初始值：25000，是否需要修改：否。2.[15:0]速度环控制器积分误差限幅值,取值范围：0~32767。3.说明：大偏差小增益、小偏差大增益。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 100, whether to modify: Yes, suggestion: according to the experience, 10 &lt; KpV &lt; = 1000, the need to modify the.2.[15:0] speed loop controller proportional gain range according to the actual situation: 0~65535.3. Description: 5 decimal places.</source>
+        <translation type="unfinished">1.参数初始值：100，是否需要修改：是,修改建议：根据经验，10 &lt;= KpV &lt;= 1000,需根据实际情况修改。2.[15:0]速度环控制器比例增益,取值范围：0~65535。3.说明：5个小数位。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 200, whether to modify: Yes, suggestion: according to the experience, 10 &lt; KiV &lt; = 1000, the need to modify the.2.[15:0] speed loop integral gain controller, according to the actual situation of the range: 0~65535.3. Description: 13 decimal places.</source>
+        <translation type="unfinished">1.参数初始值：200，是否需要修改：是,修改建议：根据经验，10 &lt;= KiV &lt;= 1000,需根据实际情况修改。2.[15:0]速度环控制器积分增益,取值范围：0~65535。3.说明：13个小数位。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 65535, whether to modify: No.2.[15:0] speed loop controller, PDFF gain, value range: 0~65535.3.KfV=2^16 * (0~100%), which: 0-IP control, 100%-PI control, 0~100%-PDFF control</source>
+        <translation type="unfinished">1.参数初始值：65535，是否需要修改：否。2.[15:0]速度环控制器PDFF增益,取值范围：0~65535。3.说明：KfV=2^16×(0~100%)，其中：0-IP控制，100%-PI控制，0~100%-PDFF控制。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 100,whether to modify: No.2.[15:0] the brake zero speed range: 0~65535.3. Description: when the actual speed is less than MaxRPM * ZeroSpeed/2^15, turn off the brake signal.</source>
+        <translation type="unfinished">1.参数初始值：100，是否需要修改：否。2.[15:0]抱闸零速,取值范围：0~65535。3.说明：当实际转速小于MaxRPM×ZeroSpeed/2^15时，关断抱闸信号。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] electronic gear of the molecule: 0~65535.3.: 1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024.</source>
+        <translation type="unfinished">1.参数初始值：1，是否需要修改：否。2.[15:0]电子齿轮之分子：0~65535。3.说明：1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] electronic gear of the denominator: 0~65535.3.: 1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024.</source>
+        <translation type="unfinished">1.参数初始值：1，是否需要修改：否。2.[15:0]电子齿轮之分母：0~65535。3.说明：1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 256, whether to modify: No.2.[15:0] position deviation is too large: 0~65535.3.: PosErrOvrLim limit of 256 * pulse equivalent</source>
+        <translation type="unfinished">1.参数初始值：256，是否需要修改：否。2.[15:0]位置偏差过大设置：0~65535。3.说明：实际限值为PosErrOvrLim×256个脉冲当量。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 10, whether to modify: No.2.[15:0] positioning completion range: 0~65535.3. Description: when the actual position deviation is less than CoinLim pulse equivalent, that position is completed</source>
+        <translation type="unfinished">1.参数初始值：10，是否需要修改：否。2.[15:0]定位完成范围：0~65535。3.说明：当实际位置偏差小于CoinLim个脉冲当量时，认为定位完成。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 65535, whether to modifyy: No.2.[15:0] forward stroke limit (high 16 bits):0~65535.3. Description: when the actual position exceeds [POvrTrvLimH, POvrTrvLimL] pulse equivalent, the positive forward process will occur</source>
+        <translation type="unfinished">1.参数初始值：65535，是否需要修改：否。2.[15:0]正向行程限制（高16位）：0~65535。3.说明：当实际位置超过[POvrTrvLimH,POvrTrvLimL]个脉冲当量时，会发生正向超程。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 32767, whether to modify: No.2.[15:0] forward stroke limit (low 16 bits):0~32767.3. Description: when the actual position exceeds [POvrTrvLimH, POvrTrvLimL] pulse equivalent, the positive forward process will occur</source>
+        <translation type="unfinished">1.参数初始值：32767，是否需要修改：否。2.[15:0]正向行程限制（低16位）：0~32767。3.说明：当实际位置超过[POvrTrvLimH,POvrTrvLimL]个脉冲当量时，会发生正向超程。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] reverse travel limit (high 16 bits):0~65535.3. Description: when the actual position exceeds [NOvrTrvLimH, NOvrTrvLimL] pulse equivalent, reverse reverse process will occur</source>
+        <translation type="unfinished">1.参数初始值：1，是否需要修改：否。2.[15:0]反向行程限制（高16位）：0~65535。3.说明：当实际位置超过[NOvrTrvLimH,NOvrTrvLimL]个脉冲当量时，会发生反向超程。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 32768, whether to modify: No.2.[15:0] reverse travel limit (low 16 bits):-32768~0.3. Description: when the actual position exceeds [NOvrTrvLimH, NOvrTrvLimL] pulse equivalent, reverse reverse process will occur</source>
+        <translation type="unfinished">1.参数初始值：32768，是否需要修改：否。2.[15:0]反向行程限制（低16位）：-32768~0。3.说明：当实际位置超过[NOvrTrvLimH,NOvrTrvLimL]个脉冲当量时，会发生反向超程。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: -32768,whether to modify: No.2.[15:0] the filter constants: 0~65535.3. Description: Ksf=2^16 * T/ (T+1), including T= /Ts, which is the filter time constant Ts for the position loop sampling period.</source>
+        <translation type="unfinished">1.参数初始值：-32768，是否需要修改：否。2.[15:0]平滑滤波器常数：0~65535。3.说明：Ksf=2^16×T/(T+1)，其中T=τ/Ts，τ为滤波时间常数，Ts为位置环采样周期。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 10, whether to modify: Yes, suggestion: according to the experience, 2 &lt; KpP &lt; = 100, can be adjusted according to the actual situation in general, recommend the use of the initial value of.2.[15:0] controller of position loop proportional gain: 0~65535.3. Description: 5 decimal places.</source>
+        <translation type="unfinished">1.参数初始值：10，是否需要修改：是，修改建议：根据经验，2 &lt;= KpP &lt;= 100,可根据实际情况调整，一般情况，建议使用初始值。2.[15:0]位置环控制器比例增益：0~65535。3.说明：5个小数位。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1024, whether to modify: No.2.[15:0] rotor initial angle 1:0~65535.3.indicating: motor encoder U, V, W equal to 001 when the corresponding rotor position; only stored in the EEPROM</source>
+        <translation type="unfinished">1.参数初始值：1024，是否需要修改：否。2.[15:0]转子初始角1：0~65535。3.说明：电机编码器U、V、W等于001时对应的转子位置；仅保存于EEPROM中。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 208, whether to modify: No.2.[15:0] rotor initial angle 2:0~65535.3.indicating: motor encoder U, V, W equal to 010 when the corresponding rotor position; only stored in the EEPROM</source>
+        <translation type="unfinished">1.参数初始值：208，是否需要修改：否。2.[15:0]转子初始角2：0~65535。3.说明：电机编码器U、V、W等于010时对应的转子位置；仅保存于EEPROM中。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 625, whether to modify: No.2.[15:0] rotor initial angle 3:0~65535.3.indicating: motor encoder U, V, W equal to 011 when the corresponding rotor position; only stored in the EEPROM</source>
+        <translation type="unfinished">1.参数初始值：625，是否需要修改：否。2.[15:0]转子初始角3：0~65535。3.说明：电机编码器U、V、W等于011时对应的转子位置；仅保存于EEPROM中。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1875, whether to modify: No.2.[15:0] rotor initial angle 4:0~65535.3.indicating: motor encoder U, V, W equal to 100 when the corresponding rotor position; only stored in the EEPROM</source>
+        <translation type="unfinished">1.参数初始值：1875，是否需要修改：否。2.[15:0]转子初始角4：0~65535。3.说明：电机编码器U、V、W等于100时对应的转子位置；仅保存于EEPROM中。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 1458, whether to modify: No.2.[15:0] rotor initial angle 5:0~65535.3.indicating: motor encoder U, V, W equal to 101 when the corresponding rotor position; only stored in the EEPROM</source>
+        <translation type="unfinished">1.参数初始值：1458，是否需要修改：否。2.[15:0]转子初始角5：0~65535。3.说明：电机编码器U、V、W等于101时对应的转子位置；仅保存于EEPROM中。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 2292, whether to modify: No.2.[15:0] rotor initial angle 6:0~65535.3.indicating: motor encoder U, V, W equal to 110 when the corresponding rotor position; only stored in the EEPROM</source>
+        <translation type="unfinished">1.参数初始值：2292，是否需要修改：否。2.[15:0]转子初始角6：0~65535。3.说明：电机编码器U、V、W等于110时对应的转子位置；仅保存于EEPROM中。</translation>
+    </message>
+    <message>
+        <source>1.parameter initial value: 2916,whether to modify: No.2.[7:0]: the dynamic brake delay range: 0~255; no dynamic brake, [8] main power shutdown range: 0~1; no dynamic brake, [9] servo OFF range: 0~1; [10] fault alarm when the prohibition of dynamic brake, range: 0~1; no dynamic brake, [11] process range: 0~1; [15:12] is not defined, any value value range:.3. Description: dynamic brake delay -DBRlyDelayx1ms, Inh:0- allows DB action, 1- banned DB action.</source>
+        <translation type="unfinished">1.参数初始值：2916，是否需要修改：否。2.[7:0]动态制动器延时，取值范围：0~255；[8]主电源关断时禁止动态制动器，取值范围：0~1；[9]伺服OFF时禁止动态制动器，取值范围：0~1；[10]故障报警时禁止动态制动器，取值范围：0~1；[11]超程时禁止动态制动器，取值范围：0~1；[15:12]未定义，取值范围：任意值。3.说明：动态制动器延时-DBRlyDelayx1ms,Inh:0-允许DB动作，1-禁止DB动作。</translation>
     </message>
 </context>
 <context>
@@ -7151,7 +7735,7 @@ You just need to set the count configs after this setting.</source>
     <name>SwitchCoordEditor</name>
     <message>
         <source>coordID</source>
-        <translation type="unfinished">工作台坐标系</translation>
+        <translation>工作台坐标系</translation>
     </message>
     <message>
         <source>world coord</source>
@@ -7924,6 +8508,10 @@ You just need to set the count configs after this setting.</source>
         <translation>近似原点</translation>
     </message>
     <message>
+        <source>unlimit</source>
+        <translation>不限时</translation>
+    </message>
+    <message>
         <source>templetID</source>
         <translation>模板号</translation>
     </message>
@@ -7938,10 +8526,6 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>wait input</source>
         <translation>等待输入</translation>
-    </message>
-    <message>
-        <source>unlimit</source>
-        <translation>不限时</translation>
     </message>
 </context>
 <context>

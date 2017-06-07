@@ -1741,7 +1741,7 @@
     </message>
     <message>
         <source></source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -6474,6 +6474,10 @@ please chose!</source>
     <message>
         <source>First Moudle Speed</source>
         <translation>首模速度</translation>
+    </message>
+    <message>
+        <source>ManualSpeedRank</source>
+        <translation type="unfinished">手动速度等级</translation>
     </message>
 </context>
 <context>

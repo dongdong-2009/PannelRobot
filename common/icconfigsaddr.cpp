@@ -242,7 +242,8 @@ extern  const ICAddrWrapper  s_rw_0_32_3_173(3,3,0,32,173,3,"");    //<机械结
 extern  const ICAddrWrapper  s_rw_0_32_3_174(3,3,0,32,174,3,"mm");    //<机械结构一轴X方向偏心
 extern  const ICAddrWrapper  s_rw_0_32_3_175(3,3,0,32,175,3,"mm");    //<机械结构一轴Y方向偏心
 extern  const ICAddrWrapper  s_rw_0_8_0_176(3,3,0,8,176,0,"");   //<机械结构报警声音输出次数
-extern  const ICAddrWrapper  s_rw_8_24_0_176(3,3,8,24,176,0,"");   //<机械结构预留
+extern  const ICAddrWrapper  s_rw_8_4_0_176(3,3,8,4,176,0,"");   //<机械结构手动最大速度设定
+extern  const ICAddrWrapper  s_rw_12_20_0_176(3,3,12,20,176,0,"");   //<机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_177(3,3,0,32,177,0,"");    //<机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_178(3,3,0,32,178,0,"");    //<机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_179(3,3,0,32,179,0,"");    //<机械结构预留

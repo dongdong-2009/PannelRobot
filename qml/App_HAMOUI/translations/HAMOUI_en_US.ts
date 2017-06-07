@@ -7420,7 +7420,7 @@ please chose!</source>
     </message>
     <message>
         <location filename="../settingpages/RunningConfigs.qml" line="29"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="77"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="72"/>
         <source>%</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7430,69 +7430,74 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="71"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="58"/>
+        <source>ManualSpeedRank</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="66"/>
         <source>First Moudle Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="83"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="79"/>
         <source>Independent Manual Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="97"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="103"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="110"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="116"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="122"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="128"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="134"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="140"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="93"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="99"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="106"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="112"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="118"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="124"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="130"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="136"/>
         <source>Manual Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="167"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="163"/>
         <source>select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="183"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="179"/>
         <source>IO Select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="199"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="195"/>
         <source>Mold Select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="223"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="219"/>
         <source>new</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="239"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="235"/>
         <source>delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="277"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="273"/>
         <source>x32 Mux for Origin mode Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="284"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="280"/>
         <source>x33 Mux for Auto mode Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="291"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="287"/>
         <source>x46 Mux for Startup Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="298"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="294"/>
         <source>x47 Mux for Stop Btn</source>
         <translation type="unfinished"></translation>
     </message>

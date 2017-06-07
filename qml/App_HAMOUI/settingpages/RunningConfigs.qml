@@ -48,40 +48,37 @@ Item {
                 configAddr: "s_rw_0_8_0_176"
             }
         }
-//        ICCheckableLineEdit{
-//            id:firstMoudleSpeedEdit
-//            anchors.top: configSec1.bottom
-//            anchors.topMargin: 6
-//            unit: qsTr("%")
-//            configAddr: "s_rw_1_31_1_289"
-//            configName: qsTr("First Moudle Speed")
-//            onIsCheckedChanged: {
-//                panelRobotController.setConfigValue("s_rw_0_1_0_289",isChecked ? 1 : 0);
-//                panelRobotController.syncConfigs();
-//            }
-//        }
         Row{
-            id:firstMoudleSpeedEdit
+            id:muxSpeedSetRow
             anchors.top: configSec1.bottom
             anchors.topMargin: 6
-            spacing: 4
-            ICCheckBoxEdit {
-                id:firstSpeedEdit
-                configAddr: "s_rw_0_1_0_289"
-                configName: qsTr("First Moudle Speed")
-                anchors.verticalCenter: parent.verticalCenter
-            }
+            spacing: 6
             ICConfigEdit{
-                configAddr: "s_rw_1_31_1_289"
-                enabled: firstSpeedEdit.isChecked
-                unit: qsTr("%")
+                id:manualMaxSpeedEdit
+                configName: qsTr("ManualSpeedRank")
+                configAddr: "s_rw_8_4_0_176"
+                inputWidth: 50
+            }
+            Row{
+                spacing: 4
+                ICCheckBoxEdit {
+                    id:firstSpeedEdit
+                    configAddr: "s_rw_0_1_0_289"
+                    configName: qsTr("First Moudle Speed")
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                ICConfigEdit{
+                    configAddr: "s_rw_1_31_1_289"
+                    enabled: firstSpeedEdit.isChecked
+                    unit: qsTr("%")
 
+                }
             }
         }
         ICCheckBoxEdit{
             id:independentManualSpeed
             text: qsTr("Independent Manual Speed")
-            anchors.top: firstMoudleSpeedEdit.bottom
+            anchors.top: muxSpeedSetRow.bottom
             anchors.topMargin: 6
             configAddr: "s_rw_0_32_0_211"
         }
@@ -148,7 +145,7 @@ Item {
             width: parent.width*0.5
             anchors.top:muxForInput.bottom
             anchors.topMargin: 6
-            height: parent.height - configSec1.height -independentManualSpeed.height - independentManualSpeedGroup.height - 26 -muxForInput.height -firstMoudleSpeedEdit.height
+            height: parent.height - configSec1.height -independentManualSpeed.height - independentManualSpeedGroup.height - 26 -muxForInput.height -muxSpeedSetRow.height
             ListModel{
                 id:selItem
             }
@@ -306,7 +303,7 @@ Item {
         onConfigValueChanged: {
             console.log(addr, newV, oldV);
             ICOperationLog.opLog.appendNumberConfigOperationLog(addr, newV, oldV);
-            if(addr == "s_rw_0_8_0_176"){
+            if(addr == "s_rw_0_8_0_176" || addr == "s_rw_8_4_0_176"){
                 panelRobotController.setConfigValue("s_rw_0_32_0_185", panelRobotController.configsCheckSum(ConfigDefines.machineStructConfigsJSON));
                 panelRobotController.syncConfigs();
             }
@@ -343,5 +340,4 @@ Item {
         }
         return moldByIOGroup;
     }
-
 }

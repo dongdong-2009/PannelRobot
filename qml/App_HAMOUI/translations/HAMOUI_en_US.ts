@@ -2062,7 +2062,6 @@
         <location filename="../settingpages/AxisConfigs.qml" line="281"/>
         <location filename="../settingpages/AxisConfigs.qml" line="741"/>
         <location filename="../settingpages/AxisConfigs.qml" line="753"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="766"/>
         <source>A ON</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2070,6 +2069,7 @@
         <location filename="../settingpages/AxisConfigs.qml" line="245"/>
         <location filename="../settingpages/AxisConfigs.qml" line="257"/>
         <location filename="../settingpages/AxisConfigs.qml" line="281"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="766"/>
         <source>A OFF</source>
         <translation type="unfinished"></translation>
     </message>

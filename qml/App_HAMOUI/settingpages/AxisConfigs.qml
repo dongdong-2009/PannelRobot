@@ -278,7 +278,7 @@ Item {
         var oldV = panelRobotController.getConfigValue(addr);
         panelRobotController.setConfigValue(addr, originPointInvert.isChecked ? 1 : 0);
         panelRobotController.syncConfigs();
-        ICOperationLog.appendOperationLog(AxisDefine.axisInfos[pdata.currentGroup].name + qsTr("Origin point dir Change to") + (originPointInvert.isChecked ? qsTr("A ON") : qsTr("A OFF")));
+        ICOperationLog.appendOperationLog(AxisDefine.axisInfos[pdata.currentGroup].name + qsTr("Origin point dir Change to") + (originPointInvert.isChecked ? qsTr("A OFF"):qsTr("A ON")));
 
 
         panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
@@ -763,7 +763,7 @@ Item {
                     }
                     ICCheckBox{
                         id:originPointInvert
-                        text: qsTr("A ON")
+                        text: qsTr("A OFF")
                     }
                 }
                 Row{

@@ -97,7 +97,7 @@ ICSettingConfigsScope {
                 items: [qsTr("SDO"), qsTr("PDO")]
                 configNameWidth: 100
                 configName:  qsTr("Host CAN b")
-                configAddr: "s_rw_8_8_0_288"
+//                configAddr: "s_rw_8_8_0_288"
             }
             Text {
                 id: cantips

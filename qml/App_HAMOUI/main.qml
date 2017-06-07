@@ -14,6 +14,7 @@ import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
 import "teach/ManualProgramManager.js" as ManualProgramManager
 import "ToolCoordManager.js" as ToolCoordManager
+import "ToolsCalibration.js" as ToolCalibrationManager
 import "settingpages/RunningConfigs.js" as Mdata
 import "../utils/utils.js" as Utils
 
@@ -601,18 +602,18 @@ Rectangle {
         //                }
         //            ]
         //        };
-//                var toTest = {
-//                    "dsID":"www.geforcevision.com.cam",
-//                    "dsData":[
-//                        {
-//                            "camID":"0",
-//                            "data":[
-//                                {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null},
-//                                {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null},
-//                            ]
-//                        }
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "dsData":[
+//                {
+//                    "camID":"0",
+//                    "data":[
+//                        {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":1,"ExtValue_1":0.89},
+//                        {"ModelID":"1","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":2,"ExtValue_1":0.70},
 //                    ]
-//                };
+//                }
+//            ]
+//        };
 //        var toTest = {
 //            "dsID":"www.geforcevision.com.cam",
 //            "dsData":[
@@ -744,7 +745,7 @@ Rectangle {
             }
         }
         if(posData.reqType == "query")
-            panelRobotController.sendExternalDatas(JSON.stringify(posData));
+            panelRobotController.sendExternalDatas(JSON.stringify(posData), '{"m0":3, "m1":3, "m2":3, "m3":0, "m4":0, "m5":3}');
         recordManagementPageInstance.onGetVisionData(posData);
     }
 
@@ -826,6 +827,11 @@ Rectangle {
                 panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
             }
 
+            var temTools = ToolCalibrationManager.toolCalibrationManager.toolCalibrationList();
+            for(i =0;i<temTools.length;++i){
+                panelRobotController.sendToolCalibration((temTools[i].id|(temTools[i].type<<16)),JSON.stringify(temTools[i].info));
+            }
+
             var v,isNormal=true,ret=[];
             var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
             for(i = 0, len = iosettings.length; i < len; ++i){
@@ -880,6 +886,7 @@ uint16_t io_all;
                     }
                     value|=v.outType<<18;
                     value|=isNormal<<19;
+                    value|=v.usefulMode<<20;
                     console.log(isNormal,ret[1],value);
                     panelRobotController.modifyConfigValue(32,value);
                 }
@@ -932,7 +939,8 @@ uint16_t io_all;
                     logic[1] |= v.isWait<<8;
                     logic[1] |= v.waitSignal<<9;
                     logic[1] |= v.waitDir<<16;
-                    logic[1] |= (i+1)<< 17;
+                    logic[1] |= v.barnID<< 17;
+                    logic[1] |= v.isAutoBarn << 21;
 //                                console.log(JSON.stringify(logic));
                     panelRobotController.sendIOBarnLogic(JSON.stringify(logic));
                 }

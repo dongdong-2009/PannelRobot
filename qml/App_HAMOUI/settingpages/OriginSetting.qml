@@ -84,7 +84,7 @@ Item {
                 visible: a0text.visible
                 configValue: parseInt(panelRobotController.getCustomSettings("a0mode",0,"originMode"));
                 z:80
-                items: [qsTr("short"),qsTr("long")]
+                items: [qsTr("short"),qsTr("long"),qsTr("type5"),qsTr("type6")]
             }
             ICLineEdit{
                 id:a0order
@@ -130,7 +130,7 @@ Item {
                 visible: a1text.visible
                 configValue: parseInt(panelRobotController.getCustomSettings("a1mode",0,"originMode"));
                 z:70
-                items: [qsTr("short"),qsTr("long")]
+                items: a0mode.items
             }
             ICLineEdit{
                 id:a1order
@@ -175,7 +175,7 @@ Item {
                 visible: a2text.visible
                 configValue: parseInt(panelRobotController.getCustomSettings("a2mode",0,"originMode"));
                 z:60
-                items: [qsTr("short"),qsTr("long")]
+                items: a0mode.items
 
             }
             ICLineEdit{
@@ -221,7 +221,7 @@ Item {
                 visible: a3text.visible
                 configValue: parseInt(panelRobotController.getCustomSettings("a3mode",0,"originMode"));
                 z:50
-                items: [qsTr("short"),qsTr("long")]
+                items: a0mode.items
 
             }
             ICLineEdit{
@@ -267,7 +267,7 @@ Item {
                 visible: a4text.visible
                 configValue: parseInt(panelRobotController.getCustomSettings("a4mode",0,"originMode"));
                 z:40
-                items: [qsTr("short"),qsTr("long")]
+                items: a0mode.items
 
             }
             ICLineEdit{
@@ -314,7 +314,7 @@ Item {
                 visible: a5text.visible
                 configValue: parseInt(panelRobotController.getCustomSettings("a5mode",0,"originMode"));
                 z:30
-                items: [qsTr("short"),qsTr("long")]
+                items: a0mode.items
 
             }
             ICLineEdit{
@@ -361,7 +361,7 @@ Item {
                 visible: a6text.visible
                 configValue: parseInt(panelRobotController.getCustomSettings("a6mode",0,"originMode"));
                 z:20
-                items: [qsTr("short"),qsTr("long")]
+                items: a0mode.items
 
             }
             ICLineEdit{
@@ -407,7 +407,7 @@ Item {
                 visible: a7text.visible
                 configValue: parseInt(panelRobotController.getCustomSettings("a7mode",0,"originMode"));
                 z:10
-                items: [qsTr("short"),qsTr("long")]
+                items: a0mode.items
             }
             ICLineEdit{
                 id:a7order
@@ -566,6 +566,9 @@ Item {
         }
     }
     Component.onCompleted: {
+        for(var i=0;i<8;++i){
+            originMode[i].setItemVisble(2,false);
+        }
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
     }

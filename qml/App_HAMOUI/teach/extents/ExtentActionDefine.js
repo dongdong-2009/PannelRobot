@@ -2,6 +2,8 @@
 Qt.include("../../configs/AxisDefine.js")
 Qt.include("../../configs/IODefines.js")
 Qt.include("../Teach.js")
+Qt.include("../../ToolsCalibration.js")
+Qt.include("../../ToolCoordManager.js")
 
 function ActionDefineItem(name, decimal){
     this.item = name;
@@ -173,7 +175,9 @@ var extentSwitchCoordAction = {
         "canActionUsePoint": false,
         "editableItems":{"editor":Qt.createComponent("SwitchCoordEditor.qml"), "itemDef":{"item":"SwitchCoordEditor"}},
         "toStringHandler":function(actionObject){
-            return qsTr("Switch Coord") + ":" + qsTr("CoordID") + actionObject.coordID;
+            return qsTr("Switch Coord") + ":" +"["+ qsTr("CoordID")+actionObject.coordID+"]"+ (actionObject.coordID==0?qsTr("world coord"):toolCoordManager.getToolCoord(actionObject.coordID).name);
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
         }
     };
 
@@ -230,7 +234,9 @@ var extentOutputAction = {
         "properties":[new ActionDefineItem("type", 0),
                     new ActionDefineItem("point", 0),
                     new ActionDefineItem("pointStatus", 0),
-                    new ActionDefineItem("delay", 1)],
+                    new ActionDefineItem("delay", 1),
+                    new ActionDefineItem("isWaitInput", 0)],
+
         "canTestRun":false,
         "canActionUsePoint": false,
         "editableItems":{"editor":Qt.createComponent("../OutputActionEditor.qml"), "itemDef":{"item":"OutputActionEditor"}},
@@ -241,15 +247,15 @@ var extentOutputAction = {
             ret.pointStatus = properties.pointStatus;
             ret.valveID = properties.valveID;
             ret.delay = properties.delay || 0;
+            ret.isWaitInput = properties.isWaitInput;
             return ret;
         },
         "toStringHandler":function(actionObject){
             var valve,valveStr;
             if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
                 valve = getValveItemFromValveID(actionObject.valveID);
-                return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
-                        + qsTr("Delay:") + actionObject.delay;
-
+                return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "+
+                        (actionObject.isWaitInput == 1?qsTr("wait input"):"")+" "+ qsTr("Delay:") + actionObject.delay;
             }else if(actionObject.type === VALVE_CHECK_START){
                 if(actionObject.isNormalX )
                     valveStr = qsTr("NormalX-")+xDefines[actionObject.point].pointName+":"+xDefines[actionObject.point].descr;
@@ -283,6 +289,7 @@ var extentOutputAction = {
             actionObject.pointStatus = editor.pointStatus;
             actionObject.valveID = editor.valveID;
             actionObject.delay = editor.delay;
+            actionObject.isWaitInput = editor.isWaitInput;
             if(actionObject.hasOwnProperty("acTime")){
                 delete actionObject.acTime;
             }
@@ -294,6 +301,7 @@ var extentOutputAction = {
             ret.pointStatus = editor.pointStatus;
             ret.valveID = editor.valveID;
             ret.delay = editor.delay;
+            ret.isWaitInput = editor.isWaitInput;
             return ret;
         }
     };
@@ -406,12 +414,55 @@ var extentParabolaAction = {
 var extentBarnLogicAction = {
         "action":203,
         "properties":[new ActionDefineItem("barnID", 0),
-    new ActionDefineItem("start", 0)],
+    new ActionDefineItem("start", 0),
+    new ActionDefineItem("delay",1)],
         "canTestRun":true,
         "canActionUsePoint": false,
         "editableItems":{"editor":Qt.createComponent("BarnLogicEditor.qml"), "itemDef":{"item":"BarnLogicEditor"}},
+        "generate":function(properties){
+            var ret = {"action":203};
+            ret.barnID = properties.barnID;
+            ret.start = properties.start;
+            ret.delay = properties.delay;
+            ret.barnName = properties.barnName;
+            return ret;
+        },
+        "getActionPropertiesHelper":function(editor){
+            var ret = {"action":203};
+            ret.barnID = editor.barnID;
+            ret.start = editor.start;
+            ret.delay = editor.delay;
+            ret.barnName = editor.barnName;
+            return ret;
+        },
+        "updateActionObjectHelper":function(editor,actionObject){
+            actionObject.action = 203;
+            actionObject.barnID = editor.barnID;
+            actionObject.start = editor.start;
+            actionObject.delay = editor.delay;
+            actionObject.barnName = editor.barnName;
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
+        },
         "toStringHandler":function(actionObject){
-            return qsTr("Barn")+qsTr("Ctrl") + ":" + qsTr("Barn")+actionObject.barnID + (actionObject.start ==1?qsTr("Start"):qsTr("Stop"))
+            var tmpStr = "";
+            if(actionObject.start ==0)tmpStr = qsTr("Stop");
+            else if(actionObject.start ==1)tmpStr = qsTr("Start");
+            else if(actionObject.start ==2)tmpStr = qsTr("Up");
+            else if(actionObject.start ==3)tmpStr = qsTr("Down");
+            return qsTr("Barn")+qsTr("Ctrl") + ":" + actionObject.barnName + tmpStr+" "+qsTr("delay")+":"+actionObject.delay;
+        }
+    };
+var extentSwitchToolAction = {
+        "action":801,
+        "properties":[new ActionDefineItem("toolID", 0)],
+        "canTestRun":false,
+        "canActionUsePoint": false,
+        "editableItems":{"editor":Qt.createComponent("SwitchToolEditor.qml"), "itemDef":{"item":"SwitchToolEditor"}},
+        "toStringHandler":function(actionObject){
+            return qsTr("Switch Tool") + ":" +"["+ qsTr("toolID")+actionObject.toolID+"]"+ (actionObject.toolID==0?qsTr("None"):toolCalibrationManager.getToolCalibration(actionObject.toolID).name);
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
         }
     };
 
@@ -427,4 +478,5 @@ var extentActions = [extentPENQIANGAction,
                      extentOutputAction,
                      extentIntervalOutputAction,
                      extentParabolaAction,
-                     extentBarnLogicAction];
+                     extentBarnLogicAction,
+                     extentSwitchToolAction];

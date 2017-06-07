@@ -777,7 +777,7 @@ public:
         eth0DataMonitor_->SetFilter(QRegExp(re));
     }
 
-    Q_INVOKABLE void sendExternalDatas(const QString& dsData);
+    Q_INVOKABLE void sendExternalDatas(const QString& dsData, const QString &decmals = "{\"m0\":3, \"m1\":3, \"m2\":3, \"m3\":3, \"m4\":3, \"m5\":3}");
 
     Q_INVOKABLE quint32 getMultiplexingConfig(int addr)
     {
@@ -873,11 +873,21 @@ public:
 
     Q_INVOKABLE void sendToolCoord(int id,const QString& data);
 
+    Q_INVOKABLE void sendToolCalibration(int id,const QString& data);
+
     Q_INVOKABLE void sendIOBarnLogic(const QString& data);
 
     Q_INVOKABLE void writeQKConfig(int axis, int addr, int data, bool ep = false);
 
     Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);
+
+    Q_INVOKABLE void writeMultipleQkPara(int addr, int len, const QString& qkData);
+
+    Q_INVOKABLE void readMultipleQkStatus(int addr, int len);
+
+    Q_INVOKABLE void writeMultipleQkEeprom(int addr, int len, const QString& qkData);
+
+    Q_INVOKABLE void readMultipleQkEeprom(int addr, int len);
 
     Q_INVOKABLE QString scanUSBFiles(const QString& filter) const;
     Q_INVOKABLE int writeUsbFile(const QString& fileName, const QString& content);

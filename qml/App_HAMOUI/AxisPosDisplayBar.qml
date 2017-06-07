@@ -237,7 +237,7 @@ Item {
         }
         onRefreshTimeOut:{
             if(container.state == "worldPos"){
-                var coordID = panelRobotController.iStatus(4);
+                var coordID = panelRobotController.iStatus(4)&0xff;
                 if(coordDisplay.coordIDOld !== coordID){
                     coordDisplay.coordIDOld = coordID;
                     var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();

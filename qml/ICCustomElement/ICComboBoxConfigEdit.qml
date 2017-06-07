@@ -12,12 +12,11 @@ Item {
     property variant indexMappedValue: []
 
     function getConfigValue(){
-        if(configValue<indexMappedValue.length)
+        if(configValue<indexMappedValue.length && configValue >=0)
         {
             return indexMappedValue[configValue];
         }
         return configValue;
-
     }
 
 

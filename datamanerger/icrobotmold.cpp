@@ -209,6 +209,7 @@ int WaitActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(v->value("point", 0).toInt());
     item.append(v->value("pointStatus", 0).toInt());
     item.append(ICUtility::doubleToInt(v->value("limit", 50).toDouble(),1));
+    item.append(v->value("isUnlimit", 0).toInt());
     item.append(ICRobotMold::MoldItemCheckSum(item));
 #else
 #endif
@@ -362,6 +363,7 @@ int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
     {
         item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 1));
     }
+    item.append(v->value("isWaitInput", 0).toInt());
     if(item.at(1) == 9 || item.at(1) == 10)
     {
         bool isNormalX = v->value("isNormalX", 0).toBool();
@@ -369,6 +371,7 @@ int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
             item[0] = F_CMD_IO_CHECK;
             item[1] = item[1]-9;
             item[3] = !v->value("xDir", 0).toBool();
+            item.pop_back();
         }
     }
     item.append(ICRobotMold::MoldItemCheckSum(item));
@@ -431,6 +434,7 @@ int WaitVisionDataActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(v->value("hostID", 0).toInt());
     item.append(0);
     item.append(ICUtility::doubleToInt(v->value("limit", 50).toDouble(),1));
+    item.append(0);
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 
@@ -462,7 +466,8 @@ int ConditionActionCompiler(ICMoldItem & item, const QVariantMap* v)
     {
         item.append(v->value("counterID").toUInt());
         item.append(v->value("autoClear").toInt());
-        item.append(v->value("pointStatus").toInt());
+        item.append(v->value("compareID").toInt());
+        item.append(v->value("compareTarget").toInt());
     }
     else if(act == F_CMD_MEMCOMPARE_CMD)
     {

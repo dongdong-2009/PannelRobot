@@ -53,7 +53,7 @@ Rectangle {
         OriginActionEditorAxisComponent{
             id:m0Axis
             axisName: AxisDefine.axisInfos[0].name
-            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3"), qsTr("Type4"),qsTr("Type5")]
+            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3"), qsTr("Type4"),qsTr("Type5"),qsTr("Type6")]
             axisDefine: pData.axisDefine.s1Axis
             rangeAddr: "s_rw_0_32_3_1000"
             z: 1
@@ -128,15 +128,15 @@ Rectangle {
         axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_FINE_ZERO});
 
 
-        for(var i=0;i<7;++i){
+        for(var i=0;i<8;++i){
             axis[i].axisItem.setTypeVisible(0,false);
             axis[i].axisItem.setTypeVisible(1,false);
+            axis[i].axisItem.setTypeVisible(4,false);
         }
 
         pData.axisEditors = axis;
         AxisDefine.registerMonitors(continer);
         onAxisDefinesChanged();
-
     }
     function onAxisDefinesChanged(){
         m0Axis.visible = AxisDefine.axisInfos[0].visiable;

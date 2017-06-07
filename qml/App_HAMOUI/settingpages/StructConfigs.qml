@@ -220,7 +220,7 @@ Item {
             anchors.leftMargin: 12
             ICConfigEdit{
                 id:sAcc1
-                configNameWidth: pdata.configNameWidth + 40
+                configNameWidth: pdata.configNameWidth + 35
                 configName: qsTr("SACC 1");
                 unit: qsTr("%")
                 configAddr: "s_rw_0_8_0_165"
@@ -274,6 +274,12 @@ Item {
                 id:isAnalogEn
                 configAddr: "s_rw_0_32_0_213"
                 configName: qsTr("Analog En")
+            }
+            ICConfigEdit{
+                id:ioBoardNum
+                configNameWidth: sAcc1.configNameWidth
+                configName: qsTr("IO Board Num")
+                configAddr: "s_rw_22_2_0_184"
             }
 
         }

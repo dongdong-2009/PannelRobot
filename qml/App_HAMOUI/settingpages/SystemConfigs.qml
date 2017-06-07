@@ -65,11 +65,6 @@ Item {
                 configName: qsTr("Axis Num")
                 configAddr: "s_rw_16_6_0_184"
             }
-            ICConfigEdit{
-                id:ioBoardNum
-                configName: qsTr("IO Board Num")
-                configAddr: "s_rw_22_2_0_184"
-            }
 
             ICButton{
                 id:clearProgramBtn

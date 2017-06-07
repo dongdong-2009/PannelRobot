@@ -69,7 +69,7 @@ Item {
                 else if(statusGroup.checkedItem == offBox)isOn = 0;
                 else if(statusGroup.checkedItem == risingEdgeBox)isOn = 2;
                 else if(statusGroup.checkedItem == fallingEdgeBox)isOn = 3;
-                ret.push(Teach.generateWaitAction(data.hwPoint, data.board, isOn, delay.configValue));
+                ret.push(Teach.generateWaitAction(data.hwPoint, data.board, isOn, delay.configValue,isUnlimitDelay.isChecked));
                 break;
             }
         }
@@ -103,6 +103,9 @@ Item {
                 id:simpleDelay
                 text: qsTr("Simple Delay")
                 visible: true
+            }
+            onCheckedItemChanged: {
+                isUnlimitDelay.isChecked = false;
             }
         }
         Rectangle{
@@ -195,8 +198,14 @@ Item {
                 visible: normalX.isChecked
                 text: qsTr("Falling Edge")
             }
+            ICCheckBox{
+                id:isUnlimitDelay
+                visible: !simpleDelay.isChecked
+                configName: qsTr("is unlimit")
+            }
             ICConfigEdit{
                 id:delay
+                enabled: !isUnlimitDelay.isChecked
                 configName: simpleDelay.isChecked?qsTr("Simple Delay:"):qsTr("Delay:")
                 unit: qsTr("s")
                 width: 100

@@ -1039,13 +1039,14 @@ var generateOutputAction = function(point, type, status, valveID, time){
 //    return ret;
 //}
 
-var generateWaitAction = function(which, type, status, limit){
+var generateWaitAction = function(which, type, status, limit, isUnlimit){
     return {
         "action":actions.F_CMD_IO_INPUT,
         "type": type,
         "point":which,
         "pointStatus":status,
-        "limit":limit || 0.50
+        "limit":limit || 0.50,
+        "isUnlimit":isUnlimit || false,
     };
 }
 
@@ -1079,12 +1080,13 @@ var generateJumpAction = function(flag){
     };
 }
 
-var generateCounterJumpAction = function(flag, counterID, status, autoClear){
+var generateCounterJumpAction = function(flag, counterID, compareID,compareTarget,autoClear){
     return {
         "action":actions.F_CMD_PROGRAM_JUMP2,
         "flag": flag || 0,
         "counterID":counterID,
-        "pointStatus":status,
+        "compareID":compareID||0,
+        "compareTarget":compareTarget ||0,
         "autoClear": autoClear || false
     };
 }
@@ -1311,7 +1313,7 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     return ret;
 }
 
-var originType = [qsTr("Type 1"), qsTr("Type 2"), qsTr("Type 3"),qsTr("Type 4"),qsTr("Type 5")]
+var originType = [qsTr("Type 1"), qsTr("Type 2"), qsTr("Type 3"),qsTr("Type 4"),qsTr("Type 5"),qsTr("Type 6")]
 
 var f_CMD_FINE_ZEROToStringHandler = function(actionObject){
     var ret =  qsTr("origin") + "-" + axisInfos[actionObject.axis].name + ":" + " " +  originType[actionObject.originType] + " " +
@@ -1342,9 +1344,8 @@ var conditionActionToStringHandler = function(actionObject, record){
         if(c == null){
             return qsTr("IF:") + qsTr("Invalid Counter");
         }
-
         return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
-                (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
+               cmdStrs[actionObject.compareID] + actionObject.compareTarget + " " + qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
     }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         var leftStr,rightStr;
@@ -1366,6 +1367,12 @@ var conditionActionToStringHandler = function(actionObject, record){
         else if(actionObject.disType == 2){
             leftStr = qsTr("Current alarm num");
             rightStr = actionObject.selAlarm;
+        }
+        else if(actionObject.disType == 3){
+            if(actionObject.leftAddr == 58753024)leftStr = qsTr("templetID");
+            else if(actionObject.leftAddr == 58818560)leftStr = qsTr("colorID");
+            else if(actionObject.leftAddr == 58884096)leftStr = qsTr("simiValue");
+            rightStr = actionObject.rightAddr;
         }
         else{
             leftStr = qsTr("Left Addr:") + actionObject.leftAddr;
@@ -1412,8 +1419,7 @@ var waitActionToStringHandler = function(actionObject){
         statusStr = qsTr("FallingEdge");
     if(actionObject.type==100)return qsTr("Delay:") + actionObject.limit+"s";
     else return qsTr("Wait:") + getXDefineFromHWPoint(actionObject.point, actionObject.type).xDefine.descr +
-            statusStr + " " +
-            qsTr("Limit:") + actionObject.limit;
+            statusStr + " " + (actionObject.isUnlimit == true?qsTr("unlimit"):qsTr("Limit:") + actionObject.limit);
 }
 
 var checkActionToStringHandler = function(actionObject){
@@ -1468,8 +1474,8 @@ var outputActionToStringHandler = function(actionObject){
     var valve,valveStr;
     if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
         valve = getValveItemFromValveID(actionObject.valveID);
-        return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
-                + qsTr("Delay:") + actionObject.delay;
+        return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "+
+                (actionObject.isWaitInput == 1?qsTr("wait input"):"")+" "+ qsTr("Delay:") + actionObject.delay;
 
     }else if(actionObject.type === VALVE_CHECK_START){
         if(actionObject.isNormalX )
@@ -1958,6 +1964,7 @@ function customActionGenerator(actionDefine){
         actionDefine.updateActionObjectHelper = function(editor, actionObject){
             for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
                 actionObject[actionDefine.properties[i].item] = editor[actionDefine.properties[i].item];
+                console.log(actionDefine.properties[i].item,editor[actionDefine.properties[i].item]);
             }
             if(actionDefine.canActionUsePoint){
                 actionObject.points = editor.points;

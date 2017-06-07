@@ -5,6 +5,7 @@ import "configs/AxisDefine.js" as AxisDefine
 import "ShareData.js" as ShareData
 import "../utils/Storage.js" as Storage
 import "ToolCoordManager.js" as ToolCoordManager
+import "ToolsCalibration.js" as ToolsCalibrationManager
 
 MouseArea{
     id:instance
@@ -1093,11 +1094,32 @@ MouseArea{
                     var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();
                     coords.splice(0, 0, qsTr("0:BaseCoord"));
                     items = coords;
-                    configValue = panelRobotController.iStatus(4);
+                    configValue = panelRobotController.iStatus(4)&0xff;
                 }
             }
             onConfigValueChanged: {
                 panelRobotController.modifyConfigValue(21,parseInt(items[configValue][0]));
+            }
+        }
+        ICComboBoxConfigEdit{
+            id:toolSel
+            visible: false
+            configNameWidth: coordSel.configNameWidth
+            anchors.top: coordSel.bottom
+            anchors.topMargin: 4
+            anchors.left: verSpliteLine.right
+            anchors.leftMargin: 4
+            configName: qsTr("Tool Select")
+            onVisibleChanged: {
+                if(visible){
+                    var tmpTools =ToolsCalibrationManager.toolCalibrationManager.toolCalibrationNameList();
+                    tmpTools.splice(0, 0, ("0:"+qsTr("None")));
+                    items = tmpTools;
+                    configValue = panelRobotController.iStatus(4)>>16;
+                }
+            }
+            onConfigValueChanged: {
+                panelRobotController.modifyConfigValue(63,parseInt(items[configValue][0]));
             }
         }
 

@@ -80,7 +80,6 @@ function ToolCoordManager(){
                                                id,name,JSON.stringify(info)));
             if(rs.rowsAffected > 0){
                 toolCoords[id] = {"id":id,"name":name,"info":info};
-//                manager.informMonitor("onToolCoordAdded",toolCoords[id]);
             }
         });
         return toRet;
@@ -92,7 +91,6 @@ function ToolCoordManager(){
                                               id));
             if(rs.rowsAffected > 0){
                 toolCoords[id] = undefined;
-//                manager.informMonitor("onToolCoordRemoved",id);
             }
         });
     }
@@ -108,7 +106,6 @@ function ToolCoordManager(){
                                                name,JSON.stringify(info),id));
             if(rs.rowsAffected > 0){
                 toolCoords[id] ={"id":id,"name":name,"info":info};
-//                manager.informMonitor("onToolCoordChange",toolCoords[id]);
             }
         });
     }
@@ -118,20 +115,5 @@ function ToolCoordManager(){
         this.updateToolCoord(toUpdateID, toolCoords[toUpdateID].name, info);
         return toUpdateID;
     }
-
-//    this.registerMonitor = function(obj){
-//        this.monitors.push(obj)
-//    }
-
-//    this.informMonitor = function(event, info){
-//        var m;
-//        for(var i = 0; i < this.monitors.length; ++i){
-//            m = this.monitors[i];
-//            if(m.hasOwnProperty(event))
-//                m[event](info);
-//        }
-//    }
-
-
 }
     var toolCoordManager= new ToolCoordManager();

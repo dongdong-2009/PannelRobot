@@ -801,7 +801,7 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
         }
         ICMachineConfigPTR mc = ICMachineConfig::CurrentMachineConfig();
         mc->SetBareMachineConfigs(tmp);
-        qDebug()<<v;
+        qDebug()<<"v"<<v;
     }
     if(addr == 156)
     {
@@ -1259,6 +1259,20 @@ void PanelRobotController::sendToolCoord(int id,const QString& data)
     ICRobotVirtualhost::sendMoldToolCoordDef(host_,tmp);
 }
 
+void PanelRobotController::sendToolCalibration(int id,const QString& data)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(data.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp;
+    tmp.append(id);
+    for(int i=0;i<result.size();i++)
+        tmp.append(ICUtility::doubleToInt(result.at(i).toDouble(), 3));
+    ICRobotVirtualhost::sendMoldToolCalibrationDef(host_,tmp);
+}
+
 void PanelRobotController::sendIOBarnLogic(const QString& data)
 {
     QJson::Parser parser;
@@ -1500,11 +1514,12 @@ QString PanelRobotController::disableImage(const QString &enabledImage)
     return ret;
 }
 
-void PanelRobotController::sendExternalDatas(const QString& dsData)
+void PanelRobotController::sendExternalDatas(const QString& dsData, const QString& decmals)
 {
     QJson::Parser parser;
     bool ok;
     qDebug()<<"sendExternalDatas"<<dsData;
+    QVariantMap decimasMap = parser.parse(decmals.toLatin1(), &ok).toMap();
     QVariantMap result = parser.parse (dsData.toLatin1(), &ok).toMap();
     if(!ok) return;
     int hostID = result.value("hostID").toInt();
@@ -1514,12 +1529,12 @@ void PanelRobotController::sendExternalDatas(const QString& dsData)
     for(int i = 0; i < ds.size(); ++i)
     {
         posData = ds.at(i).toMap();
-        toSendData<<ICUtility::doubleToInt(posData.value("m0").toDouble(),3)
-                 <<ICUtility::doubleToInt(posData.value("m1").toDouble(),3)
-                <<ICUtility::doubleToInt(posData.value("m2").toDouble(),3)
-               <<ICUtility::doubleToInt(posData.value("m3").toDouble(),3)
-              <<ICUtility::doubleToInt(posData.value("m4").toDouble(),3)
-             <<ICUtility::doubleToInt(posData.value("m5").toDouble(),3);
+        toSendData<<ICUtility::doubleToInt(posData.value("m0").toDouble(),decimasMap.value("m0").toInt())
+                 <<ICUtility::doubleToInt(posData.value("m1").toDouble(),decimasMap.value("m1").toInt())
+                <<ICUtility::doubleToInt(posData.value("m2").toDouble(),decimasMap.value("m2").toInt())
+               <<ICUtility::doubleToInt(posData.value("m3").toDouble(),decimasMap.value("m3").toInt())
+              <<ICUtility::doubleToInt(posData.value("m4").toDouble(),decimasMap.value("m4").toInt())
+             <<ICUtility::doubleToInt(posData.value("m5").toDouble(),decimasMap.value("m5").toInt());
     }
     if(ds.size() != 0)
         ICRobotVirtualhost::SendExternalDatas(host_, hostID, toSendData);
@@ -1993,6 +2008,87 @@ void PanelRobotController::readQKConfig(int axis, int addr, bool ep)
             this,
             SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)),
             Qt::UniqueConnection);
+}
+
+void PanelRobotController::writeMultipleQkPara(int addr,int len, const QString& qkData)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(qkData.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp,tmp16;
+    tmp.append(len);
+    int i,l,tmpH,tmpL;
+    for(i=0,l=result.size();i<l;i++)
+    {
+        tmp.append(result.at(i).toInt());
+    }
+    for(i=0,l=tmp.count();i<l;i+=2)
+    {
+        tmpL = tmp[i];
+        if(i+1 < l){
+            tmpH = tmp[i+1];
+        }
+        else{
+            tmpH = 0;
+        }
+        tmp16.append((tmpL&0xffff)|(tmpH<<16));
+    }
+    qDebug()<<tmp16;
+    ICRobotVirtualhost::WriteQkPara(host_,addr,tmp16);
+}
+
+void PanelRobotController::readMultipleQkStatus(int addr,int len)
+{
+    int sentCnt = len/32;
+    int lastSendLen = len%32;
+    for(int i=0;i<sentCnt;i++)
+    {
+        ICRobotVirtualhost::AddReadQkConfigCommand(host_,addr+i*32,32);
+    }
+    ICRobotVirtualhost::AddReadQkConfigCommand(host_,addr+sentCnt*32,lastSendLen);
+}
+
+void PanelRobotController::writeMultipleQkEeprom(int addr, int len, const QString& qkData)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(qkData.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp,tmp16;
+    tmp.append(len);
+    int i,l,tmpH,tmpL;
+    for(i=0,l=result.size();i<l;i++)
+    {
+        tmp.append(result.at(i).toInt());
+    }
+    for(i=0,l=tmp.count();i<l;i+=2)
+    {
+        tmpL = tmp[i];
+        if(i+1 < l)
+        {
+            tmpH = tmp[i+1];
+        }
+        else{
+            tmpH = 0;
+        }
+        tmp16.append((tmpL&0xffff)|(tmpH<<16));
+    }
+    ICRobotVirtualhost::WriteQkEeprom(host_,addr,tmp16);
+}
+
+void PanelRobotController::readMultipleQkEeprom(int addr,int len)
+{
+    bool isEeprom = true;
+    int sentCnt = len/32;
+    int lastSendLen = len%32;
+    for(int i=0;i<sentCnt;i++)
+    {
+        ICRobotVirtualhost::AddReadQkConfigCommand(host_,addr+i*32,32,isEeprom);
+    }
+    ICRobotVirtualhost::AddReadQkConfigCommand(host_,addr+sentCnt*32,lastSendLen,isEeprom);
 }
 
 QString PanelRobotController::scanUSBFiles(const QString &filter) const

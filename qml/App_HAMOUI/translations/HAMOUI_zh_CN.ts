@@ -686,7 +686,7 @@
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1637,6 +1637,10 @@
         <source>Encode Type5</source>
         <translation>旋转编码器</translation>
     </message>
+    <message>
+        <source>Origin point dir Change to</source>
+        <translation>原点开关方向变为</translation>
+    </message>
 </context>
 <context>
     <name>AxisMemposEditor</name>
@@ -2185,6 +2189,30 @@
         <source>RunningMode</source>
         <translation>自动运行中</translation>
     </message>
+    <message>
+        <source>Vision Data</source>
+        <translation>视觉</translation>
+    </message>
+    <message>
+        <source>templet number</source>
+        <translation>模板号</translation>
+    </message>
+    <message>
+        <source>color number</source>
+        <translation>颜色编号</translation>
+    </message>
+    <message>
+        <source>simi value</source>
+        <translation>相似度</translation>
+    </message>
+    <message>
+        <source>vision Value</source>
+        <translation>值</translation>
+    </message>
+    <message>
+        <source>value</source>
+        <translation>值</translation>
+    </message>
 </context>
 <context>
     <name>CounterActionEditor</name>
@@ -2388,7 +2416,7 @@
     <message>
         <source>name must be word number or underline
  and underline begin is not allowed</source>
-        <translation type="unfinished">名称不符合要求</translation>
+        <translation>名称不符合要求</translation>
     </message>
 </context>
 <context>
@@ -2407,7 +2435,7 @@
     </message>
     <message>
         <source>value</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">值</translation>
     </message>
     <message>
         <source>Send</source>
@@ -2809,6 +2837,10 @@
     <message>
         <source>None</source>
         <translation>无</translation>
+    </message>
+    <message>
+        <source>wait input</source>
+        <translation>等待输入</translation>
     </message>
 </context>
 <context>
@@ -3387,6 +3419,10 @@
         <source>Count Binding</source>
         <translation>计数器</translation>
     </message>
+    <message>
+        <source>Wait Input</source>
+        <translation>等待输入</translation>
+    </message>
 </context>
 <context>
     <name>PENQIANEditor</name>
@@ -3792,7 +3828,7 @@ please chose!</source>
     </message>
     <message>
         <source>Angle</source>
-        <translation type="unfinished">角度</translation>
+        <translation>角度</translation>
     </message>
 </context>
 <context>
@@ -4170,7 +4206,7 @@ please chose!</source>
     </message>
     <message>
         <source>Barn</source>
-        <translation type="unfinished">料仓</translation>
+        <translation>料仓</translation>
     </message>
     <message>
         <source>Up</source>
@@ -4247,6 +4283,22 @@ please chose!</source>
     <message>
         <source>Cancel</source>
         <translation>取消</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>自动运行中</translation>
+    </message>
+    <message>
+        <source>Single</source>
+        <translation>单步</translation>
+    </message>
+    <message>
+        <source>OneCycle</source>
+        <translation>单循环</translation>
+    </message>
+    <message>
+        <source>InMode</source>
+        <translation>在模式中</translation>
     </message>
 </context>
 <context>
@@ -4713,103 +4765,215 @@ please chose!</source>
     </message>
     <message>
         <source>para page</source>
-        <translation type="unfinished">参数读写</translation>
+        <translation>参数访问</translation>
     </message>
     <message>
         <source>status page</source>
-        <translation type="unfinished">系统状态</translation>
+        <translation>系统状态</translation>
     </message>
     <message>
         <source>para config</source>
-        <translation type="unfinished">参数配置</translation>
+        <translation>参数配置</translation>
     </message>
     <message>
         <source>read e2prom</source>
-        <translation type="unfinished">读EEPROM</translation>
+        <translation>读EEPROM</translation>
     </message>
     <message>
         <source>write e2prom</source>
-        <translation type="unfinished">写EEPROM</translation>
+        <translation>写EEPROM</translation>
     </message>
     <message>
         <source>common ctrl para</source>
-        <translation type="unfinished">通用控制参数</translation>
+        <translation>通用控制参数</translation>
     </message>
     <message>
         <source>para name</source>
-        <translation type="unfinished">参数名</translation>
+        <translation>参数名称</translation>
     </message>
     <message>
         <source>addr</source>
-        <translation type="unfinished">参数地址</translation>
+        <translation>地址</translation>
     </message>
     <message>
         <source>write val</source>
-        <translation type="unfinished">写入值</translation>
+        <translation>写入值</translation>
     </message>
     <message>
         <source>read val</source>
-        <translation type="unfinished">读出值</translation>
+        <translation>读出值</translation>
     </message>
     <message>
         <source>describe</source>
-        <translation type="unfinished">描述</translation>
+        <translation>说明</translation>
     </message>
     <message>
         <source>PwmPeriod</source>
-        <translation type="unfinished">PWM周期</translation>
-    </message>
-    <message>
-        <source>describe1</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">PWM周期</translation>
     </message>
     <message>
         <source>SampleStartDelay</source>
-        <translation type="unfinished">A/D采样延时</translation>
-    </message>
-    <message>
-        <source>describe2</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">A/D采样延时</translation>
     </message>
     <message>
         <source>SpdPosLpRate</source>
-        <translation type="unfinished">伺服采样分频比</translation>
-    </message>
-    <message>
-        <source>describe3</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">伺服采样分频比</translation>
     </message>
     <message>
         <source>ModScl</source>
-        <translation type="unfinished">SVPWM定标因子</translation>
+        <translation type="obsolete">SVPWM定标因子</translation>
     </message>
     <message>
         <source>PwmDeadTm</source>
-        <translation type="unfinished">IGBT死区时间</translation>
+        <translation type="obsolete">IGBT死区时间</translation>
     </message>
     <message>
         <source>SystemConfig</source>
-        <translation type="unfinished">系统配置</translation>
+        <translation type="obsolete">系统配置</translation>
     </message>
     <message>
         <source>LvAlmMonEnbl</source>
-        <translation type="unfinished">欠压报警使能</translation>
+        <translation type="obsolete">欠压报警使能</translation>
     </message>
     <message>
         <source>DcBusOffset</source>
-        <translation type="unfinished">直流母线电压偏移量</translation>
+        <translation type="obsolete">直流母线电压偏移量</translation>
     </message>
     <message>
         <source>BusConfig</source>
-        <translation type="unfinished">RS-485总线配置</translation>
+        <translation type="obsolete">RS-485总线配置</translation>
     </message>
     <message>
         <source>DriverCtrl</source>
-        <translation type="unfinished">驱动器配置</translation>
+        <translation type="obsolete">驱动器配置</translation>
     </message>
     <message>
         <source>PWM period</source>
-        <translation type="unfinished">PWM周期</translation>
+        <translation type="obsolete">PWM周期</translation>
+    </message>
+    <message>
+        <source>axis</source>
+        <translation>轴</translation>
+    </message>
+    <message>
+        <source>distributed para</source>
+        <translation>分布式</translation>
+    </message>
+    <message>
+        <source>current loop para</source>
+        <translation>电流环</translation>
+    </message>
+    <message>
+        <source>speed loop para</source>
+        <translation>速度环</translation>
+    </message>
+    <message>
+        <source>position ctrl para</source>
+        <translation>位置环</translation>
+    </message>
+    <message>
+        <source>Initial angle para</source>
+        <translation>转子初始角</translation>
+    </message>
+    <message>
+        <source>refresh en</source>
+        <translation>刷新使能</translation>
+    </message>
+    <message>
+        <source>clear alarm</source>
+        <translation>清除报警</translation>
+    </message>
+    <message>
+        <source>alarm para</source>
+        <translation>故障</translation>
+    </message>
+    <message>
+        <source>alarm name</source>
+        <translation>故障名称</translation>
+    </message>
+    <message>
+        <source>alarm val</source>
+        <translation>故障值</translation>
+    </message>
+    <message>
+        <source>0- no fault, 1- fault</source>
+        <translation>0-无故障，1-发生故障</translation>
+    </message>
+    <message>
+        <source>InitFlt</source>
+        <translation>上电初始化失败</translation>
+    </message>
+    <message>
+        <source>EepromFlt</source>
+        <translation>EEPROM故障</translation>
+    </message>
+    <message>
+        <source>AdcFlt</source>
+        <translation>A/D转换器故障</translation>
+    </message>
+    <message>
+        <source>ExecTmFlt</source>
+        <translation>系统运算引擎故障</translation>
+    </message>
+    <message>
+        <source>OverTempFlt</source>
+        <translation>散热器过热</translation>
+    </message>
+    <message>
+        <source>OvFlt</source>
+        <translation>主电源过压</translation>
+    </message>
+    <message>
+        <source>LvFlt</source>
+        <translation>主电源欠压</translation>
+    </message>
+    <message>
+        <source>MainPowerOff</source>
+        <translation>主电源关断</translation>
+    </message>
+    <message>
+        <source>GateKillFlt</source>
+        <translation>IGBT过流</translation>
+    </message>
+    <message>
+        <source>OvrTempFlt2</source>
+        <translation>IGBT过热</translation>
+    </message>
+    <message>
+        <source>OvrLdFlt</source>
+        <translation>过载</translation>
+    </message>
+    <message>
+        <source>OvrSpdFlt</source>
+        <translation>超速</translation>
+    </message>
+    <message>
+        <source>OvrFrqFlt</source>
+        <translation>脉冲频率过高</translation>
+    </message>
+    <message>
+        <source>PosErrOvrFlt</source>
+        <translation>位置偏差过大</translation>
+    </message>
+    <message>
+        <source>MtrEncFlt</source>
+        <translation>DSP同步故障</translation>
+    </message>
+    <message>
+        <source>OvrCrntFlt</source>
+        <translation>过流故障</translation>
+    </message>
+    <message>
+        <source>inStop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>inRunning</source>
+        <translation>运行</translation>
+    </message>
+    <message>
+        <source>inAlarm</source>
+        <translation>故障</translation>
     </message>
 </context>
 <context>
@@ -5320,7 +5484,7 @@ please chose!</source>
     </message>
     <message>
         <source>describe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">描述</translation>
     </message>
     <message>
         <source>FaultStatus</source>
@@ -6311,6 +6475,10 @@ please chose!</source>
         <source>First Moudle Speed</source>
         <translation>首模速度</translation>
     </message>
+    <message>
+        <source>ManualSpeedRank</source>
+        <translation type="unfinished">手动速度等级</translation>
+    </message>
 </context>
 <context>
     <name>SafeAreaConfigs</name>
@@ -6849,6 +7017,10 @@ please chose!</source>
     <message>
         <source>SafeSig</source>
         <translation>安全信号</translation>
+    </message>
+    <message>
+        <source>reverse</source>
+        <translation>反向</translation>
     </message>
 </context>
 <context>
@@ -7558,12 +7730,16 @@ You just need to set the count configs after this setting.</source>
         <source>Analog En</source>
         <translation>模拟量模块使能</translation>
     </message>
+    <message>
+        <source>IO Board Num</source>
+        <translation>IO板数</translation>
+    </message>
 </context>
 <context>
     <name>SwitchCoordEditor</name>
     <message>
         <source>coordID</source>
-        <translation type="unfinished">工作台坐标系</translation>
+        <translation>工作台坐标系</translation>
     </message>
     <message>
         <source>world coord</source>
@@ -8333,7 +8509,27 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 6</source>
-        <translation type="unfinished">近似原点</translation>
+        <translation>近似原点</translation>
+    </message>
+    <message>
+        <source>unlimit</source>
+        <translation>不限时</translation>
+    </message>
+    <message>
+        <source>templetID</source>
+        <translation>模板号</translation>
+    </message>
+    <message>
+        <source>colorID</source>
+        <translation>颜色编号</translation>
+    </message>
+    <message>
+        <source>simiValue</source>
+        <translation>相似度</translation>
+    </message>
+    <message>
+        <source>wait input</source>
+        <translation>等待输入</translation>
     </message>
 </context>
 <context>
@@ -8895,6 +9091,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Simple Delay:</source>
         <translation>延时</translation>
+    </message>
+    <message>
+        <source>is unlimit</source>
+        <translation>不限时</translation>
     </message>
 </context>
 <context>

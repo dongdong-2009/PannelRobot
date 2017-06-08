@@ -2011,11 +2011,37 @@ void PanelRobotController::writeMultipleQkPara(int addr,int len, const QString& 
     QVariantList result = parser.parse(qkData.toUtf8(), &ok).toList();
     if(!ok)
         return;
-    QVector<quint32> tmp;
+    QVector<quint32> tmp,tmp16;
     tmp.append(len);
-    for(int i=0;i<result.size();i++)
+    int i,l,tmpH,tmpL;
+    for(i=0,l=result.size();i<l;i++)
+    {
         tmp.append(result.at(i).toInt());
-    ICRobotVirtualhost::WriteQkPara(host_,addr,tmp);
+    }
+    for(i=0,l=tmp.count();i<l;i+=2)
+    {
+        tmpL = tmp[i];
+        if(i+1 < l){
+            tmpH = tmp[i+1];
+        }
+        else{
+            tmpH = 0;
+        }
+        tmp16.append((tmpL&0xffff)|(tmpH<<16));
+    }
+    qDebug()<<tmp16;
+    ICRobotVirtualhost::WriteQkPara(host_,addr,tmp16);
+}
+
+void PanelRobotController::readMultipleQkStatus(int addr,int len)
+{
+    int sentCnt = len/32;
+    int lastSendLen = len%32;
+    for(int i=0;i<sentCnt;i++)
+    {
+        ICRobotVirtualhost::AddReadQkConfigCommand(host_,addr+i*32,32);
+    }
+    ICRobotVirtualhost::AddReadQkConfigCommand(host_,addr+sentCnt*32,lastSendLen);
 }
 
 void PanelRobotController::writeMultipleQkEeprom(int addr, int len, const QString& qkData)
@@ -2025,11 +2051,38 @@ void PanelRobotController::writeMultipleQkEeprom(int addr, int len, const QStrin
     QVariantList result = parser.parse(qkData.toUtf8(), &ok).toList();
     if(!ok)
         return;
-    QVector<quint32> tmp;
+    QVector<quint32> tmp,tmp16;
     tmp.append(len);
-    for(int i=0;i<result.size();i++)
+    int i,l,tmpH,tmpL;
+    for(i=0,l=result.size();i<l;i++)
+    {
         tmp.append(result.at(i).toInt());
-    ICRobotVirtualhost::WriteQkEeprom(host_,addr,tmp);
+    }
+    for(i=0,l=tmp.count();i<l;i+=2)
+    {
+        tmpL = tmp[i];
+        if(i+1 < l)
+        {
+            tmpH = tmp[i+1];
+        }
+        else{
+            tmpH = 0;
+        }
+        tmp16.append((tmpL&0xffff)|(tmpH<<16));
+    }
+    ICRobotVirtualhost::WriteQkEeprom(host_,addr,tmp16);
+}
+
+void PanelRobotController::readMultipleQkEeprom(int addr,int len)
+{
+    bool isEeprom = true;
+    int sentCnt = len/32;
+    int lastSendLen = len%32;
+    for(int i=0;i<sentCnt;i++)
+    {
+        ICRobotVirtualhost::AddReadQkConfigCommand(host_,addr+i*32,32,isEeprom);
+    }
+    ICRobotVirtualhost::AddReadQkConfigCommand(host_,addr+sentCnt*32,lastSendLen,isEeprom);
 }
 
 QString PanelRobotController::scanUSBFiles(const QString &filter) const

@@ -12,7 +12,7 @@ extern  const ICAddrWrapper  s_rw_12_6_0_103(3,3,12,6,103,0,"%");   //<电机1�
 extern  const ICAddrWrapper  s_rw_18_1_0_103(3,3,18,1,103,0,"%");   //<电机1电机方向设定
 extern  const ICAddrWrapper  s_rw_19_6_0_103(3,3,19,6,103,0,"");   //<电机1S加速1
 extern  const ICAddrWrapper  s_rw_25_6_0_103(3,3,25,6,103,0,"");   //<电机1S加速2
-extern  const ICAddrWrapper  s_rw_31_1_0_103(3,3,31,1,103,0,"");   //<电机1预留
+extern  const ICAddrWrapper  s_rw_31_1_0_103(3,3,31,1,103,0,"");   //<电机1原点开关方向
 extern  const ICAddrWrapper  s_rw_0_8_0_104(3,3,0,8,104,0,"");   //<电机1反向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_104(3,3,8,8,104,0,"");   //<电机1负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_104(3,3,16,8,104,0,"");   //<电机1原点输入
@@ -39,7 +39,7 @@ extern  const ICAddrWrapper  s_rw_12_6_0_110(3,3,12,6,110,0,"%");   //<电机2�
 extern  const ICAddrWrapper  s_rw_18_1_0_110(3,3,18,1,110,0,"%");   //<电机2电机方向设定
 extern  const ICAddrWrapper  s_rw_19_6_0_110(3,3,19,6,110,0,"");   //<电机2S加速1
 extern  const ICAddrWrapper  s_rw_25_6_0_110(3,3,25,6,110,0,"");   //<电机2S加速2
-extern  const ICAddrWrapper  s_rw_31_1_0_110(3,3,31,1,110,0,"");   //<电机2预留
+extern  const ICAddrWrapper  s_rw_31_1_0_110(3,3,31,1,110,0,"");   //<电机2原点开关方向
 extern  const ICAddrWrapper  s_rw_0_8_0_111(3,3,0,8,111,0,"");   //<电机2反向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_111(3,3,8,8,111,0,"");   //<电机2负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_111(3,3,16,8,111,0,"");   //<电机2原点输入
@@ -66,7 +66,7 @@ extern  const ICAddrWrapper  s_rw_12_6_0_117(3,3,12,6,117,0,"%");   //<电机3�
 extern  const ICAddrWrapper  s_rw_18_1_0_117(3,3,18,1,117,0,"%");   //<电机3电机方向设定
 extern  const ICAddrWrapper  s_rw_19_6_0_117(3,3,19,6,117,0,"");   //<电机3S加速1
 extern  const ICAddrWrapper  s_rw_25_6_0_117(3,3,25,6,117,0,"");   //<电机3S加速2
-extern  const ICAddrWrapper  s_rw_31_1_0_117(3,3,31,1,117,0,"");   //<电机3预留
+extern  const ICAddrWrapper  s_rw_31_1_0_117(3,3,31,1,117,0,"");   //<电机3原点开关方向
 extern  const ICAddrWrapper  s_rw_0_8_0_118(3,3,0,8,118,0,"");   //<电机3反向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_118(3,3,8,8,118,0,"");   //<电机3负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_118(3,3,16,8,118,0,"");   //<电机3原点输入
@@ -93,7 +93,7 @@ extern  const ICAddrWrapper  s_rw_12_6_0_124(3,3,12,6,124,0,"%");   //<电机4�
 extern  const ICAddrWrapper  s_rw_18_1_0_124(3,3,18,1,124,0,"%");   //<电机4电机方向设定
 extern  const ICAddrWrapper  s_rw_19_6_0_124(3,3,19,6,124,0,"");   //<电机4S加速1
 extern  const ICAddrWrapper  s_rw_25_6_0_124(3,3,25,6,124,0,"");   //<电机4S加速2
-extern  const ICAddrWrapper  s_rw_31_1_0_124(3,3,31,1,124,0,"");   //<电机4预留
+extern  const ICAddrWrapper  s_rw_31_1_0_124(3,3,31,1,124,0,"");   //<电机4原点开关方向
 extern  const ICAddrWrapper  s_rw_0_8_0_125(3,3,0,8,125,0,"");   //<电机4反向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_125(3,3,8,8,125,0,"");   //<电机4负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_125(3,3,16,8,125,0,"");   //<电机4原点输入
@@ -120,7 +120,7 @@ extern  const ICAddrWrapper  s_rw_12_6_0_131(3,3,12,6,131,0,"%");   //<电机5�
 extern  const ICAddrWrapper  s_rw_18_1_0_131(3,3,18,1,131,0,"%");   //<电机5电机方向设定
 extern  const ICAddrWrapper  s_rw_19_6_0_131(3,3,19,6,131,0,"");   //<电机5S加速1
 extern  const ICAddrWrapper  s_rw_25_6_0_131(3,3,25,6,131,0,"");   //<电机5S加速2
-extern  const ICAddrWrapper  s_rw_31_1_0_131(3,3,31,1,131,0,"");   //<电机5预留
+extern  const ICAddrWrapper  s_rw_31_1_0_131(3,3,31,1,131,0,"");   //<电机5原点开关方向
 extern  const ICAddrWrapper  s_rw_0_8_0_132(3,3,0,8,132,0,"");   //<电机5反向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_132(3,3,8,8,132,0,"");   //<电机5负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_132(3,3,16,8,132,0,"");   //<电机5原点输入
@@ -147,7 +147,7 @@ extern  const ICAddrWrapper  s_rw_12_6_0_138(3,3,12,6,138,0,"%");   //<电机6�
 extern  const ICAddrWrapper  s_rw_18_1_0_138(3,3,18,1,138,0,"%");   //<电机6电机方向设定
 extern  const ICAddrWrapper  s_rw_19_6_0_138(3,3,19,6,138,0,"");   //<电机6S加速1
 extern  const ICAddrWrapper  s_rw_25_6_0_138(3,3,25,6,138,0,"");   //<电机6S加速2
-extern  const ICAddrWrapper  s_rw_31_1_0_138(3,3,31,1,138,0,"");   //<电机6预留
+extern  const ICAddrWrapper  s_rw_31_1_0_138(3,3,31,1,138,0,"");   //<电机6原点开关方向
 extern  const ICAddrWrapper  s_rw_0_8_0_139(3,3,0,8,139,0,"");   //<电机6反向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_139(3,3,8,8,139,0,"");   //<电机6负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_139(3,3,16,8,139,0,"");   //<电机6原点输入
@@ -174,7 +174,7 @@ extern  const ICAddrWrapper  s_rw_12_6_0_145(3,3,12,6,145,0,"%");   //<电机7�
 extern  const ICAddrWrapper  s_rw_18_1_0_145(3,3,18,1,145,0,"%");   //<电机7电机方向设定
 extern  const ICAddrWrapper  s_rw_19_6_0_145(3,3,19,6,145,0,"");   //<电机7S加速1
 extern  const ICAddrWrapper  s_rw_25_6_0_145(3,3,25,6,145,0,"");   //<电机7S加速2
-extern  const ICAddrWrapper  s_rw_31_1_0_145(3,3,31,1,145,0,"");   //<电机7预留
+extern  const ICAddrWrapper  s_rw_31_1_0_145(3,3,31,1,145,0,"");   //<电机7原点开关方向
 extern  const ICAddrWrapper  s_rw_0_8_0_146(3,3,0,8,146,0,"");   //<电机7反向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_146(3,3,8,8,146,0,"");   //<电机7负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_146(3,3,16,8,146,0,"");   //<电机7原点输入
@@ -201,7 +201,7 @@ extern  const ICAddrWrapper  s_rw_12_6_0_152(3,3,12,6,152,0,"%");   //<电机8�
 extern  const ICAddrWrapper  s_rw_18_1_0_152(3,3,18,1,152,0,"%");   //<电机8电机方向设定
 extern  const ICAddrWrapper  s_rw_19_6_0_152(3,3,19,6,152,0,"");   //<电机8S加速1
 extern  const ICAddrWrapper  s_rw_25_6_0_152(3,3,25,6,152,0,"");   //<电机8S加速2
-extern  const ICAddrWrapper  s_rw_31_1_0_152(3,3,31,1,152,0,"");   //<电机8预留
+extern  const ICAddrWrapper  s_rw_31_1_0_152(3,3,31,1,152,0,"");   //<电机8原点开关方向
 extern  const ICAddrWrapper  s_rw_0_8_0_153(3,3,0,8,153,0,"");   //<电机8反向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_153(3,3,8,8,153,0,"");   //<电机8负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_153(3,3,16,8,153,0,"");   //<电机8原点输入
@@ -242,7 +242,8 @@ extern  const ICAddrWrapper  s_rw_0_32_3_173(3,3,0,32,173,3,"");    //<机械结
 extern  const ICAddrWrapper  s_rw_0_32_3_174(3,3,0,32,174,3,"mm");    //<机械结构一轴X方向偏心
 extern  const ICAddrWrapper  s_rw_0_32_3_175(3,3,0,32,175,3,"mm");    //<机械结构一轴Y方向偏心
 extern  const ICAddrWrapper  s_rw_0_8_0_176(3,3,0,8,176,0,"");   //<机械结构报警声音输出次数
-extern  const ICAddrWrapper  s_rw_8_24_0_176(3,3,8,24,176,0,"");   //<机械结构预留
+extern  const ICAddrWrapper  s_rw_8_4_0_176(3,3,8,4,176,0,"");   //<机械结构手动最大速度设定
+extern  const ICAddrWrapper  s_rw_12_20_0_176(3,3,12,20,176,0,"");   //<机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_177(3,3,0,32,177,0,"");    //<机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_178(3,3,0,32,178,0,"");    //<机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_179(3,3,0,32,179,0,"");    //<机械结构预留

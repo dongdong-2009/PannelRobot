@@ -16,6 +16,8 @@ class ICCORESHARED_EXPORT ICTransceiverData
 public:
     virtual ~ICTransceiverData(){}
     virtual bool IsQuery() const { return false;}
+    virtual bool IsQkQueryEeprom() const { return false;}
+    virtual bool IsQkQueryStatus() const { return false;}
     virtual bool IsError() const { return false;}
     virtual bool IsEqual(const ICTransceiverData* other) const = 0;
     virtual int ErrorCode() const = 0;

@@ -11,6 +11,8 @@ QQueue<ICRobotTransceiverData*> ICRobotVirtualhost::keyCommandList_;
 QMap<int, quint32> ICRobotVirtualhost::iStatusMap_;
 QMap<int, quint32> ICRobotVirtualhost::oStatusMap_;
 QMap<int, quint32> ICRobotVirtualhost::multiplexingConfigs_;
+QMap<int, quint32> ICRobotVirtualhost::qkEeprom_;
+QMap<int, quint32> ICRobotVirtualhost::qkStatus_;
 QString ICRobotVirtualhost::hostVersion_;
 
 
@@ -655,6 +657,55 @@ void ICRobotVirtualhost::CommunicateImpl()
             emit SendingContinuousData();
         }
     }
+    if(recvFrame_->IsQkQueryEeprom())
+    {
+        statusDataTmp_ = recvFrame_->Data();
+        startIndex_ = recvFrame_->GetAddr();
+        if(statusDataTmp_.size())
+        {
+            int i,j;
+            int dataLength16 = statusDataTmp_.at(0)&0xffff;
+            if(dataLength16)
+            {
+                qkEeprom_.insert(startIndex_++,statusDataTmp_.at(0)>>16);
+            }
+            for(i=1,j=1;i < dataLength16;i+=2,j++)
+            {
+                qkEeprom_.insert(startIndex_++,statusDataTmp_.at(j)&0xFFFF);
+                if(i+1 < dataLength16){
+                    qkEeprom_.insert(startIndex_++,statusDataTmp_.at(j)>>16);
+                }
+            }
+            if(startIndex_ == ((3<<8)+SP_Addr_InitElecAng110+1))
+            {
+                qDebug() << qkEeprom_;
+                emit QueryQkEepromFinished();
+                qkEeprom_.insert(SP_Addr_ReadReady,1);
+            }
+        }
+    }
+    if(recvFrame_->IsQkQueryStatus())
+    {
+        statusDataTmp_ = recvFrame_->Data();
+        startIndex_ = recvFrame_->GetAddr();
+        if(statusDataTmp_.size())
+        {
+            int i,j;
+            int dataLength16 = statusDataTmp_.at(0)&0xffff;
+            if(dataLength16)
+            {
+                qkStatus_.insert(startIndex_++,statusDataTmp_.at(0)>>16);
+            }
+            for(i=1,j=1;i < dataLength16;i+=2,j++)
+            {
+                qkStatus_.insert(startIndex_++,statusDataTmp_.at(j)&0xFFFF);
+                if(i+1 < dataLength16){
+                    qkStatus_.insert(startIndex_++,statusDataTmp_.at(j)>>16);
+                }
+            }
+            qDebug() << qkStatus_;
+        }
+    }
     ClearCommunicateErrCount();
     queue_.DeQueue();
 }
@@ -831,8 +882,8 @@ void ICRobotVirtualhost::AddReadQkConfigCommand(ICVirtualHostPtr hostPtr, int st
     ICRobotTransceiverData * toSentFrame = new ICRobotTransceiverData(kHostID,
                                                                       (isEeprom?FunctionCode_QKServoParaReadEeprom:FunctionCode_QKServoParaReadMemory),
                                                                       startAddr,
-                                                                      size,
-                                                                      ICRobotTransceiverData::ICTransceiverDataBuffer());
+                                                                      (size+1)/2+(size+1)%2,
+                                                                      ICRobotTransceiverData::ICTransceiverDataBuffer()<<size);
     hostPtr->AddCommunicationFrame(toSentFrame);
 }
 

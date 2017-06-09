@@ -228,6 +228,8 @@ public:
 #endif
     static quint32 IStatus(int boardID) { return iStatusMap_.value(boardID, 0);}
     static quint32 OStatus(int boardID) { return oStatusMap_.value(boardID, 0);}
+    static quint32 QkStatus(int addr) { return qkStatus_.value(addr,0);}
+    static quint32 QkEeprom(int addr) { return qkEeprom_.value(addr,0);}
     static void SendYControlCommand(ICVirtualHostPtr hostPtr , ValveItem item);
     static void InitValveDefines(ICVirtualHostPtr hostPtr, const QList<ValveItem>& valveDefines);
     static void SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem item);
@@ -242,6 +244,7 @@ signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();
     void QueryFinished(int addr, const QVector<quint32>& v);
+    void QueryQkEepromFinished();
     void SendingContinuousData();
     void SentContinuousData(int);
 
@@ -261,6 +264,8 @@ private:
     static QMap<int, quint32> iStatusMap_;
     static QMap<int, quint32> oStatusMap_;
     static QMap<int, quint32> multiplexingConfigs_;
+    static QMap<int, quint32> qkEeprom_;
+    static QMap<int, quint32> qkStatus_;
     static QQueue<ICRobotTransceiverData*> keyCommandList_;
     static QString hostVersion_;
 

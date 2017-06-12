@@ -68,7 +68,7 @@ include(datamanerger/datamanerger.pri)
 include(controller/controller.pri)
 include(common/common.pri)
 include(extentui/extentui.pri)
-
+include(vendor/dxflib/dxflib.pri)
 
 qtcAddDeployment()
 

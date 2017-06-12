@@ -1,0 +1,2 @@
+#define DXFLIB_EXPORT
+

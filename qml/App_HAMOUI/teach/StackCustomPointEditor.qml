@@ -272,6 +272,15 @@ MouseArea{
                     fileSelector.visible = true;
                 }
             }
+            ICButton{
+                id:importFromDXF
+                text: qsTr("Import From DXF")
+                width: button_setWorldPos.width
+                height: button_setWorldPos.height
+                onButtonClicked: {
+
+                }
+            }
 
         }
 

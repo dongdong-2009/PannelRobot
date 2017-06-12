@@ -14,4 +14,4 @@ SOURCES += \
 FORMS += \
     $$PWD/icinstructionsview.ui
 
-
+include(icdxfeditor/icdxfeditor.pri)

@@ -6028,339 +6028,304 @@ please chose!</source>
 <context>
     <name>QKConfigs</name>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="23"/>
+        <location filename="../settingpages/QKConfigs.qml" line="28"/>
         <source>para page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="29"/>
+        <location filename="../settingpages/QKConfigs.qml" line="34"/>
         <source>status page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="86"/>
+        <location filename="../settingpages/QKConfigs.qml" line="91"/>
         <source>para config</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="105"/>
+        <location filename="../settingpages/QKConfigs.qml" line="141"/>
         <source>read e2prom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="111"/>
+        <location filename="../settingpages/QKConfigs.qml" line="153"/>
         <source>write e2prom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="125"/>
+        <location filename="../settingpages/QKConfigs.qml" line="210"/>
         <source>common ctrl para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="127"/>
-        <location filename="../settingpages/QKConfigs.qml" line="128"/>
-        <location filename="../settingpages/QKConfigs.qml" line="129"/>
-        <location filename="../settingpages/QKConfigs.qml" line="130"/>
-        <location filename="../settingpages/QKConfigs.qml" line="131"/>
-        <location filename="../settingpages/QKConfigs.qml" line="133"/>
-        <location filename="../settingpages/QKConfigs.qml" line="134"/>
-        <location filename="../settingpages/QKConfigs.qml" line="135"/>
-        <location filename="../settingpages/QKConfigs.qml" line="136"/>
-        <location filename="../settingpages/QKConfigs.qml" line="137"/>
-        <location filename="../settingpages/QKConfigs.qml" line="139"/>
-        <location filename="../settingpages/QKConfigs.qml" line="140"/>
-        <location filename="../settingpages/QKConfigs.qml" line="141"/>
-        <location filename="../settingpages/QKConfigs.qml" line="142"/>
-        <location filename="../settingpages/QKConfigs.qml" line="143"/>
-        <location filename="../settingpages/QKConfigs.qml" line="145"/>
-        <location filename="../settingpages/QKConfigs.qml" line="146"/>
-        <location filename="../settingpages/QKConfigs.qml" line="147"/>
-        <location filename="../settingpages/QKConfigs.qml" line="148"/>
-        <location filename="../settingpages/QKConfigs.qml" line="149"/>
-        <location filename="../settingpages/QKConfigs.qml" line="606"/>
-        <location filename="../settingpages/QKConfigs.qml" line="607"/>
-        <location filename="../settingpages/QKConfigs.qml" line="608"/>
-        <location filename="../settingpages/QKConfigs.qml" line="609"/>
-        <location filename="../settingpages/QKConfigs.qml" line="912"/>
+        <location filename="../settingpages/QKConfigs.qml" line="212"/>
+        <location filename="../settingpages/QKConfigs.qml" line="213"/>
+        <location filename="../settingpages/QKConfigs.qml" line="214"/>
+        <location filename="../settingpages/QKConfigs.qml" line="215"/>
+        <location filename="../settingpages/QKConfigs.qml" line="216"/>
+        <location filename="../settingpages/QKConfigs.qml" line="218"/>
+        <location filename="../settingpages/QKConfigs.qml" line="219"/>
+        <location filename="../settingpages/QKConfigs.qml" line="220"/>
+        <location filename="../settingpages/QKConfigs.qml" line="221"/>
+        <location filename="../settingpages/QKConfigs.qml" line="222"/>
+        <location filename="../settingpages/QKConfigs.qml" line="224"/>
+        <location filename="../settingpages/QKConfigs.qml" line="225"/>
+        <location filename="../settingpages/QKConfigs.qml" line="226"/>
+        <location filename="../settingpages/QKConfigs.qml" line="227"/>
+        <location filename="../settingpages/QKConfigs.qml" line="228"/>
+        <location filename="../settingpages/QKConfigs.qml" line="230"/>
+        <location filename="../settingpages/QKConfigs.qml" line="231"/>
+        <location filename="../settingpages/QKConfigs.qml" line="232"/>
+        <location filename="../settingpages/QKConfigs.qml" line="233"/>
+        <location filename="../settingpages/QKConfigs.qml" line="234"/>
+        <location filename="../settingpages/QKConfigs.qml" line="691"/>
+        <location filename="../settingpages/QKConfigs.qml" line="692"/>
+        <location filename="../settingpages/QKConfigs.qml" line="693"/>
+        <location filename="../settingpages/QKConfigs.qml" line="694"/>
+        <location filename="../settingpages/QKConfigs.qml" line="997"/>
         <source>axis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="127"/>
-        <location filename="../settingpages/QKConfigs.qml" line="133"/>
-        <location filename="../settingpages/QKConfigs.qml" line="139"/>
-        <location filename="../settingpages/QKConfigs.qml" line="145"/>
+        <location filename="../settingpages/QKConfigs.qml" line="212"/>
+        <location filename="../settingpages/QKConfigs.qml" line="218"/>
+        <location filename="../settingpages/QKConfigs.qml" line="224"/>
+        <location filename="../settingpages/QKConfigs.qml" line="230"/>
         <source>distributed para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="128"/>
-        <location filename="../settingpages/QKConfigs.qml" line="134"/>
-        <location filename="../settingpages/QKConfigs.qml" line="140"/>
-        <location filename="../settingpages/QKConfigs.qml" line="146"/>
+        <location filename="../settingpages/QKConfigs.qml" line="213"/>
+        <location filename="../settingpages/QKConfigs.qml" line="219"/>
+        <location filename="../settingpages/QKConfigs.qml" line="225"/>
+        <location filename="../settingpages/QKConfigs.qml" line="231"/>
         <source>current loop para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="129"/>
-        <location filename="../settingpages/QKConfigs.qml" line="135"/>
-        <location filename="../settingpages/QKConfigs.qml" line="141"/>
-        <location filename="../settingpages/QKConfigs.qml" line="147"/>
+        <location filename="../settingpages/QKConfigs.qml" line="214"/>
+        <location filename="../settingpages/QKConfigs.qml" line="220"/>
+        <location filename="../settingpages/QKConfigs.qml" line="226"/>
+        <location filename="../settingpages/QKConfigs.qml" line="232"/>
         <source>speed loop para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="130"/>
-        <location filename="../settingpages/QKConfigs.qml" line="136"/>
-        <location filename="../settingpages/QKConfigs.qml" line="142"/>
-        <location filename="../settingpages/QKConfigs.qml" line="148"/>
+        <location filename="../settingpages/QKConfigs.qml" line="215"/>
+        <location filename="../settingpages/QKConfigs.qml" line="221"/>
+        <location filename="../settingpages/QKConfigs.qml" line="227"/>
+        <location filename="../settingpages/QKConfigs.qml" line="233"/>
         <source>position ctrl para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="131"/>
-        <location filename="../settingpages/QKConfigs.qml" line="137"/>
-        <location filename="../settingpages/QKConfigs.qml" line="143"/>
-        <location filename="../settingpages/QKConfigs.qml" line="149"/>
+        <location filename="../settingpages/QKConfigs.qml" line="216"/>
+        <location filename="../settingpages/QKConfigs.qml" line="222"/>
+        <location filename="../settingpages/QKConfigs.qml" line="228"/>
+        <location filename="../settingpages/QKConfigs.qml" line="234"/>
         <source>Initial angle para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="203"/>
+        <location filename="../settingpages/QKConfigs.qml" line="288"/>
         <source>para name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="210"/>
+        <location filename="../settingpages/QKConfigs.qml" line="295"/>
         <source>addr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="217"/>
+        <location filename="../settingpages/QKConfigs.qml" line="302"/>
         <source>write val</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="224"/>
+        <location filename="../settingpages/QKConfigs.qml" line="309"/>
         <source>read val</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="232"/>
-        <location filename="../settingpages/QKConfigs.qml" line="687"/>
+        <location filename="../settingpages/QKConfigs.qml" line="317"/>
+        <location filename="../settingpages/QKConfigs.qml" line="772"/>
         <source>describe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="585"/>
+        <location filename="../settingpages/QKConfigs.qml" line="670"/>
         <source>refresh en</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="592"/>
+        <location filename="../settingpages/QKConfigs.qml" line="677"/>
         <source>clear alarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="606"/>
-        <location filename="../settingpages/QKConfigs.qml" line="607"/>
-        <location filename="../settingpages/QKConfigs.qml" line="608"/>
-        <location filename="../settingpages/QKConfigs.qml" line="609"/>
+        <location filename="../settingpages/QKConfigs.qml" line="691"/>
+        <location filename="../settingpages/QKConfigs.qml" line="692"/>
+        <location filename="../settingpages/QKConfigs.qml" line="693"/>
+        <location filename="../settingpages/QKConfigs.qml" line="694"/>
         <source>alarm para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="671"/>
+        <location filename="../settingpages/QKConfigs.qml" line="756"/>
         <source>alarm name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="678"/>
+        <location filename="../settingpages/QKConfigs.qml" line="763"/>
         <source>alarm val</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="708"/>
+        <location filename="../settingpages/QKConfigs.qml" line="793"/>
         <source>0- no fault, 1- fault</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="713"/>
-        <location filename="../settingpages/QKConfigs.qml" line="734"/>
-        <location filename="../settingpages/QKConfigs.qml" line="755"/>
-        <location filename="../settingpages/QKConfigs.qml" line="776"/>
+        <location filename="../settingpages/QKConfigs.qml" line="798"/>
+        <location filename="../settingpages/QKConfigs.qml" line="819"/>
+        <location filename="../settingpages/QKConfigs.qml" line="840"/>
+        <location filename="../settingpages/QKConfigs.qml" line="861"/>
         <source>InitFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="714"/>
-        <location filename="../settingpages/QKConfigs.qml" line="735"/>
-        <location filename="../settingpages/QKConfigs.qml" line="756"/>
-        <location filename="../settingpages/QKConfigs.qml" line="777"/>
+        <location filename="../settingpages/QKConfigs.qml" line="799"/>
+        <location filename="../settingpages/QKConfigs.qml" line="820"/>
+        <location filename="../settingpages/QKConfigs.qml" line="841"/>
+        <location filename="../settingpages/QKConfigs.qml" line="862"/>
         <source>EepromFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="715"/>
-        <location filename="../settingpages/QKConfigs.qml" line="736"/>
-        <location filename="../settingpages/QKConfigs.qml" line="757"/>
-        <location filename="../settingpages/QKConfigs.qml" line="778"/>
+        <location filename="../settingpages/QKConfigs.qml" line="800"/>
+        <location filename="../settingpages/QKConfigs.qml" line="821"/>
+        <location filename="../settingpages/QKConfigs.qml" line="842"/>
+        <location filename="../settingpages/QKConfigs.qml" line="863"/>
         <source>AdcFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="716"/>
-        <location filename="../settingpages/QKConfigs.qml" line="737"/>
-        <location filename="../settingpages/QKConfigs.qml" line="758"/>
-        <location filename="../settingpages/QKConfigs.qml" line="779"/>
+        <location filename="../settingpages/QKConfigs.qml" line="801"/>
+        <location filename="../settingpages/QKConfigs.qml" line="822"/>
+        <location filename="../settingpages/QKConfigs.qml" line="843"/>
+        <location filename="../settingpages/QKConfigs.qml" line="864"/>
         <source>ExecTmFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="717"/>
-        <location filename="../settingpages/QKConfigs.qml" line="738"/>
-        <location filename="../settingpages/QKConfigs.qml" line="759"/>
-        <location filename="../settingpages/QKConfigs.qml" line="780"/>
+        <location filename="../settingpages/QKConfigs.qml" line="802"/>
+        <location filename="../settingpages/QKConfigs.qml" line="823"/>
+        <location filename="../settingpages/QKConfigs.qml" line="844"/>
+        <location filename="../settingpages/QKConfigs.qml" line="865"/>
         <source>OverTempFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="718"/>
-        <location filename="../settingpages/QKConfigs.qml" line="739"/>
-        <location filename="../settingpages/QKConfigs.qml" line="760"/>
-        <location filename="../settingpages/QKConfigs.qml" line="781"/>
+        <location filename="../settingpages/QKConfigs.qml" line="803"/>
+        <location filename="../settingpages/QKConfigs.qml" line="824"/>
+        <location filename="../settingpages/QKConfigs.qml" line="845"/>
+        <location filename="../settingpages/QKConfigs.qml" line="866"/>
         <source>OvFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="719"/>
-        <location filename="../settingpages/QKConfigs.qml" line="740"/>
-        <location filename="../settingpages/QKConfigs.qml" line="761"/>
-        <location filename="../settingpages/QKConfigs.qml" line="782"/>
+        <location filename="../settingpages/QKConfigs.qml" line="804"/>
+        <location filename="../settingpages/QKConfigs.qml" line="825"/>
+        <location filename="../settingpages/QKConfigs.qml" line="846"/>
+        <location filename="../settingpages/QKConfigs.qml" line="867"/>
         <source>LvFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="720"/>
-        <location filename="../settingpages/QKConfigs.qml" line="741"/>
-        <location filename="../settingpages/QKConfigs.qml" line="762"/>
-        <location filename="../settingpages/QKConfigs.qml" line="783"/>
+        <location filename="../settingpages/QKConfigs.qml" line="805"/>
+        <location filename="../settingpages/QKConfigs.qml" line="826"/>
+        <location filename="../settingpages/QKConfigs.qml" line="847"/>
+        <location filename="../settingpages/QKConfigs.qml" line="868"/>
         <source>MainPowerOff</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="721"/>
-        <location filename="../settingpages/QKConfigs.qml" line="742"/>
-        <location filename="../settingpages/QKConfigs.qml" line="763"/>
-        <location filename="../settingpages/QKConfigs.qml" line="784"/>
+        <location filename="../settingpages/QKConfigs.qml" line="806"/>
+        <location filename="../settingpages/QKConfigs.qml" line="827"/>
+        <location filename="../settingpages/QKConfigs.qml" line="848"/>
+        <location filename="../settingpages/QKConfigs.qml" line="869"/>
         <source>GateKillFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="722"/>
-        <location filename="../settingpages/QKConfigs.qml" line="743"/>
-        <location filename="../settingpages/QKConfigs.qml" line="764"/>
-        <location filename="../settingpages/QKConfigs.qml" line="785"/>
+        <location filename="../settingpages/QKConfigs.qml" line="807"/>
+        <location filename="../settingpages/QKConfigs.qml" line="828"/>
+        <location filename="../settingpages/QKConfigs.qml" line="849"/>
+        <location filename="../settingpages/QKConfigs.qml" line="870"/>
         <source>OvrTempFlt2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="723"/>
-        <location filename="../settingpages/QKConfigs.qml" line="744"/>
-        <location filename="../settingpages/QKConfigs.qml" line="765"/>
-        <location filename="../settingpages/QKConfigs.qml" line="786"/>
+        <location filename="../settingpages/QKConfigs.qml" line="808"/>
+        <location filename="../settingpages/QKConfigs.qml" line="829"/>
+        <location filename="../settingpages/QKConfigs.qml" line="850"/>
+        <location filename="../settingpages/QKConfigs.qml" line="871"/>
         <source>OvrLdFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="724"/>
-        <location filename="../settingpages/QKConfigs.qml" line="745"/>
-        <location filename="../settingpages/QKConfigs.qml" line="766"/>
-        <location filename="../settingpages/QKConfigs.qml" line="787"/>
+        <location filename="../settingpages/QKConfigs.qml" line="809"/>
+        <location filename="../settingpages/QKConfigs.qml" line="830"/>
+        <location filename="../settingpages/QKConfigs.qml" line="851"/>
+        <location filename="../settingpages/QKConfigs.qml" line="872"/>
         <source>OvrSpdFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="725"/>
-        <location filename="../settingpages/QKConfigs.qml" line="746"/>
-        <location filename="../settingpages/QKConfigs.qml" line="767"/>
-        <location filename="../settingpages/QKConfigs.qml" line="788"/>
+        <location filename="../settingpages/QKConfigs.qml" line="810"/>
+        <location filename="../settingpages/QKConfigs.qml" line="831"/>
+        <location filename="../settingpages/QKConfigs.qml" line="852"/>
+        <location filename="../settingpages/QKConfigs.qml" line="873"/>
         <source>OvrFrqFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="726"/>
-        <location filename="../settingpages/QKConfigs.qml" line="747"/>
-        <location filename="../settingpages/QKConfigs.qml" line="768"/>
-        <location filename="../settingpages/QKConfigs.qml" line="789"/>
+        <location filename="../settingpages/QKConfigs.qml" line="811"/>
+        <location filename="../settingpages/QKConfigs.qml" line="832"/>
+        <location filename="../settingpages/QKConfigs.qml" line="853"/>
+        <location filename="../settingpages/QKConfigs.qml" line="874"/>
         <source>PosErrOvrFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="727"/>
-        <location filename="../settingpages/QKConfigs.qml" line="748"/>
-        <location filename="../settingpages/QKConfigs.qml" line="769"/>
-        <location filename="../settingpages/QKConfigs.qml" line="790"/>
+        <location filename="../settingpages/QKConfigs.qml" line="812"/>
+        <location filename="../settingpages/QKConfigs.qml" line="833"/>
+        <location filename="../settingpages/QKConfigs.qml" line="854"/>
+        <location filename="../settingpages/QKConfigs.qml" line="875"/>
         <source>MtrEncFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="728"/>
-        <location filename="../settingpages/QKConfigs.qml" line="749"/>
-        <location filename="../settingpages/QKConfigs.qml" line="770"/>
-        <location filename="../settingpages/QKConfigs.qml" line="791"/>
+        <location filename="../settingpages/QKConfigs.qml" line="813"/>
+        <location filename="../settingpages/QKConfigs.qml" line="834"/>
+        <location filename="../settingpages/QKConfigs.qml" line="855"/>
+        <location filename="../settingpages/QKConfigs.qml" line="876"/>
         <source>OvrCrntFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="885"/>
+        <location filename="../settingpages/QKConfigs.qml" line="970"/>
         <source>inStop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="890"/>
+        <location filename="../settingpages/QKConfigs.qml" line="975"/>
         <source>inRunning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="895"/>
+        <location filename="../settingpages/QKConfigs.qml" line="980"/>
         <source>inAlarm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKConfigs.qml" line="947"/>
-        <source>Axis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKConfigs.qml" line="951"/>
-        <source>Addr</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKConfigs.qml" line="956"/>
-        <source>Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKConfigs.qml" line="964"/>
-        <source>Write</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKConfigs.qml" line="971"/>
-        <source>Read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKConfigs.qml" line="978"/>
-        <source>Write EP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKConfigs.qml" line="985"/>
-        <source>Read EP</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6372,8 +6337,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="5"/>
+        <source>default value:1990,instruction:IGBT switching frequency (Hz) clock frequency =0.5* system (PwmPeriod / 1). When PwmMode=0, the non symmetric mode, current loop sampling frequency =2* switching frequency: when pwmMode=1, symmetric mode, current loop sampling frequency = switching frequency.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="6"/>
         <source>SampleStartDelay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="6"/>
+        <source>default value:10,instruction:A/D sampling delay time (NS) = system master clock cycle *SampleStartDela</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6382,8 +6357,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="7"/>
+        <source>default value:516,instruction:Speed loop sampling frequency (Hz) = current loop sampling frequency /SpdLpRate. position loop sampling frequency (Hz) = speed loop sampling frequency /PosLpRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="8"/>
         <source>ModScl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="8"/>
+        <source>default value:3000,instruction:ModScl=3×(PwmPeriod+1)/2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6392,8 +6377,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="9"/>
+        <source>default value:119,instruction:IGBT Dead Time(ns)=System master clock cycle(ns)×(PwmDeadTm+1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="10"/>
         <source>SystemConfig</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="10"/>
+        <source>default value:24,instruction:describe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6402,8 +6397,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="11"/>
+        <source>default value:0,instruction:0-Prohibit undervoltage alarm function，1-Allow undervoltage alarm function</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="12"/>
         <source>DcBusOffset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="12"/>
+        <source>default value:4864,instruction:DcBusOffset=The DC bus voltage is equal to zero, corresponding to the A/D conversion data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6412,8 +6417,21 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="13"/>
+        <location filename="../settingpages/QKInfo.js" line="21"/>
+        <source>default value:0,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="15"/>
         <source>DriverCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="15"/>
+        <location filename="../settingpages/QKInfo.js" line="20"/>
+        <location filename="../settingpages/QKInfo.js" line="22"/>
+        <source>default value:7,instruction:describe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6422,8 +6440,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="16"/>
+        <source>default value:2916,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="17"/>
         <source>BrkCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="17"/>
+        <source>default value:25700,instruction:describe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6432,78 +6460,23 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="18"/>
+        <source>default value:2194,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="19"/>
         <source>OutPortConfig</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKInfo.js" line="5"/>
-        <source>1.Parameter initial value: 1999, whether to modify: No.2.[15:0] PWM cycle, range: 1~4095.3. Description: IGBT switching frequency (Hz) and the system clock frequency of =0.5* / (PwmPeriod+1). When PwmMode=0, the non symmetric mode, current loop sampling frequency =2* switching frequency: when pwmMode=1, symmetric mode, current loop sampling frequency = switching frequency.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="6"/>
-        <source>1.parameter initial value: 10, whether to modify: No.2.[15:0] A/D sampling delay, value range: 0~255.3.: A/D sampling delay time (NS) = system master clock cycle *SampleStartDelay.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="7"/>
-        <source>1.parameter initial value: 516, whether to modify: No.2.[7:0] no need to modify the speed loop sampling frequency ratio, range: 1~255, [15:8] position loop sampling frequency ratio, range: 1~255.3. Description: speed loop sampling frequency (Hz) = current loop position loop sampling frequency /SpdLpRate; sampling frequency (Hz) = speed loop sampling frequency /PosLpRate.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="8"/>
-        <source>1.parameter initial value: 3000, whether to modify: No.2.[15:0] SVPWM calibration factor, value range: 0~4095.3.: ModScl=3 * (PwmPeriod+1) /2.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="9"/>
-        <source>1.parameter initial value: 119, whether to modify: No,.2.[15:0] value range: 0~255.3.: IGBT dead time (NS) = system master clock cycle (NS) * (PwmDeadTm+1) cycle(ns)×(PwmDeadTm+1)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="10"/>
-        <source>1.parameter initial value: 24,whether to modify: No.2.[0]: the main power supply is off monitoring enable, range: 0~1 [1]; DC bus voltage compensation enable, range: 0~1; [2] radiator over temperature protection effective level, range: 0~1; [3] regenerative braking effective level, range: 0~1; [4]PWM mode limit range: 0~1; [15:5] is not defined, the range of.3.: any value: MPwrOffMonEnbl, DcBusCompEnbl:0- from this function, 1- allows the function; OvrTempSns, RegenBrkSns:0- active low 1-, high effective; asymmetric PwmMode:0- type, 1- type symmetry.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="11"/>
-        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] undervoltage alarm enable, value range: 0~1.3. Description: 0- prohibit undervoltage alarm function, 1- allows undervoltage alarm function</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="12"/>
-        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] DcBusOffset, value range: 0~4095.3.: DcBusOffset= DC bus voltage is equal to zero, corresponding to the A/D conversion data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="13"/>
-        <source>1.parameter initial value: 4864,whether to modify: No.2.[7:0] the local node number ID, range: 0~255; [10:8] communication baud rate selection, range: 0~7, [12:11]; parity range: 0~3; [15:13] is not defined, range:.3. Description: any value node ID number of current LocalId: system; ParitySelect:0/3- no parity, parity BuadSelect:0-9.6kHz, 1-19.2kHz 1-; 2-57.6kHz, 3-115.2kHz, 4-250kHz, 5-500kHz, 6-800kHz, 7-1MHz..</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="15"/>
-        <source>1.parameter initial value: 7,whether to modify: No.2.[0] the relay driver effective level, range: 0~1; [1] arm IGBT gate drive effective level, range: 0~1; [2] arm IGBT gate drive effective level, range: 0~1; [3]IGBT fault clearing level, range: 0~1; [4]IGBT overcurrent protection effective level, range: 0~1; [5]IGBT over temperature protection effective level, range: 0~1; [6]U phase current polarity inversion, range: 0~1; [7]W phase current polarity inversion, range: 0~1 [8]; current phase inverted, range: 0~1; [15:9] is not defined range:.3., any value: Sns:0- active low 1- high effective; Inv:0- does not take anti 1-, anti.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="16"/>
-        <source>1.parameter initial value: 2916,whether to modify: No.2.[7:0]: the dynamic brake delay range: 0~255; no dynamic brake, [8] main power shutdown range: 0~1; no dynamic brake, [9] servo OFF range: 0~1; [10] fault alarm when the prohibition of dynamic brake, range: 0~1; no dynamic brake, [11] process range: 0~1; [15:12] is not defined, any value value range:.3. Description: dynamic brake delay -DBRlyDelayx1ms, Inh:0- allows DB action, 1- banned DB action.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="17"/>
-        <source>1.parameter initial value: 25700,whether to modify: No.2.[7:0] the brake open delay, range: 0~255; [15:8] brake delay, range: 0~255.3. Description: brake open delay brake delay =SOffToBOnDelayx1ms. =BrkRlyDelayx1ms;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="18"/>
-        <source>1.parameter initial value: 2194,whether to modify: No.2.[0] the servo ON effective level, range: 0~1; [1] alarm clearing level range: 0~1; [3:2] alarm clear reuse range: 0~3; [4] ultra positive effective level, range: 0~1; [6:5] positive super port reuse range: [7], 0~3; reverse overtravel effective level, range: 0~1; [9:8] reverse overtravel port multiplexing, range: 0~3; range of [10] travel direction: 0~1; the [11] command cleared effective level range: 0~1; [13:12] command cleared port multiplexing, range: 0~3; [15:14] is not defined that range: any value. Note: Sns:0- active low 1-, high effective; TrvIDir:0- motor counter clockwise when the stroke is the right direction, 1- motor rotates clockwise travel to a positive direction; AlmRstFunc:0- alarm Clear, 1~2- is not defined, 3- pulse position commands are prohibited; POTFunc:0- is super, 1~2 is not defined, 3- pulse position commands are prohibited; reverse NOTFunc:0- over range, 1~2 is not defined, 3- pulse position command prohibition; CmdRstFunc:0- position deviation counter reset, 1- zero speed clamp, 2- is not defined, 3- pulse the position command is prohibited.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/QKInfo.js" line="19"/>
-        <source>1.parameter initial value: 521,whether to modify: No.2.[0] the servo ready effective level, range: 0~1; [2:1] servo ready port multiplexing, range: 0~3; [3] brake open effective level, range: 0~1; [5:4] brake open port multiplexing, range: 0~3; [6] alarm output level range: [8:7], 0~1; alarm output port multiplexing, range: 0~3; [9] complete the effective level, range: 0~1; [11:10] completion port reuse, range: 0~3; [15:12] is not defined, the range of any value; note: Sns:0- low level; RdyFunc:0- servo ready, 1- torque limit in 2-, the speed limit in 3- software; HldBrkFunc:0- brake open, 1~3- is not defined; AlmFunc:0- alarm output, 1~3- is not defined; the CoinFunc:0- definition, 1- zero speed, 2~3- Definition.</source>
+        <source>default value:512,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="23"/>
+        <source>default value:0,instruction:VCmd_Offset= analog command voltage equal to zero, corresponding to the A/D conversion data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6512,18 +6485,8 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKInfo.js" line="20"/>
-        <source>1.parameter initial value: 7,whether to modify: No.2.[0] the ON servo control source, range: 0~1; [1] encoder enable control range: 0~1; [2] axis enable control range: 0~1; [3] type motor, range: 0~1; [15:4] is not defined, the range of arbitrary values:.3. Description: ExtCtrl:0- ON RS422 1- by servo control, servo control by PLC ON; EncEnbl:0- 1- encoder encoder is prohibited, normal work; AxisEnbl:0- axis current is prohibited, the current 1- axis normal work; MtrType:0-PMSM, 1-IM.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/QKInfo.js" line="21"/>
         <source>ModelControl</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="21"/>
-        <source>1.parameter initial value: 0,whether to modify: No.2.[1:0] the torque command source, range: 0~3; [3:2] speed command source, range: 0~3; [4] speed ramp command source, range: 0~1; [5] position command source, range: 0~1; [6] position feedback source, the value range: 0~1; [15:7] is not defined, the range of values: any.3. Description: IqRefSel:0- speed loop output, 1- digital given, 2- analog voltage, 3-0; SpdRefSel:0- position loop output, 1- slope is given, 2- digital given, 3- analog voltage; RampRefSel:0- digital given, 1- analog voltage; PosRefSel:0- pulse is given, 1- digital given PosFbkSel:0- rotation; 1- linear encoder, grating.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6532,328 +6495,8 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKInfo.js" line="22"/>
-        <source>1.parameter initial value: 7,whether to modify: No.2.[1] the position command enable, range: 0~1; [1] command pulse mode, range: 0~1; [2] command pulse edge selection, range: 0~1; [3] command pulse logic inversion, range: 0~1; [4] simulation command polarity inversion, range: 0~1; [15:5] is not defined, range:.3. Description: PosCmdEnbl:0- arbitrary value position command pulse is invalid, 1- position command pulse; PosCmdMode:0-Quadrature mode, and pulse is X4,1-Pulse/sign mode and pulse is X1; PosCmdEdge: the falling edge effectively, the rising edge of 1-; PosCmdInv:0- position command pulse not inverted, 1- position take the command pulse; AnlgRefInv:0- not inverted, 1- inverted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/QKInfo.js" line="23"/>
         <source>VCmdOffset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="23"/>
-        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] simulation command offset, value range: -32767~32767.3.: VCmd_Offset= analog command voltage equal to zero, corresponding to the A/D conversion data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="24"/>
-        <source>1.parameter initial value: 33, whether to modify: No.2.[0] Z encoder pulse enable, range: 0~1; [1] velocity pulse selection, range: 0~1; [3:2] velocity pulse edge selection, range: 0~1; [4] reverse rotation, range: 0~3; polarity, Z pulse [5] rotary encoding device range: 0~1; [6] line type incremental encoder, range: 0~1; [15:7] is not defined, the range of.3. value: any description: ZPulsEnbl:0- ban, 1- allows the EncPhsMux:0-A phase, 1-B phase;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="25"/>
-        <source>1.parameter initial value: 16383, whether to modify: No.2.[15:0] incremental encoder line number, value range: 0~65535.3.: RotEnc_MaxCnt=4 * PPR-1, where PPR is the encoder, each phase of each turn of the pulse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="26"/>
-        <source>1.parameter initial value: 1250, whether to modify: No,.2.[15:0] incremental encoder line number, value range: 0~65535.3.: Z pulse relative to U opposite potential, negative to zero point of electric angle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="27"/>
-        <source>1.parameter initial value: 2, whether to modify: No.2.[0] the linear encoder RP, range: 0~1; polarity, Z pulse [1] linear encoder range: 0~1; [15:2] is not defined, range:.3. Description: LnrEncInv:0- is not an arbitrary value counter, 1- counter; LnrEncZPol:0- negative, 1- positive.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="28"/>
-        <source>1.parameter initial value: 9, whether to modify: No.2.[0] encoder output enable frequency, range: 0~1; [1] output pulse source, range: 0~1; [2] output pulse inversion, range: 0~1; polarity [3] Z pulse output range: 0~1; [15:4] is not defined, the range: 0~1.3. Description: EncDivEnbl:0- ban, 1- allows EncDivSrc:0-; rotary encoder, 1- linear grating; EncDivInv:0-A phase advance in the B phase, 1-A phase lag in B phase; EncDivZPol:0- negative, 1- positive.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="29"/>
-        <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] encoder output pulse frequency than the range of molecules: 1~65535.3. Description: EncDiv_Num/EncDiv_Den = 1; otherwise, the output pulse is uncertain.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="32"/>
-        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] U phase current offset, value range: -2047~2047.3.: IfbU_Offset=U phase current equal to zero, corresponding to the A/D conversion data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="33"/>
-        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] W phase current offset, value range: -2047~2047.3.: IfbW_Offset=W phase current equal to zero, corresponding to the A/D conversion data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="34"/>
-        <source>1.parameter initial value: 5148, whether to modify: Yes, suggestion: calculated according to the description of the formula, where MHC is the maximum range of the current sensor, a circle, MHC=24, the two time round, MHC=12, the three time round, MHC=8.2.[15:0]D axis current calibration factor, range: 0~65535.3. Description: for PMSM, IdScl=MHC (2048 * 4096 * 2^10/ * SQRT * Irated * 1.64676 (2)), where MHC is the maximum range of ideal current sensor, Irated rated current value.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="35"/>
-        <source>1.parameter initial value: 5148, whether to modify: Yes, suggestion: calculated according to the description of the formula, where MHC is the maximum range of the current sensor, a circle, MHC=24, the two time round, MHC=12, the three time round, MHC=8.2.[15:0]Q axis current calibration factor, range: 0~65535.3. Description: for PMSM, IqScl=MHC (2048 * 4096 * 2^10/ * SQRT * Irated * 1.64676 (2)), where MHC is the maximum range of ideal current sensor, Irated rated current value.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="36"/>
-        <source>1.parameter initial value: 4096, whether to modify: Yes, suggestion: PPR=4096.2.[15:0] electric angle calibration factor, range: 0~65535.3. Description: ElecAngScl=P * 4096 * 2^12/ (4 * PPR), where P is the pole number, PPR for each phase of each turn from the encoder pulse number.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="37"/>
-        <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] the motor slip gain range: 0~65535.3. Description: for IM, SlipGain=RatedSlipSpeed/RatedIqRef=2^24 * RatedSlipFreq (Hz) /CurrentLoopUpdateRate.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="38"/>
-        <source>1.parameter initial value: 65535,whether to modify: No.2.[15:0] the torque command notch filter constant 1, range: 32768~65535.3. Description: K1_Notch=k1 * 2^15, k1=1+a, a= (1-tan (Bw/2) (1+tan) / (Bw/2) Bw=2), pi * fb/fs, where FS is the current loop frequency, FB -3dB notch width; 1 = k1&lt;2, K1, and when the 2 notch filter has no effect.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="39"/>
-        <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] the torque command notch filter constant 2, range: 0~65535.3. Description: K2_Notch=k2 * 2^15, k2=b * (1+a), a= (1-tan (Bw/2) (1+tan) / (Bw/2) b=cos), Omega 0, Omega PI Bw=2 * fb/fs, 0=2 pi * f0/fs, where FS is the current loop sampling frequency, F0 notch center frequency, FB -3dB notch width; 0 = k2&lt;2.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="40"/>
-        <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] the torque command low-pass filter constant, range: 0~65535.3. Description: Ktf=2^16 * (1-tan (c/2) (1+tan) / (omega Omega PI, c/2)) c=2 * fc/fs, where FS is the current loop sampling frequency, FC -3dB shear frequency.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="41"/>
-        <source>1.parameter initial value: 21845, whether to modify: No.2.[15:0] overload protection threshold, value range: 0~65535.3.: OvrLdLim=32768/coeff, coeff is overload factor, e.g. is set to 1.5 times the rated value, OvrLdLim=21845.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="42"/>
-        <source>1.parameter initial value: 12288, whether to modify: No.2.[15:0] positive torque limit, range: 0~32767.3. Description: TrqLimP=4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of current sensor, Irated rated current value.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="43"/>
-        <source>1.parameter initial value: -12288, whether to modify: No.2.[15:0] reverse torque limit, range: -32767~-1.3. Description: TrqLimN=-4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of current sensor, Irated rated current value.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="44"/>
-        <source>1.parameter initial value: 1024, whether to modify: No.2.[15:0] current loop controller, integral error limit, value range: 0~16383.3.: big deviation, small gain, small deviation, big gain</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="45"/>
-        <source>1.parameter initial value: 2000, whether to modify: Yes, suggestion: according to the experience, the range of Kpid 100~1000, suggested the use of the initial value of.2.[15:0]D axis current loop controller proportional gain range: 0~65535.3. Description: 11 decimal places.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="46"/>
-        <source>1.parameter initial value: 1500, whether to modify: Yes, suggestion: according to the experience, the range of Kiid 100~1000, suggested the use of the initial value of integral gain,.2.[15:0]D axis current loop controller range: 0~65535.3. Description: 16 decimal places.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="49"/>
-        <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] D axis: whether the back EMF constant, range: 0~65535.3. Description: for PMSM, Ked=8192 * P * MaxRPM * pi * Ls * SQRT (2) * Irated/ (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed, Ls the motor winding inductance, Irated rated current value.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="50"/>
-        <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] Q axis: whether the back EMF constant, range: 0~65535.3. Description: for PMSM, Ked=8192 * P * MaxRPM * * pi / psi (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed, psi for permanent magnet motor rotor chain.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="51"/>
-        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] torque simulation command weighting factor, value range: 0~65535.3. Description: Ktg=2^14 * (0~400%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="52"/>
-        <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] the induction motor rotor constant, range: 0~65535.3. Description: Krt=2^22/ (tr*fs), where FS is the current loop sampling frequency (Hz), TR for induction motor rotor time constant.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="53"/>
-        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] induction motor rated frequency, value range: 0~65535.3.: RatedFreq=2^15*RatedRPM/MaxRPM.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="54"/>
-        <source>1.parameter initial value: 6632, whether to modify: No.2.[15:0] D axis, voltage modulation, system limits, value range: 0~6632.3.: VdLim=2^14 * D axis, maximum voltage regulation system /1.64676</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="55"/>
-        <source>1.parameter initial value: 6632, whether to modify: No.2.[15:0] Q axis, voltage modulation, system limits, value range: 0~6632.3.: VqLim=2^14 * Q axis, maximum voltage regulation system /1.64676</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="56"/>
-        <source>OvrCrnt</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="56"/>
-        <source>1.parameter initial value: 16384, whether to modify: No.2.[15:0] over-current protection threshold, value range: 0~65535.3. Description: maximum current setting, motor rated =4096.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="58"/>
-        <source>1.parameter initial value: 3200,whether to modify: No.2.[15:0] the speed of the scaling factor, range: 0~65535.3. Description: SpdScl=2^15 (4 x 60 x fclk/ x PPR x MaxRPM x 256), where fclk is the main system clock frequency, PPR encoder line number, MaxRPM is the highest speed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="59"/>
-        <source>1.parameter initial value: 30,whether to modify: No.2.[15:0] the motor zero velocity detection delay, range: 0~65535.3. Description: NilMtrSpdDly= speed loop sampling frequency (4 * 60/ * PPR * MinRPM), where PPR is the number of MinRPM encoder line, the minimum speed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="60"/>
-        <source>1.parameter initial value: 30, whether to modify: No.2.[15:0] DC pulse zero speed detection delay, value range: 0~65535.3.: NilCmdSpdDly=NilMtrSpdDly * electronic gear ratio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="61"/>
-        <source>1.parameter initial value: 300, whether to modify: No.2.[15:0] speed measurement comparison of internal and the switching threshold value range: 0~32767.3. Description: SpdCmp=2^15 x 60 x speed loop sampling frequency / (PPR * MaxRPM), where PPR is the number of MaxRPM is the highest line encoder, speed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="62"/>
-        <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] zero speed approval range, value range: 0~65535.3. Description: when the actual speed is less than MaxRPM * ZeroSpeed/2^15, considered at the speed of zero state</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="63"/>
-        <source>1.parameter initial value: 256, whether to modify: No.2.[15:0] acceleration, value range: 0~65535.3. Description: 8 decimal places</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="65"/>
-        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] speed feed-forward / analog command weighting factor, value range: 0~65535.3.: Kfg=2^14 * (0~400%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="66"/>
-        <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] the speed feedforward / analog low-pass filter command constant, range: 0~65535.3. Description: Kff=2^16 * (1-tan (c/2) (1+tan) / (omega Omega PI, c/2)) c=2 * fc/fs, where FS is the speed loop sampling frequency, FC -3dB shear frequency.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="67"/>
-        <source>1.parameter initial value: 25000, whether to modify: No.2.[15:0] forward rev limit amplitude, value range: 0~32767.3.: SpdLimP=2^15 * (0~100%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="68"/>
-        <source>1.parameter initial value: -25000, whether to modify: No.2.[15:0] reverse rev limit amplitude, value range: -32767~-1.3.: SpdLimN=-2^15 * (0~100%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="69"/>
-        <source>1.parameter initial value: 25000, whether to modify: No.2.[15:0] speed loop controller, integral error limit, value range: 0~32767.3.: big deviation, small gain, small deviation, big gain</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="70"/>
-        <source>1.parameter initial value: 100, whether to modify: Yes, suggestion: according to the experience, 10 &lt; KpV &lt; = 1000, the need to modify the.2.[15:0] speed loop controller proportional gain range according to the actual situation: 0~65535.3. Description: 5 decimal places.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="71"/>
-        <source>1.parameter initial value: 200, whether to modify: Yes, suggestion: according to the experience, 10 &lt; KiV &lt; = 1000, the need to modify the.2.[15:0] speed loop integral gain controller, according to the actual situation of the range: 0~65535.3. Description: 13 decimal places.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="72"/>
-        <source>1.parameter initial value: 65535, whether to modify: No.2.[15:0] speed loop controller, PDFF gain, value range: 0~65535.3.KfV=2^16 * (0~100%), which: 0-IP control, 100%-PI control, 0~100%-PDFF control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="73"/>
-        <source>1.parameter initial value: 100,whether to modify: No.2.[15:0] the brake zero speed range: 0~65535.3. Description: when the actual speed is less than MaxRPM * ZeroSpeed/2^15, turn off the brake signal.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="75"/>
-        <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] electronic gear of the molecule: 0~65535.3.: 1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="77"/>
-        <source>1.parameter initial value: 256, whether to modify: No.2.[15:0] position deviation is too large: 0~65535.3.: PosErrOvrLim limit of 256 * pulse equivalent</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="78"/>
-        <source>1.parameter initial value: 10, whether to modify: No.2.[15:0] positioning completion range: 0~65535.3. Description: when the actual position deviation is less than CoinLim pulse equivalent, that position is completed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="79"/>
-        <source>1.parameter initial value: 65535, whether to modifyy: No.2.[15:0] forward stroke limit (high 16 bits):0~65535.3. Description: when the actual position exceeds [POvrTrvLimH, POvrTrvLimL] pulse equivalent, the positive forward process will occur</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="80"/>
-        <source>1.parameter initial value: 32767, whether to modify: No.2.[15:0] forward stroke limit (low 16 bits):0~32767.3. Description: when the actual position exceeds [POvrTrvLimH, POvrTrvLimL] pulse equivalent, the positive forward process will occur</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="81"/>
-        <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] reverse travel limit (high 16 bits):0~65535.3. Description: when the actual position exceeds [NOvrTrvLimH, NOvrTrvLimL] pulse equivalent, reverse reverse process will occur</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="82"/>
-        <source>1.parameter initial value: 32768, whether to modify: No.2.[15:0] reverse travel limit (low 16 bits):-32768~0.3. Description: when the actual position exceeds [NOvrTrvLimH, NOvrTrvLimL] pulse equivalent, reverse reverse process will occur</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="83"/>
-        <source>1.parameter initial value: -32768,whether to modify: No.2.[15:0] the filter constants: 0~65535.3. Description: Ksf=2^16 * T/ (T+1), including T= /Ts, which is the filter time constant Ts for the position loop sampling period.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="84"/>
-        <source>1.parameter initial value: 10, whether to modify: Yes, suggestion: according to the experience, 2 &lt; KpP &lt; = 100, can be adjusted according to the actual situation in general, recommend the use of the initial value of.2.[15:0] controller of position loop proportional gain: 0~65535.3. Description: 5 decimal places.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="86"/>
-        <source>1.parameter initial value: 1024, whether to modify: No.2.[15:0] rotor initial angle 1:0~65535.3.indicating: motor encoder U, V, W equal to 001 when the corresponding rotor position; only stored in the EEPROM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="87"/>
-        <source>1.parameter initial value: 208, whether to modify: No.2.[15:0] rotor initial angle 2:0~65535.3.indicating: motor encoder U, V, W equal to 010 when the corresponding rotor position; only stored in the EEPROM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="88"/>
-        <source>1.parameter initial value: 625, whether to modify: No.2.[15:0] rotor initial angle 3:0~65535.3.indicating: motor encoder U, V, W equal to 011 when the corresponding rotor position; only stored in the EEPROM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="89"/>
-        <source>1.parameter initial value: 1875, whether to modify: No.2.[15:0] rotor initial angle 4:0~65535.3.indicating: motor encoder U, V, W equal to 100 when the corresponding rotor position; only stored in the EEPROM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="90"/>
-        <source>1.parameter initial value: 1458, whether to modify: No.2.[15:0] rotor initial angle 5:0~65535.3.indicating: motor encoder U, V, W equal to 101 when the corresponding rotor position; only stored in the EEPROM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="91"/>
-        <source>1.parameter initial value: 2292, whether to modify: No.2.[15:0] rotor initial angle 6:0~65535.3.indicating: motor encoder U, V, W equal to 110 when the corresponding rotor position; only stored in the EEPROM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="97"/>
-        <source>(0 - no fault, 1 - fault) bit0: power on initialization failure, bit1:EEPROM fault, bit2:A/D converter fault, bit3:operation engine system timeout, bit4: radiator overheated, bit5: main power supply overvoltage, undervoltage  bit6: main power supply, bit7:the main power supply is off, bit8:IGBT overcurrent, bit9: IGBT overheating, bit10:overload, bit11:overspeed, bit12: position command pulse frequency is too high, bit13: the position error is too large, bit14:DSP synchronous fault,bit15:  overcurrent fault.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="98"/>
-        <source>Bit3: servo control enable status(0 - servo off, 1 - servo on)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6862,8 +6505,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="24"/>
+        <source>default value:33,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="25"/>
         <source>RotEncMaxCnt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="25"/>
+        <source>default value:16383,instruction:RotEnc_MaxCnt=4 * PPR-1, where PPR is the number of pulses per turn per encoder for the encoder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6872,8 +6525,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="26"/>
+        <source>default value:1250,instruction:An electrical angle of an Z pulse opposite the negative potential of U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="27"/>
         <source>LnrEncCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="27"/>
+        <source>default value:2,instruction:describe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6882,8 +6545,19 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="28"/>
+        <source>default value:9,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="29"/>
         <source>EncDivNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="29"/>
+        <location filename="../settingpages/QKInfo.js" line="30"/>
+        <source>default value:1,instruction:EncDiv_Num/EncDiv_Den≥1；Otherwise, the output pulse is uncertain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6892,13 +6566,13 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKInfo.js" line="30"/>
-        <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] encoder output pulse frequency than the denominator, range: 1~65535.3. EncDiv_Num/EncDiv_Den = 1; otherwise, the output pulse is uncertain.</source>
+        <location filename="../settingpages/QKInfo.js" line="32"/>
+        <source>IfbU_Offset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingpages/QKInfo.js" line="32"/>
-        <source>IfbU_Offset</source>
+        <source>default value:0,instruction:IfbU_Offset=U phase current equals zero, corresponding to the A/D conversion data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6907,8 +6581,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="33"/>
+        <source>default value:0,instruction:IfbW_Offset=W phase current equals zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="34"/>
         <source>IdScl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="34"/>
+        <source>default value:5148,instruction:for PMSM，IdScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，Among them, MHC is the maximum ideal range of current sensor, and Irated is the rated current effective value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6917,8 +6601,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="35"/>
+        <source>default value:5148,instruction:for PMSM，IqScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，Among them, MHC is the maximum ideal range of current sensor, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="36"/>
         <source>ElecAngScl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="36"/>
+        <source>default value:4096,instruction:ElecAngScl=P x 4096 x 2^12/ (4 * PPR), where P is the polar logarithm, and PPR is the number of pulses per phase per turn of the encoder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6927,8 +6621,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="37"/>
+        <source>default value:0,instruction:For IM，SlipGain=RatedSlipSpeed/RatedIqRef=2^24×RatedSlipFreq(Hz)/CurrentLoopUpdateRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="38"/>
         <source>K1Notch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="38"/>
+        <source>default value:65535,instruction:K1_Notch=k1×2^15，k1=1+a，a=(1-tan(Bw/2))/(1+tan(Bw/2))，Bw=2π×fb/fs,Where FS is the current loop sampling frequency, FB -3dB notch width; 1 = k1&lt;2, K1, and when the 2 notch filter has no effect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6937,8 +6641,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="39"/>
+        <source>default value:0,instruction:K2_Notch=k2×2^15，k2=b×(1+a)，a=(1-tan(Bw/2))/(1+tan(Bw/2))，b=cosω0，Bw=2π×fb/fs，ω0=2π×f0/fs,Where FS is the current loop sampling frequency, F0 notch center frequency, FB -3dB notch width; 0 = k2&lt;2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="40"/>
         <source>Ktf</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="40"/>
+        <source>default value:0,instruction:Ktf=2^16 * (1-tan (omega c/2)) / (1 Tan (omega c/2)), Omega c=2 pi * fc/fs, where FS is the current loop sampling frequency, and FC is the -3dB clipping frequency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6947,8 +6661,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="41"/>
+        <source>default value:21845,instruction:OvrLdLim=32768/coeff，Coeff for overload factor, e.g. is set to 1.5 times the rated value, OvrLdLim=21845</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="42"/>
         <source>TrqLimp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="42"/>
+        <source>default value:12288,instruction:TrqLimP=4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of the current sensor, and Irated is the rated current effective value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6957,8 +6681,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="43"/>
+        <source>default value:-12288,instruction:TrqLimN=-4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of the current sensor, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="44"/>
         <source>IErrLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="44"/>
+        <source>default value:1024,instruction:It is used to achieve large deviation, small gain, small deviation and large gain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6967,8 +6701,20 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="45"/>
+        <location filename="../settingpages/QKInfo.js" line="47"/>
+        <source>default value:2000,instruction:11 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="46"/>
         <source>Kiid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="46"/>
+        <location filename="../settingpages/QKInfo.js" line="48"/>
+        <source>default value:1500,instruction:16 decimal places</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6977,18 +6723,8 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKInfo.js" line="47"/>
-        <source>1.parameter initial value: 2000, whether to modify: Yes, suggestion: according to the experience, the range of Kpiq to 100~1000, and numerical Kpid, recommend the use of the initial value of.2.[15:0]Q axis current loop controller proportional gain range: 0~65535.3. Description: 11 decimal digits.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/QKInfo.js" line="48"/>
         <source>Kiiq</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="48"/>
-        <source>1.parameter initial value: 1500, whether to modify: Yes, suggestion: according to the experience, the range of Kpiq to 100~1000, and numerical Kiid, recommend the use of the initial value of integral gain,.2.[15:0]Q axis current loop controller range: 0~65535.3. Description: 16 decimal digits.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6997,8 +6733,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="49"/>
+        <source>default value:0,instruction:For PMSM, Ked=8192 * * * P * MaxRPM * Ls * SQRT (2) * Irated/ (15 * 1.64676 * 310), in which P is the extreme logarithm, MaxRPM is the highest speed, Ls is motor winding inductance, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="50"/>
         <source>Keq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="50"/>
+        <source>default value:0,instruction:For PMSM, Ked=8192 * P * MaxRPM * * pi / psi (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed of permanent magnet motor rotor flux for PSI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7007,8 +6753,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="51"/>
+        <source>default value:0,instruction:Ktg=2^14×(0~400%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="52"/>
         <source>Krt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="52"/>
+        <source>default value:0,instruction:Krt=2^22/(tr*fs)，Among them, FS is the current loop sampling frequency (Hz), and TR is the rotor time constant (s) of induction motors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7017,8 +6773,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="53"/>
+        <source>default value:0,instruction:RatedFreq=2^15*RatedRPM/MaxRPM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="54"/>
         <source>VdLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="54"/>
+        <source>default value:6632,instruction:Maximum voltage regulation of VqLim=2^14 * D axis /1.64676</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7027,8 +6793,19 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="55"/>
+        <source>default value:6632,instruction:Maximum voltage regulation of VqLim=2^14 * Q axis /1.64676</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="56"/>
         <location filename="../settingpages/QKInfo.js" line="73"/>
         <source>BrkZeroSpd</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="56"/>
+        <source>default value:16384,instruction:Maximum current setting, motor rated =4096</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7037,8 +6814,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="58"/>
+        <source>default value:3200,instruction:SpdScl=2^15 x 60 x fclk/ (4 * PPR * MaxRPM * 256), wherein fclk is the system master clock frequency, PPR is the encoder line number, and MaxRPM is the highest speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="59"/>
         <source>NilMtrSpdDly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="59"/>
+        <source>default value:30,instruction:NilMtrSpdDly= speed ring sampling frequency * 60/ (4 * PPR * MinRPM), in which PPR is the encoder line, and MinRPM is the minimum speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7047,8 +6834,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="60"/>
+        <source>default value:30,instruction:NilCmdSpdDly=NilMtrSpdDly×(Electronic gear ratio)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="61"/>
         <source>SpdCmp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="61"/>
+        <source>default value:300,instruction:SpdCmp=2^15 * 60 * speed ring sampling frequency / (PPR * MaxRPM), in which PPR is the encoder line, and MaxRPM is the highest speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7057,8 +6854,19 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="62"/>
+        <source>default value:1,instruction:When the actual speed is less than MaxRPM * ZeroSpeed/2^15, the speed is considered to be zero</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="63"/>
         <source>SpdAccRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="63"/>
+        <location filename="../settingpages/QKInfo.js" line="64"/>
+        <source>default value:256,instruction:8 decimal places</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7067,13 +6875,13 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKInfo.js" line="64"/>
-        <source>1.parameter initial value: 256, whether to modify: No.2.[15:0] deceleration, value range: 0~65535.3. Description: 8 decimal places</source>
+        <location filename="../settingpages/QKInfo.js" line="65"/>
+        <source>Kfg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingpages/QKInfo.js" line="65"/>
-        <source>Kfg</source>
+        <source>default value:0,instruction:Kfg=2^14×(0~400%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7082,8 +6890,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="66"/>
+        <source>default value:0,instruction:Kff=2^16×(1-tan(ωc/2))/(1+tan(ωc/2))，ωc=2π×fc/fs,Among them, FS is the speed ring sampling frequency, and FC is -3dB clipping frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="67"/>
         <source>SpdLimP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="67"/>
+        <source>default value:25000,instruction:SpdLimP=2^15×(0~100%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7092,8 +6910,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="68"/>
+        <source>default value:-25000,instruction:SpdLimN=-2^15×(0~100%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="69"/>
         <source>SpdErrLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="69"/>
+        <source>default value:1990,instruction:It is used to achieve large deviation, small gain, small deviation and large gain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7102,8 +6930,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="70"/>
+        <source>default value:100,instruction:5 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="71"/>
         <source>KiV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="71"/>
+        <source>default value:200,instruction:13 decimal places</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7112,8 +6950,24 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="72"/>
+        <source>default value:65535,instruction:KfV=2^16×(0~100%)，Among them: 0-IP control, 100%-PI control, 0~100%-PDFF control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="73"/>
+        <source>default value:100,instruction:When the actual speed is less than MaxRPM * ZeroSpeed/2^15, turn off the brake signal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="75"/>
         <source>PulsSclNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="75"/>
+        <location filename="../settingpages/QKInfo.js" line="76"/>
+        <source>default value:1,instruction:1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7122,13 +6976,13 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKInfo.js" line="76"/>
-        <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] electronic gear of the denominator: 0~65535.3.: 1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024.</source>
+        <location filename="../settingpages/QKInfo.js" line="77"/>
+        <source>PosErrOvrLim</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingpages/QKInfo.js" line="77"/>
-        <source>PosErrOvrLim</source>
+        <source>default value:256,instruction:The actual limit is PosErrOvrLim * 256 pulse equivalent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7137,8 +6991,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="78"/>
+        <source>default value:10,instruction:When the actual position deviation is less than CoinLim pulse equivalent, the position is considered to be complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="79"/>
         <source>POvrTrvLimL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="79"/>
+        <source>default value:65535,instruction:A positive overshoot occurs when the actual position exceeds [POvrTrvLimH and POvrTrvLimL] pulses are equivalent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7147,8 +7011,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="80"/>
+        <source>default value:32767,instruction:A positive overshoot occurs when the actual position exceeds [POvrTrvLimH and POvrTrvLimL] pulses are equivalent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="81"/>
         <source>NOvrTrvLimL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="81"/>
+        <source>default value:1,instruction:A reverse overshoot occurs when the actual position exceeds [NOvrTrvLimH and NOvrTrvLimL] pulses are equivalent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7157,8 +7031,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="82"/>
+        <source>default value:32768,instruction:A reverse overshoot occurs when the actual position exceeds [NOvrTrvLimH and NOvrTrvLimL] pulses are equivalent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="83"/>
         <source>Ksf</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="83"/>
+        <source>default value:-32768,instruction:Ksf=2^16×T/(T+1),The T= /Ts, which is the filter time constant Ts for the position loop sampling period</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7167,8 +7051,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="84"/>
+        <source>default value:10,instruction:5 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="86"/>
         <source>InitElecAng001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="86"/>
+        <source>default value:1.24,instruction:The motor encoders U, V, and W correspond to 001 rotor positions; are stored only in EEPROM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7177,8 +7071,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="87"/>
+        <source>default value:208,instruction:The motor encoders U, V, and W correspond to 010 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="88"/>
         <source>InitElecAng011</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="88"/>
+        <source>default value:1625,instruction:The motor encoders U, V, and W correspond to 011 rotor positions; are stored only in EEPROM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7187,13 +7091,28 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="89"/>
+        <source>default value:1875,instruction:The motor encoders U, V, and W correspond to 100 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="90"/>
         <source>InitElecAng101</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="90"/>
+        <source>default value:1458,instruction:The motor encoders U, V, and W correspond to 101 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="91"/>
         <source>InitElecAng110</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="91"/>
+        <source>default value:2292,instruction:The motor encoders U, V, and W correspond to 110 rotor positions; are stored only in EEPROM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7212,8 +7131,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="97"/>
+        <source>(0- no fault, 1- fault) bit0: power on initialization failure, bit1:EEPROM fault, bit2:A/D fault converter, operation engine bit3: system timeout, bit4: radiator overheated, bit5: main power supply overvoltage, undervoltage bit7 bit6: main power supply, the main power supply is off, bit8:IGBT flow, bit9: IGBT bit10: bit11: overheating, overload, overspeed, bit12: position command pulse frequency is too high, the bit13: position error is too large, bit14:DSP bit15: synchronous fault overcurrent fault.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="98"/>
         <source>WorkingStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="98"/>
+        <source>Bit3: servo control enable status: 0- invalid state, 1- valid state</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

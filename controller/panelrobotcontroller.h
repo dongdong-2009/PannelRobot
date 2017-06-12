@@ -887,6 +887,11 @@ public:
 
     Q_INVOKABLE void readMultipleQkEeprom(int addr, int len);
 
+    Q_INVOKABLE void readAllQkEeprom();
+
+    Q_INVOKABLE quint32 getQkEepromConfigValue(int addr){return ICRobotVirtualhost::QkEeprom(addr);}
+    Q_INVOKABLE quint32 getQkStatusConfigValue(int addr){return ICRobotVirtualhost::QkStatus(addr);}
+
     Q_INVOKABLE QString scanUSBFiles(const QString& filter) const;
     Q_INVOKABLE QString usbFileContent(const QString& fileName, bool isTextOnly = true) const;
     Q_INVOKABLE int writeUsbFile(const QString& fileName, const QString& content);
@@ -927,10 +932,12 @@ signals:
     void needToInitHost();
     void tryTimeOver();
     void readQKConfigFinished(int data);
+    void readQkEepromFinished();
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);
     void OnQueryStatusFinished(int addr, const QVector<quint32>&v);
+    void OnQueryQkEepromFinished();
     void OnkeyCheckTimeOut();
 
 private slots:

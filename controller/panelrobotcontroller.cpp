@@ -824,6 +824,15 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
     //    }
 }
 
+void PanelRobotController::OnQueryQkEepromFinished()
+{
+    disconnect(host_.data(),
+       SIGNAL(QueryQkEepromFinished()),
+       this,
+       SLOT(OnQueryQkEepromFinished()));
+    emit readQkEepromFinished();
+}
+
 void PanelRobotController::OnkeyCheckTimeOut()
 {
     ICRobotVirtualhost::ClearKeyCommandQueue(host_);
@@ -2029,7 +2038,7 @@ void PanelRobotController::writeMultipleQkPara(int addr,int len, const QString& 
         }
         tmp16.append((tmpL&0xffff)|(tmpH<<16));
     }
-    qDebug()<<tmp16;
+//    qDebug()<<tmp16;
     ICRobotVirtualhost::WriteQkPara(host_,addr,tmp16);
 }
 
@@ -2070,6 +2079,7 @@ void PanelRobotController::writeMultipleQkEeprom(int addr, int len, const QStrin
         }
         tmp16.append((tmpL&0xffff)|(tmpH<<16));
     }
+//    qDebug()<<tmp16;
     ICRobotVirtualhost::WriteQkEeprom(host_,addr,tmp16);
 }
 
@@ -2083,6 +2093,25 @@ void PanelRobotController::readMultipleQkEeprom(int addr,int len)
         ICRobotVirtualhost::AddReadQkConfigCommand(host_,addr+i*32,32,isEeprom);
     }
     ICRobotVirtualhost::AddReadQkConfigCommand(host_,addr+sentCnt*32,lastSendLen,isEeprom);
+}
+
+void PanelRobotController::readAllQkEeprom()
+{
+    int toSendID = 0;
+    readMultipleQkEeprom((toSendID<<8) + 0,9);
+    for(int j=0;j<4;++j){
+        readMultipleQkEeprom((toSendID<<8) + 16,16);
+        readMultipleQkEeprom((toSendID<<8) + 48,25);
+        readMultipleQkEeprom((toSendID<<8) + 80,16);
+        readMultipleQkEeprom((toSendID<<8) + 112,10);
+        readMultipleQkEeprom((toSendID<<8) + 177,6);
+        toSendID ++;
+    }
+    connect(host_.data(),
+            SIGNAL(QueryQkEepromFinished()),
+            this,
+            SLOT(OnQueryQkEepromFinished()),
+            Qt::UniqueConnection);
 }
 
 QString PanelRobotController::scanUSBFiles(const QString &filter) const

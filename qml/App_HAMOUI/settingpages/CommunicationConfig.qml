@@ -19,9 +19,14 @@ ICSettingConfigsScope {
             isChecked: true
         }
         ICCheckBox{
-            id:canSetting
-            enabled: false
-            text: qsTr("CAN")
+            id:canASetting
+//            enabled: false
+            text: qsTr("CANA")
+        }
+        ICCheckBox{
+            id:canBSetting
+//            enabled: false
+            text: qsTr("CANB")
         }
         onCheckedIndexChanged: {
             pageContainer.setCurrentIndex(checkedIndex);
@@ -90,17 +95,86 @@ ICSettingConfigsScope {
             }
         }
         Column{
-            id:canContainer
+            id:canAContainer
             spacing: 8
             ICComboBoxConfigEdit{
-                id: canMode
-                items: [qsTr("SDO"), qsTr("PDO")]
+                id: canAUse
+                items: [qsTr("online"), qsTr("Encoder")]
                 configNameWidth: 100
-                configName:  qsTr("Host CAN b")
+                configName:  qsTr("CAN use to")
+                configValue: 0
 //                configAddr: "s_rw_8_8_0_288"
             }
+//            ICComboBoxConfigEdit{
+//                id: canAMode
+//                items: [qsTr("SDO"), qsTr("PDO")]
+//                configNameWidth: 100
+//                configName:  qsTr("Host CAN b")
+////                configAddr: "s_rw_8_8_0_288"
+//            }
+            ICConfigEdit{
+                id:canA_id_config
+                configName: qsTr("ID config")
+                configValue: qsTr("0")
+            }
+            ICComboBoxConfigEdit{
+                id: canA_baud_config
+                items: [qsTr("125kbps"), qsTr("250kbps"), qsTr("500kbps"), qsTr("1000kbps")]
+                configNameWidth: 100
+                configName:  qsTr("Baud Setting")
+                configValue: 2
+            }
             Text {
-                id: cantips
+                id: canAtips
+                color: "red"
+                text: qsTr("Tips:After modified, must be restart to take effect!")
+            }
+        }
+        Column{
+            id:canBContainer
+            spacing: 8
+            ICComboBoxConfigEdit{
+                id: canBUse
+                items: [qsTr("online"), qsTr("Encoder")]
+                configNameWidth: 100
+                configName:  qsTr("CAN use to")
+                configValue: 1
+//                configAddr: "s_rw_8_8_0_288"
+            }
+//            ICComboBoxConfigEdit{
+//                id: canBMode
+//                items: [qsTr("SDO"), qsTr("PDO")]
+//                configNameWidth: 100
+//                configName:  qsTr("Host CAN b")
+////                configAddr: "s_rw_8_8_0_288"
+//            }
+            ICConfigEdit{
+                id:canB_id_config
+                configName: qsTr("ID config")
+                configValue: qsTr("0")
+            }
+            ICComboBoxConfigEdit{
+                id: canB_baud_config
+                items: [qsTr("125kbps"), qsTr("250kbps"), qsTr("500kbps"), qsTr("1000kbps")]
+                configNameWidth: 100
+                configName:  qsTr("Baud Setting")
+                configValue: 2
+            }
+
+
+            ICButton{
+                id:newBtn
+                text: qsTr("new")
+                visible: (canBUse.configValue == 1)?true:false
+                onButtonClicked: {
+                    if(canBUse.configValue == 1){
+//                        valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":0,"outstatus_init":0});
+                    }
+                }
+            }
+
+            Text {
+                id: canBtips
                 color: "red"
                 text: qsTr("Tips:After modified, must be restart to take effect!")
             }
@@ -108,7 +182,8 @@ ICSettingConfigsScope {
     }
     Component.onCompleted: {
         pageContainer.addPage(serialContainer);
-        pageContainer.addPage(canContainer);
+        pageContainer.addPage(canAContainer);
+        pageContainer.addPage(canBContainer);
         pageContainer.setCurrentIndex(typeSel.checkedIndex);
     }
 }

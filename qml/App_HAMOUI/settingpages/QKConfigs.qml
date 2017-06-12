@@ -74,6 +74,13 @@ Item {
             id: dataPage
             property variant subItems:[subItems0,subItems1,subItems2,subItems3,subItems4,subItems5,subItems6,subItems7,subItems8,
                 subItems9,subItems10,subItems11,subItems12,subItems13,subItems14,subItems15,subItems16,subItems17,subItems18,subItems19,subItems20]
+            ICMessageBox{
+                id: tipBox
+                x:300
+                y:120
+                z: 100
+                visible: false
+            }
             Item {
                 id: mainListArea
                 height: parent.height
@@ -90,6 +97,7 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("para config")
                         onButtonClicked: {
+                            tipBox.runningTip(qsTr("para config..."), qsTr("Get it"));
                             var i,j,toSendID=0;
                             var tmpData = [];
                             for(i=0;i<9;++i){
@@ -131,6 +139,7 @@ Item {
 
                                 toSendID ++;
                             }
+                            tipBox.hide();
                         }
                     }
                     ICButton{
@@ -140,6 +149,7 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("read e2prom")
                         onButtonClicked: {
+                            tipBox.runningTip(qsTr("Eeprom reading..."), qsTr("Get it"));
                             var tmpData = [];
                             tmpData.push(1);
                             panelRobotController.writeMultipleQkEeprom(254,1,JSON.stringify(tmpData));
@@ -152,6 +162,7 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("write e2prom")
                         onButtonClicked: {
+                            tipBox.runningTip(qsTr("Eeprom config..."), qsTr("Get it"));
                             var i,j,toSendID=0;
                             var tmpData = [];
                             for(i=0;i<9;++i){
@@ -193,6 +204,7 @@ Item {
 
                                 toSendID ++;
                             }
+                            tipBox.hide();
                         }
                     }
                 }
@@ -1029,8 +1041,8 @@ Item {
                 if(refreshEnBtn.isChecked && statusPageBtn.isChecked){
                     var axisStatus,alarmStatus;
                     for(i=0;i<4;i++){
-//                        axisStatus = panelRobotController.getQkStatusConfigValue(4+i);
-//                        alarmStatus = panelRobotController.getQkStatusConfigValue(8+i);
+                        axisStatus = panelRobotController.getQkStatusConfigValue(4+i);
+                        alarmStatus = panelRobotController.getQkStatusConfigValue(8+i);
                         if(alarmStatus){
                             statusDisply.itemAt(i).state = "alarm";
                         }
@@ -1054,36 +1066,37 @@ Item {
 
         function onReadEepromFinished(){
             console.log("ReadFinish");
-//            var i,j,toRefreshID=0,toRefreshAddr;
-//            var tmpData = [];
-//            for(i=0;i<9;++i){
-//                toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[0].get(i).addr;
-//                dataPage.subItems[0].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
-//            }
+            var i,j,toRefreshID=0,toRefreshAddr;
+            var tmpData = [];
+            for(i=0;i<9;++i){
+                toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[0].get(i).addr;
+                dataPage.subItems[0].get(i).rVal = panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+            }
 
-//            for(j=0;j<4;++j){
-//                for(i=0;i<16;++i){
-//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+1].get(i).addr;
-//                   dataPage.subItems[5*j+1].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
-//                }
-//                for(i=0;i<25;++i){
-//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+2].get(i).addr;
-//                   dataPage.subItems[5*j+2].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
-//                }
-//                for(i=0;i<16;++i){
-//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+3].get(i).addr;
-//                   dataPage.subItems[5*j+3].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
-//                }
-//                for(i=0;i<10;++i){
-//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+4].get(i).addr;
-//                   dataPage.subItems[5*j+4].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
-//                }
-//                for(i=0;i<6;++i){
-//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+5].get(i).addr;
-//                   dataPage.subItems[5*j+5].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
-//                }
-//                toRefreshID ++;
-//            }
+            for(j=0;j<4;++j){
+                for(i=0;i<16;++i){
+                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+1].get(i).addr;
+                   dataPage.subItems[5*j+1].get(i).rVal = panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+                }
+                for(i=0;i<25;++i){
+                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+2].get(i).addr;
+                   dataPage.subItems[5*j+2].get(i).rVal = panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+                }
+                for(i=0;i<16;++i){
+                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+3].get(i).addr;
+                   dataPage.subItems[5*j+3].get(i).rVal = panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+                }
+                for(i=0;i<10;++i){
+                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+4].get(i).addr;
+                   dataPage.subItems[5*j+4].get(i).rVal = panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+                }
+                for(i=0;i<6;++i){
+                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+5].get(i).addr;
+                   dataPage.subItems[5*j+5].get(i).rVal = panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+                }
+                toRefreshID ++;
+            }
+            tipBox.hide();
         }
 
         Component.onCompleted: {

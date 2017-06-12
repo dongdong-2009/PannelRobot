@@ -2842,6 +2842,30 @@
         <source>wait input</source>
         <translation>等待输入</translation>
     </message>
+    <message>
+        <source>Rotate Catch</source>
+        <translation>旋转抓取</translation>
+    </message>
+    <message>
+        <source>plane</source>
+        <translation>平面</translation>
+    </message>
+    <message>
+        <source>plateNum</source>
+        <translation>转盘</translation>
+    </message>
+    <message>
+        <source>speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>centerPos</source>
+        <translation>盘心</translation>
+    </message>
+    <message>
+        <source>startPos</source>
+        <translation>起点</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -2884,6 +2908,10 @@
     <message>
         <source>switchTool</source>
         <translation>切换工具</translation>
+    </message>
+    <message>
+        <source>rotateCatch</source>
+        <translation>旋转抓取</translation>
     </message>
 </context>
 <context>
@@ -6399,6 +6427,65 @@ please chose!</source>
     <message>
         <source>hour</source>
         <translation>小时</translation>
+    </message>
+</context>
+<context>
+    <name>RotateCatchEditor</name>
+    <message>
+        <source>Plane Sel</source>
+        <translation>平面</translation>
+    </message>
+    <message>
+        <source>Plate Num</source>
+        <translation>转盘</translation>
+    </message>
+    <message>
+        <source>Plate</source>
+        <translation>盘</translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation>延时</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pose En</source>
+        <translation>姿势识别</translation>
+    </message>
+    <message>
+        <source>Set In CP:</source>
+        <translation>设定盘心</translation>
+    </message>
+    <message>
+        <source>X:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set In SP:</source>
+        <translation>设定起点</translation>
+    </message>
+    <message>
+        <source>W:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

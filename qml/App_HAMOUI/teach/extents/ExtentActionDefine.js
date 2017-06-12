@@ -465,6 +465,63 @@ var extentSwitchToolAction = {
         "actionObjectChangedHelper":function(editor, actionObject){
         }
     };
+var extentRotateCatchAction = {
+    "action":27,
+    "properties":[new ActionDefineItem("plane", 0),
+        new ActionDefineItem("plateNum", 0),
+        new ActionDefineItem("speed", 1),
+        new ActionDefineItem("delay", 2),
+        new ActionDefineItem("poseEn", 0),
+        new ActionDefineItem("centerPos_0", 3),
+        new ActionDefineItem("centerPos_1", 3),
+        new ActionDefineItem("centerPos_2", 3),
+        new ActionDefineItem("startPos_0", 3),
+        new ActionDefineItem("startPos_1", 3),
+        new ActionDefineItem("startPos_2", 3),
+        new ActionDefineItem("startPos_5", 3),
+    ],
+    "canTestRun":false,
+    "canActionUsePoint": false,
+    "editableItems":{"editor":Qt.createComponent("RotateCatchEditor.qml"), "itemDef":{"item":"RotateCatchEditor"}},
+    "toStringHandler":function(actionObject){
+        if(actionObject.plane == 0)
+            var myPlane = "XY";
+        else if(actionObject.plane == 1)
+            myPlane = "XZ";
+        else if(actionObject.plane == 2)
+            myPlane = "YZ";
+        return qsTr("Rotate Catch") + ":" +
+                qsTr("plane") + ":" + myPlane + "," +
+                qsTr("plateNum") + ":" + actionObject.plateNum + "," +
+                qsTr("speed") + ":" + actionObject.speed + "," +
+                qsTr("delay") + ":" + actionObject.delay + "," +
+                qsTr("centerPos") + ":" +
+                "X:" + actionObject.centerPos_0 + "," +
+                "Y:" + actionObject.centerPos_1 + "," +
+                "Z:" + actionObject.centerPos_2 + "," +
+                + "\n                            " +
+                qsTr("startPos") + ":" +
+                "X:" + actionObject.startPos_0 + "," +
+                "Y:" + actionObject.startPos_1 + "," +
+                "Z:" + actionObject.startPos_2 + "," +
+                "W:" + actionObject.startPos_5
+    },
+    "actionObjectChangedHelper":function(editor, actionObject){
+        console.log(editor,actionObject)
+        editor.plane = actionObject.plane;
+        editor.plateNum = actionObject.plateNum;
+        editor.speed = actionObject.speed;
+        editor.delay = actionObject.delay;
+        editor.poseEn = actionObject.poseEn;
+        editor.centerPos_0 = actionObject.centerPos_0;
+        editor.centerPos_1 = actionObject.centerPos_1;
+        editor.centerPos_2 = actionObject.centerPos_2;
+        editor.startPos_0 = actionObject.startPos_0;
+        editor.startPos_1 = actionObject.startPos_1;
+        editor.startPos_2 = actionObject.startPos_2;
+        editor.startPos_5 = actionObject.startPos_5;
+    }
+};
 
 
 var extentActions = [extentPENQIANGAction,
@@ -479,4 +536,5 @@ var extentActions = [extentPENQIANGAction,
                      extentIntervalOutputAction,
                      extentParabolaAction,
                      extentBarnLogicAction,
-                     extentSwitchToolAction];
+                     extentSwitchToolAction,
+                     extentRotateCatchAction];

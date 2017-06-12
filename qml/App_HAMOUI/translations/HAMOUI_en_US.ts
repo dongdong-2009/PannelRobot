@@ -2061,7 +2061,6 @@
         <location filename="../settingpages/AxisConfigs.qml" line="281"/>
         <location filename="../settingpages/AxisConfigs.qml" line="741"/>
         <location filename="../settingpages/AxisConfigs.qml" line="753"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="766"/>
         <source>A ON</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2069,6 +2068,7 @@
         <location filename="../settingpages/AxisConfigs.qml" line="245"/>
         <location filename="../settingpages/AxisConfigs.qml" line="257"/>
         <location filename="../settingpages/AxisConfigs.qml" line="281"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="766"/>
         <source>A OFF</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3824,6 +3824,7 @@
     </message>
     <message>
         <location filename="../teach/extents/ExtentActionDefine.js" line="453"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="491"/>
         <source>delay</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3840,6 +3841,36 @@
     <message>
         <location filename="../teach/extents/ExtentActionDefine.js" line="463"/>
         <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="487"/>
+        <source>Rotate Catch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="488"/>
+        <source>plane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="489"/>
+        <source>plateNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="490"/>
+        <source>speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="492"/>
+        <source>centerPos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="496"/>
+        <source>startPos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3929,6 +3960,11 @@
     <message>
         <location filename="../teach/ExtentActionEditor.qml" line="90"/>
         <source>switchTool</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ExtentActionEditor.qml" line="94"/>
+        <source>rotateCatch</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7407,6 +7443,82 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>RotateCatchEditor</name>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="37"/>
+        <source>Plane Sel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="73"/>
+        <source>Plate Num</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="76"/>
+        <source>Plate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="83"/>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="87"/>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="91"/>
+        <source>Delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="95"/>
+        <source>s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="102"/>
+        <source>Pose En</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="110"/>
+        <source>Set In CP:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="121"/>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="157"/>
+        <source>X:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="128"/>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="164"/>
+        <source>Y:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="135"/>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="171"/>
+        <source>Z:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="145"/>
+        <source>Set In SP:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="181"/>
+        <source>W:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RunningConfigs</name>
     <message>
         <location filename="../settingpages/RunningConfigs.qml" line="22"/>
@@ -7420,7 +7532,7 @@ please chose!</source>
     </message>
     <message>
         <location filename="../settingpages/RunningConfigs.qml" line="29"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="72"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="73"/>
         <source>%</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7435,69 +7547,69 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="66"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="67"/>
         <source>First Moudle Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="79"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="80"/>
         <source>Independent Manual Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="93"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="99"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="106"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="112"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="118"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="124"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="130"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="136"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="94"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="100"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="107"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="113"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="119"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="125"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="131"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="137"/>
         <source>Manual Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="163"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="164"/>
         <source>select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="179"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="180"/>
         <source>IO Select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="195"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="196"/>
         <source>Mold Select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="219"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="220"/>
         <source>new</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="235"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="236"/>
         <source>delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="273"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="274"/>
         <source>x32 Mux for Origin mode Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="280"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="281"/>
         <source>x33 Mux for Auto mode Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="287"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="288"/>
         <source>x46 Mux for Startup Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="294"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="295"/>
         <source>x47 Mux for Stop Btn</source>
         <translation type="unfinished"></translation>
     </message>

@@ -647,17 +647,7 @@ void ICRobotVirtualhost::CommunicateImpl()
 #endif
         }
     }
-    else if(unlikely(recvFrame_->GetAddr() >= ICAddr_System_Retain_80 &&
-            recvFrame_->GetAddr() <= ICAddr_System_Retain_83))
-    {
-        if(!sendingContinuousData_)
-        {
-            sendingContinuousData_ = true;
-            sendingDataTime_.restart();
-            emit SendingContinuousData();
-        }
-    }
-    if(recvFrame_->IsQkQueryEeprom())
+    else if(recvFrame_->IsQkQueryEeprom())
     {
         statusDataTmp_ = recvFrame_->Data();
         startIndex_ = recvFrame_->GetAddr();
@@ -678,13 +668,13 @@ void ICRobotVirtualhost::CommunicateImpl()
             }
             if(startIndex_ == ((3<<8)+SP_Addr_InitElecAng110+1))
             {
-                qDebug() << qkEeprom_;
+//                qDebug() << qkEeprom_;
                 emit QueryQkEepromFinished();
                 qkEeprom_.insert(SP_Addr_ReadReady,1);
             }
         }
     }
-    if(recvFrame_->IsQkQueryStatus())
+    else if(recvFrame_->IsQkQueryStatus())
     {
         statusDataTmp_ = recvFrame_->Data();
         startIndex_ = recvFrame_->GetAddr();
@@ -703,7 +693,17 @@ void ICRobotVirtualhost::CommunicateImpl()
                     qkStatus_.insert(startIndex_++,statusDataTmp_.at(j)>>16);
                 }
             }
-            qDebug() << qkStatus_;
+//            qDebug() << qkStatus_;
+        }
+    }
+    else if(unlikely(recvFrame_->GetAddr() >= ICAddr_System_Retain_80 &&
+            recvFrame_->GetAddr() <= ICAddr_System_Retain_83 && !recvFrame_->IsQkWrite()))
+    {
+        if(!sendingContinuousData_)
+        {
+            sendingContinuousData_ = true;
+            sendingDataTime_.restart();
+            emit SendingContinuousData();
         }
     }
     ClearCommunicateErrCount();

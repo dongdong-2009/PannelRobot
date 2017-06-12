@@ -98,7 +98,7 @@ Item {
                             panelRobotController.writeMultipleQkPara((toSendID<<8) + 0,9,JSON.stringify(tmpData));
                             tmpData.splice(0,9);
 
-                            for(j=0;j<1;++j){
+                            for(j=0;j<4;++j){
                                 for(i=0;i<16;++i){
                                    tmpData.push(dataPage.subItems[5*j+1].get(i).wVal);
                                 }
@@ -1011,11 +1011,12 @@ Item {
 
         Timer{
             id:queryTimer
-            interval: 30;running: visible;repeat: true
+            interval: 300;running: visible;repeat: true
             onTriggered: {
+                var i,j;
                 if(rE2promBtn.isBeginReadEeprom){
                     var isDataReady = panelRobotController.getQkEepromConfigValue(254);
-                    var i,j,toSendID=0;
+                    var toSendID=0;
                     var tmpData = [];
                     if(isDataReady != 4){
                         panelRobotController.readMultipleQkEeprom(254,1);
@@ -1026,6 +1027,25 @@ Item {
                     }
                 }
                 if(refreshEnBtn.isChecked && statusPageBtn.isChecked){
+                    var axisStatus,alarmStatus;
+                    for(i=0;i<4;i++){
+//                        axisStatus = panelRobotController.getQkStatusConfigValue(4+i);
+//                        alarmStatus = panelRobotController.getQkStatusConfigValue(8+i);
+                        if(alarmStatus){
+                            statusDisply.itemAt(i).state = "alarm";
+                        }
+                        else{
+                            if((axisStatus >>3)&0x01){
+                                statusDisply.itemAt(i).state = "running";
+                            }
+                            else{
+                                statusDisply.itemAt(i).state = "stop";
+                            }
+                        }
+                        for(j=0;j<16;++j){
+                            statusPage.subItems[i].get(j).alarmVal = (axisStatus>>j)&0x01;
+                        }
+                    }
                     panelRobotController.readMultipleQkStatus((1<<2)+0,8);
                 }
             }
@@ -1034,9 +1054,37 @@ Item {
 
         function onReadEepromFinished(){
             console.log("ReadFinish");
+//            var i,j,toRefreshID=0,toRefreshAddr;
+//            var tmpData = [];
+//            for(i=0;i<9;++i){
+//                toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[0].get(i).addr;
+//                dataPage.subItems[0].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+//            }
 
+//            for(j=0;j<4;++j){
+//                for(i=0;i<16;++i){
+//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+1].get(i).addr;
+//                   dataPage.subItems[5*j+1].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+//                }
+//                for(i=0;i<25;++i){
+//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+2].get(i).addr;
+//                   dataPage.subItems[5*j+2].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+//                }
+//                for(i=0;i<16;++i){
+//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+3].get(i).addr;
+//                   dataPage.subItems[5*j+3].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+//                }
+//                for(i=0;i<10;++i){
+//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+4].get(i).addr;
+//                   dataPage.subItems[5*j+4].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+//                }
+//                for(i=0;i<6;++i){
+//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+5].get(i).addr;
+//                   dataPage.subItems[5*j+5].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+//                }
+//                toRefreshID ++;
+//            }
         }
-
 
         Component.onCompleted: {
             pageContainer.addPage(dataPage);

@@ -58,6 +58,7 @@ public:
     virtual bool IsQuery() const { return GetFunctionCode() == FunctionCode_ReadAddr;}
     virtual bool IsQkQueryEeprom() const { return GetFunctionCode() == FunctionCode_QKServoParaReadEeprom;}
     virtual bool IsQkQueryStatus() const { return GetFunctionCode() == FunctionCode_QKServoParaReadMemory;}
+    virtual bool IsQkWrite() const { return (GetFunctionCode() == FunctionCode_QKServoParaWriteMemory || GetFunctionCode() == FunctionCode_QKServoParaWriteEeprom);}
     static ICRobotTransceiverData* FillActInitCommand(uint8_t hostID,
                                                       uint addr,
                                                       const ICTransceiverDataBuffer& data)

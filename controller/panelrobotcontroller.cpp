@@ -2038,7 +2038,7 @@ void PanelRobotController::writeMultipleQkPara(int addr,int len, const QString& 
         }
         tmp16.append((tmpL&0xffff)|(tmpH<<16));
     }
-    qDebug()<<tmp16;
+//    qDebug()<<tmp16;
     ICRobotVirtualhost::WriteQkPara(host_,addr,tmp16);
 }
 
@@ -2079,7 +2079,7 @@ void PanelRobotController::writeMultipleQkEeprom(int addr, int len, const QStrin
         }
         tmp16.append((tmpL&0xffff)|(tmpH<<16));
     }
-    qDebug()<<tmp16;
+//    qDebug()<<tmp16;
     ICRobotVirtualhost::WriteQkEeprom(host_,addr,tmp16);
 }
 

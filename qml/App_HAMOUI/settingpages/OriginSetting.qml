@@ -452,8 +452,10 @@ Item {
                 var originList=[[],[],[],[],[],[],[],[],[],[]];
                 var returnList=[[],[],[],[],[],[],[],[],[],[]];
                 var m;
-                for(var i=0;i<AxisDefine.usedAxisNum();i++)
+                var axisNum = panelRobotController.getConfigValue("s_rw_16_6_0_184");
+                for(var i=0;i<axisNum;i++)
                 {
+                    if(!AxisDefine.isAxisUsed(i))continue;
                     origin_Setting="a";
                     origin_Setting += i;
                     origin_Setting+="mode";

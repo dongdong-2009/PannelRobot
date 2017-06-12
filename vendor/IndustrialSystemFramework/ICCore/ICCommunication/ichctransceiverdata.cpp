@@ -72,7 +72,7 @@ bool ICHCFrameTransceiverDataMapper::FrameToTransceiverData(ICTransceiverData *r
     }
     injectionData->SetData(dataBuffer_);
     injectionData->SetLength(dataLength);
-    if(!recvData->IsQuery())
+    if(!(recvData->IsQuery() || recvData->IsQkQueryEeprom() || recvData->IsQkQueryStatus()))
     {
         if(!recvData->IsEqual(sentData))
         {

@@ -73,6 +73,9 @@ function usedAxisNum(){
     return c;
 }
 
+function getAxisNum(){return axisInfos.length}
+function isAxisUsed(id){return axisInfos[id].visiable}
+
 function usedAxisNameList(){
     var ret = [];
     for(var i = 0, len = axisInfos.length; i < len; ++i){

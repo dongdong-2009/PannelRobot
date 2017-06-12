@@ -8,6 +8,11 @@ Item {
     width: parent.width
     height: parent.height
 
+    onVisibleChanged: {
+        if(!visible)
+            rE2promBtn.isBeginReadEeprom = false;
+    }
+
     ICButtonGroup{
         id:menuArea
         width: parent.width
@@ -85,30 +90,110 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("para config")
                         onButtonClicked: {
-                            var i;
+                            var i,j,toSendID=0;
                             var tmpData = [];
-                            for(var i=0;i<9;++i){
+                            for(i=0;i<9;++i){
                                tmpData.push(dataPage.subItems[0].get(i).wVal);
                             }
-                            console.log(JSON.stringify(tmpData));
-                            panelRobotController.writeMultipleQkPara(0<<8+0,9,JSON.stringify(tmpData));
-//                            for(var i=0;i<16;++i){
-//                               tmpData.push(dataPage.subItems[1].get(i).wVal);
-//                            }
-//                            panelRobotController.writeMultipleQkPara(16,16,tmpData);
+                            panelRobotController.writeMultipleQkPara((toSendID<<8) + 0,9,JSON.stringify(tmpData));
+                            tmpData.splice(0,9);
+
+                            for(j=0;j<4;++j){
+                                for(i=0;i<16;++i){
+                                   tmpData.push(dataPage.subItems[5*j+1].get(i).wVal);
+                                }
+                                panelRobotController.writeMultipleQkPara((toSendID<<8) + 16,16,JSON.stringify(tmpData));
+                                tmpData.splice(0,16);
+
+                                for(i=0;i<25;++i){
+                                   tmpData.push(dataPage.subItems[5*j+2].get(i).wVal);
+                                }
+                                panelRobotController.writeMultipleQkPara((toSendID<<8) + 48,25,JSON.stringify(tmpData));
+                                tmpData.splice(0,25);
+
+                                for(i=0;i<16;++i){
+                                   tmpData.push(dataPage.subItems[5*j+3].get(i).wVal);
+                                }
+                                panelRobotController.writeMultipleQkPara((toSendID<<8) + 80,16,JSON.stringify(tmpData));
+                                tmpData.splice(0,16);
+
+                                for(i=0;i<10;++i){
+                                   tmpData.push(dataPage.subItems[5*j+4].get(i).wVal);
+                                }
+                                panelRobotController.writeMultipleQkPara((toSendID<<8) + 112,10,JSON.stringify(tmpData));
+                                tmpData.splice(0,10);
+
+                                for(i=0;i<6;++i){
+                                   tmpData.push(dataPage.subItems[5*j+5].get(i).wVal);
+                                }
+                                panelRobotController.writeMultipleQkPara((toSendID<<8) + 177,6,JSON.stringify(tmpData));
+                                tmpData.splice(0,6);
+
+                                toSendID ++;
+                            }
                         }
                     }
                     ICButton{
                         id:rE2promBtn
+                        property bool isBeginReadEeprom: false
                         height: paraConfigBtn.height
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("read e2prom")
+                        onButtonClicked: {
+                            var tmpData = [];
+                            tmpData.push(1);
+                            panelRobotController.writeMultipleQkEeprom(254,1,JSON.stringify(tmpData));
+                            isBeginReadEeprom = true;
+                        }
                     }
                     ICButton{
                         id:wE2promBtn
                         height: paraConfigBtn.height
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("write e2prom")
+                        onButtonClicked: {
+                            var i,j,toSendID=0;
+                            var tmpData = [];
+                            for(i=0;i<9;++i){
+                               tmpData.push(dataPage.subItems[0].get(i).wVal);
+                            }
+                            panelRobotController.writeMultipleQkEeprom((toSendID<<8) + 0,9,JSON.stringify(tmpData));
+                            tmpData.splice(0,9);
+
+                            for(j=0;j<4;++j){
+                                for(i=0;i<16;++i){
+                                   tmpData.push(dataPage.subItems[5*j+1].get(i).wVal);
+                                }
+                                panelRobotController.writeMultipleQkEeprom((toSendID<<8) + 16,16,JSON.stringify(tmpData));
+                                tmpData.splice(0,16);
+
+                                for(i=0;i<25;++i){
+                                   tmpData.push(dataPage.subItems[5*j+2].get(i).wVal);
+                                }
+                                panelRobotController.writeMultipleQkEeprom((toSendID<<8) + 48,25,JSON.stringify(tmpData));
+                                tmpData.splice(0,25);
+
+                                for(i=0;i<16;++i){
+                                   tmpData.push(dataPage.subItems[5*j+3].get(i).wVal);
+                                }
+                                panelRobotController.writeMultipleQkEeprom((toSendID<<8) + 80,16,JSON.stringify(tmpData));
+                                tmpData.splice(0,16);
+
+                                for(i=0;i<10;++i){
+                                   tmpData.push(dataPage.subItems[5*j+4].get(i).wVal);
+                                }
+                                panelRobotController.writeMultipleQkEeprom((toSendID<<8) + 112,10,JSON.stringify(tmpData));
+                                tmpData.splice(0,10);
+
+                                for(i=0;i<6;++i){
+                                   tmpData.push(dataPage.subItems[5*j+5].get(i).wVal);
+                                }
+                                panelRobotController.writeMultipleQkEeprom((toSendID<<8) + 177,6,JSON.stringify(tmpData));
+                                tmpData.splice(0,6);
+
+                                toSendID ++;
+                            }
+                        }
                     }
                 }
                 ICSpliteLine{
@@ -531,7 +616,7 @@ Item {
                             else if(paraMainView.currentIndex>5 && paraMainView.currentIndex<=10)toSendID =1;
                             else if(paraMainView.currentIndex>10 && paraMainView.currentIndex<=15)toSendID =2;
                             else if(paraMainView.currentIndex>15 && paraMainView.currentIndex<=20)toSendID =3;
-                            console.log("addr="+((toSendID<<8)+ addr),"val="+wVal);
+//                            console.log("addr="+((toSendID<<8)+ addr),"val="+wVal);
                             var tmpArray = [];
                             tmpArray.push(wVal);
                             panelRobotController.writeMultipleQkPara(((toSendID<<8)+addr),1,JSON.stringify(tmpArray));
@@ -872,7 +957,7 @@ Item {
                     height: parent.height
                     spacing:30
                     Repeater{
-                        id:statusDis
+                        id:statusDisply
                         model:4
                         Row{
                             spacing: 2
@@ -924,81 +1009,157 @@ Item {
             }
         }
 
+        Timer{
+            id:queryTimer
+            interval: 300;running: visible;repeat: true
+            onTriggered: {
+                var i,j;
+                if(rE2promBtn.isBeginReadEeprom){
+                    var isDataReady = panelRobotController.getQkEepromConfigValue(254);
+                    var toSendID=0;
+                    var tmpData = [];
+                    if(isDataReady != 4){
+                        panelRobotController.readMultipleQkEeprom(254,1);
+                    }
+                    else{
+                        rE2promBtn.isBeginReadEeprom = false;
+                        panelRobotController.readAllQkEeprom();
+                    }
+                }
+                if(refreshEnBtn.isChecked && statusPageBtn.isChecked){
+                    var axisStatus,alarmStatus;
+                    for(i=0;i<4;i++){
+//                        axisStatus = panelRobotController.getQkStatusConfigValue(4+i);
+//                        alarmStatus = panelRobotController.getQkStatusConfigValue(8+i);
+                        if(alarmStatus){
+                            statusDisply.itemAt(i).state = "alarm";
+                        }
+                        else{
+                            if((axisStatus >>3)&0x01){
+                                statusDisply.itemAt(i).state = "running";
+                            }
+                            else{
+                                statusDisply.itemAt(i).state = "stop";
+                            }
+                        }
+                        for(j=0;j<16;++j){
+                            statusPage.subItems[i].get(j).alarmVal = (axisStatus>>j)&0x01;
+                        }
+                    }
+                    panelRobotController.readMultipleQkStatus((1<<2)+0,8);
+                }
+            }
+        }
+
+
+        function onReadEepromFinished(){
+            console.log("ReadFinish");
+//            var i,j,toRefreshID=0,toRefreshAddr;
+//            var tmpData = [];
+//            for(i=0;i<9;++i){
+//                toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[0].get(i).addr;
+//                dataPage.subItems[0].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+//            }
+
+//            for(j=0;j<4;++j){
+//                for(i=0;i<16;++i){
+//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+1].get(i).addr;
+//                   dataPage.subItems[5*j+1].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+//                }
+//                for(i=0;i<25;++i){
+//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+2].get(i).addr;
+//                   dataPage.subItems[5*j+2].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+//                }
+//                for(i=0;i<16;++i){
+//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+3].get(i).addr;
+//                   dataPage.subItems[5*j+3].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+//                }
+//                for(i=0;i<10;++i){
+//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+4].get(i).addr;
+//                   dataPage.subItems[5*j+4].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+//                }
+//                for(i=0;i<6;++i){
+//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+5].get(i).addr;
+//                   dataPage.subItems[5*j+5].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+//                }
+//                toRefreshID ++;
+//            }
+        }
+
         Component.onCompleted: {
             pageContainer.addPage(dataPage);
             pageContainer.addPage(statusPage);
             pageContainer.setCurrentIndex(0);
             menuArea.checkedIndexChanged.connect(menuArea.onItemChanged);
+            panelRobotController.readQkEepromFinished.connect(onReadEepromFinished);
         }
     }
 
+//    Item {
+//        visible: false
+//        width: parent.width
+//        height: parent.height
 
+//        Row{
+//            id:qkConfigContainer
+//            spacing: 6
+//            ICConfigEdit{
+//                id:axisEdit
+//                configName: qsTr("Axis")
+//            }
+//            ICConfigEdit{
+//                id:addrEdit
+//                configName: qsTr("Addr")
+//                isNumberOnly: false
+//            }
+//            ICConfigEdit{
+//                id:dataEdit
+//                configName: qsTr("Data")
+//                isNumberOnly: false
+//            }
+//        }
+//        Row{
+//            spacing: 6
+//            ICButton {
+//                id:writeBtn
+//                text: qsTr("Write")
+//                onButtonClicked: {
+//                    panelRobotController.writeQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16), parseInt(dataEdit.configValue, 16));
+//                }
+//            }
+//            ICButton {
+//                id:readBtn
+//                text: qsTr("Read")
+//                onButtonClicked: {
+//                    panelRobotController.readQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16));
+//                }
+//            }
+//            ICButton{
+//                id:writeEPBtn
+//                text: qsTr("Write EP")
+//                onButtonClicked: {
+//                    panelRobotController.writeQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16), parseInt(dataEdit.configValue, 16), true);
+//                }
+//            }
+//            ICButton{
+//                id:readEPBtn
+//                text: qsTr("Read EP")
+//                onButtonClicked: {
+//                    panelRobotController.readQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16), true);
 
-    Item {
-        visible: false
-        width: parent.width
-        height: parent.height
+//                }
+//            }
 
-        Row{
-            id:qkConfigContainer
-            spacing: 6
-            ICConfigEdit{
-                id:axisEdit
-                configName: qsTr("Axis")
-            }
-            ICConfigEdit{
-                id:addrEdit
-                configName: qsTr("Addr")
-                isNumberOnly: false
-            }
-            ICConfigEdit{
-                id:dataEdit
-                configName: qsTr("Data")
-                isNumberOnly: false
-            }
-        }
-        Row{
-            spacing: 6
-            ICButton {
-                id:writeBtn
-                text: qsTr("Write")
-                onButtonClicked: {
-                    panelRobotController.writeQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16), parseInt(dataEdit.configValue, 16));
-                }
-            }
-            ICButton {
-                id:readBtn
-                text: qsTr("Read")
-                onButtonClicked: {
-                    panelRobotController.readQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16));
-                }
-            }
-            ICButton{
-                id:writeEPBtn
-                text: qsTr("Write EP")
-                onButtonClicked: {
-                    panelRobotController.writeQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16), parseInt(dataEdit.configValue, 16), true);
-                }
-            }
-            ICButton{
-                id:readEPBtn
-                text: qsTr("Read EP")
-                onButtonClicked: {
-                    panelRobotController.readQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16), true);
+//            anchors.top: qkConfigContainer.bottom
+//            anchors.topMargin: 6
+//        }
+//        function onReadFinished(data){
+//            console.log("onReadFinished", data);
+//            dataEdit.configValue = ((data>>16) & 0xFFFF).toString(16);
+//        }
 
-                }
-            }
-
-            anchors.top: qkConfigContainer.bottom
-            anchors.topMargin: 6
-        }
-        function onReadFinished(data){
-            console.log("onReadFinished", data);
-            dataEdit.configValue = ((data>>16) & 0xFFFF).toString(16);
-        }
-
-        Component.onCompleted: {
-            panelRobotController.readQKConfigFinished.connect(onReadFinished);
-        }
-    }
+//        Component.onCompleted: {
+//            panelRobotController.readQKConfigFinished.connect(onReadFinished);
+//        }
+//    }
 }

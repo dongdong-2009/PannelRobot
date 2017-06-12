@@ -1492,6 +1492,132 @@ typedef enum
 
 }HANDWHEEL_LENTH;
 
+typedef enum
+{
+    /*通用控制参数（0 - 8）*/
+    SP_Addr_PwmPeriod = 0,      //< PWM周期（公共）（轴号：0）
+    SP_Addr_SampleStartDelay,   //< A/D采样延时（公共）（轴号：0）
+    SP_Addr_SpdPosLpRate,       //< 伺服采样分频比（公共）（轴号：0）
+    SP_Addr_ModScl,             //< SVPWM定标因子（公共）（轴号：0）
+    SP_Addr_PwmDeadTm,          //< IGBT死区时间（公共）（轴号：0）
+    SP_Addr_SystemConfig,       //< 系统配置（公共）（轴号：0）
+    SP_Addr_LvAlmMonEnbl,       //< 欠压报警使能（公共）（轴号：0）
+    SP_Addr_DcBusOffset,        //< 直流母线电压偏移量（公共）（轴号：0）
+    SP_Addr_BusConfig,          //< RS-485总线配置（公共）（轴号：0）
+    /*分布式控制参数（16 - 31）*/
+    SP_Addr_DriverCtrl = 16,    //< 驱动器配置(X，Y，Z，R轴)
+    SP_Addr_DBCtrl,             //< 动态制动器配置(X，Y，Z，R轴)
+    SP_Addr_BrkCtrl,            //< 抱闸制动器配置(X，Y，Z，R轴)
+    SP_Addr_InPortCtrl,         //< 输入端口配置(X，Y，Z，R轴)
+    SP_Addr_OutPortConfig,      //< 输出端口配置(X，Y，Z，R轴)
+    SP_Addr_SystemCtrl,         //< 系统控制(X，Y，Z，R轴)
+    SP_Addr_ModelControl,       //< 模式控制(X，Y，Z，R轴)
+    SP_Addr_CmdControl,         //< 命令控制(X，Y，Z，R轴)
+    SP_Addr_VCmdOffset,         //< 模拟命令控制(X，Y，Z，R轴)
+    SP_Addr_RotEnControl,       //< 旋转编码器控制(X，Y，Z，R轴)
+    SP_Addr_RotEncMaxCnt,       //< 增量式编码器线数(X，Y，Z，R轴)
+    SP_Addr_RotEncZCnt,         //< 增量式编码器Z脉冲电角度(X，Y，Z，R轴)
+    SP_Addr_LnrEncCtrl,         //< 线性编码器控制(X，Y，Z，R轴)
+    SP_Addr_EncDivCtrl,         //< 编码器分频输出控制(X，Y，Z，R轴)
+    SP_Addr_EncDivNum,          //< 编码器输出脉冲分频比之分子(X，Y，Z，R轴)
+    SP_Addr_EncDivDen,          //< 编码器输出脉冲分频比之分子(X，Y，Z，R轴)
+    /*电流环控制参数（48 - 71）*/
+    SP_Addr_IfbU_Offset = 48,   //< U相电流偏移量(X，Y，Z，R轴)
+    SP_Addr_IfbW_Offset,        //< W相电流偏移量(X，Y，Z，R轴)
+    SP_Addr_IdScl,              //< D轴电流定标因子(X，Y，Z，R轴)
+    SP_Addr_Iqscl,              //< Q轴电流定标因子(X，Y，Z，R轴)
+    SP_Addr_ElecAngScl,         //< 电角度定标因子(X，Y，Z，R轴)
+    SP_Addr_SlipGain,           //< 感应电动机转差率增益(X，Y，Z，R轴)
+    SP_Addr_K1Notch,            //< 转矩命令陷波滤波常数1(X，Y，Z，R轴)
+    SP_Addr_K2Notch,            //< 转矩命令陷波滤波常数2(X，Y，Z，R轴)
+    SP_Addr_Ktf,                //< 转矩命令低通滤波器常数(X，Y，Z，R轴)
+    SP_Addr_OvrLdLim,           //< 过载保护门限(X，Y，Z，R轴)
+    SP_Addr_TrqLimp,            //< 正向转矩限幅值(X，Y，Z，R轴)
+    SP_Addr_TrqLimN,            //< 反向转矩限幅值(X，Y，Z，R轴)
+    SP_Addr_IErrLim,            //< 电流环控制器积分误差限幅值(X，Y，Z，R轴)
+    SP_Addr_Kpid,               //< D轴电流环控制器比例增益(X，Y，Z，R轴)
+    SP_Addr_Kiid,               //< D轴电流环控制器积分增益(X，Y，Z，R轴)
+    SP_Addr_Kpiq,               //< Q轴电流环控制器比例增益(X，Y，Z，R轴)
+    SP_Addr_Kiiq,               //< Q轴电流环控制器积分增益(X，Y，Z，R轴)
+    SP_Addr_Ked,                //< D轴反电动势常数(X，Y，Z，R轴)
+    SP_Addr_Keq,                //< Q轴反电动势常数(X，Y，Z，R轴)
+    SP_Addr_Ktg,                //< 转矩模拟命令加权因子(X，Y，Z，R轴)
+    SP_Addr_Krt,                //< 感应电动机转子常数(X，Y，Z，R轴)
+    SP_Addr_RatedFreq,          //< 感应电动机额定频率(X，Y，Z，R轴)
+    SP_Addr_VdLim,              //< D轴电压调制度限幅值(X，Y，Z，R轴)
+    SP_Addr_VqLim,              //< Q轴电压调制度限幅值(X，Y，Z，R轴)
+    SP_Addr_OvrCrnt,			//< 过流保护阀值(X，Y，Z，R轴)
+    /*速度环控制参数（80 - 94）*/
+    SP_Addr_SpdScl = 80,        //< 速度定标因子(X，Y，Z，R轴)
+    SP_Addr_NilMtrSpdDly,       //< 电机零速检测延时(X，Y，Z，R轴)
+    SP_Addr_NilCmdSpdDly,       //< 直流脉冲零速检测延时(X，Y，Z，R轴)
+    SP_Addr_SpdCmp,             //< 内部转速测量比较及切换门限(X，Y，Z，R轴)
+    SP_Addr_ZeroSpeed,          //< 零转速认可范围(X，Y，Z，R轴)
+    SP_Addr_SpdAccRate,         //< 加速度(X，Y，Z，R轴)
+    SP_Addr_SpdDecRate,         //< 减速度(X，Y，Z，R轴)
+    SP_Addr_Kfg,                //< 速度前馈/模拟命令加权因子(X，Y，Z，R轴)
+    SP_Addr_Kff,                //< 速度前馈/模拟命令低通滤波器常数(X，Y，Z，R轴)
+    SP_Addr_SpdLimP,            //< 正向转速限幅值(X，Y，Z，R轴)
+    SP_Addr_SpdLimN,            //< 反向转速限幅值(X，Y，Z，R轴)
+    SP_Addr_SpdErrLim,          //< 速度环控制器积分误差限幅值(X，Y，Z，R轴)
+    SP_Addr_KpV,                //< 速度环控制器比例增益(X，Y，Z，R轴)
+    SP_Addr_KiV,                //< 速度环控制器积分增益(X，Y，Z，R轴)
+    SP_Addr_KfV,                //< 速度环控制器PDFF增益(X，Y，Z，R轴)
+    SP_Addr_BrkZeroSpd,			//< 抱闸零速(X，Y，Z，R轴)
+    /*位置环控制参数（112 - 121）*/
+    SP_Addr_PulsSclNum = 112,   //< 电子齿轮之分子(X，Y，Z，R轴)
+    SP_Addr_PulsSclDen,         //< 电子齿轮之分母(X，Y，Z，R轴)
+    SP_Addr_PosErrOvrLim,       //< 位置偏差过大设置(X，Y，Z，R轴)
+    SP_Addr_CoinLim,            //< 定位完成范围(X，Y，Z，R轴)
+    SP_Addr_POvrTrvLimL,        //< 正向行程限制（低16位）(X，Y，Z，R轴)
+    SP_Addr_POvrTrvLimH,        //< 正向行程限制（高16位）(X，Y，Z，R轴)
+    SP_Addr_NOvrTrvLimL,        //< 反向行程限制（低16位）(X，Y，Z，R轴)
+    SP_Addr_NOvrTrvLimH,        //< 反向行程限制（高16位）(X，Y，Z，R轴)
+    SP_Addr_Ksf,                //< 平滑滤波器常数(X，Y，Z，R轴)
+    SP_Addr_KpP,                //< 位置环控制器比例增益(X，Y，Z，R轴)
+
+    SP_Addr_HostSOff = 154,     //< 紧急刹车（轴号：任意）
+    SP_Addr_HostFltClr,         //< 报警清除（轴号：任意）
+
+    SP_Addr_HostRef = 160,      //< 数字给定命令(X，Y，Z，R轴)
+    SP_Addr_HostSOn,            //< 伺服ON/OFF(X，Y，Z，R轴)
+    SP_Addr_HostPosRst,         //< 位置偏差计数器清零(X，Y，Z，R轴)
+    SP_Addr_BootStrap,          //< 自动电容充电控制(X，Y，Z，R轴)
+    SP_Addr_HostElecAng,        //< 转子初始角(X，Y，Z，R轴)
+    /*电机转子初始角（177 - 182）*/
+    SP_Addr_InitElecAng001 = 177,//< 转子初始角1(X，Y，Z，R轴)
+    SP_Addr_InitElecAng010,      //< 转子初始角2(X，Y，Z，R轴)
+    SP_Addr_InitElecAng011,      //< 转子初始角3(X，Y，Z，R轴)
+    SP_Addr_InitElecAng100,      //< 转子初始角4(X，Y，Z，R轴)
+    SP_Addr_InitElecAng101,      //< 转子初始角5(X，Y，Z，R轴)
+    SP_Addr_InitElecAng110,      //< 转子初始角6(X，Y，Z，R轴)
+
+    SP_Addr_ReadReady = 254,	//< 读eeprom数据查询(轴号：0)(查询下位机是否已经更新好数据)，
+                                //< 读的时候，先向这个地址写0x01，然后读，如果为0x02,表示正在准备，
+                                //< 如果为0x01，表示没有准备，如果为0x04，表示已经准备好
+} SERVO_PARA_ADDR;
+
+typedef enum
+{
+    SS_Addr_SystemStatus = 0,//< 系统状态（X，Y，Z，R轴）
+    SS_Addr_FaultStatus,//< 故障状态（X，Y，Z，R轴）
+    SS_Addr_WorkingStatus,//< 运行状态（X，Y，Z，R轴）
+    SS_Addr_IOPortStatus,//< IO端口状态（X，Y，Z，R轴）
+    SS_Addr_XPosErr,//< X轴位置跟踪误差（轴号：任意）
+    SS_Addr_YPosErr,//< Y轴位置跟踪误差（轴号：任意）
+    SS_Addr_ZPosErr,//< Z轴位置跟踪误差（轴号：任意）
+    SS_Addr_RPosErr,//< R轴位置跟踪误差（轴号：任意）
+    SS_Addr_PRefL,//< 位置命令（低16位）（X，Y，Z，R轴）
+    SS_Addr_PRefH,//< 位置命令（高16位）（X，Y，Z，R轴）
+    SS_Addr_PFbkL,//< 位置响应（低16位）（X，Y，Z，R轴）
+    SS_Addr_PFbkH,//< 位置响应（高16位）（X，Y，Z，R轴）
+    SS_Addr_SpdRef,//< 速度命令（X，Y，Z，R轴）
+    SS_Addr_SpdFbk,//< 速度响应（X，Y，Z，R轴）
+    SS_Addr_TrqRef,//< 转矩命令（X，Y，Z，R轴）
+    SS_Addr_TrqFbk,//< 转矩响应（X，Y，Z，R轴）
+} SERVO_STATUS_ADDR;
+
+
 typedef union {
     struct{
         uint32_t type:8;//< 类型

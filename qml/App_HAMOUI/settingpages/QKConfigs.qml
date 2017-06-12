@@ -527,7 +527,7 @@ Item {
             }
             ICListView{
                 id:paraSubView
-                property variant tableMargin: [150,80,80,80]
+                property variant tableMargin: [250,60,80,80]
                 color: "white"
                 anchors.left: leftLine2.right
                 anchors.top:titleLine.bottom
@@ -651,9 +651,9 @@ Item {
                         linelong: parent.width
                         direction:"horizontal"
                     }
-                    Component.onCompleted: {
+//                    Component.onCompleted: {
 //                        wValText.textChanged.connect(wValText.onConfigChanged);
-                    }
+//                    }
                 }
                 onCurrentItemChanged: {
                     descText.text = model.get(currentIndex).desc;
@@ -990,12 +990,12 @@ Item {
                                     name: "alarm"
                                     PropertyChanges {target: colorStatus; color:"red";}
                                     PropertyChanges {target: textStatus; text:qsTr("inAlarm");}
+                                },
+                                State {
+                                    name: "noRefresh"
+                                    PropertyChanges {target: colorStatus; color:"gray";}
+                                    PropertyChanges {target: textStatus; text:qsTr("inNoRefresh");}
                                 }
-//                                State {
-//                                    name: "noRefresh"
-//                                    PropertyChanges {target: colorStatus; color:"blue";}
-//                                    PropertyChanges {target: textStatus; text:qsTr("inNoRefresh");}
-//                                }
                             ]
                             Rectangle{
                                 id:colorStatus
@@ -1038,27 +1038,34 @@ Item {
                         panelRobotController.readAllQkEeprom();
                     }
                 }
-                if(refreshEnBtn.isChecked && statusPageBtn.isChecked){
-                    var axisStatus,alarmStatus;
-                    for(i=0;i<4;i++){
-                        axisStatus = panelRobotController.getQkStatusConfigValue(4+i);
-                        alarmStatus = panelRobotController.getQkStatusConfigValue(8+i);
-                        if(alarmStatus){
-                            statusDisply.itemAt(i).state = "alarm";
-                        }
-                        else{
-                            if((axisStatus >>3)&0x01){
-                                statusDisply.itemAt(i).state = "running";
-                            }
-                            else{
-                                statusDisply.itemAt(i).state = "stop";
-                            }
-                        }
-                        for(j=0;j<16;++j){
-                            statusPage.subItems[i].get(j).alarmVal = (axisStatus>>j)&0x01;
+                if(statusPageBtn.isChecked){
+                    if(!refreshEnBtn.isChecked || panelRobotController.currentErrNum()==9){
+                        for(i=0;i<4;i++){
+                            statusDisply.itemAt(i).state = "noRefresh";
                         }
                     }
-                    panelRobotController.readMultipleQkStatus((1<<2)+0,8);
+                    else{
+                        var axisStatus,alarmStatus;
+                        for(i=0;i<4;i++){
+                            axisStatus = panelRobotController.getQkStatusConfigValue(4+i);
+                            alarmStatus = panelRobotController.getQkStatusConfigValue(8+i);
+                            if(alarmStatus){
+                                statusDisply.itemAt(i).state = "alarm";
+                            }
+                            else{
+                                if((axisStatus >>3)&0x01){
+                                    statusDisply.itemAt(i).state = "running";
+                                }
+                                else{
+                                    statusDisply.itemAt(i).state = "stop";
+                                }
+                            }
+                            for(j=0;j<16;++j){
+                                statusPage.subItems[i].get(j).alarmVal = (axisStatus>>j)&0x01;
+                            }
+                        }
+                        panelRobotController.readMultipleQkStatus((1<<2)+0,8);
+                    }
                 }
             }
         }

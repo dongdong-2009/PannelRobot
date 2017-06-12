@@ -499,7 +499,7 @@ var extentRotateCatchAction = {
                 "X:" + actionObject.centerPos_0 + "," +
                 "Y:" + actionObject.centerPos_1 + "," +
                 "Z:" + actionObject.centerPos_2 + "," +
-                + "\n                            " +
+                "\n                            " +
                 qsTr("startPos") + ":" +
                 "X:" + actionObject.startPos_0 + "," +
                 "Y:" + actionObject.startPos_1 + "," +
@@ -507,7 +507,6 @@ var extentRotateCatchAction = {
                 "W:" + actionObject.startPos_5
     },
     "actionObjectChangedHelper":function(editor, actionObject){
-        console.log(editor,actionObject)
         editor.plane = actionObject.plane;
         editor.plateNum = actionObject.plateNum;
         editor.speed = actionObject.speed;

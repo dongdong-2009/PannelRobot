@@ -349,7 +349,7 @@ Item {
                 height: descText.height
                 clip: true
                 contentWidth: descText.width
-                contentHeight: descText.height+10
+                contentHeight: descText.height + 10
                 Text{
                     id:descText
                     wrapMode: Text.WordWrap

@@ -36,7 +36,7 @@ ICSettingConfigsScope {
     ICStackContainer{
         id:pageContainer
         width: parent.width-3
-        height: parent.height
+        height: parent.height - typeSel.height -5
         anchors.top:typeSel.bottom
         anchors.topMargin: 5
         Column
@@ -97,32 +97,25 @@ ICSettingConfigsScope {
         Column{
             id:canAContainer
             spacing: 8
-            ICComboBoxConfigEdit{
-                id: canAUse
-                items: [qsTr("online"), qsTr("Encoder")]
-                configNameWidth: 100
-                configName:  qsTr("CAN use to")
-                configValue: 0
-//                configAddr: "s_rw_8_8_0_288"
-            }
-//            ICComboBoxConfigEdit{
-//                id: canAMode
-//                items: [qsTr("SDO"), qsTr("PDO")]
-//                configNameWidth: 100
-//                configName:  qsTr("Host CAN b")
-////                configAddr: "s_rw_8_8_0_288"
-//            }
-            ICConfigEdit{
-                id:canA_id_config
-                configName: qsTr("ID config")
-                configValue: qsTr("0")
-            }
-            ICComboBoxConfigEdit{
-                id: canA_baud_config
-                items: [qsTr("125kbps"), qsTr("250kbps"), qsTr("500kbps"), qsTr("1000kbps")]
-                configNameWidth: 100
-                configName:  qsTr("Baud Setting")
-                configValue: 2
+            Row{
+                spacing: 8
+                ICComboBoxConfigEdit{
+                    id: canAUse
+                    items: [qsTr("online"), qsTr("Encoder")]
+                    configName:  qsTr("CAN use to")
+                    configAddr: "s_rw_0_2_0_286"
+                }
+                ICConfigEdit{
+                    id:canA_id_config
+                    configName: qsTr("ID config")
+                    configAddr: "s_rw_2_8_0_286"
+                }
+                ICComboBoxConfigEdit{
+                    id: canA_baud_config
+                    items: [qsTr("125kbps"), qsTr("250kbps"), qsTr("500kbps"), qsTr("1000kbps")]
+                    configName:  qsTr("Baud Setting")
+                    configAddr: "s_rw_10_6_0_286"
+                }
             }
             Text {
                 id: canAtips
@@ -133,50 +126,60 @@ ICSettingConfigsScope {
         Column{
             id:canBContainer
             spacing: 8
-            ICComboBoxConfigEdit{
-                id: canBUse
-                items: [qsTr("online"), qsTr("Encoder")]
-                configNameWidth: 100
-                configName:  qsTr("CAN use to")
-                configValue: 1
-//                configAddr: "s_rw_8_8_0_288"
-            }
-//            ICComboBoxConfigEdit{
-//                id: canBMode
-//                items: [qsTr("SDO"), qsTr("PDO")]
-//                configNameWidth: 100
-//                configName:  qsTr("Host CAN b")
-////                configAddr: "s_rw_8_8_0_288"
-//            }
-            ICConfigEdit{
-                id:canB_id_config
-                configName: qsTr("ID config")
-                configValue: qsTr("0")
-            }
-            ICComboBoxConfigEdit{
-                id: canB_baud_config
-                items: [qsTr("125kbps"), qsTr("250kbps"), qsTr("500kbps"), qsTr("1000kbps")]
-                configNameWidth: 100
-                configName:  qsTr("Baud Setting")
-                configValue: 2
-            }
-
-
-            ICButton{
-                id:newBtn
-                text: qsTr("new")
-                visible: (canBUse.configValue == 1)?true:false
-                onButtonClicked: {
-                    if(canBUse.configValue == 1){
-//                        valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":0,"outstatus_init":0});
-                    }
+            Row{
+                spacing: 8
+                ICComboBoxConfigEdit{
+                    id: canBUse
+                    items: [qsTr("online"), qsTr("Encoder")]
+                    configName:  qsTr("CAN use to")
+                    configAddr: "s_rw_0_2_0_287"
+                }
+                ICConfigEdit{
+                    id:canB_id_config
+                    configName: qsTr("ID config")
+                    configAddr: "s_rw_2_8_0_287"
+                }
+                ICComboBoxConfigEdit{
+                    id: canB_baud_config
+                    items: [qsTr("125kbps"), qsTr("250kbps"), qsTr("500kbps"), qsTr("1000kbps")]
+                    configName:  qsTr("Baud Setting")
+                    configAddr: "s_rw_10_6_0_287"
                 }
             }
 
-            Text {
-                id: canBtips
-                color: "red"
-                text: qsTr("Tips:After modified, must be restart to take effect!")
+            Rectangle{
+                height:parent.height
+                width: parent.width
+                ICListView{
+                    id:encoderList
+                }
+                Row{
+                    id:funcBtnArea
+                    visible: canBUse.configValue == 1
+                    spacing: 8
+                    ICButton{
+                        id:newBtn
+                        text: qsTr("new")
+                        onButtonClicked: {
+                            if(canBUse.configValue == 1){
+        //                        valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":0,"outstatus_init":0});
+                            }
+                        }
+                    }
+                    ICButton{
+                        id:saveBtn
+                        text: qsTr("save")
+                        onButtonClicked:{
+
+                        }
+                    }
+
+                    Text {
+                        id: canBtips
+                        color: "red"
+                        text: qsTr("Tips:After modified, must be restart to take effect!")
+                    }
+                }
             }
         }
     }

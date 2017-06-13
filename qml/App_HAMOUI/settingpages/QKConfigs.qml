@@ -687,6 +687,11 @@ Item {
                         height: refreshEnBtn.height
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("clear alarm")
+                        onButtonClicked: {
+                            var tmpData = [];
+                            tmpData.push(1);
+                            panelRobotController.writeMultipleQkPara(155,1,JSON.stringify(tmpData));
+                        }
                     }
                 }
                 ICSpliteLine{

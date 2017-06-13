@@ -1999,10 +1999,16 @@ typedef union {
     };
     uint32_t d;
 }SERIAL485Setting;
+
 typedef union {
-
+    struct{
+       uint32_t useto:2; //< 类型：系统；名字：can用途；精度：0；单位：；
+       uint32_t id:8;    //< 类型：系统；名字：id；精度：0；单位：；
+       uint32_t baud:6;  //< 类型：系统；名字：波特率；精度：0；单位：；
+       uint32_t res:16;  //< 类型：系统；名字：预留；精度：0；单位：；
+    };
+    uint32_t d;
 }CANSetting;
-
 
 typedef struct {
     uint32_t elapse_tol; //<类型：系统；名字：容差设定；精度：0;单位：；
@@ -2015,7 +2021,9 @@ typedef struct {
     MotorTestSpeedStruct test_speed; //<类型：系统；名字：测试速度结构；单位：；
     SafeAreaStruct safe_area; //<类型：系统；名字：安全区设定； 单位：；
     uint32_t Reserve4[8];   //<类型：系统；名字：当前计数值；单位：ms；
-    uint32_t Reserve5[14];   //<类型：系统；名字：目标计数值；单位：ms；
+    uint32_t Reserve5[12];   //<类型：系统；名字：目标计数值；单位：ms；
+    CANSetting cana; //<类型：系统；名字：cana设置；单位：；
+    CANSetting canb; //<类型：系统；名字：canb设置；单位：；
     SERIAL485Setting serial;//<类型：系统；名字：485串口设置；单位：；
     FirstModuleSpeed  first_module_speed;
 }RESERVE0;

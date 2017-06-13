@@ -148,8 +148,8 @@ ICSettingConfigsScope {
             }
 
             Rectangle{
-                height:parent.height
-                width: parent.width
+//                height:parent.height
+//                width: parent.width
                 ICListView{
                     id:encoderList
                 }

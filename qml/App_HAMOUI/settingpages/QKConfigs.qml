@@ -906,7 +906,7 @@ Item {
                     id:spLeftLine3
                     color: "black"
                     anchors.left: parent.left
-                    anchors.leftMargin: paraSubView.tableMargin[0]
+                    anchors.leftMargin: statusSubView.tableMargin[0]
                     direction:"verticality"
                     anchors.top: parent.top
                     anchors.topMargin: -31
@@ -917,7 +917,7 @@ Item {
                     id:spLeftLine4
                     color: "black"
                     anchors.left: spLeftLine3.right
-                    anchors.leftMargin: paraSubView.tableMargin[1]
+                    anchors.leftMargin: statusSubView.tableMargin[1]
                     direction:"verticality"
                     anchors.top: parent.top
                     anchors.topMargin: -31

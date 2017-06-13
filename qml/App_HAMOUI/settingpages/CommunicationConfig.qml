@@ -36,7 +36,7 @@ ICSettingConfigsScope {
     ICStackContainer{
         id:pageContainer
         width: parent.width-3
-        height: parent.height - typeSel.height -5
+        height:parent.height - typeSel.height -5
         anchors.top:typeSel.bottom
         anchors.topMargin: 5
         Column
@@ -127,6 +127,7 @@ ICSettingConfigsScope {
             id:canBContainer
             spacing: 8
             Row{
+                id:canBConfigRow
                 spacing: 8
                 ICComboBoxConfigEdit{
                     id: canBUse
@@ -148,14 +149,27 @@ ICSettingConfigsScope {
             }
 
             Rectangle{
-//                height:parent.height
-//                width: parent.width
+                visible: canBUse.configValue == 1
+                color: "transparent"
+                border.color: "black"
+                border.width: 1
+                height:pageContainer.height - canBConfigRow.height -24
+                width: pageContainer.width -5
+                ListModel{
+                    id:ecoderModel
+                }
                 ICListView{
                     id:encoderList
+                    height:parent.height - funcBtnArea.height - 5
+                    width: parent.width
+                    model:ecoderModel
+                    spacing: 5
                 }
                 Row{
                     id:funcBtnArea
-                    visible: canBUse.configValue == 1
+                    x:5
+                    anchors.top:encoderList.bottom
+                    anchors.bottomMargin: 2
                     spacing: 8
                     ICButton{
                         id:newBtn
@@ -176,7 +190,9 @@ ICSettingConfigsScope {
 
                     Text {
                         id: canBtips
+                        height: saveBtn.height
                         color: "red"
+                        verticalAlignment: Text.AlignVCenter
                         text: qsTr("Tips:After modified, must be restart to take effect!")
                     }
                 }

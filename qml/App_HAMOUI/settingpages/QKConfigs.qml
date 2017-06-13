@@ -1050,20 +1050,20 @@ Item {
                         }
                     }
                     else{
-                        var axisStatus,alarmStatus;
+                        var axisStatus = 0,alarmStatus = 0;
                         for(i=0;i<4;i++){
                             axisStatus = panelRobotController.getQkStatusConfigValue(4+i);
                             alarmStatus = panelRobotController.getQkStatusConfigValue(8+i);
-                            if(alarmStatus){
-                                statusDisply.itemAt(i).state = "alarm";
-                            }
-                            else{
-                                if((axisStatus >>3)&0x01){
-                                    statusDisply.itemAt(i).state = "running";
+                            if(alarmStatus == 0){
+                                if((axisStatus >>3)&0x01 == 0){
+                                    statusDisply.itemAt(i).state = "stop"
                                 }
                                 else{
-                                    statusDisply.itemAt(i).state = "stop";
+                                    statusDisply.itemAt(i).state = "running";
                                 }
+                            }
+                            else{
+                                statusDisply.itemAt(i).state = "alarm";
                             }
                             for(j=0;j<16;++j){
                                 statusPage.subItems[i].get(j).alarmVal = (axisStatus>>j)&0x01;

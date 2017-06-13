@@ -3824,6 +3824,7 @@
     </message>
     <message>
         <location filename="../teach/extents/ExtentActionDefine.js" line="453"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="491"/>
         <source>delay</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3840,6 +3841,36 @@
     <message>
         <location filename="../teach/extents/ExtentActionDefine.js" line="463"/>
         <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="487"/>
+        <source>Rotate Catch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="488"/>
+        <source>plane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="489"/>
+        <source>plateNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="490"/>
+        <source>speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="492"/>
+        <source>centerPos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="496"/>
+        <source>startPos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3929,6 +3960,11 @@
     <message>
         <location filename="../teach/ExtentActionEditor.qml" line="90"/>
         <source>switchTool</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ExtentActionEditor.qml" line="94"/>
+        <source>rotateCatch</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7354,6 +7390,82 @@ please chose!</source>
     <message>
         <location filename="../settingpages/RegisterUseTimeSettings.qml" line="88"/>
         <source>Rest Time(0 Forever):</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RotateCatchEditor</name>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="37"/>
+        <source>Plane Sel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="73"/>
+        <source>Plate Num</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="76"/>
+        <source>Plate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="83"/>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="87"/>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="91"/>
+        <source>Delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="95"/>
+        <source>s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="102"/>
+        <source>Pose En</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="110"/>
+        <source>Set In CP:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="121"/>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="157"/>
+        <source>X:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="128"/>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="164"/>
+        <source>Y:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="135"/>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="171"/>
+        <source>Z:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="145"/>
+        <source>Set In SP:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/RotateCatchEditor.qml" line="181"/>
+        <source>W:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

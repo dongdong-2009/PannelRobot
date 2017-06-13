@@ -18,7 +18,8 @@ DISTFILES += \
     teach/extents/BarnLogicEditor.qml \
     ToolsCalibration.js \
     teach/extents/SwitchToolEditor.qml \
-    settingpages/QKInfo.js
+    settingpages/QKInfo.js \
+    teach/extents/RotateCatchEditor.qml
 
 
 

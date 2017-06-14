@@ -105,7 +105,7 @@ Item {
         spacing: 15
         ICButton{
             id:setP1Btn
-            text:qsTr("setP1Btn")
+            text:qsTr("setPoBtn")
             height: p1m0.height
             onButtonClicked: {
                 p1m0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
@@ -148,7 +148,7 @@ Item {
 
         ICButton{
             id:setP2Btn
-            text:qsTr("setP2Btn")
+            text:qsTr("setPxBtn")
             height: p2m0.height
             onButtonClicked: {
                 p2m0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
@@ -191,7 +191,7 @@ Item {
 
         ICButton{
             id:setP3Btn
-            text:qsTr("setP3Btn")
+            text:qsTr("setPyBtn")
             height: p3m0.height
             onButtonClicked: {
                 p3m0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");

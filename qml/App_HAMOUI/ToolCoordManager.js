@@ -4,6 +4,7 @@ Qt.include("../utils/Storage.js")
 Qt.include("../utils/stringhelper.js")
 Qt.include("../utils/utils.js")
 function ToolCoordManager(){
+    console.log("INNN");
     this.toolCoords = [];
 //    this.monitors = [];
     var db = getDatabase();

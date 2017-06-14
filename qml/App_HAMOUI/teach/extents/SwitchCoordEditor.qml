@@ -2,12 +2,14 @@ import QtQuick 1.1
 import "../../../ICCustomElement"
 import "ExtentActionDefine.js" as ExtentActionDefine
 import "../../ToolCoordManager.js" as ToolCoordManager
+import "../../../utils/utils.js" as Utils
 
 ExtentActionEditorBase {
     width: coordIDEdit.width + 20
     height: coordIDEdit.height
     id:instance
-    property int coordID: coordIDEdit.configValue<0?-1:Number(coordIDEdit.configText().charAt(0))
+    property int coordID: coordIDEdit.configValue<0?-1:Number(Utils.getValueBeforeColon(coordIDEdit.configText()))
+    property string coordName:coordIDEdit.configValue<0?"":Utils.getValueAfterColon(coordIDEdit.configText())
 
     onActionObjectChanged: {
         if(actionObject == null) return;
@@ -15,7 +17,7 @@ ExtentActionEditorBase {
         tmpItems.splice(0, 0, ("0:"+qsTr("world coord")));
         coordIDEdit.items = tmpItems;
         for(var i=0,len = coordIDEdit.items.length;i<len;++i){
-            if(actionObject.coordID == coordIDEdit.items[i].charAt(0)){
+            if(actionObject.coordID == Utils.getValueBeforeColon(coordIDEdit.items[i])){
                coordIDEdit.configValue = i;
                 return;
             }

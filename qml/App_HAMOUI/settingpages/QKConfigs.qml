@@ -8,11 +8,6 @@ Item {
     width: parent.width
     height: parent.height
 
-    onVisibleChanged: {
-        if(!visible)
-            rE2promBtn.isBeginReadEeprom = false;
-    }
-
     ICButtonGroup{
         id:menuArea
         width: parent.width
@@ -74,6 +69,10 @@ Item {
             id: dataPage
             property variant subItems:[subItems0,subItems1,subItems2,subItems3,subItems4,subItems5,subItems6,subItems7,subItems8,
                 subItems9,subItems10,subItems11,subItems12,subItems13,subItems14,subItems15,subItems16,subItems17,subItems18,subItems19,subItems20]
+            onVisibleChanged: {
+                if(!visible)
+                    rE2promBtn.isBeginReadEeprom = false;
+            }
             ICMessageBox{
                 id: tipBox
                 x:300
@@ -346,14 +345,13 @@ Item {
                 anchors.left: paraSubView.right
                 anchors.leftMargin: 2
                 width: descText.width
-                height: descText.height
-                clip: true
+                height: paraSubView.height
                 contentWidth: descText.width
                 contentHeight: descText.height + 10
+                flickableDirection: Flickable.VerticalFlick
                 Text{
                     id:descText
-                    wrapMode: Text.WordWrap
-                    height: paraSubView.height
+                    wrapMode: Text.Wrap
                     width:descTextTitle.width
                 }
             }
@@ -1052,10 +1050,10 @@ Item {
                     else{
                         var axisStatus = 0,alarmStatus = 0;
                         for(i=0;i<4;i++){
-                            axisStatus = panelRobotController.getQkStatusConfigValue(4+i);
-                            alarmStatus = panelRobotController.getQkStatusConfigValue(8+i);
+                            alarmStatus = panelRobotController.getQkStatusConfigValue(4+i);
+                            axisStatus = panelRobotController.getQkStatusConfigValue(8+i);
                             if(alarmStatus == 0){
-                                if((axisStatus >>3)&0x01 == 0){
+                                if(((axisStatus >>3)&0x01) == 0){
                                     statusDisply.itemAt(i).state = "stop"
                                 }
                                 else{
@@ -1066,7 +1064,7 @@ Item {
                                 statusDisply.itemAt(i).state = "alarm";
                             }
                             for(j=0;j<16;++j){
-                                statusPage.subItems[i].get(j).alarmVal = (axisStatus>>j)&0x01;
+                                statusPage.subItems[i].get(j).alarmVal = (alarmStatus>>j)&0x01;
                             }
                         }
                         panelRobotController.readMultipleQkStatus((1<<2)+0,8);

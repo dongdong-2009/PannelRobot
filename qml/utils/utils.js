@@ -43,6 +43,18 @@ function getValueFromBrackets(str){
     return str.slice(begin, end);
 }
 
+function getValueBeforeColon(str){
+    var begin = 0;
+    var end = str.indexOf(':');
+    return str.slice(begin, end);
+}
+
+function getValueAfterColon(str){
+    var begin = str.indexOf(':')+1;
+    var end = str.length;
+    return str.slice(begin, end);
+}
+
 function parseCalibration(str){
 
     var ret = [];

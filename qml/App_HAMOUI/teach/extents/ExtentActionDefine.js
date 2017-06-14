@@ -2,8 +2,6 @@
 Qt.include("../../configs/AxisDefine.js")
 Qt.include("../../configs/IODefines.js")
 Qt.include("../Teach.js")
-Qt.include("../../ToolsCalibration.js")
-Qt.include("../../ToolCoordManager.js")
 
 function ActionDefineItem(name, decimal){
     this.item = name;
@@ -178,6 +176,23 @@ var extentSwitchCoordAction = {
             return qsTr("Switch Coord") + ":" +"["+ qsTr("CoordID")+actionObject.coordID+"]"+ (actionObject.coordID==0?qsTr("world coord"):toolCoordManager.getToolCoord(actionObject.coordID).name);
         },
         "actionObjectChangedHelper":function(editor, actionObject){
+        },
+        "generate":function(properties){
+            var ret = {"action":800};
+            ret.coordID = properties.coordID;
+            ret.coordName = properties.coordName;
+            return ret;
+        },
+        "getActionPropertiesHelper":function(editor){
+            var ret = {"action":800};
+            ret.coordID = editor.coordID;
+            ret.coordName = editor.coordName;
+            return ret;
+        },
+        "updateActionObjectHelper":function(editor,actionObject){
+            actionObject.action = 800;
+            actionObject.coordID = editor.coordID;
+            actionObject.coordName = editor.coordName;
         }
     };
 
@@ -460,9 +475,26 @@ var extentSwitchToolAction = {
         "canActionUsePoint": false,
         "editableItems":{"editor":Qt.createComponent("SwitchToolEditor.qml"), "itemDef":{"item":"SwitchToolEditor"}},
         "toStringHandler":function(actionObject){
-            return qsTr("Switch Tool") + ":" +"["+ qsTr("toolID")+actionObject.toolID+"]"+ (actionObject.toolID==0?qsTr("None"):toolCalibrationManager.getToolCalibration(actionObject.toolID).name);
+            return qsTr("Switch Tool") + ":" +"["+ qsTr("toolID")+actionObject.toolID+"]"+ actionObject.toolName;
         },
         "actionObjectChangedHelper":function(editor, actionObject){
+        },
+        "generate":function(properties){
+            var ret = {"action":801};
+            ret.toolID = properties.toolID;
+            ret.toolName = properties.toolName;
+            return ret;
+        },
+        "getActionPropertiesHelper":function(editor){
+            var ret = {"action":801};
+            ret.toolID = editor.toolID;
+            ret.toolName = editor.toolName;
+            return ret;
+        },
+        "updateActionObjectHelper":function(editor,actionObject){
+            actionObject.action = 801;
+            actionObject.toolID = editor.toolID;
+            actionObject.toolName = editor.toolName;
         }
     };
 var extentRotateCatchAction = {

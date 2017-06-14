@@ -6,6 +6,8 @@ Qt.include("../configs/AxisDefine.js")
 Qt.include("../configs/IODefines.js")
 Qt.include("../AlarmInfo.js")
 Qt.include("../../utils/utils.js")
+Qt.include("../ToolCoordManager.js")
+Qt.include("../ToolsCalibration.js")
 
 var customActions = {};
 
@@ -2090,8 +2092,10 @@ function Record(name, counters, stacks, variableDefs, functions){
     };
     this.programsToText = function(program){
         var ret = "";
-        var tmp;
+        var tmp,step;
         for(var i=0;i<program.length;++i){
+            step = program[i];
+            this.flagsDefine.pushFlag(currentParsingProgram, new FlagItem(step.flag, step.comment));
             if(i < 10)  tmp = "&nbsp;&nbsp;"+i;
             else if(i < 100) tmp = "&nbsp;"+i;
             else tmp = i;
@@ -2118,6 +2122,8 @@ function loadRecord(recordName, counters, stacks, variableDefs, functions){
             waitTeachInitedObjs[i].onTeachInited();
         }
     }
+//    currentRecord.coordTable = toolCoordManager;
+//    currentRecord.coordTool = toolCalibrationManager;
     waitTeachInitedObjs.length = 0;
 }
 

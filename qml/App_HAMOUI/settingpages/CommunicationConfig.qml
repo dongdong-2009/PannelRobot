@@ -164,6 +164,76 @@ ICSettingConfigsScope {
                     width: parent.width
                     model:ecoderModel
                     spacing: 5
+                    delegate: Row{
+                        spacing: 8
+                        ICCheckBox {
+                            id:ecoderEnEdit
+                            text: ecoderID
+                            isChecked: check
+                            onIsCheckedChanged: {
+                                ecoderModel.setProperty(index,"check",isChecked);
+                            }
+                        }
+                        ICConfigEdit{
+                            id:ecoderNameEdit
+                            isNumberOnly: false
+                            inputWidth: 70
+                            configName: qsTr("name")+ ": "
+                            configValue: ecoderName
+                            onConfigValueChanged: {
+                                ecoderModel.setProperty(index,"ecoderName",configValue);
+                            }
+                        }
+                        ICButton{
+                            id:setZeroBtn
+                            width: 80
+                            height: ecoderEnEdit.height
+                            text: qsTr("setZero")
+                        }
+                        ICComboBoxConfigEdit{
+                            id:surfaceSelEdit
+                            configName: qsTr("surface")
+                            items:["XY","XZ","YZ"]
+                            inputWidth: 40
+                            configValue: surface
+                            onConfigValueChanged: {
+                                ecoderModel.setProperty(index,"surface",configValue);
+                            }
+                        }
+                        ICButton{
+                            id:setPosBtn
+                            width: 80
+                            height: ecoderEnEdit.height
+                            text:qsTr("setPos")
+                        }
+                        ICConfigEdit{
+                            id:p0M0Edit
+                            configName: qsTr("p0M0")
+                            configValue: p0M0
+                            inputWidth: 70
+                            onConfigValueChanged: {
+                                ecoderModel.setProperty(index,"p0M0",configValue);
+                            }
+                        }
+                        ICConfigEdit{
+                            id:p0M1Edit
+                            configName: qsTr("p0M1")
+                            configValue: p0M1
+                            inputWidth: 70
+                            onConfigValueChanged: {
+                                ecoderModel.setProperty(index,"p0M1",configValue);
+                            }
+                        }
+                        ICButton{
+                            id:delBtn
+                            width: 80
+                            height: ecoderEnEdit.height
+                            text: qsTr("delete")
+                            onButtonClicked: {
+                                ecoderModel.remove(index);
+                            }
+                        }
+                    }
                 }
                 Row{
                     id:funcBtnArea
@@ -175,9 +245,7 @@ ICSettingConfigsScope {
                         id:newBtn
                         text: qsTr("new")
                         onButtonClicked: {
-                            if(canBUse.configValue == 1){
-        //                        valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":0,"outstatus_init":0});
-                            }
+                            ecoderModel.append({"check":true,"ecoderID":0,"ecoderName":"0","surface":0,"p0M0":0,"p0M1":0});
                         }
                     }
                     ICButton{

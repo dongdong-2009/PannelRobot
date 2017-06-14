@@ -2,13 +2,14 @@ import QtQuick 1.1
 import "../../../ICCustomElement"
 import "ExtentActionDefine.js" as ExtentActionDefine
 import "../../ToolsCalibration.js" as ToolsCalibrationManager
-import "../../"
+import "../../../utils/utils.js" as Utils
 
 ExtentActionEditorBase {
     id:instance
     width: toolIDEdit.width + 20
     height: toolIDEdit.height
-    property int toolID: toolIDEdit.configValue<0?-1:Number(toolIDEdit.configText().charAt(0))
+    property int toolID: toolIDEdit.configValue<0?-1:Number(Utils.getValueBeforeColon(toolIDEdit.configText()))
+    property string toolName:toolIDEdit.configValue<0?"":Utils.getValueAfterColon(toolIDEdit.configText())
 
     onActionObjectChanged: {
         if(actionObject == null) return;
@@ -16,8 +17,7 @@ ExtentActionEditorBase {
         tmpItems.splice(0, 0, ("0:"+qsTr("None")));
         toolIDEdit.items = tmpItems;
         for(var i=0,len = toolIDEdit.items.length;i<len;++i){
-            console.log(actionObject.toolID,toolIDEdit.items[i].charAt(0));
-            if(actionObject.toolID == toolIDEdit.items[i].charAt(0)){
+            if(actionObject.toolID == Utils.getValueBeforeColon(toolIDEdit.items[i])){
                toolIDEdit.configValue = i;
                 return;
             }
@@ -32,6 +32,7 @@ ExtentActionEditorBase {
     onVisibleChanged: {
         if(visible){
             var tmpItems = ToolsCalibrationManager.toolCalibrationManager.toolCalibrationNameList();
+//            console.log("tmpItems",tmpItems)
             tmpItems.splice(0, 0, ("0:"+qsTr("None")));
             toolIDEdit.items = tmpItems;
         }

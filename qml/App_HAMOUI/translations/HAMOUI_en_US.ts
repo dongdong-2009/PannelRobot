@@ -2121,26 +2121,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/AxisConfigs.qml" line="654"/>
         <source>Encoder Type</source>
         <translation type="unfinished"></translation>
@@ -2158,21 +2138,6 @@
     <message>
         <location filename="../settingpages/AxisConfigs.qml" line="657"/>
         <source>Encode Type3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 6</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2258,11 +2223,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 8</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/AxisConfigs.qml" line="674"/>
         <source>Encode RW4</source>
         <translation type="unfinished"></translation>
@@ -2331,6 +2291,56 @@
     <message>
         <location filename="../settingpages/AxisConfigs.qml" line="281"/>
         <source>Origin point dir Change to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>Inovance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>ASDA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>panasonic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>hcqs4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>SANKYO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>YASKAWA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>EURA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>HCFA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>COTRUST</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>RUKING</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2659,172 +2669,224 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="24"/>
-        <source>CAN</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="44"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="49"/>
         <source>serial 485 config</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="52"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="57"/>
         <source>Parity Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="50"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="55"/>
         <source>NULL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="50"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="55"/>
         <source>ODD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="50"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="55"/>
         <source>EVEN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="50"/>
-        <location filename="../settingpages/CommunicationConfig.qml" line="58"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="55"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="63"/>
         <source>INVALID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="60"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="65"/>
         <source>Stopbits Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="58"/>
-        <location filename="../settingpages/CommunicationConfig.qml" line="66"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="63"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="71"/>
         <source>1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="58"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="63"/>
         <source>1.5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="58"/>
-        <location filename="../settingpages/CommunicationConfig.qml" line="66"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="63"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="71"/>
         <source>2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="68"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="73"/>
         <source>Databits Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="66"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="71"/>
         <source>3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="66"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="71"/>
         <source>4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="66"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="71"/>
         <source>5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="66"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="71"/>
         <source>6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="66"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="71"/>
         <source>7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="66"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="71"/>
         <source>8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="75"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="80"/>
         <source>Loopback Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="73"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="78"/>
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="73"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="78"/>
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="82"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="87"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="124"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="160"/>
         <source>Baud Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="80"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="85"/>
         <source>2400</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="80"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="24"/>
+        <source>CANA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/CommunicationConfig.qml" line="29"/>
+        <source>CANB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/CommunicationConfig.qml" line="85"/>
         <source>4800</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="80"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="85"/>
         <source>9600</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="80"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="85"/>
         <source>19200</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="80"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="85"/>
         <source>38400</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="80"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="85"/>
         <source>57600</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="80"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="85"/>
         <source>115200</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="89"/>
-        <location filename="../settingpages/CommunicationConfig.qml" line="105"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="94"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="130"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="179"/>
         <source>Tips:After modified, must be restart to take effect!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="99"/>
-        <source>Host CAN b</source>
+        <location filename="../settingpages/CommunicationConfig.qml" line="102"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="138"/>
+        <source>online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="97"/>
-        <source>SDO</source>
+        <location filename="../settingpages/CommunicationConfig.qml" line="102"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="138"/>
+        <source>Encoder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="97"/>
-        <source>PDO</source>
+        <location filename="../settingpages/CommunicationConfig.qml" line="104"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="140"/>
+        <source>CAN use to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/CommunicationConfig.qml" line="117"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="153"/>
+        <source>ID config</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/CommunicationConfig.qml" line="118"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="154"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/CommunicationConfig.qml" line="122"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="158"/>
+        <source>125kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/CommunicationConfig.qml" line="122"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="158"/>
+        <source>250kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/CommunicationConfig.qml" line="122"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="158"/>
+        <source>500kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/CommunicationConfig.qml" line="122"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="158"/>
+        <source>1000kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/CommunicationConfig.qml" line="167"/>
+        <source>new</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3824,7 +3886,7 @@
     </message>
     <message>
         <location filename="../teach/extents/ExtentActionDefine.js" line="453"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="491"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="497"/>
         <source>delay</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3844,32 +3906,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="487"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="493"/>
         <source>Rotate Catch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="488"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="494"/>
         <source>plane</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="489"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="495"/>
         <source>plateNum</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="490"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="496"/>
         <source>speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="492"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="498"/>
         <source>centerPos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="496"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="503"/>
         <source>startPos</source>
         <translation type="unfinished"></translation>
     </message>

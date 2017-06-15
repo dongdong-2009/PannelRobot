@@ -1641,6 +1641,46 @@
         <source>Origin point dir Change to</source>
         <translation>原点开关方向变为</translation>
     </message>
+    <message>
+        <source>Inovance</source>
+        <translation>汇川伺服</translation>
+    </message>
+    <message>
+        <source>ASDA</source>
+        <translation>台达伺服</translation>
+    </message>
+    <message>
+        <source>panasonic</source>
+        <translation>松下伺服</translation>
+    </message>
+    <message>
+        <source>hcqs4</source>
+        <translation>华成伺服</translation>
+    </message>
+    <message>
+        <source>SANKYO</source>
+        <translation>三协伺服</translation>
+    </message>
+    <message>
+        <source>YASKAWA</source>
+        <translation>安川伺服</translation>
+    </message>
+    <message>
+        <source>EURA</source>
+        <translation>欧瑞伺服</translation>
+    </message>
+    <message>
+        <source>HCFA</source>
+        <translation>禾川伺服</translation>
+    </message>
+    <message>
+        <source>COTRUST</source>
+        <translation>合信伺服</translation>
+    </message>
+    <message>
+        <source>RUKING</source>
+        <translation>儒竞伺服</translation>
+    </message>
 </context>
 <context>
     <name>AxisMemposEditor</name>
@@ -1967,16 +2007,56 @@
         <translation>注意：修改完后，必须断电重启才生效！</translation>
     </message>
     <message>
-        <source>SDO</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>PDO</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Host CAN b</source>
         <translation>主机CANB端口设置</translation>
+    </message>
+    <message>
+        <source>CANA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CANB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encoder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CAN use to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ID config</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>125kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>250kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>500kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1000kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation type="unfinished">新建</translation>
     </message>
 </context>
 <context>

@@ -531,10 +531,6 @@
         <translation></translation>
     </message>
     <message>
-        <source>1</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>2</source>
         <translation></translation>
     </message>
@@ -668,6 +664,18 @@
     <message>
         <source>ALARM_SERVO_MOTOR_POWEROFF</source>
         <translation>电机动力线断线</translation>
+    </message>
+    <message>
+        <source>ALARM_USER_COORD_ERR</source>
+        <translation>当前工具坐标系错误，切换失败</translation>
+    </message>
+    <message>
+        <source>ALARM_INTERVAL_ERR</source>
+        <translation>堆叠间隔输出失败</translation>
+    </message>
+    <message>
+        <source>ALARM_NULL_COORD_ERR</source>
+        <translation>无当前工具坐标</translation>
     </message>
 </context>
 <context>

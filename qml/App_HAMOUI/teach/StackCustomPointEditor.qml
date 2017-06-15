@@ -44,6 +44,7 @@ MouseArea{
 
         ICFileSelector{
             id:fileSelector
+            scan: "*.PNC"
             visible: false;
             width: parent.width * 0.8
             height: parent.height * 0.6
@@ -60,7 +61,9 @@ MouseArea{
                     if(tMap.hasOwnProperty(p.m4)){
                         pointModel.insert(tMap[p.m4], {"pointName":qsTr("P") + i,
                                               "pointPos":p, "fromgcode":true});
-                        tMap[p.m4] = tMap[p.m4] + 1;
+                        for(var m in tMap)
+                            if(tMap[m] >= tMap[p.m4])
+                                tMap[m] += 1;
                     }else{
                         pointModel.append({"pointName":qsTr("P") + i,
                                               "pointPos":p, "fromgcode":true});
@@ -69,6 +72,35 @@ MouseArea{
 
                 }
 
+            }
+        }
+        ICFileSelector{
+            id:fileSelector_dxf
+            scan: "*.dxf"
+            visible: false;
+            width: parent.width * 0.8
+            height: parent.height * 0.6
+            anchors.centerIn:  parent
+            z:10
+            onGotFileContent: {
+                pointModel.clear();
+                var tMap = {};
+                var p;
+                for(var i = 0, points = JSON.parse(content), len = points.length; i < len; ++i)
+                {
+                    p = points[i];
+                    if(tMap.hasOwnProperty(p.m4)){
+                        pointModel.insert(tMap[p.m4], {"pointName":qsTr("P") + i,
+                                              "pointPos":p, "fromgcode":true});
+                        for(var m in tMap)
+                            if(tMap[m] >= tMap[p.m4])
+                                tMap[m] += 1;
+                    }else{
+                        pointModel.append({"pointName":qsTr("P") + i,
+                                              "pointPos":p, "fromgcode":true});
+                        tMap[p.m4] = pointModel.count;
+                    }
+                }
             }
         }
 
@@ -191,7 +223,7 @@ MouseArea{
         }
         Column{
             id:leftContainer
-            spacing: 6
+            spacing: 3
             x:10
             y:10
 
@@ -278,10 +310,9 @@ MouseArea{
                 width: button_setWorldPos.width
                 height: button_setWorldPos.height
                 onButtonClicked: {
-
+                    fileSelector_dxf.visible = true;
                 }
             }
-
         }
 
         ICButton{

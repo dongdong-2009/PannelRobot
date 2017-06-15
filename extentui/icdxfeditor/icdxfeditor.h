@@ -1,26 +1,16 @@
 #ifndef ICDXFEDITOR_H
 #define ICDXFEDITOR_H
 
-#include <QWidget>
 #include <QGraphicsScene>
 #include <QPolygonF>
 #include <QAbstractGraphicsShapeItem>
 #include "dl_creationadapter.h"
 
-
-namespace Ui {
-class ICDxfEditor;
-}
-
-class ICDxfEditor : public QWidget, public DL_CreationAdapter
+class ICDxfEditor : public DL_CreationAdapter
 {
-    Q_OBJECT
-
 public:
-    explicit ICDxfEditor(QWidget *parent = 0);
+    explicit ICDxfEditor();
     ~ICDxfEditor();
-
-    void setDefaultOpenDir(const QString& dir) { defaultDir_ = dir;}
 
     virtual void addLayer(const DL_LayerData& data);
     virtual void addBlock(const DL_BlockData&);
@@ -29,35 +19,44 @@ public:
     virtual void addCircle(const DL_CircleData& data);
 
     void drawBlock(const DL_InsertData &data);
-    void classifyItem(QGraphicsItem* item);
-
-    void init();
+    void classifyItem(DL_CircleData item);
 
     void printAttributes();
-
-protected:
-    void changeEvent(QEvent *e);
-
-private slots:
-    void on_openBtn_clicked();
-
-    void on_zoomIn_clicked();
-
-    void on_zoomOut_clicked();
-
+    QString pos_m(){
+        QString str;
+        str.append("[");
+        for(int i = 0;i < absItems_.length();i++){
+            str.append("{\"m0\":\"");
+            str.append(QString::number(absItems_.at(i).cx,'f',3));
+            str.append("\",\"m1\":\"");
+            str.append(QString::number(absItems_.at(i).cy,'f',3));
+            str.append("\",\"m2\":\"");
+            str.append(QString::number(absItems_.at(i).cz,'f',3));
+            str.append("\",\"m3\":\"");
+            str.append("0");
+            str.append("\",\"m4\":\"");
+            str.append(QString::number(absItems_.at(i).radius,'g',3));
+            str.append("\",\"m5\":\"");
+            str.append("0");
+            if(i == absItems_.length()-1)
+                str.append("\"}");
+            else
+                str.append("\"},");
+        }
+        str.append("]");
+        return str;
+    }
 private:
-    Ui::ICDxfEditor *ui;
     bool startPolyLine_;
     QPolygonF polyLine_;
     int polyLineNum_;
     QString defaultDir_;
-    QGraphicsScene* scene_;
     const QColor penColor = Qt::white;
 
     bool beginBlcok_;
-    QMap<QString, QList<QGraphicsItem*> > blocks_;
-    QList<QGraphicsItem*> absItems_;
-    QString currentBlockName_;
+    QMap<QString, QList<DL_CircleData> > blocks_;
+    QList<DL_CircleData> absItems_;
+    QString currentBlockName_,cInsertName;
 };
 
 #endif // ICDXFEDITOR_H

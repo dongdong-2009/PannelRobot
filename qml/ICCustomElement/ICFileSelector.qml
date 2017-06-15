@@ -4,6 +4,7 @@ MouseArea{
     id:instance
     width: parent.width
     height: parent.height
+    property string scan: "*"
     signal gotFileContent(string content)
     Rectangle {
         width: parent.width
@@ -87,7 +88,7 @@ MouseArea{
         onVisibleChanged:{
             if(visible){
                 fileModel.clear();
-                var files = JSON.parse(panelRobotController.scanUSBFiles("*"));
+                var files = JSON.parse(panelRobotController.scanUSBFiles(scan));
                 for(var i = 0; i < files.length; ++i){
                     fileModel.append({"name":files[i]});
                 }

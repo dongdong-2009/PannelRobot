@@ -15,6 +15,10 @@
 #include "quazip.h"
 #include "JlCompress.h"
 
+#include "icdxfeditor.h"
+#include "dl_dxf.h"
+
+
 #ifdef Q_WS_QWS
 #include <stdio.h>
 #include <stdlib.h>
@@ -2128,21 +2132,31 @@ QString PanelRobotController::scanUSBFiles(const QString &filter) const
 QString PanelRobotController::usbFileContent(const QString &fileName, bool isTextOnly) const
 {
     QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName);
-    QFile f(filePath);
-    QByteArray ret;
-    if(f.open(isTextOnly ? (QFile::ReadOnly | QFile::Text) : QFile::ReadOnly))
-    {
-//        ret.resize(f.size());
-//        f.read(ret.data(), f.size());
-        ret = f.readAll();
-        f.close();
-        if(isTextOnly)
-        {
-            if(ret.contains(char(0)))
-                ret = "";
+    if(filePath.contains(".dxf")){
+        DL_Dxf dxf;
+        ICDxfEditor icdxfdeitor;
+        if (!dxf.in(filePath.toStdString(), &icdxfdeitor)) { // if file open failed
+            std::cerr << filePath.toStdString() << " could not be opened.\n";
         }
+        return icdxfdeitor.pos_m();
     }
-    return QString(ret);
+    else{
+        QFile f(filePath);
+        QByteArray ret;
+        if(f.open(isTextOnly ? (QFile::ReadOnly | QFile::Text) : QFile::ReadOnly))
+        {
+            //        ret.resize(f.size());
+            //        f.read(ret.data(), f.size());
+            ret = f.readAll();
+            f.close();
+            if(isTextOnly)
+            {
+                if(ret.contains(char(0)))
+                    ret = "";
+            }
+        }
+        return QString(ret);
+    }
 }
 
 int PanelRobotController::writeUsbFile(const QString& fileName, const QString& content)

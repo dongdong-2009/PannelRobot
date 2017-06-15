@@ -443,7 +443,7 @@ Rectangle {
                         record = recordsModel.get(i);
                         if(record.isSelected){
                             toTranslate = JSON.parse(panelRobotController.recordPrograms(record.name));
-//                            console.log(record.name, panelRobotController.recordStacks(record.name));
+                            console.log(record.name, panelRobotController.recordPrograms(record.name));
                             recordTmp.init(record.name,
                                            JSON.parse(panelRobotController.recordCounterDefs(record.name)),
                                            panelRobotController.recordStacks(record.name),

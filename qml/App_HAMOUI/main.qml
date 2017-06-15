@@ -514,7 +514,7 @@ Rectangle {
         visible: false
         y:110
         width: 600
-        height: 400
+        height: 500
     }
 
     Item{

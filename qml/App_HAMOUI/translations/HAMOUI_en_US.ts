@@ -280,44 +280,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="52"/>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../AlarmInfo.js" line="53"/>
-        <location filename="../AlarmInfo.js" line="65"/>
-        <location filename="../AlarmInfo.js" line="76"/>
-        <location filename="../AlarmInfo.js" line="88"/>
-        <location filename="../AlarmInfo.js" line="99"/>
-        <location filename="../AlarmInfo.js" line="110"/>
-        <location filename="../AlarmInfo.js" line="122"/>
-        <location filename="../AlarmInfo.js" line="133"/>
-        <location filename="../AlarmInfo.js" line="144"/>
-        <location filename="../AlarmInfo.js" line="155"/>
-        <location filename="../AlarmInfo.js" line="166"/>
-        <location filename="../AlarmInfo.js" line="177"/>
-        <source>2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../AlarmInfo.js" line="54"/>
-        <source>ALARM_POS_STABLE_ING</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../AlarmInfo.js" line="57"/>
-        <location filename="../AlarmInfo.js" line="58"/>
-        <location filename="../AlarmInfo.js" line="59"/>
-        <location filename="../AlarmInfo.js" line="60"/>
-        <location filename="../AlarmInfo.js" line="61"/>
-        <location filename="../AlarmInfo.js" line="62"/>
-        <location filename="../AlarmInfo.js" line="63"/>
-        <location filename="../AlarmInfo.js" line="64"/>
-        <source>ALARM_Motor_ALARM_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../AlarmInfo.js" line="66"/>
         <location filename="../AlarmInfo.js" line="77"/>
         <location filename="../AlarmInfo.js" line="89"/>
@@ -329,59 +291,105 @@
         <location filename="../AlarmInfo.js" line="156"/>
         <location filename="../AlarmInfo.js" line="167"/>
         <location filename="../AlarmInfo.js" line="178"/>
+        <source>2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../AlarmInfo.js" line="54"/>
+        <source>ALARM_POS_STABLE_ING</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../AlarmInfo.js" line="52"/>
+        <source>ALARM_USER_COORD_ERR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../AlarmInfo.js" line="53"/>
+        <source>ALARM_INTERVAL_ERR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../AlarmInfo.js" line="55"/>
+        <source>ALARM_NULL_COORD_ERR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../AlarmInfo.js" line="58"/>
+        <location filename="../AlarmInfo.js" line="59"/>
+        <location filename="../AlarmInfo.js" line="60"/>
+        <location filename="../AlarmInfo.js" line="61"/>
+        <location filename="../AlarmInfo.js" line="62"/>
+        <location filename="../AlarmInfo.js" line="63"/>
+        <location filename="../AlarmInfo.js" line="64"/>
+        <location filename="../AlarmInfo.js" line="65"/>
+        <source>ALARM_Motor_ALARM_ERR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../AlarmInfo.js" line="67"/>
+        <location filename="../AlarmInfo.js" line="78"/>
+        <location filename="../AlarmInfo.js" line="90"/>
+        <location filename="../AlarmInfo.js" line="101"/>
+        <location filename="../AlarmInfo.js" line="112"/>
+        <location filename="../AlarmInfo.js" line="124"/>
+        <location filename="../AlarmInfo.js" line="135"/>
+        <location filename="../AlarmInfo.js" line="146"/>
+        <location filename="../AlarmInfo.js" line="157"/>
+        <location filename="../AlarmInfo.js" line="168"/>
+        <location filename="../AlarmInfo.js" line="179"/>
         <source>3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="68"/>
+        <location filename="../AlarmInfo.js" line="69"/>
         <source>ALARM_AXIS_RUN_ERR </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="69"/>
         <location filename="../AlarmInfo.js" line="70"/>
         <location filename="../AlarmInfo.js" line="71"/>
         <location filename="../AlarmInfo.js" line="72"/>
         <location filename="../AlarmInfo.js" line="73"/>
         <location filename="../AlarmInfo.js" line="74"/>
         <location filename="../AlarmInfo.js" line="75"/>
+        <location filename="../AlarmInfo.js" line="76"/>
         <source>ALARM_AXIS_RUN_ERR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="80"/>
+        <location filename="../AlarmInfo.js" line="81"/>
         <source>ALARM_AXIS_SPEED_SET_ERR </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="81"/>
         <location filename="../AlarmInfo.js" line="82"/>
         <location filename="../AlarmInfo.js" line="83"/>
         <location filename="../AlarmInfo.js" line="84"/>
         <location filename="../AlarmInfo.js" line="85"/>
         <location filename="../AlarmInfo.js" line="86"/>
         <location filename="../AlarmInfo.js" line="87"/>
+        <location filename="../AlarmInfo.js" line="88"/>
         <source>ALARM_AXIS_SPEED_SET_ERR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="91"/>
+        <location filename="../AlarmInfo.js" line="92"/>
         <source>ALARM_AXIS_OVER_SPEED_ERR </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="92"/>
         <location filename="../AlarmInfo.js" line="93"/>
         <location filename="../AlarmInfo.js" line="94"/>
         <location filename="../AlarmInfo.js" line="95"/>
         <location filename="../AlarmInfo.js" line="96"/>
         <location filename="../AlarmInfo.js" line="97"/>
         <location filename="../AlarmInfo.js" line="98"/>
+        <location filename="../AlarmInfo.js" line="99"/>
         <source>ALARM_AXIS_OVER_SPEED_ERR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="102"/>
         <location filename="../AlarmInfo.js" line="103"/>
         <location filename="../AlarmInfo.js" line="104"/>
         <location filename="../AlarmInfo.js" line="105"/>
@@ -389,11 +397,11 @@
         <location filename="../AlarmInfo.js" line="107"/>
         <location filename="../AlarmInfo.js" line="108"/>
         <location filename="../AlarmInfo.js" line="109"/>
+        <location filename="../AlarmInfo.js" line="110"/>
         <source>ALARM_AXIS_SOFT_LIMIT_P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="114"/>
         <location filename="../AlarmInfo.js" line="115"/>
         <location filename="../AlarmInfo.js" line="116"/>
         <location filename="../AlarmInfo.js" line="117"/>
@@ -401,11 +409,11 @@
         <location filename="../AlarmInfo.js" line="119"/>
         <location filename="../AlarmInfo.js" line="120"/>
         <location filename="../AlarmInfo.js" line="121"/>
+        <location filename="../AlarmInfo.js" line="122"/>
         <source>ALARM_AXIS_SOFT_LIMIT_N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="125"/>
         <location filename="../AlarmInfo.js" line="126"/>
         <location filename="../AlarmInfo.js" line="127"/>
         <location filename="../AlarmInfo.js" line="128"/>
@@ -413,11 +421,11 @@
         <location filename="../AlarmInfo.js" line="130"/>
         <location filename="../AlarmInfo.js" line="131"/>
         <location filename="../AlarmInfo.js" line="132"/>
+        <location filename="../AlarmInfo.js" line="133"/>
         <source>ALARM_ERROR_SERVO_WARP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="136"/>
         <location filename="../AlarmInfo.js" line="137"/>
         <location filename="../AlarmInfo.js" line="138"/>
         <location filename="../AlarmInfo.js" line="139"/>
@@ -425,11 +433,11 @@
         <location filename="../AlarmInfo.js" line="141"/>
         <location filename="../AlarmInfo.js" line="142"/>
         <location filename="../AlarmInfo.js" line="143"/>
+        <location filename="../AlarmInfo.js" line="144"/>
         <source>ALARM_ACC_LIMIT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="147"/>
         <location filename="../AlarmInfo.js" line="148"/>
         <location filename="../AlarmInfo.js" line="149"/>
         <location filename="../AlarmInfo.js" line="150"/>
@@ -437,11 +445,11 @@
         <location filename="../AlarmInfo.js" line="152"/>
         <location filename="../AlarmInfo.js" line="153"/>
         <location filename="../AlarmInfo.js" line="154"/>
+        <location filename="../AlarmInfo.js" line="155"/>
         <source>ALARM_POINT_LIMIT_P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="158"/>
         <location filename="../AlarmInfo.js" line="159"/>
         <location filename="../AlarmInfo.js" line="160"/>
         <location filename="../AlarmInfo.js" line="161"/>
@@ -449,11 +457,11 @@
         <location filename="../AlarmInfo.js" line="163"/>
         <location filename="../AlarmInfo.js" line="164"/>
         <location filename="../AlarmInfo.js" line="165"/>
+        <location filename="../AlarmInfo.js" line="166"/>
         <source>ALARM_POINT_LIMIT_N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="169"/>
         <location filename="../AlarmInfo.js" line="170"/>
         <location filename="../AlarmInfo.js" line="171"/>
         <location filename="../AlarmInfo.js" line="172"/>
@@ -461,136 +469,136 @@
         <location filename="../AlarmInfo.js" line="174"/>
         <location filename="../AlarmInfo.js" line="175"/>
         <location filename="../AlarmInfo.js" line="176"/>
+        <location filename="../AlarmInfo.js" line="177"/>
         <source>ALARM_NOT_SET_ORIGIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="180"/>
+        <location filename="../AlarmInfo.js" line="181"/>
         <source>ALARM_ROUTE_ACTION_FAIL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="181"/>
+        <location filename="../AlarmInfo.js" line="182"/>
         <source>ALARM_ROUTE_LINE_P1_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="182"/>
+        <location filename="../AlarmInfo.js" line="183"/>
         <source>ALARM_ROUTE_LINE_P2_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="183"/>
+        <location filename="../AlarmInfo.js" line="184"/>
         <source>ALARM_JOINT_P1_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="184"/>
+        <location filename="../AlarmInfo.js" line="185"/>
         <source>ALARM_JOINT_P2_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="185"/>
+        <location filename="../AlarmInfo.js" line="186"/>
         <source>ALARM_RELATIVE_LP_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="186"/>
+        <location filename="../AlarmInfo.js" line="187"/>
         <source>ALARM_RELATIVE_JP_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="187"/>
+        <location filename="../AlarmInfo.js" line="188"/>
         <source>ALARM_TEACH_ROUTE_LINE_P1_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="188"/>
+        <location filename="../AlarmInfo.js" line="189"/>
         <source>ALARM_TEACH_ROUTE_LINE_P2_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="189"/>
+        <location filename="../AlarmInfo.js" line="190"/>
         <source>ALARM_TEACH_JOINT_P1_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="190"/>
+        <location filename="../AlarmInfo.js" line="191"/>
         <source>ALARM_TEACH_JOINT_P2_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="191"/>
+        <location filename="../AlarmInfo.js" line="192"/>
         <source>ALARM_TEACH_RELATIVE_LP_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="192"/>
+        <location filename="../AlarmInfo.js" line="193"/>
         <source>ALARM_TEACH_RELATIVE_JP_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="193"/>
+        <location filename="../AlarmInfo.js" line="194"/>
         <source>ALARM_ROUTE_ARC_P1_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="194"/>
+        <location filename="../AlarmInfo.js" line="195"/>
         <source>ALARM_ROUTE_ARC_P2_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="195"/>
+        <location filename="../AlarmInfo.js" line="196"/>
         <source>ALARM_ROUTE_ARC_P3_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="196"/>
+        <location filename="../AlarmInfo.js" line="197"/>
         <source>ALARM_TEACH_ROUTE_ARC_P1_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="197"/>
+        <location filename="../AlarmInfo.js" line="198"/>
         <source>ALARM_TEACH_ROUTE_ARC_P2_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="198"/>
+        <location filename="../AlarmInfo.js" line="199"/>
         <source>ALARM_TEACH_ROUTE_ARC_P3_NOTSET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="199"/>
+        <location filename="../AlarmInfo.js" line="200"/>
         <source>ALARM_SETROUTESPEED_FAIL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="200"/>
+        <location filename="../AlarmInfo.js" line="201"/>
         <source>ALARM_ROUTE_ACC_ERR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="201"/>
+        <location filename="../AlarmInfo.js" line="202"/>
         <source>ALARM_ROUTE_REPLAN_ERR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="202"/>
+        <location filename="../AlarmInfo.js" line="203"/>
         <source>ALARM_STACK_WAITE_ERR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="203"/>
+        <location filename="../AlarmInfo.js" line="204"/>
         <source>ALARM_STACK_SOURCE_ERR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="206"/>
+        <location filename="../AlarmInfo.js" line="207"/>
         <source>ALARM_COUNTER_NOT_DEFINE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="208"/>
         <location filename="../AlarmInfo.js" line="209"/>
         <location filename="../AlarmInfo.js" line="210"/>
         <location filename="../AlarmInfo.js" line="211"/>
@@ -598,11 +606,11 @@
         <location filename="../AlarmInfo.js" line="213"/>
         <location filename="../AlarmInfo.js" line="214"/>
         <location filename="../AlarmInfo.js" line="215"/>
+        <location filename="../AlarmInfo.js" line="216"/>
         <source>ALARM_OVER_CURRENT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="217"/>
         <location filename="../AlarmInfo.js" line="218"/>
         <location filename="../AlarmInfo.js" line="219"/>
         <location filename="../AlarmInfo.js" line="220"/>
@@ -610,11 +618,11 @@
         <location filename="../AlarmInfo.js" line="222"/>
         <location filename="../AlarmInfo.js" line="223"/>
         <location filename="../AlarmInfo.js" line="224"/>
+        <location filename="../AlarmInfo.js" line="225"/>
         <source>ALARM_ZPULSER_ERR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="226"/>
         <location filename="../AlarmInfo.js" line="227"/>
         <location filename="../AlarmInfo.js" line="228"/>
         <location filename="../AlarmInfo.js" line="229"/>
@@ -622,11 +630,11 @@
         <location filename="../AlarmInfo.js" line="231"/>
         <location filename="../AlarmInfo.js" line="232"/>
         <location filename="../AlarmInfo.js" line="233"/>
+        <location filename="../AlarmInfo.js" line="234"/>
         <source>ALARM_NO_ZPULSER</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="235"/>
         <location filename="../AlarmInfo.js" line="236"/>
         <location filename="../AlarmInfo.js" line="237"/>
         <location filename="../AlarmInfo.js" line="238"/>
@@ -634,41 +642,41 @@
         <location filename="../AlarmInfo.js" line="240"/>
         <location filename="../AlarmInfo.js" line="241"/>
         <location filename="../AlarmInfo.js" line="242"/>
+        <location filename="../AlarmInfo.js" line="243"/>
         <source>ALARM_ORIGIN_DEVIATION</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="244"/>
+        <location filename="../AlarmInfo.js" line="245"/>
         <source>ALARM_UNSAFEAREA_PART1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="245"/>
+        <location filename="../AlarmInfo.js" line="246"/>
         <source>ALARM_UNSAFEAREA_PART2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="246"/>
+        <location filename="../AlarmInfo.js" line="247"/>
         <source>ALARM_UNSAFEAREA_PART3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="247"/>
+        <location filename="../AlarmInfo.js" line="248"/>
         <source>ALARM_UNSAFEAREA_PART4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="248"/>
+        <location filename="../AlarmInfo.js" line="249"/>
         <source>ALARM_UNSAFEAREA_PART5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="249"/>
+        <location filename="../AlarmInfo.js" line="250"/>
         <source>ALARM_UNSAFEAREA_PART6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="251"/>
         <location filename="../AlarmInfo.js" line="252"/>
         <location filename="../AlarmInfo.js" line="253"/>
         <location filename="../AlarmInfo.js" line="254"/>
@@ -676,11 +684,11 @@
         <location filename="../AlarmInfo.js" line="256"/>
         <location filename="../AlarmInfo.js" line="257"/>
         <location filename="../AlarmInfo.js" line="258"/>
+        <location filename="../AlarmInfo.js" line="259"/>
         <source>ALARM_SERVO_AXIS_INIT_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="260"/>
         <location filename="../AlarmInfo.js" line="261"/>
         <location filename="../AlarmInfo.js" line="262"/>
         <location filename="../AlarmInfo.js" line="263"/>
@@ -688,11 +696,11 @@
         <location filename="../AlarmInfo.js" line="265"/>
         <location filename="../AlarmInfo.js" line="266"/>
         <location filename="../AlarmInfo.js" line="267"/>
+        <location filename="../AlarmInfo.js" line="268"/>
         <source>ALARM_SERVO_AXIS_EEPROM_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="269"/>
         <location filename="../AlarmInfo.js" line="270"/>
         <location filename="../AlarmInfo.js" line="271"/>
         <location filename="../AlarmInfo.js" line="272"/>
@@ -700,11 +708,11 @@
         <location filename="../AlarmInfo.js" line="274"/>
         <location filename="../AlarmInfo.js" line="275"/>
         <location filename="../AlarmInfo.js" line="276"/>
+        <location filename="../AlarmInfo.js" line="277"/>
         <source>ALARM_SERVO_AXIS_ADC_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="278"/>
         <location filename="../AlarmInfo.js" line="279"/>
         <location filename="../AlarmInfo.js" line="280"/>
         <location filename="../AlarmInfo.js" line="281"/>
@@ -712,11 +720,11 @@
         <location filename="../AlarmInfo.js" line="283"/>
         <location filename="../AlarmInfo.js" line="284"/>
         <location filename="../AlarmInfo.js" line="285"/>
+        <location filename="../AlarmInfo.js" line="286"/>
         <source>ALARM_SERVO_AXIS_EXECTM_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="287"/>
         <location filename="../AlarmInfo.js" line="288"/>
         <location filename="../AlarmInfo.js" line="289"/>
         <location filename="../AlarmInfo.js" line="290"/>
@@ -724,11 +732,11 @@
         <location filename="../AlarmInfo.js" line="292"/>
         <location filename="../AlarmInfo.js" line="293"/>
         <location filename="../AlarmInfo.js" line="294"/>
+        <location filename="../AlarmInfo.js" line="295"/>
         <source>ALARM_SERVO_AXIS_OVER_TEMP_FLT1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="296"/>
         <location filename="../AlarmInfo.js" line="297"/>
         <location filename="../AlarmInfo.js" line="298"/>
         <location filename="../AlarmInfo.js" line="299"/>
@@ -736,11 +744,11 @@
         <location filename="../AlarmInfo.js" line="301"/>
         <location filename="../AlarmInfo.js" line="302"/>
         <location filename="../AlarmInfo.js" line="303"/>
+        <location filename="../AlarmInfo.js" line="304"/>
         <source>ALARM_SERVO_AXIS_OV_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="305"/>
         <location filename="../AlarmInfo.js" line="306"/>
         <location filename="../AlarmInfo.js" line="307"/>
         <location filename="../AlarmInfo.js" line="308"/>
@@ -748,11 +756,11 @@
         <location filename="../AlarmInfo.js" line="310"/>
         <location filename="../AlarmInfo.js" line="311"/>
         <location filename="../AlarmInfo.js" line="312"/>
+        <location filename="../AlarmInfo.js" line="313"/>
         <source>ALARM_SERVO_AXIS_LV_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="314"/>
         <location filename="../AlarmInfo.js" line="315"/>
         <location filename="../AlarmInfo.js" line="316"/>
         <location filename="../AlarmInfo.js" line="317"/>
@@ -760,11 +768,11 @@
         <location filename="../AlarmInfo.js" line="319"/>
         <location filename="../AlarmInfo.js" line="320"/>
         <location filename="../AlarmInfo.js" line="321"/>
+        <location filename="../AlarmInfo.js" line="322"/>
         <source>ALARM_SERVO_AXIS_MAIN_POWER_OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="323"/>
         <location filename="../AlarmInfo.js" line="324"/>
         <location filename="../AlarmInfo.js" line="325"/>
         <location filename="../AlarmInfo.js" line="326"/>
@@ -772,11 +780,11 @@
         <location filename="../AlarmInfo.js" line="328"/>
         <location filename="../AlarmInfo.js" line="329"/>
         <location filename="../AlarmInfo.js" line="330"/>
+        <location filename="../AlarmInfo.js" line="331"/>
         <source>ALARM_SERVO_AXIS_GATE_KILL_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="332"/>
         <location filename="../AlarmInfo.js" line="333"/>
         <location filename="../AlarmInfo.js" line="334"/>
         <location filename="../AlarmInfo.js" line="335"/>
@@ -784,11 +792,11 @@
         <location filename="../AlarmInfo.js" line="337"/>
         <location filename="../AlarmInfo.js" line="338"/>
         <location filename="../AlarmInfo.js" line="339"/>
+        <location filename="../AlarmInfo.js" line="340"/>
         <source>ALARM_SERVO_AXIS_OVER_TEMP_FLT2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="341"/>
         <location filename="../AlarmInfo.js" line="342"/>
         <location filename="../AlarmInfo.js" line="343"/>
         <location filename="../AlarmInfo.js" line="344"/>
@@ -796,11 +804,11 @@
         <location filename="../AlarmInfo.js" line="346"/>
         <location filename="../AlarmInfo.js" line="347"/>
         <location filename="../AlarmInfo.js" line="348"/>
+        <location filename="../AlarmInfo.js" line="349"/>
         <source>ALARM_SERVO_AXIS_OVER_LD_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="350"/>
         <location filename="../AlarmInfo.js" line="351"/>
         <location filename="../AlarmInfo.js" line="352"/>
         <location filename="../AlarmInfo.js" line="353"/>
@@ -808,11 +816,11 @@
         <location filename="../AlarmInfo.js" line="355"/>
         <location filename="../AlarmInfo.js" line="356"/>
         <location filename="../AlarmInfo.js" line="357"/>
+        <location filename="../AlarmInfo.js" line="358"/>
         <source>ALARM_SERVO_AXIS_OVER_SPD_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="359"/>
         <location filename="../AlarmInfo.js" line="360"/>
         <location filename="../AlarmInfo.js" line="361"/>
         <location filename="../AlarmInfo.js" line="362"/>
@@ -820,11 +828,11 @@
         <location filename="../AlarmInfo.js" line="364"/>
         <location filename="../AlarmInfo.js" line="365"/>
         <location filename="../AlarmInfo.js" line="366"/>
+        <location filename="../AlarmInfo.js" line="367"/>
         <source>ALARM_SERVO_AXIS_OVER_FRQ_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="368"/>
         <location filename="../AlarmInfo.js" line="369"/>
         <location filename="../AlarmInfo.js" line="370"/>
         <location filename="../AlarmInfo.js" line="371"/>
@@ -832,11 +840,11 @@
         <location filename="../AlarmInfo.js" line="373"/>
         <location filename="../AlarmInfo.js" line="374"/>
         <location filename="../AlarmInfo.js" line="375"/>
+        <location filename="../AlarmInfo.js" line="376"/>
         <source>ALARM_SERVO_AXIS_POS_ERROR_OVER_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="377"/>
         <location filename="../AlarmInfo.js" line="378"/>
         <location filename="../AlarmInfo.js" line="379"/>
         <location filename="../AlarmInfo.js" line="380"/>
@@ -844,11 +852,11 @@
         <location filename="../AlarmInfo.js" line="382"/>
         <location filename="../AlarmInfo.js" line="383"/>
         <location filename="../AlarmInfo.js" line="384"/>
+        <location filename="../AlarmInfo.js" line="385"/>
         <source>ALARM_SERVO_AXIS_MTR_ENC_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="386"/>
         <location filename="../AlarmInfo.js" line="387"/>
         <location filename="../AlarmInfo.js" line="388"/>
         <location filename="../AlarmInfo.js" line="389"/>
@@ -856,11 +864,11 @@
         <location filename="../AlarmInfo.js" line="391"/>
         <location filename="../AlarmInfo.js" line="392"/>
         <location filename="../AlarmInfo.js" line="393"/>
+        <location filename="../AlarmInfo.js" line="394"/>
         <source>ALARM_SERVO_AXIS_OVER_CUR_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="395"/>
         <location filename="../AlarmInfo.js" line="396"/>
         <location filename="../AlarmInfo.js" line="397"/>
         <location filename="../AlarmInfo.js" line="398"/>
@@ -868,11 +876,11 @@
         <location filename="../AlarmInfo.js" line="400"/>
         <location filename="../AlarmInfo.js" line="401"/>
         <location filename="../AlarmInfo.js" line="402"/>
+        <location filename="../AlarmInfo.js" line="403"/>
         <source>ALARM_SERVO_BATTERY_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="404"/>
         <location filename="../AlarmInfo.js" line="405"/>
         <location filename="../AlarmInfo.js" line="406"/>
         <location filename="../AlarmInfo.js" line="407"/>
@@ -880,11 +888,11 @@
         <location filename="../AlarmInfo.js" line="409"/>
         <location filename="../AlarmInfo.js" line="410"/>
         <location filename="../AlarmInfo.js" line="411"/>
+        <location filename="../AlarmInfo.js" line="412"/>
         <source>ALARM_SERVO_ENCODER_FLT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="413"/>
         <location filename="../AlarmInfo.js" line="414"/>
         <location filename="../AlarmInfo.js" line="415"/>
         <location filename="../AlarmInfo.js" line="416"/>
@@ -892,11 +900,11 @@
         <location filename="../AlarmInfo.js" line="418"/>
         <location filename="../AlarmInfo.js" line="419"/>
         <location filename="../AlarmInfo.js" line="420"/>
+        <location filename="../AlarmInfo.js" line="421"/>
         <source>ALARM_SERVO_AXIS_ENABLE_FORBID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="422"/>
         <location filename="../AlarmInfo.js" line="423"/>
         <location filename="../AlarmInfo.js" line="424"/>
         <location filename="../AlarmInfo.js" line="425"/>
@@ -904,11 +912,11 @@
         <location filename="../AlarmInfo.js" line="427"/>
         <location filename="../AlarmInfo.js" line="428"/>
         <location filename="../AlarmInfo.js" line="429"/>
+        <location filename="../AlarmInfo.js" line="430"/>
         <source>ALARM_ECAN_TIMEOUT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="431"/>
         <location filename="../AlarmInfo.js" line="432"/>
         <location filename="../AlarmInfo.js" line="433"/>
         <location filename="../AlarmInfo.js" line="434"/>
@@ -916,11 +924,11 @@
         <location filename="../AlarmInfo.js" line="436"/>
         <location filename="../AlarmInfo.js" line="437"/>
         <location filename="../AlarmInfo.js" line="438"/>
+        <location filename="../AlarmInfo.js" line="439"/>
         <source>ALARM_ECAN_READING</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="440"/>
         <location filename="../AlarmInfo.js" line="441"/>
         <location filename="../AlarmInfo.js" line="442"/>
         <location filename="../AlarmInfo.js" line="443"/>
@@ -928,7 +936,7 @@
         <location filename="../AlarmInfo.js" line="445"/>
         <location filename="../AlarmInfo.js" line="446"/>
         <location filename="../AlarmInfo.js" line="447"/>
-        <location filename="../AlarmInfo.js" line="449"/>
+        <location filename="../AlarmInfo.js" line="448"/>
         <location filename="../AlarmInfo.js" line="450"/>
         <location filename="../AlarmInfo.js" line="451"/>
         <location filename="../AlarmInfo.js" line="452"/>
@@ -936,11 +944,11 @@
         <location filename="../AlarmInfo.js" line="454"/>
         <location filename="../AlarmInfo.js" line="455"/>
         <location filename="../AlarmInfo.js" line="456"/>
+        <location filename="../AlarmInfo.js" line="457"/>
         <source>ALARM_ECAN_WRITING</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="458"/>
         <location filename="../AlarmInfo.js" line="459"/>
         <location filename="../AlarmInfo.js" line="460"/>
         <location filename="../AlarmInfo.js" line="461"/>
@@ -948,11 +956,11 @@
         <location filename="../AlarmInfo.js" line="463"/>
         <location filename="../AlarmInfo.js" line="464"/>
         <location filename="../AlarmInfo.js" line="465"/>
+        <location filename="../AlarmInfo.js" line="466"/>
         <source>ALARM_SERVO_OVERCURRENT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="467"/>
         <location filename="../AlarmInfo.js" line="468"/>
         <location filename="../AlarmInfo.js" line="469"/>
         <location filename="../AlarmInfo.js" line="470"/>
@@ -960,11 +968,11 @@
         <location filename="../AlarmInfo.js" line="472"/>
         <location filename="../AlarmInfo.js" line="473"/>
         <location filename="../AlarmInfo.js" line="474"/>
+        <location filename="../AlarmInfo.js" line="475"/>
         <source>ALARM_SERVO_OVERVOLTAGE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="476"/>
         <location filename="../AlarmInfo.js" line="477"/>
         <location filename="../AlarmInfo.js" line="478"/>
         <location filename="../AlarmInfo.js" line="479"/>
@@ -972,11 +980,11 @@
         <location filename="../AlarmInfo.js" line="481"/>
         <location filename="../AlarmInfo.js" line="482"/>
         <location filename="../AlarmInfo.js" line="483"/>
+        <location filename="../AlarmInfo.js" line="484"/>
         <source>ALARM_SERVO_LOWVOLTAGE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="485"/>
         <location filename="../AlarmInfo.js" line="486"/>
         <location filename="../AlarmInfo.js" line="487"/>
         <location filename="../AlarmInfo.js" line="488"/>
@@ -984,11 +992,11 @@
         <location filename="../AlarmInfo.js" line="490"/>
         <location filename="../AlarmInfo.js" line="491"/>
         <location filename="../AlarmInfo.js" line="492"/>
+        <location filename="../AlarmInfo.js" line="493"/>
         <source>ALARM_SERVO_CTRL_LOWVOLTAGE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="494"/>
         <location filename="../AlarmInfo.js" line="495"/>
         <location filename="../AlarmInfo.js" line="496"/>
         <location filename="../AlarmInfo.js" line="497"/>
@@ -996,11 +1004,11 @@
         <location filename="../AlarmInfo.js" line="499"/>
         <location filename="../AlarmInfo.js" line="500"/>
         <location filename="../AlarmInfo.js" line="501"/>
+        <location filename="../AlarmInfo.js" line="502"/>
         <source>ALARM_SERVO_OUTPU_SHORTCIRCUIT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="503"/>
         <location filename="../AlarmInfo.js" line="504"/>
         <location filename="../AlarmInfo.js" line="505"/>
         <location filename="../AlarmInfo.js" line="506"/>
@@ -1008,11 +1016,11 @@
         <location filename="../AlarmInfo.js" line="508"/>
         <location filename="../AlarmInfo.js" line="509"/>
         <location filename="../AlarmInfo.js" line="510"/>
+        <location filename="../AlarmInfo.js" line="511"/>
         <source>ALARM_SERVO_POWER_ERROR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="512"/>
         <location filename="../AlarmInfo.js" line="513"/>
         <location filename="../AlarmInfo.js" line="514"/>
         <location filename="../AlarmInfo.js" line="515"/>
@@ -1020,11 +1028,11 @@
         <location filename="../AlarmInfo.js" line="517"/>
         <location filename="../AlarmInfo.js" line="518"/>
         <location filename="../AlarmInfo.js" line="519"/>
+        <location filename="../AlarmInfo.js" line="520"/>
         <source>ALARM_SERVO_RESISTANCE_OVERLOAD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="521"/>
         <location filename="../AlarmInfo.js" line="522"/>
         <location filename="../AlarmInfo.js" line="523"/>
         <location filename="../AlarmInfo.js" line="524"/>
@@ -1032,11 +1040,11 @@
         <location filename="../AlarmInfo.js" line="526"/>
         <location filename="../AlarmInfo.js" line="527"/>
         <location filename="../AlarmInfo.js" line="528"/>
+        <location filename="../AlarmInfo.js" line="529"/>
         <source>ALARM_SERVO_DRIVE_OVERLOAD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="530"/>
         <location filename="../AlarmInfo.js" line="531"/>
         <location filename="../AlarmInfo.js" line="532"/>
         <location filename="../AlarmInfo.js" line="533"/>
@@ -1044,11 +1052,11 @@
         <location filename="../AlarmInfo.js" line="535"/>
         <location filename="../AlarmInfo.js" line="536"/>
         <location filename="../AlarmInfo.js" line="537"/>
+        <location filename="../AlarmInfo.js" line="538"/>
         <source>ALARM_SERVO_MOTOR_POWEROFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="539"/>
         <location filename="../AlarmInfo.js" line="540"/>
         <location filename="../AlarmInfo.js" line="541"/>
         <location filename="../AlarmInfo.js" line="542"/>
@@ -1056,7 +1064,7 @@
         <location filename="../AlarmInfo.js" line="544"/>
         <location filename="../AlarmInfo.js" line="545"/>
         <location filename="../AlarmInfo.js" line="546"/>
-        <location filename="../AlarmInfo.js" line="548"/>
+        <location filename="../AlarmInfo.js" line="547"/>
         <location filename="../AlarmInfo.js" line="549"/>
         <location filename="../AlarmInfo.js" line="550"/>
         <location filename="../AlarmInfo.js" line="551"/>
@@ -1064,11 +1072,11 @@
         <location filename="../AlarmInfo.js" line="553"/>
         <location filename="../AlarmInfo.js" line="554"/>
         <location filename="../AlarmInfo.js" line="555"/>
+        <location filename="../AlarmInfo.js" line="556"/>
         <source>ALARM_SERVO_DRIVE_OVERHEAT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="557"/>
         <location filename="../AlarmInfo.js" line="558"/>
         <location filename="../AlarmInfo.js" line="559"/>
         <location filename="../AlarmInfo.js" line="560"/>
@@ -1076,11 +1084,11 @@
         <location filename="../AlarmInfo.js" line="562"/>
         <location filename="../AlarmInfo.js" line="563"/>
         <location filename="../AlarmInfo.js" line="564"/>
+        <location filename="../AlarmInfo.js" line="565"/>
         <source>ALARM_SERVO_DRIVE_ACCESS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="566"/>
         <location filename="../AlarmInfo.js" line="567"/>
         <location filename="../AlarmInfo.js" line="568"/>
         <location filename="../AlarmInfo.js" line="569"/>
@@ -1088,11 +1096,11 @@
         <location filename="../AlarmInfo.js" line="571"/>
         <location filename="../AlarmInfo.js" line="572"/>
         <location filename="../AlarmInfo.js" line="573"/>
+        <location filename="../AlarmInfo.js" line="574"/>
         <source>ALARM_SERVO_DRIVE_ACCESSABNORMA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="575"/>
         <location filename="../AlarmInfo.js" line="576"/>
         <location filename="../AlarmInfo.js" line="577"/>
         <location filename="../AlarmInfo.js" line="578"/>
@@ -1100,11 +1108,11 @@
         <location filename="../AlarmInfo.js" line="580"/>
         <location filename="../AlarmInfo.js" line="581"/>
         <location filename="../AlarmInfo.js" line="582"/>
+        <location filename="../AlarmInfo.js" line="583"/>
         <source>ALARM_SERVO_LOCKED_ROTOR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="584"/>
         <location filename="../AlarmInfo.js" line="585"/>
         <location filename="../AlarmInfo.js" line="586"/>
         <location filename="../AlarmInfo.js" line="587"/>
@@ -1112,11 +1120,11 @@
         <location filename="../AlarmInfo.js" line="589"/>
         <location filename="../AlarmInfo.js" line="590"/>
         <location filename="../AlarmInfo.js" line="591"/>
+        <location filename="../AlarmInfo.js" line="592"/>
         <source>ALARM_SERVO_SERVO_ENCODER</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="593"/>
         <location filename="../AlarmInfo.js" line="594"/>
         <location filename="../AlarmInfo.js" line="595"/>
         <location filename="../AlarmInfo.js" line="596"/>
@@ -1124,11 +1132,11 @@
         <location filename="../AlarmInfo.js" line="598"/>
         <location filename="../AlarmInfo.js" line="599"/>
         <location filename="../AlarmInfo.js" line="600"/>
+        <location filename="../AlarmInfo.js" line="601"/>
         <source>ALARM_SERVO_MOTOR_OVERSPEED</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="602"/>
         <location filename="../AlarmInfo.js" line="603"/>
         <location filename="../AlarmInfo.js" line="604"/>
         <location filename="../AlarmInfo.js" line="605"/>
@@ -1136,11 +1144,11 @@
         <location filename="../AlarmInfo.js" line="607"/>
         <location filename="../AlarmInfo.js" line="608"/>
         <location filename="../AlarmInfo.js" line="609"/>
+        <location filename="../AlarmInfo.js" line="610"/>
         <source>ALARM_SERVO_SERVO_POSERROR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="611"/>
         <location filename="../AlarmInfo.js" line="612"/>
         <location filename="../AlarmInfo.js" line="613"/>
         <location filename="../AlarmInfo.js" line="614"/>
@@ -1148,11 +1156,11 @@
         <location filename="../AlarmInfo.js" line="616"/>
         <location filename="../AlarmInfo.js" line="617"/>
         <location filename="../AlarmInfo.js" line="618"/>
+        <location filename="../AlarmInfo.js" line="619"/>
         <source>ALARM_SERVO_DRIVE_PULSE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="620"/>
         <location filename="../AlarmInfo.js" line="621"/>
         <location filename="../AlarmInfo.js" line="622"/>
         <location filename="../AlarmInfo.js" line="623"/>
@@ -1160,11 +1168,11 @@
         <location filename="../AlarmInfo.js" line="625"/>
         <location filename="../AlarmInfo.js" line="626"/>
         <location filename="../AlarmInfo.js" line="627"/>
+        <location filename="../AlarmInfo.js" line="628"/>
         <source>ALARM_SERVO_HEARTBEAT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="629"/>
         <location filename="../AlarmInfo.js" line="630"/>
         <location filename="../AlarmInfo.js" line="631"/>
         <location filename="../AlarmInfo.js" line="632"/>
@@ -1172,11 +1180,11 @@
         <location filename="../AlarmInfo.js" line="634"/>
         <location filename="../AlarmInfo.js" line="635"/>
         <location filename="../AlarmInfo.js" line="636"/>
+        <location filename="../AlarmInfo.js" line="637"/>
         <source>ALARM_SERVO_PDO_LENGTH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="638"/>
         <location filename="../AlarmInfo.js" line="639"/>
         <location filename="../AlarmInfo.js" line="640"/>
         <location filename="../AlarmInfo.js" line="641"/>
@@ -1184,11 +1192,11 @@
         <location filename="../AlarmInfo.js" line="643"/>
         <location filename="../AlarmInfo.js" line="644"/>
         <location filename="../AlarmInfo.js" line="645"/>
+        <location filename="../AlarmInfo.js" line="646"/>
         <source>ALARM_SERVO_RE_LIMIT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="647"/>
         <location filename="../AlarmInfo.js" line="648"/>
         <location filename="../AlarmInfo.js" line="649"/>
         <location filename="../AlarmInfo.js" line="650"/>
@@ -1196,58 +1204,59 @@
         <location filename="../AlarmInfo.js" line="652"/>
         <location filename="../AlarmInfo.js" line="653"/>
         <location filename="../AlarmInfo.js" line="654"/>
+        <location filename="../AlarmInfo.js" line="655"/>
         <source>ALARM_SERVO_FAULT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="656"/>
+        <location filename="../AlarmInfo.js" line="657"/>
         <source>ALARM_VENDER_UNLIKE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="657"/>
+        <location filename="../AlarmInfo.js" line="658"/>
         <source>ALARM_CTRLTYPE_UNLIKE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="693"/>
-        <location filename="../AlarmInfo.js" line="695"/>
+        <location filename="../AlarmInfo.js" line="694"/>
+        <location filename="../AlarmInfo.js" line="696"/>
         <source>Wait Input:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="693"/>
-        <location filename="../AlarmInfo.js" line="697"/>
-        <location filename="../AlarmInfo.js" line="702"/>
+        <location filename="../AlarmInfo.js" line="694"/>
+        <location filename="../AlarmInfo.js" line="698"/>
+        <location filename="../AlarmInfo.js" line="703"/>
         <source>ON over time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="695"/>
-        <location filename="../AlarmInfo.js" line="699"/>
-        <location filename="../AlarmInfo.js" line="704"/>
+        <location filename="../AlarmInfo.js" line="696"/>
+        <location filename="../AlarmInfo.js" line="700"/>
+        <location filename="../AlarmInfo.js" line="705"/>
         <source>OFF over time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="697"/>
-        <location filename="../AlarmInfo.js" line="699"/>
+        <location filename="../AlarmInfo.js" line="698"/>
+        <location filename="../AlarmInfo.js" line="700"/>
         <source>Wait Single Input:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="702"/>
-        <location filename="../AlarmInfo.js" line="704"/>
+        <location filename="../AlarmInfo.js" line="703"/>
+        <location filename="../AlarmInfo.js" line="705"/>
         <source>Wait Double Input:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="715"/>
+        <location filename="../AlarmInfo.js" line="716"/>
         <source>Unknow Err</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="720"/>
+        <location filename="../AlarmInfo.js" line="721"/>
         <source>1.Connector loose
 2.Wire is off
 3.Pannel is broken
@@ -1255,7 +1264,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AlarmInfo.js" line="723"/>
+        <location filename="../AlarmInfo.js" line="724"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2121,26 +2130,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/AxisConfigs.qml" line="654"/>
         <source>Encoder Type</source>
         <translation type="unfinished"></translation>
@@ -2158,21 +2147,6 @@
     <message>
         <location filename="../settingpages/AxisConfigs.qml" line="657"/>
         <source>Encode Type3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 6</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2258,11 +2232,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
-        <source>Motor 8</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/AxisConfigs.qml" line="674"/>
         <source>Encode RW4</source>
         <translation type="unfinished"></translation>
@@ -2331,6 +2300,56 @@
     <message>
         <location filename="../settingpages/AxisConfigs.qml" line="281"/>
         <source>Origin point dir Change to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>Inovance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>ASDA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>panasonic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>hcqs4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>SANKYO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>YASKAWA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>EURA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>HCFA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>COTRUST</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="665"/>
+        <source>RUKING</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2768,8 +2787,8 @@
     </message>
     <message>
         <location filename="../settingpages/CommunicationConfig.qml" line="82"/>
-        <location filename="../settingpages/CommunicationConfig.qml" line="141"/>
-        <location filename="../settingpages/CommunicationConfig.qml" line="163"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="159"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="181"/>
         <source>Baud Setting</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2810,101 +2829,96 @@
     </message>
     <message>
         <location filename="../settingpages/CommunicationConfig.qml" line="89"/>
-        <location filename="../settingpages/CommunicationConfig.qml" line="120"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="138"/>
         <source>Tips:After modified, must be restart to take effect!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="129"/>
-        <location filename="../settingpages/CommunicationConfig.qml" line="151"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="108"/>
+        <source>searching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/CommunicationConfig.qml" line="147"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="169"/>
         <source>online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="129"/>
-        <location filename="../settingpages/CommunicationConfig.qml" line="151"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="147"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="169"/>
         <source>Encoder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="130"/>
-        <location filename="../settingpages/CommunicationConfig.qml" line="152"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="148"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="170"/>
         <source>CAN use to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="135"/>
-        <location filename="../settingpages/CommunicationConfig.qml" line="157"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="153"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="175"/>
         <source>ID config</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="140"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="158"/>
         <source>125kbps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="140"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="158"/>
         <source>250kbps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="140"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="158"/>
         <source>500kbps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="140"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="158"/>
         <source>1000kbps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="199"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="222"/>
         <source>name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="210"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="282"/>
         <source>setZero</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="214"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="231"/>
         <source>surface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="226"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="243"/>
         <source>setPos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="230"/>
-        <source>p0M0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="242"/>
-        <source>p0M1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="256"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="291"/>
         <source>delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="271"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="306"/>
         <source>new</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="279"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="314"/>
         <source>save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CommunicationConfig.qml" line="301"/>
+        <location filename="../settingpages/CommunicationConfig.qml" line="336"/>
         <source>search</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6076,214 +6090,198 @@ please chose!</source>
 <context>
     <name>QKConfigs</name>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="23"/>
+        <location filename="../settingpages/QKConfigs.qml" line="24"/>
         <source>para page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="29"/>
+        <location filename="../settingpages/QKConfigs.qml" line="30"/>
         <source>status page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="97"/>
+        <location filename="../settingpages/QKConfigs.qml" line="98"/>
         <source>para config</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="149"/>
+        <location filename="../settingpages/QKConfigs.qml" line="150"/>
         <source>read e2prom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="162"/>
+        <location filename="../settingpages/QKConfigs.qml" line="163"/>
         <source>write e2prom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="221"/>
+        <location filename="../settingpages/QKConfigs.qml" line="222"/>
         <source>common ctrl para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="223"/>
-        <location filename="../settingpages/QKConfigs.qml" line="229"/>
-        <location filename="../settingpages/QKConfigs.qml" line="235"/>
-        <location filename="../settingpages/QKConfigs.qml" line="241"/>
+        <location filename="../settingpages/QKConfigs.qml" line="224"/>
+        <location filename="../settingpages/QKConfigs.qml" line="230"/>
+        <location filename="../settingpages/QKConfigs.qml" line="236"/>
+        <location filename="../settingpages/QKConfigs.qml" line="242"/>
         <source>distributed para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="224"/>
-        <location filename="../settingpages/QKConfigs.qml" line="230"/>
-        <location filename="../settingpages/QKConfigs.qml" line="236"/>
-        <location filename="../settingpages/QKConfigs.qml" line="242"/>
+        <location filename="../settingpages/QKConfigs.qml" line="225"/>
+        <location filename="../settingpages/QKConfigs.qml" line="231"/>
+        <location filename="../settingpages/QKConfigs.qml" line="237"/>
+        <location filename="../settingpages/QKConfigs.qml" line="243"/>
         <source>current loop para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="225"/>
-        <location filename="../settingpages/QKConfigs.qml" line="231"/>
-        <location filename="../settingpages/QKConfigs.qml" line="237"/>
-        <location filename="../settingpages/QKConfigs.qml" line="243"/>
+        <location filename="../settingpages/QKConfigs.qml" line="226"/>
+        <location filename="../settingpages/QKConfigs.qml" line="232"/>
+        <location filename="../settingpages/QKConfigs.qml" line="238"/>
+        <location filename="../settingpages/QKConfigs.qml" line="244"/>
         <source>speed loop para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="226"/>
-        <location filename="../settingpages/QKConfigs.qml" line="232"/>
-        <location filename="../settingpages/QKConfigs.qml" line="238"/>
-        <location filename="../settingpages/QKConfigs.qml" line="244"/>
+        <location filename="../settingpages/QKConfigs.qml" line="227"/>
+        <location filename="../settingpages/QKConfigs.qml" line="233"/>
+        <location filename="../settingpages/QKConfigs.qml" line="239"/>
+        <location filename="../settingpages/QKConfigs.qml" line="245"/>
         <source>position ctrl para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="227"/>
-        <location filename="../settingpages/QKConfigs.qml" line="233"/>
-        <location filename="../settingpages/QKConfigs.qml" line="239"/>
-        <location filename="../settingpages/QKConfigs.qml" line="245"/>
+        <location filename="../settingpages/QKConfigs.qml" line="228"/>
+        <location filename="../settingpages/QKConfigs.qml" line="234"/>
+        <location filename="../settingpages/QKConfigs.qml" line="240"/>
+        <location filename="../settingpages/QKConfigs.qml" line="246"/>
         <source>Initial angle para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="299"/>
+        <location filename="../settingpages/QKConfigs.qml" line="300"/>
         <source>para name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="306"/>
+        <location filename="../settingpages/QKConfigs.qml" line="307"/>
         <source>addr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="313"/>
+        <location filename="../settingpages/QKConfigs.qml" line="314"/>
         <source>write val</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="320"/>
+        <location filename="../settingpages/QKConfigs.qml" line="321"/>
         <source>read val</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="328"/>
-        <location filename="../settingpages/QKConfigs.qml" line="787"/>
+        <location filename="../settingpages/QKConfigs.qml" line="329"/>
+        <location filename="../settingpages/QKConfigs.qml" line="789"/>
         <source>describe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="706"/>
-        <location filename="../settingpages/QKConfigs.qml" line="707"/>
         <location filename="../settingpages/QKConfigs.qml" line="708"/>
         <location filename="../settingpages/QKConfigs.qml" line="709"/>
+        <location filename="../settingpages/QKConfigs.qml" line="710"/>
+        <location filename="../settingpages/QKConfigs.qml" line="711"/>
         <source>alarm para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="680"/>
+        <location filename="../settingpages/QKConfigs.qml" line="682"/>
         <source>refresh en</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="687"/>
+        <location filename="../settingpages/QKConfigs.qml" line="689"/>
         <source>clear alarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="771"/>
+        <location filename="../settingpages/QKConfigs.qml" line="773"/>
         <source>alarm name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="778"/>
+        <location filename="../settingpages/QKConfigs.qml" line="780"/>
         <source>alarm val</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="985"/>
+        <location filename="../settingpages/QKConfigs.qml" line="987"/>
         <source>inStop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="990"/>
+        <location filename="../settingpages/QKConfigs.qml" line="992"/>
         <source>inRunning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="995"/>
+        <location filename="../settingpages/QKConfigs.qml" line="997"/>
         <source>inAlarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="223"/>
         <location filename="../settingpages/QKConfigs.qml" line="224"/>
         <location filename="../settingpages/QKConfigs.qml" line="225"/>
         <location filename="../settingpages/QKConfigs.qml" line="226"/>
         <location filename="../settingpages/QKConfigs.qml" line="227"/>
-        <location filename="../settingpages/QKConfigs.qml" line="229"/>
+        <location filename="../settingpages/QKConfigs.qml" line="228"/>
         <location filename="../settingpages/QKConfigs.qml" line="230"/>
         <location filename="../settingpages/QKConfigs.qml" line="231"/>
         <location filename="../settingpages/QKConfigs.qml" line="232"/>
         <location filename="../settingpages/QKConfigs.qml" line="233"/>
-        <location filename="../settingpages/QKConfigs.qml" line="235"/>
+        <location filename="../settingpages/QKConfigs.qml" line="234"/>
         <location filename="../settingpages/QKConfigs.qml" line="236"/>
         <location filename="../settingpages/QKConfigs.qml" line="237"/>
         <location filename="../settingpages/QKConfigs.qml" line="238"/>
         <location filename="../settingpages/QKConfigs.qml" line="239"/>
-        <location filename="../settingpages/QKConfigs.qml" line="241"/>
+        <location filename="../settingpages/QKConfigs.qml" line="240"/>
         <location filename="../settingpages/QKConfigs.qml" line="242"/>
         <location filename="../settingpages/QKConfigs.qml" line="243"/>
         <location filename="../settingpages/QKConfigs.qml" line="244"/>
         <location filename="../settingpages/QKConfigs.qml" line="245"/>
-        <location filename="../settingpages/QKConfigs.qml" line="706"/>
-        <location filename="../settingpages/QKConfigs.qml" line="707"/>
+        <location filename="../settingpages/QKConfigs.qml" line="246"/>
         <location filename="../settingpages/QKConfigs.qml" line="708"/>
         <location filename="../settingpages/QKConfigs.qml" line="709"/>
-        <location filename="../settingpages/QKConfigs.qml" line="1012"/>
+        <location filename="../settingpages/QKConfigs.qml" line="710"/>
+        <location filename="../settingpages/QKConfigs.qml" line="711"/>
+        <location filename="../settingpages/QKConfigs.qml" line="1014"/>
         <source>axis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="99"/>
+        <location filename="../settingpages/QKConfigs.qml" line="100"/>
         <source>para config...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="99"/>
-        <location filename="../settingpages/QKConfigs.qml" line="151"/>
-        <location filename="../settingpages/QKConfigs.qml" line="164"/>
+        <location filename="../settingpages/QKConfigs.qml" line="100"/>
+        <location filename="../settingpages/QKConfigs.qml" line="152"/>
+        <location filename="../settingpages/QKConfigs.qml" line="165"/>
         <source>Get it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="151"/>
+        <location filename="../settingpages/QKConfigs.qml" line="152"/>
         <source>Eeprom reading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="164"/>
+        <location filename="../settingpages/QKConfigs.qml" line="165"/>
         <source>Eeprom config...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="808"/>
+        <location filename="../settingpages/QKConfigs.qml" line="810"/>
         <source>0- no fault, 1- fault</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKConfigs.qml" line="813"/>
-        <location filename="../settingpages/QKConfigs.qml" line="834"/>
-        <location filename="../settingpages/QKConfigs.qml" line="855"/>
-        <location filename="../settingpages/QKConfigs.qml" line="876"/>
-        <source>InitFlt</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKConfigs.qml" line="814"/>
-        <location filename="../settingpages/QKConfigs.qml" line="835"/>
-        <location filename="../settingpages/QKConfigs.qml" line="856"/>
-        <location filename="../settingpages/QKConfigs.qml" line="877"/>
-        <source>EepromFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6291,7 +6289,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="836"/>
         <location filename="../settingpages/QKConfigs.qml" line="857"/>
         <location filename="../settingpages/QKConfigs.qml" line="878"/>
-        <source>AdcFlt</source>
+        <source>InitFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6299,7 +6297,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="837"/>
         <location filename="../settingpages/QKConfigs.qml" line="858"/>
         <location filename="../settingpages/QKConfigs.qml" line="879"/>
-        <source>ExecTmFlt</source>
+        <source>EepromFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6307,7 +6305,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="838"/>
         <location filename="../settingpages/QKConfigs.qml" line="859"/>
         <location filename="../settingpages/QKConfigs.qml" line="880"/>
-        <source>OverTempFlt</source>
+        <source>AdcFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6315,7 +6313,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="839"/>
         <location filename="../settingpages/QKConfigs.qml" line="860"/>
         <location filename="../settingpages/QKConfigs.qml" line="881"/>
-        <source>OvFlt</source>
+        <source>ExecTmFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6323,7 +6321,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="840"/>
         <location filename="../settingpages/QKConfigs.qml" line="861"/>
         <location filename="../settingpages/QKConfigs.qml" line="882"/>
-        <source>LvFlt</source>
+        <source>OverTempFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6331,7 +6329,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="841"/>
         <location filename="../settingpages/QKConfigs.qml" line="862"/>
         <location filename="../settingpages/QKConfigs.qml" line="883"/>
-        <source>MainPowerOff</source>
+        <source>OvFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6339,7 +6337,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="842"/>
         <location filename="../settingpages/QKConfigs.qml" line="863"/>
         <location filename="../settingpages/QKConfigs.qml" line="884"/>
-        <source>GateKillFlt</source>
+        <source>LvFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6347,7 +6345,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="843"/>
         <location filename="../settingpages/QKConfigs.qml" line="864"/>
         <location filename="../settingpages/QKConfigs.qml" line="885"/>
-        <source>OvrTempFlt2</source>
+        <source>MainPowerOff</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6355,7 +6353,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="844"/>
         <location filename="../settingpages/QKConfigs.qml" line="865"/>
         <location filename="../settingpages/QKConfigs.qml" line="886"/>
-        <source>OvrLdFlt</source>
+        <source>GateKillFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6363,7 +6361,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="845"/>
         <location filename="../settingpages/QKConfigs.qml" line="866"/>
         <location filename="../settingpages/QKConfigs.qml" line="887"/>
-        <source>OvrSpdFlt</source>
+        <source>OvrTempFlt2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6371,7 +6369,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="846"/>
         <location filename="../settingpages/QKConfigs.qml" line="867"/>
         <location filename="../settingpages/QKConfigs.qml" line="888"/>
-        <source>OvrFrqFlt</source>
+        <source>OvrLdFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6379,7 +6377,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="847"/>
         <location filename="../settingpages/QKConfigs.qml" line="868"/>
         <location filename="../settingpages/QKConfigs.qml" line="889"/>
-        <source>PosErrOvrFlt</source>
+        <source>OvrSpdFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6387,7 +6385,7 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="848"/>
         <location filename="../settingpages/QKConfigs.qml" line="869"/>
         <location filename="../settingpages/QKConfigs.qml" line="890"/>
-        <source>MtrEncFlt</source>
+        <source>OvrFrqFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6395,11 +6393,27 @@ please chose!</source>
         <location filename="../settingpages/QKConfigs.qml" line="849"/>
         <location filename="../settingpages/QKConfigs.qml" line="870"/>
         <location filename="../settingpages/QKConfigs.qml" line="891"/>
+        <source>PosErrOvrFlt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="829"/>
+        <location filename="../settingpages/QKConfigs.qml" line="850"/>
+        <location filename="../settingpages/QKConfigs.qml" line="871"/>
+        <location filename="../settingpages/QKConfigs.qml" line="892"/>
+        <source>MtrEncFlt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="830"/>
+        <location filename="../settingpages/QKConfigs.qml" line="851"/>
+        <location filename="../settingpages/QKConfigs.qml" line="872"/>
+        <location filename="../settingpages/QKConfigs.qml" line="893"/>
         <source>OvrCrntFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="1000"/>
+        <location filename="../settingpages/QKConfigs.qml" line="1002"/>
         <source>inNoRefresh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6842,16 +6856,6 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKInfo.js" line="82"/>
-        <source>1.parameter initial value: 32768, whether to modify: No.2.[15:0] reverse travel limit (low 16 bits):-32768~0.3. Description: when the actual position exceeds [NOvrTrvLimH, NOvrTrvLimL] pulse equivalent, reverse reverse process will occur</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/QKInfo.js" line="83"/>
-        <source>1.parameter initial value: -32768,whether to modify: No.2.[15:0] the filter constants: 0~65535.3. Description: Ksf=2^16 * T/ (T+1), including T= /Ts, which is the filter time constant Ts for the position loop sampling period.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/QKInfo.js" line="84"/>
         <source>1.parameter initial value: 10, whether to modify: Yes, suggestion: according to the experience, 2 &lt; KpP &lt; = 100, can be adjusted according to the actual situation in general, recommend the use of the initial value of.2.[15:0] controller of position loop proportional gain: 0~65535.3. Description: 5 decimal places.</source>
         <translation type="unfinished"></translation>
@@ -7192,8 +7196,18 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/QKInfo.js" line="82"/>
+        <source>1.parameter initial value:-32768, whether to modify: No.2.[15:0] reverse travel limit (low 16 bits):-32768~0.3. Description: when the actual position exceeds [NOvrTrvLimH, NOvrTrvLimL] pulse equivalent, reverse reverse process will occur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/QKInfo.js" line="83"/>
         <source>Ksf</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKInfo.js" line="83"/>
+        <source>1.parameter initial value: 32768,whether to modify: No.2.[15:0] the filter constants: 0~65535.3. Description: Ksf=2^16 * T/ (T+1), including T= /Ts, which is the filter time constant Ts for the position loop sampling period.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -10487,70 +10501,70 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <location filename="../main.qml" line="797"/>
-        <location filename="../main.qml" line="1037"/>
+        <location filename="../main.qml" line="1049"/>
         <source>Get it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="989"/>
+        <location filename="../main.qml" line="1001"/>
         <source>Recalibrate need to reboot. Continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="989"/>
-        <location filename="../main.qml" line="1013"/>
+        <location filename="../main.qml" line="1001"/>
+        <location filename="../main.qml" line="1025"/>
         <source>Yes[F4]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="989"/>
-        <location filename="../main.qml" line="1013"/>
+        <location filename="../main.qml" line="1001"/>
+        <location filename="../main.qml" line="1025"/>
         <source>No[F5]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1002"/>
+        <location filename="../main.qml" line="1014"/>
         <source>Exporting...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1012"/>
+        <location filename="../main.qml" line="1024"/>
         <source>Need to ghost and export to U Disk?
 The name of ghost is </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1037"/>
+        <location filename="../main.qml" line="1049"/>
         <source>Please confirm your stop signal off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1056"/>
+        <location filename="../main.qml" line="1068"/>
         <source>Please Register!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1335"/>
+        <location filename="../main.qml" line="1347"/>
         <source>Load record </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1406"/>
+        <location filename="../main.qml" line="1418"/>
         <source>Please press origin key and then press start key to find origin signal.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1439"/>
+        <location filename="../main.qml" line="1451"/>
         <source>Origin is changed? Do you want to refind an origin?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1439"/>
+        <location filename="../main.qml" line="1451"/>
         <source>Refind</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1439"/>
+        <location filename="../main.qml" line="1451"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>

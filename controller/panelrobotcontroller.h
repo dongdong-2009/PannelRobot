@@ -822,20 +822,25 @@ public:
     Q_INVOKABLE QString scanMachineBackups(int mode) const;
     Q_INVOKABLE QString scanHMIBackups(int mode) const;
     Q_INVOKABLE QString scanGhostBackups(int mode) const;
+    Q_INVOKABLE QString scanQKBackups(int mode) const;
     Q_INVOKABLE QString backupHMIBackup(const QString& backupName, const QString& sqlData) const;
     Q_INVOKABLE QString backupMRBackup(const QString& backupName) const;
     Q_INVOKABLE QString makeGhost(const QString& ghostName, const QString& hmiSqlData) const;
+    Q_INVOKABLE QString backupQKBackup(const QString &backupName,const QString &content) const;
     Q_INVOKABLE int exportHMIBackup(const QString& backupName) const;
     Q_INVOKABLE int exportMachineBackup(const QString& backupName) const;
     Q_INVOKABLE int exportGhost(const QString& backupName) const;
     Q_INVOKABLE int exportUpdater(const QString& updaterName) const;
+    Q_INVOKABLE int exportQKBackup(const QString &backupName) const;
     Q_INVOKABLE QString restoreHMIBackup(const QString& backupName, int mode);
     Q_INVOKABLE void restoreMRBackup(const QString& backupName, int mode);
     Q_INVOKABLE QString restoreGhost(const QString& backupName, int mode);
+    Q_INVOKABLE QString restoreQKBackup(const QString &backupName, int mode);
     Q_INVOKABLE void deleteHIMBackup(const QString& backupName, int mode);
     Q_INVOKABLE void deleteMRBackup(const QString& backupName, int mode);
     Q_INVOKABLE void deleteGhost(const QString& backupName, int mode);
     Q_INVOKABLE void deleteUpdater(const QString& updater, int mode);
+    Q_INVOKABLE void deleteQKBackup(const QString &backupName, int mode);
     Q_INVOKABLE void reboot() { ::system("reboot");}
 
     Q_INVOKABLE void processEvents()

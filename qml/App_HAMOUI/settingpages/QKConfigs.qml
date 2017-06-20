@@ -3,6 +3,8 @@ import "../../ICCustomElement"
 import "../configs/AxisDefine.js" as AxisDefine
 import "QKInfo.js" as QKInfo
 import "../../utils/utils.js" as Utils
+import "../../utils/stringhelper.js" as ICString
+
 
 Item {
     id: root
@@ -28,6 +30,12 @@ Item {
             width: 100
             height: 32
             itemText: qsTr("status page")
+        }
+        TabMenuItem{
+            id:setPageBtn
+            width: 100
+            height: 32
+            itemText: qsTr("set page")
         }
         function onItemChanged() {
             pageContainer.setCurrentIndex(checkedIndex);
@@ -628,7 +636,6 @@ Item {
                             else if(paraMainView.currentIndex>5 && paraMainView.currentIndex<=10)toSendID =1;
                             else if(paraMainView.currentIndex>10 && paraMainView.currentIndex<=15)toSendID =2;
                             else if(paraMainView.currentIndex>15 && paraMainView.currentIndex<=20)toSendID =3;
-//                            console.log("addr="+((toSendID<<8)+ addr),"val="+wVal);
                             var tmpArray = [];
                             tmpArray.push(wVal);
                             panelRobotController.writeMultipleQkPara(((toSendID<<8)+addr),1,JSON.stringify(tmpArray));
@@ -1026,6 +1033,220 @@ Item {
             }
         }
 
+        Item {
+            id:setPage
+            ICMessageBox{
+                id:backupNameDialog
+                x:250
+                y:50
+                z:2
+                onAccept: {
+                    tip.runningTip(qsTr("Backup..."));
+                    var backupName = inputText;
+                    var nC = /^[A-Za-z0-9\u4E00-\u9FA5]+[A-Za-z0-9-_\u4E00-\u9FA5]*$/;
+                    if(!nC.test(backupName)){
+                        tip.warning(qsTr("name must be word number or underline\n and underline begin is not allowed"), qsTr("OK"));
+                        return;
+                    }
+                    var i,j;
+                    var tmpData = [];
+                    for(i=0;i<9;++i){
+                       tmpData.push(dataPage.subItems[0].get(i).wVal);
+                    }
+                    for(j=0;j<4;++j){
+                        for(i=0;i<16;++i){
+                           tmpData.push(dataPage.subItems[5*j+1].get(i).wVal);
+                        }
+                        for(i=0;i<25;++i){
+                           tmpData.push(dataPage.subItems[5*j+2].get(i).wVal);
+                        }
+                        for(i=0;i<16;++i){
+                           tmpData.push(dataPage.subItems[5*j+3].get(i).wVal);
+                        }
+                        for(i=0;i<10;++i){
+                           tmpData.push(dataPage.subItems[5*j+4].get(i).wVal);
+                        }
+                        for(i=0;i<6;++i){
+                           tmpData.push(dataPage.subItems[5*j+5].get(i).wVal);
+                        }
+                    }
+                    panelRobotController.backupQKBackup(backupName,JSON.stringify(tmpData));
+                    refreshDataModel();
+                    tip.hide();
+                }
+            }
+
+            ICMessageBox{
+                id:tip
+                x:250
+                y:50
+                z:3
+            }
+
+            ICMessageBox{
+                id:restoreTip
+                x:250
+                y:50
+                z:2
+                onAccept: {
+                    tip.runningTip(qsTr("Restoring..."));
+                    var backupName = backuViews.model.get(backuViews.currentIndex).name;
+                    var mode = local.isChecked ? 0 : 1;
+                    var toDisplay = JSON.parse(panelRobotController.restoreQKBackup(backupName,mode));
+                    var i,j;
+                    for(i=0;i<9;++i){
+                       dataPage.subItems[0].get(i).wVal = toDisplay.shift();
+                    }
+                    for(j=0;j<4;++j){
+                        for(i=0;i<16;++i){
+                            dataPage.subItems[5*j+1].get(i).wVal = toDisplay.shift();
+                        }
+                        for(i=0;i<25;++i){
+                            dataPage.subItems[5*j+2].get(i).wVal = toDisplay.shift();
+                        }
+                        for(i=0;i<16;++i){
+                            dataPage.subItems[5*j+3].get(i).wVal = toDisplay.shift();
+                        }
+                        for(i=0;i<10;++i){
+                            dataPage.subItems[5*j+4].get(i).wVal = toDisplay.shift();
+                        }
+                        for(i=0;i<6;++i){
+                            dataPage.subItems[5*j+5].get(i).wVal = toDisplay.shift();
+                        }
+                    }
+                    tip.hide();
+                }
+            }
+            Column{
+                y:10
+                spacing: 10
+                ICButtonGroup{
+                    spacing: 24
+                    checkedItem: local
+                    checkedIndex: 0
+                    mustChecked: true
+                    ICCheckBox{
+                        id:local
+                        text: qsTr("Local")
+                        isChecked: true
+                    }
+                    ICCheckBox{
+                        id:uDisk
+                        text: qsTr("U Disk")
+                    }
+                    onButtonClickedItem: {
+                        refreshDataModel();
+                    }
+                }
+                Row{
+                    spacing: 12
+                    ICListView{
+                        id:backuViews
+                        width: 600
+                        height: 300
+                        isShowHint: true
+                        border.color: "black"
+                        color: "white"
+                        clip: true
+                        highlight: Rectangle {width: 596; height: 24;color: "lightsteelblue";}
+                        highlightMoveDuration:100
+                        delegate: Text {
+                            text: name
+                            width: 596
+                            height: 24
+                            verticalAlignment: Text.AlignVCenter
+                            MouseArea{
+                                anchors.fill: parent
+                                onClicked: {
+                                    backuViews.currentIndex = index;
+                                }
+                            }
+                        }
+                        ListModel{
+                            id:localBackupModel
+                            function syncModel(){
+                                localBackupModel.clear();
+                                var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanQKBackups(0)));
+                                for(var i = 0, len = backups.length; i < len; ++i){
+                                    localBackupModel.append({"name":backups[i]});
+                                }
+                            }
+                        }
+
+                        ListModel{
+                            id:uDiskBackupModel
+                            function syncModel(){
+                                uDiskBackupModel.clear();
+                                var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanQKBackups(1)));
+                                for(var i = 0, len = backups.length; i < len; ++i){
+                                    uDiskBackupModel.append({"name":backups[i]});
+                                }
+                            }
+                        }
+                    }
+                    Column{
+                        ICButton{
+                            id:newBackup
+                            width: 150
+                            text: qsTr("Backup Current")
+                            enabled: local.isChecked
+                            onButtonClicked: {
+                                backupNameDialog.showInput(qsTr("Please input the backup name"),
+                                                           qsTr("Backup Name"),
+                                                           false,
+                                                           qsTr("Ok"), qsTr("Cancel"));
+                            }
+                        }
+                        ICButton{
+                            id:restore
+                            width: newBackup.width
+                            text: qsTr("Restore Selected")
+                            onButtonClicked: {
+                                if(backuViews.currentIndex < 0) return;
+                                restoreTip.show(qsTr("Are you sure to restore this backup?"), qsTr("OK"), qsTr("Cancel"));
+                            }
+                        }
+                        ICButton{
+                            id:deleteBackup
+                            width: newBackup.width
+                            text: qsTr("Delete")
+                            onButtonClicked: {
+                                var mode = local.isChecked ? 0 : 1;
+                                var backupName = backuViews.model.get(backuViews.currentIndex).name;
+                                panelRobotController.deleteQKBackup(backupName, mode);
+                                backuViews.model.remove(backuViews.currentIndex);
+                            }
+                        }
+
+                        ICButton{
+                            id:exportOrImport
+                            width: newBackup.width
+                            text: qsTr("Export")
+                            enabled: local.isChecked
+                            onButtonClicked: {
+                                var ret = 0;
+                                if(backuViews.currentIndex < 0) return;
+                                tip.runningTip(qsTr("Exporting..."))
+                                var backupName = backuViews.model.get(backuViews.currentIndex).name;
+                                ret = panelRobotController.exportQKBackup(backupName);
+                                ret = 0;
+                                tip.hide();
+
+                                if(ret !== 0){
+                                    tip.warning(qsTr("Export fail! Err" + ret), qsTr("OK"));
+                                }else{
+                                    tip.information(qsTr("Export successfully!"), qsTr("OK"));
+                                }
+                            }
+                        }
+                    }
+                }
+                Component.onCompleted: {
+                    refreshDataModel();
+                }
+            }
+        }
+
         Timer{
             id:queryTimer
             property variant oldAlarmStatus: [0,0,0,0]
@@ -1080,7 +1301,6 @@ Item {
                 }
             }
         }
-
 
         function onReadEepromFinished(){
             console.log("ReadFinish");
@@ -1163,10 +1383,23 @@ Item {
         Component.onCompleted: {
             pageContainer.addPage(dataPage);
             pageContainer.addPage(statusPage);
+            pageContainer.addPage(setPage);
             pageContainer.setCurrentIndex(0);
             menuArea.checkedIndexChanged.connect(menuArea.onItemChanged);
             panelRobotController.readQkEepromFinished.connect(onReadEepromFinished);
         }
+    }
+
+    function refreshDataModel(){
+        if(local.isChecked){
+            localBackupModel.syncModel();
+            backuViews.model = localBackupModel;
+        }
+        else if(uDisk.isChecked){
+            uDiskBackupModel.syncModel();
+            backuViews.model = uDiskBackupModel;
+        }
+        backuViews.currentIndex = -1;
     }
 
 //    Item {

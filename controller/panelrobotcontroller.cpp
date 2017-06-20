@@ -1657,6 +1657,44 @@ QString PanelRobotController::scanUserDir(const QString &path, const QString &fi
     return ret;
 }
 
+QString PanelRobotController::backupQKBackup(const QString &backupName,const QString& content) const
+{
+    QDir dir(ICAppSettings::UserPath);
+    if(!dir.exists("qkbps"))
+    {
+        dir.mkdir("qkbps");
+    }
+    dir.cd("qkbps");
+    QString bf = backupName + ".qk.hcdb";
+//    if(dir.exists(bf.toUtf8()))
+//    {
+//        QFile::remove(dir.absoluteFilePath(bf.toUtf8()));
+//    }
+    QFile file(dir.absoluteFilePath(bf.toUtf8()));
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)){
+        file.write(content.toUtf8());
+        file.close();
+    }
+    else qDebug() << "err";
+    return backupName + ".qk.hcdb";
+}
+
+QString PanelRobotController::restoreQKBackup(const QString &backupName, int mode)
+{
+    QString ret = "";
+    QString dirPath = (mode == 0 ? QString(ICAppSettings::UserPath) + "/qkbps" : ICAppSettings::UsbPath);
+    QDir dir(dirPath);
+    if(!dir.exists(backupName.toUtf8())) return ret;
+    QFile file(dir.absoluteFilePath(backupName.toUtf8()));
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        QTextStream in(&file);
+        ret = in.readAll();
+        return ret;
+    }
+    return ret;
+}
+
+
 QString PanelRobotController::backupHMIBackup(const QString& backupName, const QString& sqlData) const
 {
     QDir dir(ICAppSettings::UserPath);
@@ -1869,6 +1907,13 @@ bool PanelRobotController::loadRecord(const QString &name)
     return ret;
 }
 
+QString PanelRobotController::scanQKBackups(int mode) const
+{
+    if(mode == 1)
+        return scanHelper(QStringList()<<"*.qk.hcdb");
+    return scanUserDir("qkbps", "*.qk.hcdb");
+}
+
 QString PanelRobotController::scanHMIBackups(int mode) const
 {
     if(mode == 1)
@@ -1928,6 +1973,11 @@ int PanelRobotController::exportUpdater(const QString &updaterName) const
     return exportBackupHelper(updaterName, "updaters");
 }
 
+int PanelRobotController::exportQKBackup(const QString &backupName) const
+{
+    return exportBackupHelper(backupName, "qkbps");
+}
+
 void deleteBackupHelper(const QString& subPath, const QString &backupName, int mode)
 {
     QString dirPath = (mode == 0 ? QString(ICAppSettings::UserPath) + "/" + subPath : ICAppSettings::UsbPath);
@@ -1954,6 +2004,11 @@ void PanelRobotController::deleteGhost(const QString &backupName, int mode)
 void PanelRobotController::deleteUpdater(const QString &updater, int mode)
 {
     deleteBackupHelper("updaters", updater, mode);
+}
+
+void PanelRobotController::deleteQKBackup(const QString &backupName, int mode)
+{
+    deleteBackupHelper("qkbps", backupName, mode);
 }
 
 void PanelRobotController::registerCustomProgramAction(const QString &actionDefine)

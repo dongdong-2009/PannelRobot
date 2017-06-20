@@ -875,6 +875,8 @@ public:
 
     Q_INVOKABLE void sendIOBarnLogic(const QString& data);
 
+    Q_INVOKABLE void sendEncoder(const QString& data);
+
     Q_INVOKABLE void writeQKConfig(int axis, int addr, int data, bool ep = false);
 
     Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);

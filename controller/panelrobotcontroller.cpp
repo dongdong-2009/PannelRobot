@@ -1294,6 +1294,23 @@ void PanelRobotController::sendIOBarnLogic(const QString& data)
     ICRobotVirtualhost::sendIOBarnLogicDef(host_,tmp);
 }
 
+void PanelRobotController::sendEncoder(const QString& data)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(data.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp;
+    for(int i=0;i<result.size();i++){
+        if(i==0)
+            tmp.append(result.at(i).toInt());
+        else
+            tmp.append(ICUtility::doubleToInt(result.at(i).toDouble(), 3));
+    }
+    ICRobotVirtualhost::sendEncoderDef(host_,tmp);
+}
+
 bool PanelRobotController::delCounterDef(quint32 id)
 {
     return ICRobotMold::CurrentMold()->DeleteCounter(id);

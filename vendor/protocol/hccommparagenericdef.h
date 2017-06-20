@@ -122,6 +122,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_31 = 31,//< 单轴手动速度独立设定切换（0：默认使用全局速度;1:使用单轴固定手动速度）：手动模式有效
     ICAddr_System_Retain_32 = 32,//<定义IOCheckToOut运行状态操作
     ICAddr_System_Retain_33 = 33,//<清除定义IOCheckToOut运行状态操作
+    ICAddr_System_Retain_34 = 34,//<编码器初始化
     ICAddr_System_Retain_35 = 35,//< 驱控四轴，主机刷新参数使能，0：关闭，1：打开
     ICAddr_System_Retain_36 = 36,
     ICAddr_System_Retain_40 = 40,//< // 自定义轴动作1 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；

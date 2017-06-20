@@ -6,8 +6,8 @@ Qt.include("../configs/AxisDefine.js")
 Qt.include("../configs/IODefines.js")
 Qt.include("../AlarmInfo.js")
 Qt.include("../../utils/utils.js")
-Qt.include("../ToolCoordManager.js")
-Qt.include("../ToolsCalibration.js")
+//Qt.include("../ToolCoordManager.js")
+//Qt.include("../ToolsCalibration.js")
 
 var customActions = {};
 

@@ -1971,68 +1971,60 @@
         <translation>主机CANB端口设置</translation>
     </message>
     <message>
-        <source>CANA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CANB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>online</source>
-        <translation type="unfinished"></translation>
+        <translation>联机</translation>
     </message>
     <message>
         <source>Encoder</source>
-        <translation type="unfinished"></translation>
+        <translation>编码器</translation>
     </message>
     <message>
         <source>CAN use to</source>
-        <translation type="unfinished"></translation>
+        <translation>用途</translation>
     </message>
     <message>
         <source>ID config</source>
-        <translation type="unfinished"></translation>
+        <translation>ID配置</translation>
     </message>
     <message>
         <source>125kbps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>250kbps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>500kbps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>1000kbps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>new</source>
-        <translation type="unfinished">新建</translation>
+        <translation>新建</translation>
     </message>
     <message>
         <source>save</source>
-        <translation type="unfinished"></translation>
+        <translation>保存</translation>
     </message>
     <message>
         <source>name</source>
-        <translation type="unfinished"></translation>
+        <translation>名称</translation>
     </message>
     <message>
         <source>setZero</source>
-        <translation type="unfinished"></translation>
+        <translation>设为原点</translation>
     </message>
     <message>
         <source>surface</source>
-        <translation type="unfinished"></translation>
+        <translation>平面</translation>
     </message>
     <message>
         <source>setPos</source>
-        <translation type="unfinished"></translation>
+        <translation>设入</translation>
     </message>
     <message>
         <source>p0M0</source>
@@ -2044,7 +2036,15 @@
     </message>
     <message>
         <source>delete</source>
-        <translation type="unfinished">删除</translation>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>search</source>
+        <translation>搜索</translation>
+    </message>
+    <message>
+        <source>can</source>
+        <translation>Can设置</translation>
     </message>
 </context>
 <context>

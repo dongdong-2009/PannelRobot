@@ -81,3 +81,10 @@ function icCreateObject(comp, parentObj,properties){
     console.log("createObject:", comp.errorString());
     return null;
 }
+
+function u16TOs16(unsign16){
+    if(unsign16 >32767)
+        return unsign16-65536;
+    else
+        return unsign16;
+}

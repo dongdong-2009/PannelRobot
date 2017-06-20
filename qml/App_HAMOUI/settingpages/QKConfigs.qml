@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "../configs/AxisDefine.js" as AxisDefine
 import "QKInfo.js" as QKInfo
+import "../../utils/utils.js" as Utils
 
 Item {
     id: root
@@ -615,6 +616,7 @@ Item {
                         height: parent.height
                         width: paraSubView.tableMargin[2]
                         text: wVal
+                        min: (addr==24||addr==48||addr==49||addr==59||addr==90||addr==119)?-100000:0
                         onInputClicked: {
                             paraSubView.currentIndex = index;
                         }
@@ -1026,9 +1028,10 @@ Item {
 
         Timer{
             id:queryTimer
-            interval: 300;running: visible;repeat: true
+            property variant oldAlarmStatus: [0,0,0,0]
+            interval: 30;running: visible;repeat: true
             onTriggered: {
-                var i,j;
+                var i,j,tmpArray = [0,0,0,0];
                 if(rE2promBtn.isBeginReadEeprom){
                     var isDataReady = panelRobotController.getQkEepromConfigValue(254);
                     var toSendID=0;
@@ -1049,6 +1052,7 @@ Item {
                     }
                     else{
                         var axisStatus = 0,alarmStatus = 0;
+                        tmpArray = oldAlarmStatus;
                         for(i=0;i<4;i++){
                             alarmStatus = panelRobotController.getQkStatusConfigValue(4+i);
                             axisStatus = panelRobotController.getQkStatusConfigValue(8+i);
@@ -1063,10 +1067,14 @@ Item {
                             else{
                                 statusDisply.itemAt(i).state = "alarm";
                             }
-                            for(j=0;j<16;++j){
-                                statusPage.subItems[i].get(j).alarmVal = (alarmStatus>>j)&0x01;
+                            if(tmpArray[i] != alarmStatus){
+                                tmpArray[i] = alarmStatus;
+                                for(j=0;j<16;++j){
+                                    statusPage.subItems[i].get(j).alarmVal = (alarmStatus>>j)&0x01;
+                                }
                             }
                         }
+                        oldAlarmStatus = tmpArray;
                         panelRobotController.readMultipleQkStatus((1<<2)+0,8);
                     }
                 }
@@ -1076,33 +1084,76 @@ Item {
 
         function onReadEepromFinished(){
             console.log("ReadFinish");
-            var i,j,toRefreshID=0,toRefreshAddr;
+            var i,j,num,toRefreshID=0,toRefreshAddr,qkRead = [];
             var tmpData = [];
             for(i=0;i<9;++i){
-                toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[0].get(i).addr;
-                dataPage.subItems[0].get(i).rVal = panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+                toRefreshAddr = (toRefreshID<<8) + 0 + i;
+                qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
+                num = i;
+                if(QKInfo.oldQkRead[num] != qkRead[num]){
+                    QKInfo.oldQkRead[num] = qkRead[num];
+                    dataPage.subItems[0].get(i).rVal = qkRead[num];
+                }
             }
 
             for(j=0;j<4;++j){
                 for(i=0;i<16;++i){
-                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+1].get(i).addr;
-                   dataPage.subItems[5*j+1].get(i).rVal = panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+                   toRefreshAddr = (toRefreshID<<8) + 16 + i;
+                   if(i==8)
+                       qkRead.push(Utils.u16TOs16(panelRobotController.getQkEepromConfigValue(toRefreshAddr)));
+                   else
+                       qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
+                   num = j*67+i+9;
+                   if(QKInfo.oldQkRead[num] != qkRead[num]){
+                        QKInfo.oldQkRead[num] = qkRead[num];
+                        dataPage.subItems[5*j+1].get(i).rVal = qkRead[num];
+                   }
                 }
                 for(i=0;i<25;++i){
-                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+2].get(i).addr;
-                   dataPage.subItems[5*j+2].get(i).rVal = panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+                   toRefreshAddr = (toRefreshID<<8) + 48 + i;
+                   if(i==0 || i==1 || i==11)
+                        qkRead.push(Utils.u16TOs16(panelRobotController.getQkEepromConfigValue(toRefreshAddr)));
+                   else
+                        qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
+                   num = j*67+i+9+16;
+                   if(QKInfo.oldQkRead[num] != qkRead[num]){
+                        QKInfo.oldQkRead[num] = qkRead[num];
+                        dataPage.subItems[5*j+2].get(i).rVal = qkRead[num];
+                   }
                 }
                 for(i=0;i<16;++i){
-                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+3].get(i).addr;
-                   dataPage.subItems[5*j+3].get(i).rVal = panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+                   toRefreshAddr = (toRefreshID<<8) + 80 + i;
+                   if(i==10)
+                        qkRead.push(Utils.u16TOs16(panelRobotController.getQkEepromConfigValue(toRefreshAddr)));
+                   else
+                        qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
+                   num = j*67+i+9+16+25;
+                   if(QKInfo.oldQkRead[num] != qkRead[num]){
+                        QKInfo.oldQkRead[num] = qkRead[num];
+                        dataPage.subItems[5*j+3].get(i).rVal = qkRead[num];
+                   }
                 }
                 for(i=0;i<10;++i){
-                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+4].get(i).addr;
-                   dataPage.subItems[5*j+4].get(i).rVal = panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+                   toRefreshAddr = (toRefreshID<<8) + 112 + i;
+                   if(i==7){
+                        qkRead.push(Utils.u16TOs16(panelRobotController.getQkEepromConfigValue(toRefreshAddr)));
+                   }
+                   else
+                        qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
+                   num = j*67+i+9+16+25+16;
+                   if(QKInfo.oldQkRead[num] != qkRead[num]){
+                        QKInfo.oldQkRead[num] = qkRead[num];
+                        dataPage.subItems[5*j+4].get(i).rVal = qkRead[num];
+                   }
                 }
                 for(i=0;i<6;++i){
-                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+5].get(i).addr;
-                   dataPage.subItems[5*j+5].get(i).rVal = panelRobotController.getQkEepromConfigValue(toRefreshAddr);
+                   toRefreshAddr = (toRefreshID<<8) + 177 + i;
+                   qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
+                   num = j*67+i+9+16+25+16+10;
+                   if(QKInfo.oldQkRead[num] != qkRead[num]){
+                        QKInfo.oldQkRead[num] = qkRead[num];
+                        dataPage.subItems[5*j+5].get(i).rVal = qkRead[num];
+                   }
                 }
                 toRefreshID ++;
             }

@@ -96,7 +96,7 @@ Item {
                 Column{
                     id:funcBtnArea
                     y:5
-                    height:parent.height/3-15
+                    height:parent.height/3 + 20
                     width: parent.width
                     spacing: 10
                     ICButton{
@@ -213,6 +213,42 @@ Item {
                                 toSendID ++;
                             }
                             tipBox.hide();
+                        }
+                    }
+                    ICButton{
+                        id:wValToRVal
+                        height: paraConfigBtn.height
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        text: qsTr("w2r")
+                        onButtonClicked: {
+                            var toDisplay=[];
+                            var cm = paraSubView.model;
+                            paraSubView.model = null;
+                            if(QKInfo.oldQkRead.length ==301){
+                                toDisplay = QKInfo.oldQkRead.slice(0);
+                                var i,j;
+                                for(i=0;i<9;++i){
+                                   dataPage.subItems[0].setProperty(i,"wVal",toDisplay.shift());
+                                }
+                                for(j=0;j<4;++j){
+                                    for(i=0;i<16;++i){
+                                        dataPage.subItems[5*j+1].setProperty(i,"wVal",toDisplay.shift());
+                                    }
+                                    for(i=0;i<25;++i){
+                                        dataPage.subItems[5*j+2].setProperty(i,"wVal",toDisplay.shift());
+                                    }
+                                    for(i=0;i<16;++i){
+                                        dataPage.subItems[5*j+3].setProperty(i,"wVal",toDisplay.shift());
+                                    }
+                                    for(i=0;i<10;++i){
+                                        dataPage.subItems[5*j+4].setProperty(i,"wVal",toDisplay.shift());
+                                    }
+                                    for(i=0;i<6;++i){
+                                        dataPage.subItems[5*j+5].setProperty(i,"wVal",toDisplay.shift());
+                                    }
+                                }
+                            }
+                            paraSubView.model = cm;
                         }
                     }
                 }
@@ -629,6 +665,7 @@ Item {
                             paraSubView.currentIndex = index;
                         }
                         onEditFinished: {
+                            console.log("INI");
                             paraSubView.model.setProperty(index,"wVal",parseInt(text));
                             var toSendID = 0;
                             if(paraMainView.currentIndex == 0)toSendID =0;
@@ -663,7 +700,8 @@ Item {
 //                    }
                 }
                 onCurrentItemChanged: {
-                    descText.text = model.get(currentIndex).desc;
+                    if(model != null)
+                        descText.text = model.get(currentIndex).desc;
                 }
             }
         }
@@ -1092,6 +1130,8 @@ Item {
                     tip.runningTip(qsTr("Restoring..."));
                     var backupName = backuViews.model.get(backuViews.currentIndex).name;
                     var mode = local.isChecked ? 0 : 1;
+                    var cm = paraSubView.model;
+                    paraSubView.model = null;
                     var toDisplay = JSON.parse(panelRobotController.restoreQKBackup(backupName,mode));
                     var i,j;
                     for(i=0;i<9;++i){
@@ -1114,6 +1154,7 @@ Item {
                             dataPage.subItems[5*j+5].get(i).wVal = toDisplay.shift();
                         }
                     }
+                    paraSubView.model = cm;
                     tip.hide();
                 }
             }
@@ -1229,9 +1270,7 @@ Item {
                                 tip.runningTip(qsTr("Exporting..."))
                                 var backupName = backuViews.model.get(backuViews.currentIndex).name;
                                 ret = panelRobotController.exportQKBackup(backupName);
-                                ret = 0;
                                 tip.hide();
-
                                 if(ret !== 0){
                                     tip.warning(qsTr("Export fail! Err" + ret), qsTr("OK"));
                                 }else{
@@ -1323,7 +1362,7 @@ Item {
                        qkRead.push(Utils.u16TOs16(panelRobotController.getQkEepromConfigValue(toRefreshAddr)));
                    else
                        qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
-                   num = j*67+i+9;
+                   num = j*73+i+9;
                    if(QKInfo.oldQkRead[num] != qkRead[num]){
                         QKInfo.oldQkRead[num] = qkRead[num];
                         dataPage.subItems[5*j+1].get(i).rVal = qkRead[num];
@@ -1335,7 +1374,7 @@ Item {
                         qkRead.push(Utils.u16TOs16(panelRobotController.getQkEepromConfigValue(toRefreshAddr)));
                    else
                         qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
-                   num = j*67+i+9+16;
+                   num = j*73+i+9+16;
                    if(QKInfo.oldQkRead[num] != qkRead[num]){
                         QKInfo.oldQkRead[num] = qkRead[num];
                         dataPage.subItems[5*j+2].get(i).rVal = qkRead[num];
@@ -1347,7 +1386,7 @@ Item {
                         qkRead.push(Utils.u16TOs16(panelRobotController.getQkEepromConfigValue(toRefreshAddr)));
                    else
                         qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
-                   num = j*67+i+9+16+25;
+                   num = j*73+i+9+16+25;
                    if(QKInfo.oldQkRead[num] != qkRead[num]){
                         QKInfo.oldQkRead[num] = qkRead[num];
                         dataPage.subItems[5*j+3].get(i).rVal = qkRead[num];
@@ -1360,7 +1399,7 @@ Item {
                    }
                    else
                         qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
-                   num = j*67+i+9+16+25+16;
+                   num = j*73+i+9+16+25+16;
                    if(QKInfo.oldQkRead[num] != qkRead[num]){
                         QKInfo.oldQkRead[num] = qkRead[num];
                         dataPage.subItems[5*j+4].get(i).rVal = qkRead[num];
@@ -1369,7 +1408,7 @@ Item {
                 for(i=0;i<6;++i){
                    toRefreshAddr = (toRefreshID<<8) + 177 + i;
                    qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
-                   num = j*67+i+9+16+25+16+10;
+                   num = j*73+i+9+16+25+16+10;
                    if(QKInfo.oldQkRead[num] != qkRead[num]){
                         QKInfo.oldQkRead[num] = qkRead[num];
                         dataPage.subItems[5*j+5].get(i).rVal = qkRead[num];

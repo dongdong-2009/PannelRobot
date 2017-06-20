@@ -99,4 +99,3 @@ var qkStatusInfo =
 ];
 
 var oldQkRead = [];
-var oldQkWrite = [];

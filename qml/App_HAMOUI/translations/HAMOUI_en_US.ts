@@ -6090,331 +6090,431 @@ please chose!</source>
 <context>
     <name>QKConfigs</name>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="24"/>
+        <location filename="../settingpages/QKConfigs.qml" line="26"/>
         <source>para page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="30"/>
+        <location filename="../settingpages/QKConfigs.qml" line="32"/>
         <source>status page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="98"/>
+        <location filename="../settingpages/QKConfigs.qml" line="106"/>
         <source>para config</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="150"/>
+        <location filename="../settingpages/QKConfigs.qml" line="158"/>
         <source>read e2prom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="163"/>
+        <location filename="../settingpages/QKConfigs.qml" line="171"/>
         <source>write e2prom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="222"/>
+        <location filename="../settingpages/QKConfigs.qml" line="263"/>
         <source>common ctrl para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="224"/>
-        <location filename="../settingpages/QKConfigs.qml" line="230"/>
-        <location filename="../settingpages/QKConfigs.qml" line="236"/>
-        <location filename="../settingpages/QKConfigs.qml" line="242"/>
+        <location filename="../settingpages/QKConfigs.qml" line="265"/>
+        <location filename="../settingpages/QKConfigs.qml" line="271"/>
+        <location filename="../settingpages/QKConfigs.qml" line="277"/>
+        <location filename="../settingpages/QKConfigs.qml" line="283"/>
         <source>distributed para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="225"/>
-        <location filename="../settingpages/QKConfigs.qml" line="231"/>
-        <location filename="../settingpages/QKConfigs.qml" line="237"/>
-        <location filename="../settingpages/QKConfigs.qml" line="243"/>
+        <location filename="../settingpages/QKConfigs.qml" line="266"/>
+        <location filename="../settingpages/QKConfigs.qml" line="272"/>
+        <location filename="../settingpages/QKConfigs.qml" line="278"/>
+        <location filename="../settingpages/QKConfigs.qml" line="284"/>
         <source>current loop para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="226"/>
-        <location filename="../settingpages/QKConfigs.qml" line="232"/>
-        <location filename="../settingpages/QKConfigs.qml" line="238"/>
-        <location filename="../settingpages/QKConfigs.qml" line="244"/>
+        <location filename="../settingpages/QKConfigs.qml" line="267"/>
+        <location filename="../settingpages/QKConfigs.qml" line="273"/>
+        <location filename="../settingpages/QKConfigs.qml" line="279"/>
+        <location filename="../settingpages/QKConfigs.qml" line="285"/>
         <source>speed loop para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="227"/>
-        <location filename="../settingpages/QKConfigs.qml" line="233"/>
-        <location filename="../settingpages/QKConfigs.qml" line="239"/>
-        <location filename="../settingpages/QKConfigs.qml" line="245"/>
+        <location filename="../settingpages/QKConfigs.qml" line="268"/>
+        <location filename="../settingpages/QKConfigs.qml" line="274"/>
+        <location filename="../settingpages/QKConfigs.qml" line="280"/>
+        <location filename="../settingpages/QKConfigs.qml" line="286"/>
         <source>position ctrl para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="228"/>
-        <location filename="../settingpages/QKConfigs.qml" line="234"/>
-        <location filename="../settingpages/QKConfigs.qml" line="240"/>
-        <location filename="../settingpages/QKConfigs.qml" line="246"/>
+        <location filename="../settingpages/QKConfigs.qml" line="269"/>
+        <location filename="../settingpages/QKConfigs.qml" line="275"/>
+        <location filename="../settingpages/QKConfigs.qml" line="281"/>
+        <location filename="../settingpages/QKConfigs.qml" line="287"/>
         <source>Initial angle para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="300"/>
+        <location filename="../settingpages/QKConfigs.qml" line="341"/>
         <source>para name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="307"/>
+        <location filename="../settingpages/QKConfigs.qml" line="348"/>
         <source>addr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="314"/>
+        <location filename="../settingpages/QKConfigs.qml" line="355"/>
         <source>write val</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="321"/>
+        <location filename="../settingpages/QKConfigs.qml" line="362"/>
         <source>read val</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="329"/>
-        <location filename="../settingpages/QKConfigs.qml" line="789"/>
+        <location filename="../settingpages/QKConfigs.qml" line="370"/>
+        <location filename="../settingpages/QKConfigs.qml" line="829"/>
         <source>describe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="708"/>
-        <location filename="../settingpages/QKConfigs.qml" line="709"/>
-        <location filename="../settingpages/QKConfigs.qml" line="710"/>
-        <location filename="../settingpages/QKConfigs.qml" line="711"/>
+        <location filename="../settingpages/QKConfigs.qml" line="748"/>
+        <location filename="../settingpages/QKConfigs.qml" line="749"/>
+        <location filename="../settingpages/QKConfigs.qml" line="750"/>
+        <location filename="../settingpages/QKConfigs.qml" line="751"/>
         <source>alarm para</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="682"/>
+        <location filename="../settingpages/QKConfigs.qml" line="722"/>
         <source>refresh en</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="689"/>
+        <location filename="../settingpages/QKConfigs.qml" line="729"/>
         <source>clear alarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="773"/>
+        <location filename="../settingpages/QKConfigs.qml" line="813"/>
         <source>alarm name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="780"/>
+        <location filename="../settingpages/QKConfigs.qml" line="820"/>
         <source>alarm val</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="987"/>
+        <location filename="../settingpages/QKConfigs.qml" line="1027"/>
         <source>inStop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="992"/>
+        <location filename="../settingpages/QKConfigs.qml" line="1032"/>
         <source>inRunning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="997"/>
+        <location filename="../settingpages/QKConfigs.qml" line="1037"/>
         <source>inAlarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="224"/>
-        <location filename="../settingpages/QKConfigs.qml" line="225"/>
-        <location filename="../settingpages/QKConfigs.qml" line="226"/>
-        <location filename="../settingpages/QKConfigs.qml" line="227"/>
-        <location filename="../settingpages/QKConfigs.qml" line="228"/>
-        <location filename="../settingpages/QKConfigs.qml" line="230"/>
-        <location filename="../settingpages/QKConfigs.qml" line="231"/>
-        <location filename="../settingpages/QKConfigs.qml" line="232"/>
-        <location filename="../settingpages/QKConfigs.qml" line="233"/>
-        <location filename="../settingpages/QKConfigs.qml" line="234"/>
-        <location filename="../settingpages/QKConfigs.qml" line="236"/>
-        <location filename="../settingpages/QKConfigs.qml" line="237"/>
-        <location filename="../settingpages/QKConfigs.qml" line="238"/>
-        <location filename="../settingpages/QKConfigs.qml" line="239"/>
-        <location filename="../settingpages/QKConfigs.qml" line="240"/>
-        <location filename="../settingpages/QKConfigs.qml" line="242"/>
-        <location filename="../settingpages/QKConfigs.qml" line="243"/>
-        <location filename="../settingpages/QKConfigs.qml" line="244"/>
-        <location filename="../settingpages/QKConfigs.qml" line="245"/>
-        <location filename="../settingpages/QKConfigs.qml" line="246"/>
-        <location filename="../settingpages/QKConfigs.qml" line="708"/>
-        <location filename="../settingpages/QKConfigs.qml" line="709"/>
-        <location filename="../settingpages/QKConfigs.qml" line="710"/>
-        <location filename="../settingpages/QKConfigs.qml" line="711"/>
-        <location filename="../settingpages/QKConfigs.qml" line="1014"/>
+        <location filename="../settingpages/QKConfigs.qml" line="265"/>
+        <location filename="../settingpages/QKConfigs.qml" line="266"/>
+        <location filename="../settingpages/QKConfigs.qml" line="267"/>
+        <location filename="../settingpages/QKConfigs.qml" line="268"/>
+        <location filename="../settingpages/QKConfigs.qml" line="269"/>
+        <location filename="../settingpages/QKConfigs.qml" line="271"/>
+        <location filename="../settingpages/QKConfigs.qml" line="272"/>
+        <location filename="../settingpages/QKConfigs.qml" line="273"/>
+        <location filename="../settingpages/QKConfigs.qml" line="274"/>
+        <location filename="../settingpages/QKConfigs.qml" line="275"/>
+        <location filename="../settingpages/QKConfigs.qml" line="277"/>
+        <location filename="../settingpages/QKConfigs.qml" line="278"/>
+        <location filename="../settingpages/QKConfigs.qml" line="279"/>
+        <location filename="../settingpages/QKConfigs.qml" line="280"/>
+        <location filename="../settingpages/QKConfigs.qml" line="281"/>
+        <location filename="../settingpages/QKConfigs.qml" line="283"/>
+        <location filename="../settingpages/QKConfigs.qml" line="284"/>
+        <location filename="../settingpages/QKConfigs.qml" line="285"/>
+        <location filename="../settingpages/QKConfigs.qml" line="286"/>
+        <location filename="../settingpages/QKConfigs.qml" line="287"/>
+        <location filename="../settingpages/QKConfigs.qml" line="748"/>
+        <location filename="../settingpages/QKConfigs.qml" line="749"/>
+        <location filename="../settingpages/QKConfigs.qml" line="750"/>
+        <location filename="../settingpages/QKConfigs.qml" line="751"/>
+        <location filename="../settingpages/QKConfigs.qml" line="1054"/>
         <source>axis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="100"/>
+        <location filename="../settingpages/QKConfigs.qml" line="38"/>
+        <source>set page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="108"/>
         <source>para config...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="100"/>
-        <location filename="../settingpages/QKConfigs.qml" line="152"/>
-        <location filename="../settingpages/QKConfigs.qml" line="165"/>
+        <location filename="../settingpages/QKConfigs.qml" line="108"/>
+        <location filename="../settingpages/QKConfigs.qml" line="160"/>
+        <location filename="../settingpages/QKConfigs.qml" line="173"/>
         <source>Get it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="152"/>
+        <location filename="../settingpages/QKConfigs.qml" line="160"/>
         <source>Eeprom reading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="165"/>
+        <location filename="../settingpages/QKConfigs.qml" line="173"/>
         <source>Eeprom config...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="810"/>
+        <location filename="../settingpages/QKConfigs.qml" line="222"/>
+        <source>w2r</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="850"/>
         <source>0- no fault, 1- fault</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="815"/>
-        <location filename="../settingpages/QKConfigs.qml" line="836"/>
-        <location filename="../settingpages/QKConfigs.qml" line="857"/>
-        <location filename="../settingpages/QKConfigs.qml" line="878"/>
+        <location filename="../settingpages/QKConfigs.qml" line="855"/>
+        <location filename="../settingpages/QKConfigs.qml" line="876"/>
+        <location filename="../settingpages/QKConfigs.qml" line="897"/>
+        <location filename="../settingpages/QKConfigs.qml" line="918"/>
         <source>InitFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="816"/>
-        <location filename="../settingpages/QKConfigs.qml" line="837"/>
-        <location filename="../settingpages/QKConfigs.qml" line="858"/>
-        <location filename="../settingpages/QKConfigs.qml" line="879"/>
+        <location filename="../settingpages/QKConfigs.qml" line="856"/>
+        <location filename="../settingpages/QKConfigs.qml" line="877"/>
+        <location filename="../settingpages/QKConfigs.qml" line="898"/>
+        <location filename="../settingpages/QKConfigs.qml" line="919"/>
         <source>EepromFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="817"/>
-        <location filename="../settingpages/QKConfigs.qml" line="838"/>
-        <location filename="../settingpages/QKConfigs.qml" line="859"/>
-        <location filename="../settingpages/QKConfigs.qml" line="880"/>
+        <location filename="../settingpages/QKConfigs.qml" line="857"/>
+        <location filename="../settingpages/QKConfigs.qml" line="878"/>
+        <location filename="../settingpages/QKConfigs.qml" line="899"/>
+        <location filename="../settingpages/QKConfigs.qml" line="920"/>
         <source>AdcFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="818"/>
-        <location filename="../settingpages/QKConfigs.qml" line="839"/>
-        <location filename="../settingpages/QKConfigs.qml" line="860"/>
-        <location filename="../settingpages/QKConfigs.qml" line="881"/>
+        <location filename="../settingpages/QKConfigs.qml" line="858"/>
+        <location filename="../settingpages/QKConfigs.qml" line="879"/>
+        <location filename="../settingpages/QKConfigs.qml" line="900"/>
+        <location filename="../settingpages/QKConfigs.qml" line="921"/>
         <source>ExecTmFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="819"/>
-        <location filename="../settingpages/QKConfigs.qml" line="840"/>
-        <location filename="../settingpages/QKConfigs.qml" line="861"/>
-        <location filename="../settingpages/QKConfigs.qml" line="882"/>
+        <location filename="../settingpages/QKConfigs.qml" line="859"/>
+        <location filename="../settingpages/QKConfigs.qml" line="880"/>
+        <location filename="../settingpages/QKConfigs.qml" line="901"/>
+        <location filename="../settingpages/QKConfigs.qml" line="922"/>
         <source>OverTempFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="820"/>
-        <location filename="../settingpages/QKConfigs.qml" line="841"/>
-        <location filename="../settingpages/QKConfigs.qml" line="862"/>
-        <location filename="../settingpages/QKConfigs.qml" line="883"/>
+        <location filename="../settingpages/QKConfigs.qml" line="860"/>
+        <location filename="../settingpages/QKConfigs.qml" line="881"/>
+        <location filename="../settingpages/QKConfigs.qml" line="902"/>
+        <location filename="../settingpages/QKConfigs.qml" line="923"/>
         <source>OvFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="821"/>
-        <location filename="../settingpages/QKConfigs.qml" line="842"/>
-        <location filename="../settingpages/QKConfigs.qml" line="863"/>
-        <location filename="../settingpages/QKConfigs.qml" line="884"/>
+        <location filename="../settingpages/QKConfigs.qml" line="861"/>
+        <location filename="../settingpages/QKConfigs.qml" line="882"/>
+        <location filename="../settingpages/QKConfigs.qml" line="903"/>
+        <location filename="../settingpages/QKConfigs.qml" line="924"/>
         <source>LvFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="822"/>
-        <location filename="../settingpages/QKConfigs.qml" line="843"/>
-        <location filename="../settingpages/QKConfigs.qml" line="864"/>
-        <location filename="../settingpages/QKConfigs.qml" line="885"/>
+        <location filename="../settingpages/QKConfigs.qml" line="862"/>
+        <location filename="../settingpages/QKConfigs.qml" line="883"/>
+        <location filename="../settingpages/QKConfigs.qml" line="904"/>
+        <location filename="../settingpages/QKConfigs.qml" line="925"/>
         <source>MainPowerOff</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="823"/>
-        <location filename="../settingpages/QKConfigs.qml" line="844"/>
-        <location filename="../settingpages/QKConfigs.qml" line="865"/>
-        <location filename="../settingpages/QKConfigs.qml" line="886"/>
+        <location filename="../settingpages/QKConfigs.qml" line="863"/>
+        <location filename="../settingpages/QKConfigs.qml" line="884"/>
+        <location filename="../settingpages/QKConfigs.qml" line="905"/>
+        <location filename="../settingpages/QKConfigs.qml" line="926"/>
         <source>GateKillFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="824"/>
-        <location filename="../settingpages/QKConfigs.qml" line="845"/>
-        <location filename="../settingpages/QKConfigs.qml" line="866"/>
-        <location filename="../settingpages/QKConfigs.qml" line="887"/>
+        <location filename="../settingpages/QKConfigs.qml" line="864"/>
+        <location filename="../settingpages/QKConfigs.qml" line="885"/>
+        <location filename="../settingpages/QKConfigs.qml" line="906"/>
+        <location filename="../settingpages/QKConfigs.qml" line="927"/>
         <source>OvrTempFlt2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="825"/>
-        <location filename="../settingpages/QKConfigs.qml" line="846"/>
-        <location filename="../settingpages/QKConfigs.qml" line="867"/>
-        <location filename="../settingpages/QKConfigs.qml" line="888"/>
+        <location filename="../settingpages/QKConfigs.qml" line="865"/>
+        <location filename="../settingpages/QKConfigs.qml" line="886"/>
+        <location filename="../settingpages/QKConfigs.qml" line="907"/>
+        <location filename="../settingpages/QKConfigs.qml" line="928"/>
         <source>OvrLdFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="826"/>
-        <location filename="../settingpages/QKConfigs.qml" line="847"/>
-        <location filename="../settingpages/QKConfigs.qml" line="868"/>
-        <location filename="../settingpages/QKConfigs.qml" line="889"/>
+        <location filename="../settingpages/QKConfigs.qml" line="866"/>
+        <location filename="../settingpages/QKConfigs.qml" line="887"/>
+        <location filename="../settingpages/QKConfigs.qml" line="908"/>
+        <location filename="../settingpages/QKConfigs.qml" line="929"/>
         <source>OvrSpdFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="827"/>
-        <location filename="../settingpages/QKConfigs.qml" line="848"/>
-        <location filename="../settingpages/QKConfigs.qml" line="869"/>
-        <location filename="../settingpages/QKConfigs.qml" line="890"/>
+        <location filename="../settingpages/QKConfigs.qml" line="867"/>
+        <location filename="../settingpages/QKConfigs.qml" line="888"/>
+        <location filename="../settingpages/QKConfigs.qml" line="909"/>
+        <location filename="../settingpages/QKConfigs.qml" line="930"/>
         <source>OvrFrqFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="828"/>
-        <location filename="../settingpages/QKConfigs.qml" line="849"/>
-        <location filename="../settingpages/QKConfigs.qml" line="870"/>
-        <location filename="../settingpages/QKConfigs.qml" line="891"/>
+        <location filename="../settingpages/QKConfigs.qml" line="868"/>
+        <location filename="../settingpages/QKConfigs.qml" line="889"/>
+        <location filename="../settingpages/QKConfigs.qml" line="910"/>
+        <location filename="../settingpages/QKConfigs.qml" line="931"/>
         <source>PosErrOvrFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="829"/>
-        <location filename="../settingpages/QKConfigs.qml" line="850"/>
-        <location filename="../settingpages/QKConfigs.qml" line="871"/>
-        <location filename="../settingpages/QKConfigs.qml" line="892"/>
+        <location filename="../settingpages/QKConfigs.qml" line="869"/>
+        <location filename="../settingpages/QKConfigs.qml" line="890"/>
+        <location filename="../settingpages/QKConfigs.qml" line="911"/>
+        <location filename="../settingpages/QKConfigs.qml" line="932"/>
         <source>MtrEncFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="830"/>
-        <location filename="../settingpages/QKConfigs.qml" line="851"/>
-        <location filename="../settingpages/QKConfigs.qml" line="872"/>
-        <location filename="../settingpages/QKConfigs.qml" line="893"/>
+        <location filename="../settingpages/QKConfigs.qml" line="870"/>
+        <location filename="../settingpages/QKConfigs.qml" line="891"/>
+        <location filename="../settingpages/QKConfigs.qml" line="912"/>
+        <location filename="../settingpages/QKConfigs.qml" line="933"/>
         <source>OvrCrntFlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="1002"/>
+        <location filename="../settingpages/QKConfigs.qml" line="1042"/>
         <source>inNoRefresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1077"/>
+        <source>Backup...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1081"/>
+        <source>name must be word number or underline
+ and underline begin is not allowed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1081"/>
+        <location filename="../settingpages/QKConfigs.qml" line="1239"/>
+        <location filename="../settingpages/QKConfigs.qml" line="1269"/>
+        <location filename="../settingpages/QKConfigs.qml" line="1271"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1125"/>
+        <source>Restoring...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1163"/>
+        <source>Local</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1168"/>
+        <source>U Disk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1224"/>
+        <source>Backup Current</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1227"/>
+        <source>Please input the backup name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1228"/>
+        <source>Backup Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1230"/>
+        <source>Ok</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1230"/>
+        <location filename="../settingpages/QKConfigs.qml" line="1239"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1236"/>
+        <source>Restore Selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1239"/>
+        <source>Are you sure to restore this backup?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1245"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1257"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1262"/>
+        <source>Exporting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/QKConfigs.qml" line="1271"/>
+        <source>Export successfully!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -12,6 +12,7 @@ import "../configs/AxisDefine.js" as AxisDefine
 Item {
     id:container
     property variant counters: []
+    property int old_mD: 0
     function toHcAddr(addr){
         return (parseInt(0)<<5) | (parseInt(32)<<10) | (parseInt(addr)<<16) | (parseInt(0)<<30) ;
     }
@@ -280,6 +281,15 @@ Item {
                                 onClicked: {
                                     var m = ioView.model;
                                     var toSetSel = !isSel;
+                                    if(m==counterModel)
+                                    {
+                                        if(toSetSel)
+                                        {
+                                            compareTarget.configValue = counters[index].target;
+                                        }
+                                        else compareTarget.configValue = 0;
+                                    }
+
                                     m.setProperty(index, "isSel", toSetSel);
                                     for(var i = 0; i < m.count; ++i){
                                         if( i !== index){

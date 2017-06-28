@@ -1346,9 +1346,20 @@ var conditionActionToStringHandler = function(actionObject, record){
         if(c == null){
             return qsTr("IF:") + qsTr("Invalid Counter");
         }
-        return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
-               cmdStrs[actionObject.compareID] + actionObject.compareTarget + " " + qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
-                + (actionObject.autoClear ? qsTr("Then clear counter") : "");
+        if(actionObject.compareID<6)
+        {
+            return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
+                   cmdStrs[actionObject.compareID] + actionObject.compareTarget + " " + qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
+                    + (actionObject.autoClear ? qsTr("Then clear counter") : "");
+        }
+        else
+        {
+            var cmdStrsForCounter = qsTr("larger Equal Than Taarget");
+            if(actionObject.compareID >6)cmdStrsForCounter=qsTr("less Than Taarget");
+            return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
+                    cmdStrsForCounter+ qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
+                    + (actionObject.autoClear ? qsTr("Then clear counter") : "");
+        }
     }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         var leftStr,rightStr;
         if(actionObject.disType == 0){

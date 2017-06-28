@@ -585,16 +585,21 @@ Item {
                     }
                     ICComboBox{
                         id:compareID
-                        width: 50
-                        items:[">",">=","<","<=","==","!="]
-                        currentIndex: 0
+                        width: 150
+                        items:[">",">=","<","<=","==","!=",qsTr("larger Equal Than Taarget"),qsTr("less Than Taarget")]
+                        currentIndex: 6
                         visible: counter.isChecked
+                        onCurrentIndexChanged:
+                        {
+                            if(compareID.currentIndex<6)compareID.width=50;
+                            else compareID.width = 150;
+                        }
                     }
                     ICConfigEdit{
                         id:compareTarget
                         configName: qsTr("value")
                         configValue: "0"
-                        visible: counter.isChecked
+                        visible: counter.isChecked&&(compareID.currentIndex<6)
                     }
 
                     Component.onCompleted: {

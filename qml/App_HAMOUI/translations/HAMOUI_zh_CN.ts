@@ -2325,6 +2325,14 @@
         <source>value</source>
         <translation>值</translation>
     </message>
+    <message>
+        <source>larger Equal Than Taarget</source>
+        <translation>大于等于目标值</translation>
+    </message>
+    <message>
+        <source>less Than Taarget</source>
+        <translation>小于目标值</translation>
+    </message>
 </context>
 <context>
     <name>CounterActionEditor</name>
@@ -8834,6 +8842,14 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>wait input</source>
         <translation>等待输入</translation>
+    </message>
+    <message>
+        <source>larger Equal Than Taarget</source>
+        <translation>大于等于目标值</translation>
+    </message>
+    <message>
+        <source>less Than Taarget</source>
+        <translation>小于目标值</translation>
     </message>
 </context>
 <context>

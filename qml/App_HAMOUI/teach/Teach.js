@@ -6,6 +6,8 @@ Qt.include("../configs/AxisDefine.js")
 Qt.include("../configs/IODefines.js")
 Qt.include("../AlarmInfo.js")
 Qt.include("../../utils/utils.js")
+//Qt.include("../ToolCoordManager.js")
+//Qt.include("../ToolsCalibration.js")
 
 var customActions = {};
 
@@ -1344,9 +1346,20 @@ var conditionActionToStringHandler = function(actionObject, record){
         if(c == null){
             return qsTr("IF:") + qsTr("Invalid Counter");
         }
-        return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
-               cmdStrs[actionObject.compareID] + actionObject.compareTarget + " " + qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
-                + (actionObject.autoClear ? qsTr("Then clear counter") : "");
+        if(actionObject.compareID<6)
+        {
+            return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
+                   cmdStrs[actionObject.compareID] + actionObject.compareTarget + " " + qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
+                    + (actionObject.autoClear ? qsTr("Then clear counter") : "");
+        }
+        else
+        {
+            var cmdStrsForCounter = qsTr("larger Equal Than Taarget");
+            if(actionObject.compareID >6)cmdStrsForCounter=qsTr("less Than Taarget");
+            return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
+                    cmdStrsForCounter+ qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
+                    + (actionObject.autoClear ? qsTr("Then clear counter") : "");
+        }
     }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         var leftStr,rightStr;
         if(actionObject.disType == 0){
@@ -2090,8 +2103,10 @@ function Record(name, counters, stacks, variableDefs, functions){
     };
     this.programsToText = function(program){
         var ret = "";
-        var tmp;
+        var tmp,step;
         for(var i=0;i<program.length;++i){
+            step = program[i];
+            this.flagsDefine.pushFlag(currentParsingProgram, new FlagItem(step.flag, step.comment));
             if(i < 10)  tmp = "&nbsp;&nbsp;"+i;
             else if(i < 100) tmp = "&nbsp;"+i;
             else tmp = i;
@@ -2118,6 +2133,8 @@ function loadRecord(recordName, counters, stacks, variableDefs, functions){
             waitTeachInitedObjs[i].onTeachInited();
         }
     }
+//    currentRecord.coordTable = toolCoordManager;
+//    currentRecord.coordTool = toolCalibrationManager;
     waitTeachInitedObjs.length = 0;
 }
 

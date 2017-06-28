@@ -49,9 +49,10 @@ var alarmInfo = {
     24:qsTr("ALARM_FPGA_ERR"),
     25:qsTr("ALARM_ANALOG_CRC_ERR"),
     26:qsTr("ALARM_ANALOG_OVERTIME_ERR"),
-    27:qsTr("1"),
-    28:qsTr("2"),
+    27:qsTr("ALARM_USER_COORD_ERR"),
+    28:qsTr("ALARM_INTERVAL_ERR"),
     29:qsTr("ALARM_POS_STABLE_ING"),
+    30:qsTr("ALARM_NULL_COORD_ERR"),
 
 
     90:m0Name + qsTr("ALARM_Motor_ALARM_ERR"),

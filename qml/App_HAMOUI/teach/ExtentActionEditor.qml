@@ -90,6 +90,10 @@ Item {
                     text: qsTr("switchTool")
                     visible: false
                 }
+                ICCheckBox{
+                    id:rotateCatch
+                    text: qsTr("rotateCatch")
+                }
             }
         }
         onCheckedIndexChanged: {
@@ -141,6 +145,9 @@ Item {
             }
             if(switchTool.visible){
                 addPage(ExtentActionDefine.extentSwitchToolAction.editableItems.comp.createObject(configsContainer));
+            }
+            if(rotateCatch.visible){
+                addPage(ExtentActionDefine.extentRotateCatchAction.editableItems.comp.createObject(configsContainer));
             }
             currentIndex = 0;
         }

@@ -5,6 +5,9 @@ FocusScope{
     property bool isNumberOnly: false
     property bool isNeedBorder: true
     property bool isTransparent : false
+    property real min:0
+    property real max:100000
+    property int  decimal:0
     property alias inputHorizontalAlignment: input.horizontalAlignment
     property alias inputVerticalAlignment: input.verticalAlignment
     x: rectangle.x
@@ -34,7 +37,7 @@ FocusScope{
                 if(isActive){
                     var p = parent.mapToItem(null, input.x, input.y);
 
-                    virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height,isNumberOnly);
+                    virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height,min,max,decimal,isNumberOnly);
 
                     rectangle.color = "green";
                     virtualKeyboard.commit.disconnect(onCommit);

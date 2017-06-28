@@ -1540,6 +1540,18 @@ var GCodeInterpreter = {
 
 }
 
+function getValueBeforeColon(str){
+    var begin = 0;
+    var end = str.indexOf(':');
+    return str.slice(begin, end);
+}
+
+function getValueAfterColon(str){
+    var begin = str.indexOf(':')+1;
+    var end = str.length;
+    return str.slice(begin, end);
+}
+
 function parseCalibration(str){
 
     var ret = [];
@@ -1565,4 +1577,11 @@ function icCreateObject(comp, parentObj,properties){
     }
     console.log("createObject:", comp.errorString());
     return null;
+}
+
+function u16TOs16(unsign16){
+    if(unsign16 >32767)
+        return unsign16-65536;
+    else
+        return unsign16;
 }

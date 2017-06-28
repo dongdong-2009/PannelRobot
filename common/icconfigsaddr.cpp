@@ -408,8 +408,14 @@ extern  const ICAddrWrapper  s_rw_0_32_0_282(3,3,0,32,282,0,"ms");    //<目标�
 extern  const ICAddrWrapper  s_rw_0_32_0_283(3,3,0,32,283,0,"ms");    //<目标计数值目标计数值
 extern  const ICAddrWrapper  s_rw_0_32_0_284(3,3,0,32,284,0,"ms");    //<目标计数值目标计数值
 extern  const ICAddrWrapper  s_rw_0_32_0_285(3,3,0,32,285,0,"ms");    //<目标计数值目标计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_286(3,3,0,32,286,0,"ms");    //<目标计数值目标计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_287(3,3,0,32,287,0,"ms");    //<目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_2_0_286(3,3,0,2,286,0,"");   //<目标计数值can用途cana设置
+extern  const ICAddrWrapper  s_rw_2_8_0_286(3,3,2,8,286,0,"");   //<目标计数值idcana设置
+extern  const ICAddrWrapper  s_rw_10_6_0_286(3,3,10,6,286,0,"");   //<目标计数值波特率cana设置
+extern  const ICAddrWrapper  s_rw_16_16_0_286(3,3,16,16,286,0,"");   //<目标计数值预留cana设置
+extern  const ICAddrWrapper  s_rw_0_2_0_287(3,3,0,2,287,0,"");   //<目标计数值can用途canb设置
+extern  const ICAddrWrapper  s_rw_2_8_0_287(3,3,2,8,287,0,"");   //<目标计数值idcanb设置
+extern  const ICAddrWrapper  s_rw_10_6_0_287(3,3,10,6,287,0,"");   //<目标计数值波特率canb设置
+extern  const ICAddrWrapper  s_rw_16_16_0_287(3,3,16,16,287,0,"");   //<目标计数值预留canb设置
 extern  const ICAddrWrapper  s_rw_0_2_0_288(3,3,0,2,288,0,"");   //<目标计数值校验方式-0-无,1-奇校验,2-偶校验,3-错误485串口设置
 extern  const ICAddrWrapper  s_rw_2_2_0_288(3,3,2,2,288,0,"");   //<目标计数值停止位-0-1,1-1.52-2,3-错误485串口设置
 extern  const ICAddrWrapper  s_rw_4_3_0_288(3,3,4,3,288,0,"");   //<目标计数值数据位-0-7表示1-8,即实际数据位-1485串口设置

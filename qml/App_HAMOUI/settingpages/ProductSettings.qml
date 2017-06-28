@@ -1088,7 +1088,7 @@ Item {
                     border.color: "black"
                     border.width: 1
                     color: "#A0A0F0"
-                    x:400
+
                     y:0-((settingRow.height+10)*index)
                     Text {
                         x:5

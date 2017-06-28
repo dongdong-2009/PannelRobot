@@ -832,6 +832,18 @@ Rectangle {
                 panelRobotController.sendToolCalibration((temTools[i].id|(temTools[i].type<<16)),JSON.stringify(temTools[i].info));
             }
 
+            var encoderList = JSON.parse(panelRobotController.getCustomSettings("encoderSet","[]"));
+            var encoder,toSend = [];
+            for(i=0,len = encoderList.length; i < len; ++i){
+                encoder = encoderList[i];
+                if(encoder.check == true){
+                    toSend[0] = encoder.ecoderID;
+                    toSend[0]|= encoder.surface<<8;
+                    toSend[1] = encoder.p0M0;
+                    toSend[2] = encoder.p0M1;
+                    panelRobotController.sendEncoder(JSON.stringify(toSend));
+                }
+            }
             var v,isNormal=true,ret=[];
             var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
             for(i = 0, len = iosettings.length; i < len; ++i){

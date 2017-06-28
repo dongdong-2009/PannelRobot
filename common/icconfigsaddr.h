@@ -408,8 +408,14 @@ extern  const ICAddrWrapper  s_rw_0_32_0_282;    //< 18513947 目标计数值目
 extern  const ICAddrWrapper  s_rw_0_32_0_283;    //< 18579483 目标计数值目标计数值
 extern  const ICAddrWrapper  s_rw_0_32_0_284;    //< 18645019 目标计数值目标计数值
 extern  const ICAddrWrapper  s_rw_0_32_0_285;    //< 18710555 目标计数值目标计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_286;    //< 18776091 目标计数值目标计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_287;    //< 18841627 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_2_0_286;  //< 18745371 目标计数值can用途cana设置
+extern  const ICAddrWrapper  s_rw_2_8_0_286;  //< 18751579 目标计数值idcana设置
+extern  const ICAddrWrapper  s_rw_10_6_0_286;  //< 18749787 目标计数值波特率cana设置
+extern  const ICAddrWrapper  s_rw_16_16_0_286;  //< 18760219 目标计数值预留cana设置
+extern  const ICAddrWrapper  s_rw_0_2_0_287;  //< 18810907 目标计数值can用途canb设置
+extern  const ICAddrWrapper  s_rw_2_8_0_287;  //< 18817115 目标计数值idcanb设置
+extern  const ICAddrWrapper  s_rw_10_6_0_287;  //< 18815323 目标计数值波特率canb设置
+extern  const ICAddrWrapper  s_rw_16_16_0_287;  //< 18825755 目标计数值预留canb设置
 extern  const ICAddrWrapper  s_rw_0_2_0_288;  //< 18876443 目标计数值校验方式-0-无,1-奇校验,2-偶校验,3-错误485串口设置
 extern  const ICAddrWrapper  s_rw_2_2_0_288;  //< 18876507 目标计数值停止位-0-1,1-1.52-2,3-错误485串口设置
 extern  const ICAddrWrapper  s_rw_4_3_0_288;  //< 18877595 目标计数值数据位-0-7表示1-8,即实际数据位-1485串口设置

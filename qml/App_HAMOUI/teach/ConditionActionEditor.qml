@@ -12,6 +12,7 @@ import "../configs/AxisDefine.js" as AxisDefine
 Item {
     id:container
     property variant counters: []
+    property int old_mD: 0
     function toHcAddr(addr){
         return (parseInt(0)<<5) | (parseInt(32)<<10) | (parseInt(addr)<<16) | (parseInt(0)<<30) ;
     }
@@ -288,6 +289,7 @@ Item {
                                         }
                                         else compareTarget.configValue = 0;
                                     }
+
                                     m.setProperty(index, "isSel", toSetSel);
                                     for(var i = 0; i < m.count; ++i){
                                         if( i !== index){
@@ -583,16 +585,21 @@ Item {
                     }
                     ICComboBox{
                         id:compareID
-                        width: 50
-                        items:[">",">=","<","<=","==","!="]
-                        currentIndex: 0
+                        width: 150
+                        items:[">",">=","<","<=","==","!=",qsTr("larger Equal Than Taarget"),qsTr("less Than Taarget")]
+                        currentIndex: 6
                         visible: counter.isChecked
+                        onCurrentIndexChanged:
+                        {
+                            if(compareID.currentIndex<6)compareID.width=50;
+                            else compareID.width = 150;
+                        }
                     }
                     ICConfigEdit{
                         id:compareTarget
                         configName: qsTr("value")
                         configValue: "0"
-                        visible: counter.isChecked
+                        visible: counter.isChecked&&(compareID.currentIndex<6)
                     }
 
                     Component.onCompleted: {

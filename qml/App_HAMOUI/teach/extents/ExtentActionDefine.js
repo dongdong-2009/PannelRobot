@@ -2,8 +2,6 @@
 Qt.include("../../configs/AxisDefine.js")
 Qt.include("../../configs/IODefines.js")
 Qt.include("../Teach.js")
-Qt.include("../../ToolsCalibration.js")
-Qt.include("../../ToolCoordManager.js")
 
 function ActionDefineItem(name, decimal){
     this.item = name;
@@ -178,6 +176,23 @@ var extentSwitchCoordAction = {
             return qsTr("Switch Coord") + ":" +"["+ qsTr("CoordID")+actionObject.coordID+"]"+ (actionObject.coordID==0?qsTr("world coord"):toolCoordManager.getToolCoord(actionObject.coordID).name);
         },
         "actionObjectChangedHelper":function(editor, actionObject){
+        },
+        "generate":function(properties){
+            var ret = {"action":800};
+            ret.coordID = properties.coordID;
+            ret.coordName = properties.coordName;
+            return ret;
+        },
+        "getActionPropertiesHelper":function(editor){
+            var ret = {"action":800};
+            ret.coordID = editor.coordID;
+            ret.coordName = editor.coordName;
+            return ret;
+        },
+        "updateActionObjectHelper":function(editor,actionObject){
+            actionObject.action = 800;
+            actionObject.coordID = editor.coordID;
+            actionObject.coordName = editor.coordName;
         }
     };
 
@@ -460,11 +475,84 @@ var extentSwitchToolAction = {
         "canActionUsePoint": false,
         "editableItems":{"editor":Qt.createComponent("SwitchToolEditor.qml"), "itemDef":{"item":"SwitchToolEditor"}},
         "toStringHandler":function(actionObject){
-            return qsTr("Switch Tool") + ":" +"["+ qsTr("toolID")+actionObject.toolID+"]"+ (actionObject.toolID==0?qsTr("None"):toolCalibrationManager.getToolCalibration(actionObject.toolID).name);
+            return qsTr("Switch Tool") + ":" +"["+ qsTr("toolID")+actionObject.toolID+"]"+ actionObject.toolName;
         },
         "actionObjectChangedHelper":function(editor, actionObject){
+        },
+        "generate":function(properties){
+            var ret = {"action":801};
+            ret.toolID = properties.toolID;
+            ret.toolName = properties.toolName;
+            return ret;
+        },
+        "getActionPropertiesHelper":function(editor){
+            var ret = {"action":801};
+            ret.toolID = editor.toolID;
+            ret.toolName = editor.toolName;
+            return ret;
+        },
+        "updateActionObjectHelper":function(editor,actionObject){
+            actionObject.action = 801;
+            actionObject.toolID = editor.toolID;
+            actionObject.toolName = editor.toolName;
         }
     };
+var extentRotateCatchAction = {
+    "action":27,
+    "properties":[new ActionDefineItem("plane", 0),
+        new ActionDefineItem("plateNum", 0),
+        new ActionDefineItem("speed", 1),
+        new ActionDefineItem("delay", 2),
+        new ActionDefineItem("poseEn", 0),
+        new ActionDefineItem("centerPos_0", 3),
+        new ActionDefineItem("centerPos_1", 3),
+        new ActionDefineItem("centerPos_2", 3),
+        new ActionDefineItem("startPos_0", 3),
+        new ActionDefineItem("startPos_1", 3),
+        new ActionDefineItem("startPos_2", 3),
+        new ActionDefineItem("startPos_5", 3),
+    ],
+    "canTestRun":false,
+    "canActionUsePoint": false,
+    "editableItems":{"editor":Qt.createComponent("RotateCatchEditor.qml"), "itemDef":{"item":"RotateCatchEditor"}},
+    "toStringHandler":function(actionObject){
+        if(actionObject.plane == 0)
+            var myPlane = "XY";
+        else if(actionObject.plane == 1)
+            myPlane = "XZ";
+        else if(actionObject.plane == 2)
+            myPlane = "YZ";
+        return qsTr("Rotate Catch") + ":" +
+                qsTr("plane") + ":" + myPlane + "," +
+                qsTr("plateNum") + ":" + actionObject.plateNum + "," +
+                qsTr("speed") + ":" + actionObject.speed + "," +
+                qsTr("delay") + ":" + actionObject.delay + "," +
+                qsTr("centerPos") + ":" +
+                "X:" + actionObject.centerPos_0 + "," +
+                "Y:" + actionObject.centerPos_1 + "," +
+                "Z:" + actionObject.centerPos_2 + "," +
+                "\n                            " +
+                qsTr("startPos") + ":" +
+                "X:" + actionObject.startPos_0 + "," +
+                "Y:" + actionObject.startPos_1 + "," +
+                "Z:" + actionObject.startPos_2 + "," +
+                "W:" + actionObject.startPos_5
+    },
+    "actionObjectChangedHelper":function(editor, actionObject){
+        editor.plane = actionObject.plane;
+        editor.plateNum = actionObject.plateNum;
+        editor.speed = actionObject.speed;
+        editor.delay = actionObject.delay;
+        editor.poseEn = actionObject.poseEn;
+        editor.centerPos_0 = actionObject.centerPos_0;
+        editor.centerPos_1 = actionObject.centerPos_1;
+        editor.centerPos_2 = actionObject.centerPos_2;
+        editor.startPos_0 = actionObject.startPos_0;
+        editor.startPos_1 = actionObject.startPos_1;
+        editor.startPos_2 = actionObject.startPos_2;
+        editor.startPos_5 = actionObject.startPos_5;
+    }
+};
 
 
 var extentActions = [extentPENQIANGAction,
@@ -479,4 +567,5 @@ var extentActions = [extentPENQIANGAction,
                      extentIntervalOutputAction,
                      extentParabolaAction,
                      extentBarnLogicAction,
-                     extentSwitchToolAction];
+                     extentSwitchToolAction,
+                     extentRotateCatchAction];

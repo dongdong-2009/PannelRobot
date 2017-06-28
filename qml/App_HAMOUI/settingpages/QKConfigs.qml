@@ -2,16 +2,14 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "../configs/AxisDefine.js" as AxisDefine
 import "QKInfo.js" as QKInfo
+import "../../utils/utils.js" as Utils
+import "../../utils/stringhelper.js" as ICString
+
 
 Item {
     id: root
     width: parent.width
     height: parent.height
-
-    onVisibleChanged: {
-        if(!visible)
-            rE2promBtn.isBeginReadEeprom = false;
-    }
 
     ICButtonGroup{
         id:menuArea
@@ -32,6 +30,12 @@ Item {
             width: 100
             height: 32
             itemText: qsTr("status page")
+        }
+        TabMenuItem{
+            id:setPageBtn
+            width: 100
+            height: 32
+            itemText: qsTr("set page")
         }
         function onItemChanged() {
             pageContainer.setCurrentIndex(checkedIndex);
@@ -74,6 +78,17 @@ Item {
             id: dataPage
             property variant subItems:[subItems0,subItems1,subItems2,subItems3,subItems4,subItems5,subItems6,subItems7,subItems8,
                 subItems9,subItems10,subItems11,subItems12,subItems13,subItems14,subItems15,subItems16,subItems17,subItems18,subItems19,subItems20]
+            onVisibleChanged: {
+                if(!visible)
+                    rE2promBtn.isBeginReadEeprom = false;
+            }
+            ICMessageBox{
+                id: tipBox
+                x:300
+                y:120
+                z: 100
+                visible: false
+            }
             Item {
                 id: mainListArea
                 height: parent.height
@@ -81,7 +96,7 @@ Item {
                 Column{
                     id:funcBtnArea
                     y:5
-                    height:parent.height/3-15
+                    height:parent.height/3 + 20
                     width: parent.width
                     spacing: 10
                     ICButton{
@@ -90,6 +105,7 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("para config")
                         onButtonClicked: {
+                            tipBox.runningTip(qsTr("para config..."), qsTr("Get it"));
                             var i,j,toSendID=0;
                             var tmpData = [];
                             for(i=0;i<9;++i){
@@ -131,6 +147,7 @@ Item {
 
                                 toSendID ++;
                             }
+                            tipBox.hide();
                         }
                     }
                     ICButton{
@@ -140,6 +157,7 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("read e2prom")
                         onButtonClicked: {
+                            tipBox.runningTip(qsTr("Eeprom reading..."), qsTr("Get it"));
                             var tmpData = [];
                             tmpData.push(1);
                             panelRobotController.writeMultipleQkEeprom(254,1,JSON.stringify(tmpData));
@@ -152,6 +170,7 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("write e2prom")
                         onButtonClicked: {
+                            tipBox.runningTip(qsTr("Eeprom config..."), qsTr("Get it"));
                             var i,j,toSendID=0;
                             var tmpData = [];
                             for(i=0;i<9;++i){
@@ -193,6 +212,43 @@ Item {
 
                                 toSendID ++;
                             }
+                            tipBox.hide();
+                        }
+                    }
+                    ICButton{
+                        id:wValToRVal
+                        height: paraConfigBtn.height
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        text: qsTr("w2r")
+                        onButtonClicked: {
+                            var toDisplay=[];
+                            var cm = paraSubView.model;
+                            paraSubView.model = null;
+                            if(QKInfo.oldQkRead.length ==301){
+                                toDisplay = QKInfo.oldQkRead.slice(0);
+                                var i,j;
+                                for(i=0;i<9;++i){
+                                   dataPage.subItems[0].setProperty(i,"wVal",toDisplay.shift());
+                                }
+                                for(j=0;j<4;++j){
+                                    for(i=0;i<16;++i){
+                                        dataPage.subItems[5*j+1].setProperty(i,"wVal",toDisplay.shift());
+                                    }
+                                    for(i=0;i<25;++i){
+                                        dataPage.subItems[5*j+2].setProperty(i,"wVal",toDisplay.shift());
+                                    }
+                                    for(i=0;i<16;++i){
+                                        dataPage.subItems[5*j+3].setProperty(i,"wVal",toDisplay.shift());
+                                    }
+                                    for(i=0;i<10;++i){
+                                        dataPage.subItems[5*j+4].setProperty(i,"wVal",toDisplay.shift());
+                                    }
+                                    for(i=0;i<6;++i){
+                                        dataPage.subItems[5*j+5].setProperty(i,"wVal",toDisplay.shift());
+                                    }
+                                }
+                            }
+                            paraSubView.model = cm;
                         }
                     }
                 }
@@ -334,14 +390,13 @@ Item {
                 anchors.left: paraSubView.right
                 anchors.leftMargin: 2
                 width: descText.width
-                height: descText.height
-                clip: true
+                height: paraSubView.height
                 contentWidth: descText.width
-                contentHeight: descText.height+10
+                contentHeight: descText.height + 10
+                flickableDirection: Flickable.VerticalFlick
                 Text{
                     id:descText
-                    wrapMode: Text.WordWrap
-                    height: paraSubView.height
+                    wrapMode: Text.Wrap
                     width:descTextTitle.width
                 }
             }
@@ -515,7 +570,7 @@ Item {
             }
             ICListView{
                 id:paraSubView
-                property variant tableMargin: [150,80,80,80]
+                property variant tableMargin: [250,60,80,80]
                 color: "white"
                 anchors.left: leftLine2.right
                 anchors.top:titleLine.bottom
@@ -605,10 +660,12 @@ Item {
                         height: parent.height
                         width: paraSubView.tableMargin[2]
                         text: wVal
+                        min: (addr==24||addr==48||addr==49||addr==59||addr==90||addr==119)?-100000:0
                         onInputClicked: {
                             paraSubView.currentIndex = index;
                         }
                         onEditFinished: {
+                            console.log("INI");
                             paraSubView.model.setProperty(index,"wVal",parseInt(text));
                             var toSendID = 0;
                             if(paraMainView.currentIndex == 0)toSendID =0;
@@ -616,7 +673,6 @@ Item {
                             else if(paraMainView.currentIndex>5 && paraMainView.currentIndex<=10)toSendID =1;
                             else if(paraMainView.currentIndex>10 && paraMainView.currentIndex<=15)toSendID =2;
                             else if(paraMainView.currentIndex>15 && paraMainView.currentIndex<=20)toSendID =3;
-//                            console.log("addr="+((toSendID<<8)+ addr),"val="+wVal);
                             var tmpArray = [];
                             tmpArray.push(wVal);
                             panelRobotController.writeMultipleQkPara(((toSendID<<8)+addr),1,JSON.stringify(tmpArray));
@@ -639,12 +695,13 @@ Item {
                         linelong: parent.width
                         direction:"horizontal"
                     }
-                    Component.onCompleted: {
+//                    Component.onCompleted: {
 //                        wValText.textChanged.connect(wValText.onConfigChanged);
-                    }
+//                    }
                 }
                 onCurrentItemChanged: {
-                    descText.text = model.get(currentIndex).desc;
+                    if(model != null)
+                        descText.text = model.get(currentIndex).desc;
                 }
             }
         }
@@ -675,6 +732,11 @@ Item {
                         height: refreshEnBtn.height
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("clear alarm")
+                        onButtonClicked: {
+                            var tmpData = [];
+                            tmpData.push(1);
+                            panelRobotController.writeMultipleQkPara(155,1,JSON.stringify(tmpData));
+                        }
                     }
                 }
                 ICSpliteLine{
@@ -889,7 +951,7 @@ Item {
                     id:spLeftLine3
                     color: "black"
                     anchors.left: parent.left
-                    anchors.leftMargin: paraSubView.tableMargin[0]
+                    anchors.leftMargin: statusSubView.tableMargin[0]
                     direction:"verticality"
                     anchors.top: parent.top
                     anchors.topMargin: -31
@@ -900,7 +962,7 @@ Item {
                     id:spLeftLine4
                     color: "black"
                     anchors.left: spLeftLine3.right
-                    anchors.leftMargin: paraSubView.tableMargin[1]
+                    anchors.leftMargin: statusSubView.tableMargin[1]
                     direction:"verticality"
                     anchors.top: parent.top
                     anchors.topMargin: -31
@@ -978,12 +1040,12 @@ Item {
                                     name: "alarm"
                                     PropertyChanges {target: colorStatus; color:"red";}
                                     PropertyChanges {target: textStatus; text:qsTr("inAlarm");}
+                                },
+                                State {
+                                    name: "noRefresh"
+                                    PropertyChanges {target: colorStatus; color:"gray";}
+                                    PropertyChanges {target: textStatus; text:qsTr("inNoRefresh");}
                                 }
-//                                State {
-//                                    name: "noRefresh"
-//                                    PropertyChanges {target: colorStatus; color:"blue";}
-//                                    PropertyChanges {target: textStatus; text:qsTr("inNoRefresh");}
-//                                }
                             ]
                             Rectangle{
                                 id:colorStatus
@@ -1009,11 +1071,227 @@ Item {
             }
         }
 
+        Item {
+            id:setPage
+            ICMessageBox{
+                id:backupNameDialog
+                x:250
+                y:50
+                z:2
+                onAccept: {
+                    tip.runningTip(qsTr("Backup..."));
+                    var backupName = inputText;
+                    var nC = /^[A-Za-z0-9\u4E00-\u9FA5]+[A-Za-z0-9-_\u4E00-\u9FA5]*$/;
+                    if(!nC.test(backupName)){
+                        tip.warning(qsTr("name must be word number or underline\n and underline begin is not allowed"), qsTr("OK"));
+                        return;
+                    }
+                    var i,j;
+                    var tmpData = [];
+                    for(i=0;i<9;++i){
+                       tmpData.push(dataPage.subItems[0].get(i).wVal);
+                    }
+                    for(j=0;j<4;++j){
+                        for(i=0;i<16;++i){
+                           tmpData.push(dataPage.subItems[5*j+1].get(i).wVal);
+                        }
+                        for(i=0;i<25;++i){
+                           tmpData.push(dataPage.subItems[5*j+2].get(i).wVal);
+                        }
+                        for(i=0;i<16;++i){
+                           tmpData.push(dataPage.subItems[5*j+3].get(i).wVal);
+                        }
+                        for(i=0;i<10;++i){
+                           tmpData.push(dataPage.subItems[5*j+4].get(i).wVal);
+                        }
+                        for(i=0;i<6;++i){
+                           tmpData.push(dataPage.subItems[5*j+5].get(i).wVal);
+                        }
+                    }
+                    panelRobotController.backupQKBackup(backupName,JSON.stringify(tmpData));
+                    refreshDataModel();
+                    tip.hide();
+                }
+            }
+
+            ICMessageBox{
+                id:tip
+                x:250
+                y:50
+                z:3
+            }
+
+            ICMessageBox{
+                id:restoreTip
+                x:250
+                y:50
+                z:2
+                onAccept: {
+                    tip.runningTip(qsTr("Restoring..."));
+                    var backupName = backuViews.model.get(backuViews.currentIndex).name;
+                    var mode = local.isChecked ? 0 : 1;
+                    var cm = paraSubView.model;
+                    paraSubView.model = null;
+                    var toDisplay = JSON.parse(panelRobotController.restoreQKBackup(backupName,mode));
+                    var i,j;
+                    for(i=0;i<9;++i){
+                       dataPage.subItems[0].get(i).wVal = toDisplay.shift();
+                    }
+                    for(j=0;j<4;++j){
+                        for(i=0;i<16;++i){
+                            dataPage.subItems[5*j+1].get(i).wVal = toDisplay.shift();
+                        }
+                        for(i=0;i<25;++i){
+                            dataPage.subItems[5*j+2].get(i).wVal = toDisplay.shift();
+                        }
+                        for(i=0;i<16;++i){
+                            dataPage.subItems[5*j+3].get(i).wVal = toDisplay.shift();
+                        }
+                        for(i=0;i<10;++i){
+                            dataPage.subItems[5*j+4].get(i).wVal = toDisplay.shift();
+                        }
+                        for(i=0;i<6;++i){
+                            dataPage.subItems[5*j+5].get(i).wVal = toDisplay.shift();
+                        }
+                    }
+                    paraSubView.model = cm;
+                    tip.hide();
+                }
+            }
+            Column{
+                y:10
+                spacing: 10
+                ICButtonGroup{
+                    spacing: 24
+                    checkedItem: local
+                    checkedIndex: 0
+                    mustChecked: true
+                    ICCheckBox{
+                        id:local
+                        text: qsTr("Local")
+                        isChecked: true
+                    }
+                    ICCheckBox{
+                        id:uDisk
+                        text: qsTr("U Disk")
+                    }
+                    onButtonClickedItem: {
+                        refreshDataModel();
+                    }
+                }
+                Row{
+                    spacing: 12
+                    ICListView{
+                        id:backuViews
+                        width: 600
+                        height: 300
+                        isShowHint: true
+                        border.color: "black"
+                        color: "white"
+                        clip: true
+                        highlight: Rectangle {width: 596; height: 24;color: "lightsteelblue";}
+                        highlightMoveDuration:100
+                        delegate: Text {
+                            text: name
+                            width: 596
+                            height: 24
+                            verticalAlignment: Text.AlignVCenter
+                            MouseArea{
+                                anchors.fill: parent
+                                onClicked: {
+                                    backuViews.currentIndex = index;
+                                }
+                            }
+                        }
+                        ListModel{
+                            id:localBackupModel
+                            function syncModel(){
+                                localBackupModel.clear();
+                                var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanQKBackups(0)));
+                                for(var i = 0, len = backups.length; i < len; ++i){
+                                    localBackupModel.append({"name":backups[i]});
+                                }
+                            }
+                        }
+
+                        ListModel{
+                            id:uDiskBackupModel
+                            function syncModel(){
+                                uDiskBackupModel.clear();
+                                var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanQKBackups(1)));
+                                for(var i = 0, len = backups.length; i < len; ++i){
+                                    uDiskBackupModel.append({"name":backups[i]});
+                                }
+                            }
+                        }
+                    }
+                    Column{
+                        ICButton{
+                            id:newBackup
+                            width: 150
+                            text: qsTr("Backup Current")
+                            enabled: local.isChecked
+                            onButtonClicked: {
+                                backupNameDialog.showInput(qsTr("Please input the backup name"),
+                                                           qsTr("Backup Name"),
+                                                           false,
+                                                           qsTr("Ok"), qsTr("Cancel"));
+                            }
+                        }
+                        ICButton{
+                            id:restore
+                            width: newBackup.width
+                            text: qsTr("Restore Selected")
+                            onButtonClicked: {
+                                if(backuViews.currentIndex < 0) return;
+                                restoreTip.show(qsTr("Are you sure to restore this backup?"), qsTr("OK"), qsTr("Cancel"));
+                            }
+                        }
+                        ICButton{
+                            id:deleteBackup
+                            width: newBackup.width
+                            text: qsTr("Delete")
+                            onButtonClicked: {
+                                var mode = local.isChecked ? 0 : 1;
+                                var backupName = backuViews.model.get(backuViews.currentIndex).name;
+                                panelRobotController.deleteQKBackup(backupName, mode);
+                                backuViews.model.remove(backuViews.currentIndex);
+                            }
+                        }
+
+                        ICButton{
+                            id:exportOrImport
+                            width: newBackup.width
+                            text: qsTr("Export")
+                            enabled: local.isChecked
+                            onButtonClicked: {
+                                var ret = 0;
+                                if(backuViews.currentIndex < 0) return;
+                                tip.runningTip(qsTr("Exporting..."))
+                                var backupName = backuViews.model.get(backuViews.currentIndex).name;
+                                ret = panelRobotController.exportQKBackup(backupName);
+                                tip.hide();
+                                if(ret !== 0){
+                                    tip.warning(qsTr("Export fail! Err" + ret), qsTr("OK"));
+                                }else{
+                                    tip.information(qsTr("Export successfully!"), qsTr("OK"));
+                                }
+                            }
+                        }
+                    }
+                }
+                Component.onCompleted: {
+                    refreshDataModel();
+                }
+            }
+        }
+
         Timer{
             id:queryTimer
-            interval: 300;running: visible;repeat: true
+            property variant oldAlarmStatus: [0,0,0,0]
+            interval: 30;running: visible;repeat: true
             onTriggered: {
-                var i,j;
+                var i,j,tmpArray = [0,0,0,0];
                 if(rE2promBtn.isBeginReadEeprom){
                     var isDataReady = panelRobotController.getQkEepromConfigValue(254);
                     var toSendID=0;
@@ -1026,73 +1304,141 @@ Item {
                         panelRobotController.readAllQkEeprom();
                     }
                 }
-                if(refreshEnBtn.isChecked && statusPageBtn.isChecked){
-                    var axisStatus,alarmStatus;
-                    for(i=0;i<4;i++){
-//                        axisStatus = panelRobotController.getQkStatusConfigValue(4+i);
-//                        alarmStatus = panelRobotController.getQkStatusConfigValue(8+i);
-                        if(alarmStatus){
-                            statusDisply.itemAt(i).state = "alarm";
-                        }
-                        else{
-                            if((axisStatus >>3)&0x01){
-                                statusDisply.itemAt(i).state = "running";
-                            }
-                            else{
-                                statusDisply.itemAt(i).state = "stop";
-                            }
-                        }
-                        for(j=0;j<16;++j){
-                            statusPage.subItems[i].get(j).alarmVal = (axisStatus>>j)&0x01;
+                if(statusPageBtn.isChecked){
+                    if(!refreshEnBtn.isChecked || panelRobotController.currentErrNum()==9){
+                        for(i=0;i<4;i++){
+                            statusDisply.itemAt(i).state = "noRefresh";
                         }
                     }
-                    panelRobotController.readMultipleQkStatus((1<<2)+0,8);
+                    else{
+                        var axisStatus = 0,alarmStatus = 0;
+                        tmpArray = oldAlarmStatus;
+                        for(i=0;i<4;i++){
+                            alarmStatus = panelRobotController.getQkStatusConfigValue(4+i);
+                            axisStatus = panelRobotController.getQkStatusConfigValue(8+i);
+                            if(alarmStatus == 0){
+                                if(((axisStatus >>3)&0x01) == 0){
+                                    statusDisply.itemAt(i).state = "stop"
+                                }
+                                else{
+                                    statusDisply.itemAt(i).state = "running";
+                                }
+                            }
+                            else{
+                                statusDisply.itemAt(i).state = "alarm";
+                            }
+                            if(tmpArray[i] != alarmStatus){
+                                tmpArray[i] = alarmStatus;
+                                for(j=0;j<16;++j){
+                                    statusPage.subItems[i].get(j).alarmVal = (alarmStatus>>j)&0x01;
+                                }
+                            }
+                        }
+                        oldAlarmStatus = tmpArray;
+                        panelRobotController.readMultipleQkStatus((1<<2)+0,8);
+                    }
                 }
             }
         }
 
-
         function onReadEepromFinished(){
             console.log("ReadFinish");
-//            var i,j,toRefreshID=0,toRefreshAddr;
-//            var tmpData = [];
-//            for(i=0;i<9;++i){
-//                toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[0].get(i).addr;
-//                dataPage.subItems[0].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
-//            }
+            var i,j,num,toRefreshID=0,toRefreshAddr,qkRead = [];
+            var tmpData = [];
+            for(i=0;i<9;++i){
+                toRefreshAddr = (toRefreshID<<8) + 0 + i;
+                qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
+                num = i;
+                if(QKInfo.oldQkRead[num] != qkRead[num]){
+                    QKInfo.oldQkRead[num] = qkRead[num];
+                    dataPage.subItems[0].get(i).rVal = qkRead[num];
+                }
+            }
 
-//            for(j=0;j<4;++j){
-//                for(i=0;i<16;++i){
-//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+1].get(i).addr;
-//                   dataPage.subItems[5*j+1].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
-//                }
-//                for(i=0;i<25;++i){
-//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+2].get(i).addr;
-//                   dataPage.subItems[5*j+2].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
-//                }
-//                for(i=0;i<16;++i){
-//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+3].get(i).addr;
-//                   dataPage.subItems[5*j+3].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
-//                }
-//                for(i=0;i<10;++i){
-//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+4].get(i).addr;
-//                   dataPage.subItems[5*j+4].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
-//                }
-//                for(i=0;i<6;++i){
-//                   toRefreshAddr = (toRefreshID<<8) + dataPage.subItems[5*j+5].get(i).addr;
-//                   dataPage.subItems[5*j+5].get(i).rVal = 1;//panelRobotController.getQkEepromConfigValue(toRefreshAddr);
-//                }
-//                toRefreshID ++;
-//            }
+            for(j=0;j<4;++j){
+                for(i=0;i<16;++i){
+                   toRefreshAddr = (toRefreshID<<8) + 16 + i;
+                   if(i==8)
+                       qkRead.push(Utils.u16TOs16(panelRobotController.getQkEepromConfigValue(toRefreshAddr)));
+                   else
+                       qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
+                   num = j*73+i+9;
+                   if(QKInfo.oldQkRead[num] != qkRead[num]){
+                        QKInfo.oldQkRead[num] = qkRead[num];
+                        dataPage.subItems[5*j+1].get(i).rVal = qkRead[num];
+                   }
+                }
+                for(i=0;i<25;++i){
+                   toRefreshAddr = (toRefreshID<<8) + 48 + i;
+                   if(i==0 || i==1 || i==11)
+                        qkRead.push(Utils.u16TOs16(panelRobotController.getQkEepromConfigValue(toRefreshAddr)));
+                   else
+                        qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
+                   num = j*73+i+9+16;
+                   if(QKInfo.oldQkRead[num] != qkRead[num]){
+                        QKInfo.oldQkRead[num] = qkRead[num];
+                        dataPage.subItems[5*j+2].get(i).rVal = qkRead[num];
+                   }
+                }
+                for(i=0;i<16;++i){
+                   toRefreshAddr = (toRefreshID<<8) + 80 + i;
+                   if(i==10)
+                        qkRead.push(Utils.u16TOs16(panelRobotController.getQkEepromConfigValue(toRefreshAddr)));
+                   else
+                        qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
+                   num = j*73+i+9+16+25;
+                   if(QKInfo.oldQkRead[num] != qkRead[num]){
+                        QKInfo.oldQkRead[num] = qkRead[num];
+                        dataPage.subItems[5*j+3].get(i).rVal = qkRead[num];
+                   }
+                }
+                for(i=0;i<10;++i){
+                   toRefreshAddr = (toRefreshID<<8) + 112 + i;
+                   if(i==7){
+                        qkRead.push(Utils.u16TOs16(panelRobotController.getQkEepromConfigValue(toRefreshAddr)));
+                   }
+                   else
+                        qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
+                   num = j*73+i+9+16+25+16;
+                   if(QKInfo.oldQkRead[num] != qkRead[num]){
+                        QKInfo.oldQkRead[num] = qkRead[num];
+                        dataPage.subItems[5*j+4].get(i).rVal = qkRead[num];
+                   }
+                }
+                for(i=0;i<6;++i){
+                   toRefreshAddr = (toRefreshID<<8) + 177 + i;
+                   qkRead.push(panelRobotController.getQkEepromConfigValue(toRefreshAddr));
+                   num = j*73+i+9+16+25+16+10;
+                   if(QKInfo.oldQkRead[num] != qkRead[num]){
+                        QKInfo.oldQkRead[num] = qkRead[num];
+                        dataPage.subItems[5*j+5].get(i).rVal = qkRead[num];
+                   }
+                }
+                toRefreshID ++;
+            }
+            tipBox.hide();
         }
 
         Component.onCompleted: {
             pageContainer.addPage(dataPage);
             pageContainer.addPage(statusPage);
+            pageContainer.addPage(setPage);
             pageContainer.setCurrentIndex(0);
             menuArea.checkedIndexChanged.connect(menuArea.onItemChanged);
             panelRobotController.readQkEepromFinished.connect(onReadEepromFinished);
         }
+    }
+
+    function refreshDataModel(){
+        if(local.isChecked){
+            localBackupModel.syncModel();
+            backuViews.model = localBackupModel;
+        }
+        else if(uDisk.isChecked){
+            uDiskBackupModel.syncModel();
+            backuViews.model = uDiskBackupModel;
+        }
+        backuViews.currentIndex = -1;
     }
 
 //    Item {

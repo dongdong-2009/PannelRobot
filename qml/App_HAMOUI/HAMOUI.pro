@@ -11,6 +11,8 @@ teach/extents/*.qml \
 teach/extents/*.js
 }
 
+    settingpages/QKInfo.js \
+    teach/extents/RotateCatchEditor.qml
 
 
 

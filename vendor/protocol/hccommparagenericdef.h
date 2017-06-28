@@ -122,6 +122,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_31 = 31,//< 单轴手动速度独立设定切换（0：默认使用全局速度;1:使用单轴固定手动速度）：手动模式有效
     ICAddr_System_Retain_32 = 32,//<定义IOCheckToOut运行状态操作
     ICAddr_System_Retain_33 = 33,//<清除定义IOCheckToOut运行状态操作
+    ICAddr_System_Retain_34 = 34,//<编码器初始化
     ICAddr_System_Retain_35 = 35,//< 驱控四轴，主机刷新参数使能，0：关闭，1：打开
     ICAddr_System_Retain_36 = 36,
     ICAddr_System_Retain_40 = 40,//< // 自定义轴动作1 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
@@ -1999,10 +2000,16 @@ typedef union {
     };
     uint32_t d;
 }SERIAL485Setting;
+
 typedef union {
-
+    struct{
+       uint32_t useto:2; //< 类型：系统；名字：can用途；精度：0；单位：；
+       uint32_t id:8;    //< 类型：系统；名字：id；精度：0；单位：；
+       uint32_t baud:6;  //< 类型：系统；名字：波特率；精度：0；单位：；
+       uint32_t res:16;  //< 类型：系统；名字：预留；精度：0；单位：；
+    };
+    uint32_t d;
 }CANSetting;
-
 
 typedef struct {
     uint32_t elapse_tol; //<类型：系统；名字：容差设定；精度：0;单位：；
@@ -2015,7 +2022,9 @@ typedef struct {
     MotorTestSpeedStruct test_speed; //<类型：系统；名字：测试速度结构；单位：；
     SafeAreaStruct safe_area; //<类型：系统；名字：安全区设定； 单位：；
     uint32_t Reserve4[8];   //<类型：系统；名字：当前计数值；单位：ms；
-    uint32_t Reserve5[14];   //<类型：系统；名字：目标计数值；单位：ms；
+    uint32_t Reserve5[12];   //<类型：系统；名字：目标计数值；单位：ms；
+    CANSetting cana; //<类型：系统；名字：cana设置；单位：；
+    CANSetting canb; //<类型：系统；名字：canb设置；单位：；
     SERIAL485Setting serial;//<类型：系统；名字：485串口设置；单位：；
     FirstModuleSpeed  first_module_speed;
 }RESERVE0;

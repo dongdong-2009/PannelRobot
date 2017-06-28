@@ -4,6 +4,7 @@ import "configs/Keymap.js" as Keymap
 import "configs/AxisDefine.js" as AxisDefine
 import "ShareData.js" as ShareData
 import "../utils/Storage.js" as Storage
+import "../utils/utils.js" as Utils
 import "ToolCoordManager.js" as ToolCoordManager
 import "ToolsCalibration.js" as ToolsCalibrationManager
 
@@ -1098,7 +1099,7 @@ MouseArea{
                 }
             }
             onConfigValueChanged: {
-                panelRobotController.modifyConfigValue(21,parseInt(items[configValue][0]));
+                panelRobotController.modifyConfigValue(21,parseInt(Utils.getValueBeforeColon(items[configValue])));
             }
         }
         ICComboBoxConfigEdit{
@@ -1119,7 +1120,7 @@ MouseArea{
                 }
             }
             onConfigValueChanged: {
-                panelRobotController.modifyConfigValue(63,parseInt(items[configValue][0]));
+                panelRobotController.modifyConfigValue(63,parseInt(Utils.getValueBeforeColon(items[configValue])));
             }
         }
 

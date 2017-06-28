@@ -452,6 +452,7 @@ Rectangle {
                             for(var j=0;j<toTranslate.length;++j)
                             {
                                 if(j === 0){
+
                                     tmpStr = qsTr("mainProgram:<br>") + recordTmp.programsToText(toTranslate[j])+"<br>";
                                 }
                                 else{

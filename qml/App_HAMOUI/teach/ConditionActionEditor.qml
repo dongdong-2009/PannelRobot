@@ -280,6 +280,14 @@ Item {
                                 onClicked: {
                                     var m = ioView.model;
                                     var toSetSel = !isSel;
+                                    if(m == counterModel)
+                                    {
+                                        if(toSetSel)
+                                        {
+                                            compareTarget.configValue = counters[index].target;
+                                        }
+                                        else compareTarget.configValue = 0;
+                                    }
                                     m.setProperty(index, "isSel", toSetSel);
                                     for(var i = 0; i < m.count; ++i){
                                         if( i !== index){

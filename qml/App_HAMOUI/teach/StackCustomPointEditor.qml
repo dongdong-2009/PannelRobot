@@ -85,14 +85,90 @@ MouseArea{
             onGotFileContent: {
                 pointModel.clear();
                 var tMap = {};
-                var p;
-                for(var i = 0, points = JSON.parse(content), len = points.length; i < len; ++i)
+                var p,red = [],green = [],blue = [];
+                for(var j = 0, dxfpoints = JSON.parse(content); j < dxfpoints.length; j++)
+                {
+                    if(dxfpoints[j].m4 == 1){
+                        if(!red.length)
+                            red.push(dxfpoints[j]);
+                        else{
+                            for(var m = 0;m < red.length;m++){
+                                if(parseFloat(dxfpoints[j].m0) < parseFloat(red[m].m0)){
+                                    red.splice(m,0,dxfpoints[j]);
+                                    break;
+                                }
+                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(red[m].m0)){
+                                    if(parseFloat(dxfpoints[j].m1) < parseFloat(red[m].m1))
+                                        red.splice(m,0,dxfpoints[j]);
+                                    else
+                                        red.splice(m + 1,0,dxfpoints[j]);
+                                    break;
+                                }
+                                else if(m == red.length - 1){
+                                    red.splice(red.length + 1,0,dxfpoints[j]);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if(dxfpoints[j].m4 == 3){
+                        if(!green.length)
+                            green.push(dxfpoints[j]);
+                        else{
+                            for(m = 0;m < green.length;m++){
+                                if(parseFloat(dxfpoints[j].m0) < parseFloat(green[m].m0)){
+                                    green.splice(m,0,dxfpoints[j]);
+                                    break;
+                                }
+                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(green[m].m0)){
+                                    if(parseFloat(dxfpoints[j].m1) < parseFloat(green[m].m1))
+                                        green.splice(m,0,dxfpoints[j]);
+                                    else
+                                        green.splice(m + 1,0,dxfpoints[j]);
+                                    break;
+                                }
+                                else if(m == green.length - 1){
+                                    green.splice(green.length + 1,0,dxfpoints[j]);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if(dxfpoints[j].m4 == 5){
+                        if(!blue.length)
+                            blue.push(dxfpoints[j]);
+                        else{
+                            for(m = 0;m < blue.length;m++){
+                                if(parseFloat(dxfpoints[j].m0) < parseFloat(blue[m].m0)){
+                                    blue.splice(m,0,dxfpoints[j]);
+                                    break;
+                                }
+                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(blue[m].m0)){
+                                    if(parseFloat(dxfpoints[j].m1) < parseFloat(blue[m].m1))
+                                        blue.splice(m,0,dxfpoints[j]);
+                                    else
+                                        blue.splice(m + 1,0,dxfpoints[j]);
+                                    break;
+                                }
+                                else if(m == blue.length - 1){
+                                    blue.splice(blue.length + 1,0,dxfpoints[j]);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                for(j = 0;j < green.length;j++)
+                    red.splice(red.length,0,green[j]);
+                for(j = 0;j < blue.length;j++)
+                    red.splice(red.length,0,blue[j]);
+                for(var i = 0, points = red, len = points.length; i < len; ++i)
                 {
                     p = points[i];
                     if(tMap.hasOwnProperty(p.m4)){
                         pointModel.insert(tMap[p.m4], {"pointName":qsTr("P") + i,
                                               "pointPos":p, "fromgcode":true});
-                        for(var m in tMap)
+                        for(m in tMap)
                             if(tMap[m] >= tMap[p.m4])
                                 tMap[m] += 1;
                     }else{

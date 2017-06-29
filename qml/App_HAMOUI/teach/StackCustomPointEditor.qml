@@ -180,6 +180,28 @@ MouseArea{
             }
         }
 
+        ICButton{
+            id:up_point
+            text: qsTr("up")
+            anchors.right: down_point.left
+            onButtonClicked: {
+                if(pointView.currentIndex <= 0)
+                    return;
+                pointModel.move(pointView.currentIndex,pointView.currentIndex - 1,1);
+            }
+        }
+
+        ICButton{
+            id:down_point
+            text: qsTr("down")
+            anchors.right: statistics.left
+            onButtonClicked: {
+                if(pointView.currentIndex >= pointView.count -1)
+                    return;
+                pointModel.move(pointView.currentIndex,pointView.currentIndex + 1,1);
+            }
+        }
+
         Text{
             id:statistics
             text: qsTr("Total:") + pointModel.count

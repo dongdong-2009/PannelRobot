@@ -8761,82 +8761,92 @@ please chose!</source>
     </message>
     <message>
         <location filename="../teach/StackCustomPointEditor.qml" line="185"/>
+        <source>up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/StackCustomPointEditor.qml" line="196"/>
+        <source>down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/StackCustomPointEditor.qml" line="207"/>
         <source>Total:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="192"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="214"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="201"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="223"/>
         <source>Sync Replace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="236"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="258"/>
         <source>A Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="241"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="263"/>
         <source>B Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="246"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="268"/>
         <source>C Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="251"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="273"/>
         <source>Confirm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="277"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="299"/>
         <source>Point Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="283"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="305"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="291"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="313"/>
         <source>Replace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="308"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="330"/>
         <source>Set In</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="364"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="386"/>
         <source>New</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="375"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="397"/>
         <source>Import From 
 CY GCode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="385"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="407"/>
         <source>Import From DXF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="452"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="474"/>
         <source>Head Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="396"/>
+        <location filename="../teach/StackCustomPointEditor.qml" line="418"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>

@@ -7985,6 +7985,14 @@ CY GCode</source>
         <source>Import From DXF</source>
         <translation>DXF文件导入</translation>
     </message>
+    <message>
+        <source>up</source>
+        <translation>上移</translation>
+    </message>
+    <message>
+        <source>down</source>
+        <translation>下移</translation>
+    </message>
 </context>
 <context>
     <name>StackThreePointWayEditor</name>

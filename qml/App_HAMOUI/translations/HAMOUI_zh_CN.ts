@@ -7993,6 +7993,10 @@ CY GCode</source>
         <source>down</source>
         <translation>下移</translation>
     </message>
+    <message>
+        <source>reset</source>
+        <translation>复位</translation>
+    </message>
 </context>
 <context>
     <name>StackThreePointWayEditor</name>

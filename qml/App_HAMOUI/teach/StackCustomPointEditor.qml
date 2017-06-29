@@ -176,7 +176,21 @@ MouseArea{
                                               "pointPos":p, "fromgcode":true});
                         tMap[p.m4] = pointModel.count;
                     }
+                    tmpModel.append({"pointName":qsTr("P") + i,
+                                        "pointPos":p, "fromgcode":true});
                 }
+            }
+        }
+
+        ICButton{
+            id:reset
+            text: qsTr("reset")
+            visible: false
+            anchors.right: up_point.left
+            onButtonClicked: {
+                pointModel.clear();
+                for(var i = 0;i < tmpModel.count;i++)
+                    pointModel.append(tmpModel.get(i));
             }
         }
 
@@ -439,6 +453,9 @@ MouseArea{
             y:80
             ListModel {
                 id:pointModel
+            }
+            ListModel {
+                id:tmpModel
             }
 
             ListView {

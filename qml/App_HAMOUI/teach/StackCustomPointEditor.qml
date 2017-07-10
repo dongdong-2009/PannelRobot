@@ -97,15 +97,27 @@ MouseArea{
                                     red.splice(m,0,dxfpoints[j]);
                                     break;
                                 }
-                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(red[m].m0)){
-                                    if(parseFloat(dxfpoints[j].m1) < parseFloat(red[m].m1))
-                                        red.splice(m,0,dxfpoints[j]);
-                                    else
-                                        red.splice(m + 1,0,dxfpoints[j]);
+                                else if(m == red.length - 1){
+                                    red.splice(red.length,0,dxfpoints[j]);
                                     break;
                                 }
-                                else if(m == red.length - 1){
-                                    red.splice(red.length + 1,0,dxfpoints[j]);
+                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(red[m].m0)){
+                                    if(parseFloat(dxfpoints[j].m1) <= parseFloat(red[m].m1))
+                                        red.splice(m,0,dxfpoints[j]);
+                                    else{
+                                        for(var equal = 1;equal < red.length - m;equal++){
+                                            if(parseFloat(dxfpoints[j].m0) == parseFloat(red[m + equal].m0)){
+                                                if(parseFloat(dxfpoints[j].m1) <= parseFloat(red[m + equal].m1)){
+                                                    red.splice(m + equal,0,dxfpoints[j]);
+                                                    break;
+                                                }
+                                            }
+                                            else{
+                                                red.splice(m + equal,0,dxfpoints[j]);
+                                                break;
+                                            }
+                                        }
+                                    }
                                     break;
                                 }
                             }
@@ -120,15 +132,27 @@ MouseArea{
                                     green.splice(m,0,dxfpoints[j]);
                                     break;
                                 }
-                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(green[m].m0)){
-                                    if(parseFloat(dxfpoints[j].m1) < parseFloat(green[m].m1))
-                                        green.splice(m,0,dxfpoints[j]);
-                                    else
-                                        green.splice(m + 1,0,dxfpoints[j]);
+                                else if(m == green.length - 1){
+                                    green.splice(green.length,0,dxfpoints[j]);
                                     break;
                                 }
-                                else if(m == green.length - 1){
-                                    green.splice(green.length + 1,0,dxfpoints[j]);
+                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(green[m].m0)){
+                                    if(parseFloat(dxfpoints[j].m1) <= parseFloat(green[m].m1))
+                                        green.splice(m,0,dxfpoints[j]);
+                                    else{
+                                        for(equal = 1;equal < green.length - m;equal++){
+                                            if(parseFloat(dxfpoints[j].m0) == parseFloat(green[m + equal].m0)){
+                                                if(parseFloat(dxfpoints[j].m1) <= parseFloat(green[m + equal].m1)){
+                                                    green.splice(m + equal,0,dxfpoints[j]);
+                                                    break;
+                                                }
+                                            }
+                                            else{
+                                                green.splice(m + equal,0,dxfpoints[j]);
+                                                break;
+                                            }
+                                        }
+                                    }
                                     break;
                                 }
                             }
@@ -143,15 +167,34 @@ MouseArea{
                                     blue.splice(m,0,dxfpoints[j]);
                                     break;
                                 }
+                                else if(m == blue.length - 1){
+                                    blue.splice(blue.length + 1,0,dxfpoints[j]);
+                                    break;
+                                }
+                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(blue[m].m0)){
+                                    if(parseFloat(dxfpoints[j].m1) <= parseFloat(blue[m].m1))
+                                        blue.splice(m,0,dxfpoints[j]);
+                                    else{
+                                        for(equal = 1;equal < blue.length - m;equal++){
+                                            if(parseFloat(dxfpoints[j].m0) == parseFloat(blue[m + equal].m0)){
+                                                if(parseFloat(dxfpoints[j].m1) <= parseFloat(blue[m + equal].m1)){
+                                                    blue.splice(m + equal,0,dxfpoints[j]);
+                                                    break;
+                                                }
+                                            }
+                                            else{
+                                                blue.splice(m + equal,0,dxfpoints[j]);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    break;
+                                }
                                 else if(parseFloat(dxfpoints[j].m0) == parseFloat(blue[m].m0)){
                                     if(parseFloat(dxfpoints[j].m1) < parseFloat(blue[m].m1))
                                         blue.splice(m,0,dxfpoints[j]);
                                     else
                                         blue.splice(m + 1,0,dxfpoints[j]);
-                                    break;
-                                }
-                                else if(m == blue.length - 1){
-                                    blue.splice(blue.length + 1,0,dxfpoints[j]);
                                     break;
                                 }
                             }

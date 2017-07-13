@@ -37,7 +37,10 @@ FocusScope{
                 if(isActive){
                     var p = parent.mapToItem(null, input.x, input.y);
 
-                    virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height,min,max,decimal,isNumberOnly);
+                    if(isNumberOnly)
+                        virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height,min,max,decimal,isNumberOnly);
+                    else
+                        virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height,isNumberOnly,"",false);
 
                     rectangle.color = "green";
                     virtualKeyboard.commit.disconnect(onCommit);

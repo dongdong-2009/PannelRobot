@@ -238,7 +238,8 @@ var stackTypes = {
     "kST_DataSource":2,
     "kST_DataSourceIgnoreZ":3,
     "kST_VisionCmp":4,
-    "kST_VisionPosAndCmp":5
+    "kST_VisionPosAndCmp":5,
+    "kST_VisionPosAndCmp1":6
 };
 
 
@@ -1543,6 +1544,7 @@ function stackTypeToString(type){
     case stackTypes.kST_DataSourceIgnoreZ:
     case stackTypes.kST_VisionCmp:
     case stackTypes.kST_VisionPosAndCmp:
+    case stackTypes.kST_VisionPosAndCmp1:
         return qsTr("Datasource");
     default:
         return qsTr("Normal");

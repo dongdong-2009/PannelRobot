@@ -114,6 +114,8 @@ void ICDxfEditor::addCircle(const DL_CircleData& data) {
            data.radius);
     DL_CircleData myData = data;
     myData.radius = attributes.getColor();
-    if(myData.radius == 1 || myData.radius == 3 || myData.radius == 5)//<RGB
+    if(myData.radius == 1)
+        qDebug()<<"11111"<<myData.radius<<myData.cx<<myData.cy;
+    if(myData.radius == 1 || myData.radius == 6 || myData.radius == 3 || myData.radius == 5)//<RYGB
         classifyItem(myData);
 }

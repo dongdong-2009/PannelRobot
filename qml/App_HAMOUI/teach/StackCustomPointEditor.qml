@@ -82,136 +82,254 @@ MouseArea{
             height: parent.height * 0.6
             anchors.centerIn:  parent
             z:10
+            function length(x,y)
+            {
+                return x*x+y*y;
+            }
+
             onGotFileContent: {
                 pointModel.clear();
                 var tMap = {};
-                var p,red = [],green = [],blue = [];
-                for(var j = 0, dxfpoints = JSON.parse(content); j < dxfpoints.length; j++)
+                var p,red = [],green = [],blue = [],tmp = 0,count = 0,dxfpoints = JSON.parse(content);
+                for(var k = 0; k < dxfpoints.length; k++)
                 {
-                    if(dxfpoints[j].m4 == 1){
-                        if(!red.length)
-                            red.push(dxfpoints[j]);
-                        else{
-                            for(var m = 0;m < red.length;m++){
-                                if(parseFloat(dxfpoints[j].m0) < parseFloat(red[m].m0)){
-                                    red.splice(m,0,dxfpoints[j]);
-                                    break;
-                                }
-                                else if(m == red.length - 1){
-                                    red.splice(red.length,0,dxfpoints[j]);
-                                    break;
-                                }
-                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(red[m].m0)){
-                                    if(parseFloat(dxfpoints[j].m1) <= parseFloat(red[m].m1))
-                                        red.splice(m,0,dxfpoints[j]);
-                                    else{
-                                        for(var equal = 1;equal < red.length - m;equal++){
-                                            if(parseFloat(dxfpoints[j].m0) == parseFloat(red[m + equal].m0)){
-                                                if(parseFloat(dxfpoints[j].m1) <= parseFloat(red[m + equal].m1)){
-                                                    red.splice(m + equal,0,dxfpoints[j]);
-                                                    break;
-                                                }
-                                            }
-                                            else{
-                                                red.splice(m + equal,0,dxfpoints[j]);
-                                                break;
-                                            }
-                                        }
-                                    }
-                                    break;
-                                }
-                            }
+                    if(dxfpoints[k].m4 == 6){
+                        var origin = dxfpoints[k];
+                        dxfpoints.splice(k,1);
+                        for(var n = 0; n < dxfpoints.length; n++){
+                            console.log(origin.m0,origin.m1,dxfpoints[n].m0,dxfpoints[n].m1);
+                            dxfpoints[n].m0 -= origin.m0;
+                            dxfpoints[n].m1 -= origin.m1;
+                            dxfpoints[n].m0 = (dxfpoints[n].m0).toFixed(3);
+                            dxfpoints[n].m1 = (dxfpoints[n].m1).toFixed(3);
                         }
-                    }
-                    if(dxfpoints[j].m4 == 3){
-                        if(!green.length)
-                            green.push(dxfpoints[j]);
-                        else{
-                            for(m = 0;m < green.length;m++){
-                                if(parseFloat(dxfpoints[j].m0) < parseFloat(green[m].m0)){
-                                    green.splice(m,0,dxfpoints[j]);
-                                    break;
-                                }
-                                else if(m == green.length - 1){
-                                    green.splice(green.length,0,dxfpoints[j]);
-                                    break;
-                                }
-                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(green[m].m0)){
-                                    if(parseFloat(dxfpoints[j].m1) <= parseFloat(green[m].m1))
-                                        green.splice(m,0,dxfpoints[j]);
-                                    else{
-                                        for(equal = 1;equal < green.length - m;equal++){
-                                            if(parseFloat(dxfpoints[j].m0) == parseFloat(green[m + equal].m0)){
-                                                if(parseFloat(dxfpoints[j].m1) <= parseFloat(green[m + equal].m1)){
-                                                    green.splice(m + equal,0,dxfpoints[j]);
-                                                    break;
-                                                }
-                                            }
-                                            else{
-                                                green.splice(m + equal,0,dxfpoints[j]);
-                                                break;
-                                            }
-                                        }
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    if(dxfpoints[j].m4 == 5){
-                        if(!blue.length)
-                            blue.push(dxfpoints[j]);
-                        else{
-                            for(m = 0;m < blue.length;m++){
-                                if(parseFloat(dxfpoints[j].m0) < parseFloat(blue[m].m0)){
-                                    blue.splice(m,0,dxfpoints[j]);
-                                    break;
-                                }
-                                else if(m == blue.length - 1){
-                                    blue.splice(blue.length + 1,0,dxfpoints[j]);
-                                    break;
-                                }
-                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(blue[m].m0)){
-                                    if(parseFloat(dxfpoints[j].m1) <= parseFloat(blue[m].m1))
-                                        blue.splice(m,0,dxfpoints[j]);
-                                    else{
-                                        for(equal = 1;equal < blue.length - m;equal++){
-                                            if(parseFloat(dxfpoints[j].m0) == parseFloat(blue[m + equal].m0)){
-                                                if(parseFloat(dxfpoints[j].m1) <= parseFloat(blue[m + equal].m1)){
-                                                    blue.splice(m + equal,0,dxfpoints[j]);
-                                                    break;
-                                                }
-                                            }
-                                            else{
-                                                blue.splice(m + equal,0,dxfpoints[j]);
-                                                break;
-                                            }
-                                        }
-                                    }
-                                    break;
-                                }
-                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(blue[m].m0)){
-                                    if(parseFloat(dxfpoints[j].m1) < parseFloat(blue[m].m1))
-                                        blue.splice(m,0,dxfpoints[j]);
-                                    else
-                                        blue.splice(m + 1,0,dxfpoints[j]);
-                                    break;
-                                }
-                            }
-                        }
+                        break;
                     }
                 }
-                for(j = 0;j < green.length;j++)
-                    red.splice(red.length,0,green[j]);
-                for(j = 0;j < blue.length;j++)
-                    red.splice(red.length,0,blue[j]);
-                for(var i = 0, points = red, len = points.length; i < len; ++i)
+                for(var j = 0; j < dxfpoints.length; j++)
+                {
+                    if(dxfpoints[j].m4 == 1)
+                        red.push(dxfpoints[j]);
+                    if(dxfpoints[j].m4 == 3)
+                        green.push(dxfpoints[j]);
+                    if(dxfpoints[j].m4 == 5)
+                        blue.push(dxfpoints[j]);
+                }
+                var l = red.length,red1 = [],green1 = [],blue1 = [],cc = [{"m0":0,"m1":0}];
+                for(var ii = 0;ii < l;ii++)
+                {
+                    for(j = 0; j < red.length; j++)
+                    {
+                        if(ii == l -1)
+                            count = 0;
+                        else if(j == 0){
+                            count = 0;
+//                            if(length(red[0].m0 - cc[0].m0,red[0].m1 - cc[0].m1))
+                                tmp = length(red[0].m0 - cc[0].m0,red[0].m1 - cc[0].m1);
+//                            else
+//                                tmp = length(red[1].m0 - cc[0].m0,red[1].m1 - cc[0].m1)
+                        }
+                        else if(tmp > length(red[j].m0 - cc[0].m0,red[j].m1 - cc[0].m1)&&length(red[j].m0 - cc[0].m0,red[j].m1 - cc[0].m1)!=0){
+                            tmp = length(red[j].m0 - cc[0].m0,red[j].m1 - cc[0].m1);
+                            count = j;
+                        }
+                    }
+                    cc[0] = red[count];
+                    red1.push(red[count]);
+                    red.splice(count,1);
+                }
+                l = green.length;
+                if(l){
+                    if(red1.length)
+                        cc = [{"m0":red1[red1.length - 1].m0,"m1":red1[red1.length - 1].m1}];
+                    else
+                        cc = [{"m0":0,"m1":0}];
+                }
+                for(ii = 0;ii < l;ii++)
+                {
+                    for(j = 0; j < green.length; j++)
+                    {
+                        if(ii == l -1)
+                            count = 0
+                        else if(j == 0){
+                            count = 0;
+                            if(length(green[0].m0 - cc[0].m0,green[0].m1 - cc[0].m1))
+                                tmp = length(green[0].m0 - cc[0].m0,green[0].m1 - cc[0].m1);
+                            else
+                                tmp = length(green[1].m0 - cc[0].m0,green[1].m1 - cc[0].m1)
+                        }
+                        else if(tmp > length(green[j].m0 - cc[0].m0,green[j].m1 - cc[0].m1)&&length(green[j].m0 - cc[0].m0,green[j].m1 - cc[0].m1)!=0){
+                            tmp = length(green[j].m0 - cc[0].m0,green[j].m1 - cc[0].m1);
+                            count = j;
+                        }
+                    }
+                    cc[0] = green[count];
+                    green1.push(green[count]);
+                    green.splice(count,1);
+                }
+                l = blue.length;
+                if(l){
+                    if(green1.length)
+                        cc = [{"m0":green1[green1.length - 1].m0,"m1":green1[green1.length - 1].m1}];
+                    else if(red1.length)
+                        cc = [{"m0":red1[red1.length - 1].m0,"m1":red1[red1.length - 1].m1}];
+                    else
+                        cc = [{"m0":0,"m1":0}];
+                }
+                for(ii = 0;ii < l;ii++)
+                {
+                    for(j = 0; j < blue.length; j++)
+                    {
+                        if(ii == l -1)
+                            count = 0
+                        else if(j == 0){
+                            count = 0;
+                            if(length(blue[0].m0 - cc[0].m0,blue[0].m1 - cc[0].m1))
+                                tmp = length(blue[0].m0 - cc[0].m0,blue[0].m1 - cc[0].m1);
+                            else
+                                tmp = length(blue[1].m0 - cc[0].m0,blue[1].m1 - cc[0].m1)
+                        }
+                        else if(tmp > length(blue[j].m0 - cc[0].m0,blue[j].m1 - cc[0].m1)&&length(blue[j].m0 - cc[0].m0,blue[j].m1 - cc[0].m1)!=0){
+                            tmp = length(blue[j].m0 - cc[0].m0,blue[j].m1 - cc[0].m1);
+                            count = j;
+                        }
+                    }
+                    cc[0] = blue[count];
+                    blue1.push(blue[count]);
+                    blue.splice(count,1);
+                }
+
+
+//                for(var j = 0, dxfpoints = JSON.parse(content); j < dxfpoints.length; j++)
+//                {
+//                    if(dxfpoints[j].m4 == 1){
+//                        if(!red.length)
+//                            red.push(dxfpoints[j]);
+//                        else{
+//                            for(var m = 0;m < red.length;m++){
+//                                if(parseFloat(dxfpoints[j].m0) < parseFloat(red[m].m0)){
+//                                    red.splice(m,0,dxfpoints[j]);
+//                                    break;
+//                                }
+//                                else if(m == red.length - 1){
+//                                    red.splice(red.length,0,dxfpoints[j]);
+//                                    break;
+//                                }
+//                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(red[m].m0)){
+//                                    if(parseFloat(dxfpoints[j].m1) <= parseFloat(red[m].m1))
+//                                        red.splice(m,0,dxfpoints[j]);
+//                                    else{
+//                                        for(var equal = 1;equal < red.length - m;equal++){
+//                                            if(parseFloat(dxfpoints[j].m0) == parseFloat(red[m + equal].m0)){
+//                                                if(parseFloat(dxfpoints[j].m1) <= parseFloat(red[m + equal].m1)){
+//                                                    red.splice(m + equal,0,dxfpoints[j]);
+//                                                    break;
+//                                                }
+//                                            }
+//                                            else{
+//                                                red.splice(m + equal,0,dxfpoints[j]);
+//                                                break;
+//                                            }
+//                                        }
+//                                    }
+//                                    break;
+//                                }
+//                            }
+//                        }
+//                    }
+//                    if(dxfpoints[j].m4 == 3){
+//                        if(!green.length)
+//                            green.push(dxfpoints[j]);
+//                        else{
+//                            for(m = 0;m < green.length;m++){
+//                                if(parseFloat(dxfpoints[j].m0) < parseFloat(green[m].m0)){
+//                                    green.splice(m,0,dxfpoints[j]);
+//                                    break;
+//                                }
+//                                else if(m == green.length - 1){
+//                                    green.splice(green.length,0,dxfpoints[j]);
+//                                    break;
+//                                }
+//                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(green[m].m0)){
+//                                    if(parseFloat(dxfpoints[j].m1) <= parseFloat(green[m].m1))
+//                                        green.splice(m,0,dxfpoints[j]);
+//                                    else{
+//                                        for(equal = 1;equal < green.length - m;equal++){
+//                                            if(parseFloat(dxfpoints[j].m0) == parseFloat(green[m + equal].m0)){
+//                                                if(parseFloat(dxfpoints[j].m1) <= parseFloat(green[m + equal].m1)){
+//                                                    green.splice(m + equal,0,dxfpoints[j]);
+//                                                    break;
+//                                                }
+//                                            }
+//                                            else{
+//                                                green.splice(m + equal,0,dxfpoints[j]);
+//                                                break;
+//                                            }
+//                                        }
+//                                    }
+//                                    break;
+//                                }
+//                            }
+//                        }
+//                    }
+//                    if(dxfpoints[j].m4 == 5){
+//                        if(!blue.length)
+//                            blue.push(dxfpoints[j]);
+//                        else{
+//                            for(m = 0;m < blue.length;m++){
+//                                if(parseFloat(dxfpoints[j].m0) < parseFloat(blue[m].m0)){
+//                                    blue.splice(m,0,dxfpoints[j]);
+//                                    break;
+//                                }
+//                                else if(m == blue.length - 1){
+//                                    blue.splice(blue.length + 1,0,dxfpoints[j]);
+//                                    break;
+//                                }
+//                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(blue[m].m0)){
+//                                    if(parseFloat(dxfpoints[j].m1) <= parseFloat(blue[m].m1))
+//                                        blue.splice(m,0,dxfpoints[j]);
+//                                    else{
+//                                        for(equal = 1;equal < blue.length - m;equal++){
+//                                            if(parseFloat(dxfpoints[j].m0) == parseFloat(blue[m + equal].m0)){
+//                                                if(parseFloat(dxfpoints[j].m1) <= parseFloat(blue[m + equal].m1)){
+//                                                    blue.splice(m + equal,0,dxfpoints[j]);
+//                                                    break;
+//                                                }
+//                                            }
+//                                            else{
+//                                                blue.splice(m + equal,0,dxfpoints[j]);
+//                                                break;
+//                                            }
+//                                        }
+//                                    }
+//                                    break;
+//                                }
+//                                else if(parseFloat(dxfpoints[j].m0) == parseFloat(blue[m].m0)){
+//                                    if(parseFloat(dxfpoints[j].m1) < parseFloat(blue[m].m1))
+//                                        blue.splice(m,0,dxfpoints[j]);
+//                                    else
+//                                        blue.splice(m + 1,0,dxfpoints[j]);
+//                                    break;
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//                for(j = 0;j < green.length;j++)
+//                    red.splice(red.length,0,green[j]);
+//                for(j = 0;j < blue.length;j++)
+//                    red.splice(red.length,0,blue[j]);
+                for(j = 0;j < green1.length;j++)
+                    red1.splice(red1.length,0,green1[j]);
+                for(j = 0;j < blue1.length;j++)
+                    red1.splice(red1.length,0,blue1[j]);
+                for(var i = 0, points = red1, len = points.length; i < len; ++i)
                 {
                     p = points[i];
                     if(tMap.hasOwnProperty(p.m4)){
                         pointModel.insert(tMap[p.m4], {"pointName":qsTr("P") + i,
                                               "pointPos":p, "fromgcode":true});
-                        for(m in tMap)
+                        for(var m in tMap)
                             if(tMap[m] >= tMap[p.m4])
                                 tMap[m] += 1;
                     }else{

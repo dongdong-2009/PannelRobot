@@ -466,8 +466,19 @@ int ConditionActionCompiler(ICMoldItem & item, const QVariantMap* v)
     {
         item.append(v->value("counterID").toUInt());
         item.append(v->value("autoClear").toInt());
-        item.append(v->value("compareID").toInt());
-        item.append(v->value("compareTarget").toInt());
+        if(v->contains("compareTarget")){
+            item.append(v->value("compareID").toInt());
+            item.append(v->value("compareTarget").toInt());
+        }
+        else
+        {
+            if(v->value("counterID").toUInt() == 0)
+                item.append(6);
+            else
+                item.append(7);
+            QVariantList c = ICRobotMold::CurrentMold()->GetCounter(v->value("counterID").toUInt());
+            item.append(c.last().toUInt());
+        }
     }
     else if(act == F_CMD_MEMCOMPARE_CMD)
     {

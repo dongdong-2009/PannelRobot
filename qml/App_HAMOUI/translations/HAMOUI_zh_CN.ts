@@ -667,15 +667,15 @@
     </message>
     <message>
         <source>ALARM_USER_COORD_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>当前工具坐标系错误，切换失败</translation>
     </message>
     <message>
         <source>ALARM_INTERVAL_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>堆叠间隔输出失败</translation>
     </message>
     <message>
         <source>ALARM_NULL_COORD_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>无当前工作台坐标系</translation>
     </message>
 </context>
 <context>
@@ -9273,15 +9273,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>setPoBtn</source>
-        <translation type="unfinished"></translation>
+        <translation>设入远点</translation>
     </message>
     <message>
         <source>setPxBtn</source>
-        <translation type="unfinished"></translation>
+        <translation>设入X</translation>
     </message>
     <message>
         <source>setPyBtn</source>
-        <translation type="unfinished"></translation>
+        <translation>设入Y</translation>
     </message>
 </context>
 <context>

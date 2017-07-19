@@ -9273,7 +9273,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>setPoBtn</source>
-        <translation>设入远点</translation>
+        <translation type="unfinished">设入原点</translation>
     </message>
     <message>
         <source>setPxBtn</source>
